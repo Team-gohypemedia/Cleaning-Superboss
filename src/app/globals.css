@@ -1,26 +1,100 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #FAF6F0;
+    --foreground: #1C1B1F;
+    --primary: #D9692A;
+    --card: #FFFFFF;
+    --border: #E5E1D3;
+  }
+
+  html,
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: auto !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Lenis Smooth Scroll Base Styles */
+html.lenis,
+html.lenis body {
+  height: auto;
 }
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Theme Utilities for Warm Cream & Orange Aesthetic */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #E5E1D3;
+}
+
+.glass-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E1D3;
+  box-shadow: 0 10px 30px -10px rgba(28, 27, 31, 0.04),
+              0 4px 12px -2px rgba(28, 27, 31, 0.02);
+}
+
+.glass-card:hover {
+  box-shadow: 0 20px 40px -15px rgba(217, 105, 42, 0.12);
+  border-color: #D9692A;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #1C1B1F 0%, #D9692A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-orange {
+  background: linear-gradient(135deg, #D9692A 0%, #F97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Scrollbar - Black background & Orange slider thumb */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #D9692A #1C1B1F;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1C1B1F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D9692A;
+  border-radius: 9999px;
+  border: 2px solid #1C1B1F;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F97316;
+}
+
