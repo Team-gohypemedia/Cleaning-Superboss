@@ -11,19 +11,19 @@ const FRAME_PATH = (index: number) =>
 const PHRASES = [
   {
     id: 1,
-    text: "We have reinvented the future of industrial motion",
+    text: "Pioneering the future of heavy industrial manufacturing & precision engineering",
     startPct: 0.02,
     endPct: 0.3,
   },
   {
     id: 2,
-    text: "Autonomous robotics & high-torque pneumatic power",
+    text: "High-torque automated systems, robotic machining & power solutions",
     startPct: 0.35,
     endPct: 0.63,
   },
   {
     id: 3,
-    text: "Real-time telemetry with zero-latency precision",
+    text: "Real-time telemetry, zero-tolerance precision & zero-downtime reliability",
     startPct: 0.68,
     endPct: 0.95,
   },
@@ -179,6 +179,43 @@ export default function HeroMachineScroll() {
           },
         },
       });
+
+      // Cursor follower quickSetter positioning
+      const follower = followerRef.current;
+      if (follower) {
+        gsap.set(follower, { xPercent: -50, yPercent: -50, scale: 0, opacity: 0 });
+
+        const xSetter = gsap.quickSetter(follower, "x", "px");
+        const ySetter = gsap.quickSetter(follower, "y", "px");
+
+        const onMouseMove = (e: MouseEvent) => {
+          xSetter(e.clientX);
+          ySetter(e.clientY);
+        };
+
+        const onMouseEnter = () => {
+          gsap.to(follower, { scale: 1, opacity: 1, duration: 0.3, ease: "power2.out" });
+        };
+
+        const onMouseLeave = () => {
+          gsap.to(follower, { scale: 0, opacity: 0, duration: 0.3, ease: "power2.out" });
+        };
+
+        section.addEventListener("mousemove", onMouseMove);
+        section.addEventListener("mouseenter", onMouseEnter);
+        section.addEventListener("mouseleave", onMouseLeave);
+
+        // Fade out cursor follower when scrolling down hero
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top top",
+          end: "+=15%",
+          scrub: true,
+          onUpdate: (self) => {
+            gsap.set(follower, { opacity: Math.max(0, 1 - self.progress * 4) });
+          }
+        });
+      }
     }, section);
 
     const handleResize = () => {
@@ -192,11 +229,44 @@ export default function HeroMachineScroll() {
     };
   }, []);
 
+  const followerRef = useRef<HTMLDivElement>(null);
+
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen h-[100dvh] w-full bg-zinc-950 overflow-hidden flex items-center justify-center select-none"
+      className="relative h-screen h-[100dvh] w-full bg-zinc-950 overflow-hidden flex items-center justify-center select-none lg:cursor-none"
     >
+      {/* Self-contained CSS styles for the metallic shiny text effect */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes shineSweep {
+          0% {
+            background-position: -200% 0;
+          }
+          100% {
+            background-position: 200% 0;
+          }
+        }
+        .shiny-text-effect {
+          background: linear-gradient(110deg, rgba(255,255,255,0.45) 35%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.45) 65%);
+          background-size: 200% auto;
+          color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+          animation: shineSweep 2.5s linear infinite;
+        }
+      `}} />
+
+      {/* Custom Mouse Follower Container */}
+      <div
+        ref={followerRef}
+        className="hidden lg:block fixed top-0 left-0 pointer-events-none z-50"
+        style={{ willChange: "transform" }}
+      >
+        <span className="shiny-text-effect font-sans text-[14px] tracking-[0.32em] font-black uppercase whitespace-nowrap drop-shadow-xl">
+          Scroll to Explore
+        </span>
+      </div>
+
       {/* 3D Frame Sequence Full Screen Canvas - 100% Clear with NO Overlay Shadow */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <canvas
@@ -232,8 +302,8 @@ export default function HeroMachineScroll() {
           ))}
         </div>
 
-        {/* Bottom Bar: SCROLL TO EXPLORE Indicator */}
-        <div className="w-full flex items-center justify-end text-xs font-mono font-bold tracking-widest text-white/90 uppercase pointer-events-auto drop-shadow-sm">
+        {/* Bottom Bar: SCROLL TO EXPLORE Fallback Indicator for Mobile/Scroll */}
+        <div className="w-full flex items-center justify-end text-xs font-mono font-bold tracking-widest text-white/90 uppercase pointer-events-auto drop-shadow-sm lg:hidden">
           <div className="flex items-center gap-2 text-white/90">
             <span>SCROLL TO EXPLORE</span>
           </div>

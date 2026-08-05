@@ -34,7 +34,7 @@ export default function RibbonSection() {
             repeat={16}
             separator="✦"
           >
-            DOMINATE YOUR INDUSTRY ✦ SCALE WITH AUTHORITY ✦ OWN YOUR NARRATIVE ✦ BUILD TRUST ✦ ATTRACT PREMIUM LEADS
+            PRECISION ENGINEERING ✦ INDUSTRIAL AUTOMATION ✦ ZERO DOWNTIME GUARANTEE ✦ HEAVY MANUFACTURING ✦ SMART FACTORY INTEGRATION
           </InfiniteRibbon>
         </motion.div>
 
@@ -50,7 +50,7 @@ export default function RibbonSection() {
             repeat={16}
             separator="✦"
           >
-            BECOME THE CATEGORY LEADER ✦ HIGH-TORQUE PNEUMATIC POWER ✦ REAL-TIME 3D MOTION ✦ AUTONOMOUS ROBOTICS
+            HIGH-TORQUE PNEUMATIC SYSTEMS ✦ ISO-CERTIFIED QUALITY ✦ AUTONOMOUS ROBOTICS ✦ CUSTOM OEM MACHINING
           </InfiniteRibbon>
         </motion.div>
       </div>
