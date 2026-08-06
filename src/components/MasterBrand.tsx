@@ -320,11 +320,13 @@ function SingleChoreographyCanvas({ progress, activeIndex }: { progress: number;
           </clipPath>
         </defs>
 
-        <foreignObject x="-0.5" y="-0.5" width="1347" height="2245" clipPath="url(#terminalMorphClip)">
-          <div className="w-full h-full relative bg-[#111]">
-            <canvas ref={canvasRef} className="w-full h-full block object-cover" />
-          </div>
-        </foreignObject>
+        <g clipPath="url(#terminalMorphClip)">
+          <foreignObject x="-0.5" y="-0.5" width="100%" height="100%">
+            <div className="w-full h-full relative bg-[#111]">
+              <canvas ref={canvasRef} className="w-full h-full block object-cover" />
+            </div>
+          </foreignObject>
+        </g>
       </svg>
     </div>
   );
