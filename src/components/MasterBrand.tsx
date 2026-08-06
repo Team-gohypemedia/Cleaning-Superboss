@@ -141,7 +141,7 @@ function getBottomMaskPath(progress: number) {
 }
 
 function SingleChoreographyCanvas({ progress, activeIndex }: { progress: number; activeIndex: number }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const imageRef = useRef<SVGImageElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -166,7 +166,6 @@ function SingleChoreographyCanvas({ progress, activeIndex }: { progress: number;
   const currentFrameRef = useRef(0);
   const targetFrameRef = useRef(0);
   const loopRef = useRef<number | null>(null);
-  const rectRef = useRef<{ width: number; height: number } | null>(null);
 
   const progressRef = useRef(progress);
   const activeIndexRef = useRef(activeIndex);
@@ -178,81 +177,23 @@ function SingleChoreographyCanvas({ progress, activeIndex }: { progress: number;
     activeIndexRef.current = activeIndex;
   }, [progress, activeIndex]);
 
-  const updateRect = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    rectRef.current = { width: rect.width, height: rect.height };
-  };
-
   const drawFrame = (frameIdx: number) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const imageEl = imageRef.current;
+    if (!imageEl) return;
 
     const idx = Math.min(
       TOTAL_CHOREOGRAPHY_FRAMES - 1,
       Math.max(0, Math.floor(frameIdx))
     );
 
-    const img = loadedChoreographyImages[idx];
-    if (!img) return;
-
-    const render = () => {
-      const dpr = window.devicePixelRatio || 1;
-      if (!rectRef.current) {
-        const rect = canvas.getBoundingClientRect();
-        rectRef.current = { width: rect.width, height: rect.height };
-      }
-      const rect = rectRef.current;
-
-      const targetW = Math.round(rect.width * dpr);
-      const targetH = Math.round(rect.height * dpr);
-
-      if (canvas.width !== targetW || canvas.height !== targetH) {
-        canvas.width = targetW;
-        canvas.height = targetH;
-      }
-
-      ctx.save();
-      ctx.scale(dpr, dpr);
-      ctx.clearRect(0, 0, rect.width, rect.height);
-
-      const imgAspect = img.width / img.height;
-      const canvasAspect = rect.width / rect.height;
-
-      let renderWidth = rect.width;
-      let renderHeight = rect.height;
-      let offsetX = 0;
-      let offsetY = 0;
-
-      if (canvasAspect > imgAspect) {
-        renderWidth = rect.width;
-        renderHeight = rect.width / imgAspect;
-        offsetY = (rect.height - renderHeight) / 2;
-      } else {
-        renderHeight = rect.height;
-        renderWidth = rect.height * imgAspect;
-        offsetX = (rect.width - renderWidth) / 2;
-      }
-
-      ctx.drawImage(img, offsetX, offsetY, renderWidth, renderHeight);
-      ctx.restore();
-    };
-
-    if (img.complete && img.naturalWidth !== 0) {
-      render();
-    } else {
-      img.onload = render;
-    }
+    const path = CHOREOGRAPHY_FRAME_PATH(idx + 1);
+    imageEl.setAttribute("href", path);
+    imageEl.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", path);
   };
 
   // Single permanent frame-loop running continuously at 60fps
   useEffect(() => {
     preloadChoreographyImages();
-    const t = setTimeout(updateRect, 100);
-    window.addEventListener("resize", updateRect);
 
     const getFrameRange = (frame: number) => {
       const idx = Math.min(3, Math.max(0, Math.floor(frame / 48)));
@@ -305,8 +246,6 @@ function SingleChoreographyCanvas({ progress, activeIndex }: { progress: number;
     loopRef.current = requestAnimationFrame(tick);
 
     return () => {
-      clearTimeout(t);
-      window.removeEventListener("resize", updateRect);
       if (loopRef.current) cancelAnimationFrame(loopRef.current);
     };
   }, []);
@@ -320,13 +259,16 @@ function SingleChoreographyCanvas({ progress, activeIndex }: { progress: number;
           </clipPath>
         </defs>
 
-        <g clipPath="url(#terminalMorphClip)">
-          <foreignObject x="-0.5" y="-0.5" width="100%" height="100%">
-            <div className="w-full h-full relative bg-[#111]">
-              <canvas ref={canvasRef} className="w-full h-full block object-cover" />
-            </div>
-          </foreignObject>
-        </g>
+        <image
+          ref={imageRef}
+          x="-0.5"
+          y="-0.5"
+          width="1347"
+          height="2245"
+          preserveAspectRatio="xMidYMid slice"
+          clipPath="url(#terminalMorphClip)"
+          href={CHOREOGRAPHY_FRAME_PATH(1)}
+        />
       </svg>
     </div>
   );
