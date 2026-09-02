@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Industrial 3D Motion | Scroll Parallax Boilerplate",
+  title: "Cleaning Superboss | Premium Technology-Driven Cleaning Platform",
   description:
-    "Next.js 16 boilerplate styled with #FAF6F0 warm cream background and #D9692A orange theme tokens.",
+    "Premium cleaning services powered by smart technology, seamless booking and trusted cleaning professionals.",
 };
 
 export default function RootLayout({

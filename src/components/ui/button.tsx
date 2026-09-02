@@ -15,7 +15,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           "inline-flex items-center justify-center rounded-full font-bold transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
           variant === "default" &&
-            "bg-[#D9692A] text-white hover:bg-[#c2581f] shadow-md shadow-[#D9692A]/20",
+            "bg-[#5680e9] text-white hover:bg-[#466fd9] shadow-md shadow-[#5680e9]/25",
           variant === "outline" &&
             "border border-[#E5E1D3] bg-transparent text-[#1C1B1F] hover:bg-[#FAF6F0]",
           variant === "ghost" && "hover:bg-zinc-800 text-white",
@@ -52,7 +52,7 @@ export function IconicButton({
     <a
       href={href}
       className={cn(
-        "group inline-flex items-center gap-3 rounded-full bg-[#D9692A] px-7 py-3.5 text-xs font-black tracking-widest text-white uppercase transition-all duration-300 hover:bg-[#c2581f] shadow-lg shadow-[#D9692A]/20",
+        "group inline-flex items-center gap-3 rounded-full bg-[#5680e9] px-7 py-3.5 text-xs font-black tracking-widest text-white uppercase transition-all duration-300 hover:bg-[#466fd9] shadow-lg shadow-[#5680e9]/25",
         className
       )}
       {...props}
@@ -60,7 +60,7 @@ export function IconicButton({
       <span>{children}</span>
       <div
         className={cn(
-          "flex h-7 w-7 items-center justify-center rounded-full bg-white text-[#D9692A] transition-transform duration-300 group-hover:translate-x-1",
+          "flex h-7 w-7 items-center justify-center rounded-full bg-white text-[#5680e9] transition-transform duration-300 group-hover:translate-x-1",
           iconWrapperClassName
         )}
       >

@@ -217,7 +217,7 @@ export function StickyScroll({
                           className={cn(
                             "transition-colors duration-150",
                             isCursor
-                              ? "text-[#D9692A] font-bold"
+                              ? "text-[#5680e9] font-bold"
                               : isFilled
                               ? "text-[#1C1B1F] font-bold"
                               : "text-[#1C1B1F]/20"
@@ -243,7 +243,7 @@ export function StickyScroll({
                         className={cn(
                           "transition-colors duration-150",
                           isCursor
-                            ? "text-[#D9692A] font-semibold"
+                            ? "text-[#5680e9] font-semibold"
                             : isFilled
                             ? "text-[#1C1B1F] font-semibold"
                             : "text-[#1C1B1F]/20 font-semibold"
@@ -331,7 +331,7 @@ export function StickyScroll({
                             className={cn(
                               "transition-colors duration-150",
                               isTitleCursor
-                                ? "text-[#D9692A] font-bold"
+                                ? "text-[#5680e9] font-bold"
                                 : isTitleFilled
                                 ? "text-[#1C1B1F] font-bold"
                                 : "text-[#1C1B1F]/20"
@@ -357,7 +357,7 @@ export function StickyScroll({
                           className={cn(
                             "transition-colors duration-150",
                             isCursor
-                              ? "text-[#D9692A] font-semibold"
+                              ? "text-[#5680e9] font-semibold"
                               : isFilled
                               ? "text-[#1C1B1F] font-semibold"
                               : "text-[#1C1B1F]/20 font-semibold"

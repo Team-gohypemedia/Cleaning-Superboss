@@ -201,7 +201,7 @@ const GalleryModal = ({ selectedItem, isOpen, onClose, setSelectedItem, mediaIte
 
                 {/* Close Button */}
                 <motion.button
-                    className="absolute top-6 right-6 p-3 rounded-full bg-[#1C1B1F] text-white hover:bg-[#D9692A] transition-colors shadow-lg cursor-pointer animate-none"
+                    className="absolute top-6 right-6 p-3 rounded-full bg-[#1C1B1F] text-white hover:bg-[#5680e9] transition-colors shadow-lg cursor-pointer animate-none"
                     onClick={onClose}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -288,16 +288,16 @@ const DragInstructionOverlay = () => {
                 className="flex flex-col items-center gap-4 bg-[#FAF6F0] border border-[#E5E1D3] px-8 py-6 rounded-[24px] shadow-[0_10px_45px_rgba(0,0,0,0.2)] pointer-events-none select-none text-[#1C1B1F] max-w-[85%] text-center"
             >
                 {/* Hand Palm Icon Grabbing & Dragging Animation */}
-                <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-[#D9692A]/10 border border-[#D9692A]/20">
+                <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-[#5680e9]/10 border border-[#5680e9]/20">
                     <motion.svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="none"
-                        stroke="#D9692A"
+                        stroke="#5680e9"
                         strokeWidth="2.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="w-8 h-8 text-[#D9692A]"
+                        className="w-8 h-8 text-[#5680e9]"
                         animate={{
                             x: [-18, 18, -18],
                             rotate: [0, -12, 0]

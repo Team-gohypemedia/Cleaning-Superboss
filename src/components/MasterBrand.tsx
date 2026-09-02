@@ -9,9 +9,9 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const TOTAL_CHOREOGRAPHY_FRAMES = 192;
+const TOTAL_CHOREOGRAPHY_FRAMES = 240;
 const CHOREOGRAPHY_FRAME_PATH = (index: number) =>
-  `/camera-choreography-frames-no-logo/frames/frame_${String(index).padStart(4, "0")}.webp`;
+  `/cleaner_kitchen_frames_webp/frame_${String(index).padStart(5, "0")}.webp`;
 
 const loadedChoreographyImages: HTMLImageElement[] = [];
 let isPreloading = false;
@@ -155,12 +155,12 @@ function SingleChoreographyCanvas({ progress, activeIndex }: { progress: number;
 
   const pathD = isMobile ? getBottomMaskPath(progress) : getMaskPath(progress);
 
-  // Define allocated frame range per heading step (192 frames divided into 4 sections)
+  // Define allocated frame range per heading step (240 frames divided into 4 sections)
   const ranges = [
-    { start: 0, end: 47 },     // Heading 1: Precision Machining
-    { start: 48, end: 95 },    // Heading 2: Industrial Automation
-    { start: 96, end: 143 },   // Heading 3: Quality Compliance
-    { start: 144, end: 191 },  // Heading 4: Lifecycle Support
+    { start: 0, end: 59 },     // Step 1: Online Booking & Automated Quotes
+    { start: 60, end: 119 },   // Step 2: Customer Dashboard & Multi-Site Control
+    { start: 120, end: 179 },  // Step 3: Cleaner Management & Trusted Pros
+    { start: 180, end: 239 },  // Step 4: Live Notifications, Payments & Reviews
   ];
 
   const currentFrameRef = useRef(0);
@@ -196,10 +196,10 @@ function SingleChoreographyCanvas({ progress, activeIndex }: { progress: number;
     preloadChoreographyImages();
 
     const getFrameRange = (frame: number) => {
-      const idx = Math.min(3, Math.max(0, Math.floor(frame / 48)));
+      const idx = Math.min(3, Math.max(0, Math.floor(frame / 60)));
       return {
-        start: idx * 48,
-        end: idx === 3 ? 191 : (idx + 1) * 48 - 1
+        start: idx * 60,
+        end: idx === 3 ? 239 : (idx + 1) * 60 - 1
       };
     };
 
@@ -276,24 +276,24 @@ function SingleChoreographyCanvas({ progress, activeIndex }: { progress: number;
 
 const content = [
   {
-    title: "Precision Machining",
+    title: "Online Booking & Automated Quotes",
     description:
-      "High-tolerance 5-axis CNC machining, heavy structural welding, and advanced metal alloy fabrication. Engineered for zero-defect production in mission-critical applications.",
+      "Instant quoting engine calculates transparent, real-time pricing based on your property type and square footage. Book one-time or recurring cleanings in under 60 seconds.",
   },
   {
-    title: "Industrial Automation",
+    title: "Customer Dashboard & Multi-Site Control",
     description:
-      "Autonomous robotic assembly lines, high-torque pneumatic actuators, and automated material handling designed to maximize plant throughput and eliminate operational bottlenecks.",
+      "One intuitive dashboard for modern homes, luxury apartments, Airbnb turnovers, and enterprise offices. Manage schedules, custom cleaning instructions, and past service logs.",
   },
   {
-    title: "Quality Compliance & Testing",
+    title: "Cleaner Management & Trusted Pros",
     description:
-      "ISO 9001:2015 certified quality management. Laser metrology, ultrasonic non-destructive testing, and stress diagnostics ensuring 100% compliance before shipment.",
+      "100% vetted, background-checked, and insured professionals equipped with standardized hotel-grade checklists and digital job workflows.",
   },
   {
-    title: "Lifecycle Support & Telemetry",
+    title: "Live Notifications, Payments & Reviews",
     description:
-      "24/7 predictive IoT machine health telemetry, rapid OEM spare parts deployment, and field engineering support guaranteeing continuous, uninterrupted uptime.",
+      "Real-time SMS/email status updates from dispatch to completion, automated secure contactless payments, digital inspection reports, and verified customer feedback.",
   },
 ];
 
@@ -324,18 +324,18 @@ export default function MasterBrand() {
               variant="outline"
               className="w-fit h-auto mb-4 border-[#1C1B1F]/15 text-[#1C1B1F]/70 text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full bg-transparent"
             >
-              The System
+              Technology Platform
             </Badge>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight max-w-[650px] text-[#1C1B1F] leading-tight">
-              The <UnderlineToBackground>Production</UnderlineToBackground> Engine
+              One Smart <UnderlineToBackground>Platform</UnderlineToBackground>
             </h2>
             <p className="text-[#1C1B1F]/80 text-sm sm:text-base md:text-lg italic mt-3 max-w-[600px]">
-              Integrated end-to-end industrial manufacturing. Built for high-volume efficiency & absolute precision.
+              One smart platform. Every cleaning need. More than cleaning — we deliver a better way to live and work.
             </p>
           </div>
 
           <p className="text-[#1C1B1F]/70 max-w-[500px] text-sm sm:text-base leading-relaxed text-left lg:text-left lg:pt-2 font-light">
-            Standard suppliers deliver isolated component parts. We build connected manufacturing ecosystems—combining custom engineering, high-torque robotics, rigorous testing, and continuous telemetry into one unified production machine.
+            Cleaning Superboss is more than a traditional cleaning company. We unify automated instant quotes, online booking, cleaner dispatch telemetry, customer dashboards, notifications, and payments into one seamless ecosystem.
           </p>
         </motion.div>
 
@@ -359,10 +359,10 @@ export default function MasterBrand() {
         >
           <IconicButton
             href="#contact"
-            className="w-fit sm:w-auto bg-[#D9692A] text-white hover:bg-[#c2581f]"
-            iconWrapperClassName="bg-white text-[#D9692A] group-hover:bg-white"
+            className="w-fit sm:w-auto bg-[#5680e9] text-white hover:bg-[#466fd9]"
+            iconWrapperClassName="bg-white text-[#5680e9] group-hover:bg-white"
           >
-            BOOK A CALL WITH US
+            GET A FREE QUOTE
           </IconicButton>
         </motion.div>
       </div>

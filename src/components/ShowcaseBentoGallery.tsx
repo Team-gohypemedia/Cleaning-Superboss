@@ -7,57 +7,57 @@ const mediaItems = [
   {
     id: 1,
     type: "image",
-    title: "Precision 5-Axis Milling",
-    desc: "Titanium compressor housing machined to 5-micron tolerance boundaries.",
-    url: "/bento_machining.png",
+    title: "Modern Luxury Homes",
+    desc: "Transforming residential living spaces into spotless, immaculate environments.",
+    url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
     span: "col-span-1 row-span-3",
   },
   {
     id: 2,
-    type: "video",
-    title: "Robotic Assembly Cells",
-    desc: "Welding and mechanical joining cells configured for zero-defect output.",
-    url: "/Industrial_robotic_manufacturing…_1080p_202608051508.mp4",
+    type: "image",
+    title: "Corporate Offices & HQs",
+    desc: "High-productivity commercial environments maintained to pristine hygiene standards.",
+    url: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop",
     span: "col-span-2 row-span-2",
   },
   {
     id: 3,
     type: "image",
-    title: "Laser Metrology Inspection",
-    desc: "Non-destructive automated testing of mechanical gear profiles.",
-    url: "/bento_metrology.png",
+    title: "Luxury Apartments & Lofts",
+    desc: "Hotel-grade detailing and premium care for high-end residential spaces.",
+    url: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop",
     span: "col-span-1 row-span-3",
   },
   {
     id: 4,
     type: "image",
-    title: "High-Pressure Castings",
-    desc: "Heavy manifolds for offshore deep-sea pressure vessels.",
-    url: "/bento_valves.png",
+    title: "Boutique Hotels & Hospitality",
+    desc: "Flawless turnover cleaning and guest-ready 5-star presentation.",
+    url: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop",
     span: "col-span-2 row-span-2",
   },
   {
     id: 5,
     type: "image",
-    title: "IoT Factory Telemetry",
-    desc: "Real-time vibration and thermal dashboards feeding diagnostics directly to cloud systems.",
-    url: "/bento_telemetry.png",
+    title: "Designer Kitchen Detailing",
+    desc: "Deep sanitation of stainless steel, natural stone countertops, and appliances.",
+    url: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1200&auto=format&fit=crop",
     span: "col-span-1 row-span-3",
   },
   {
     id: 6,
     type: "image",
-    title: "Heavy Forging Presses",
-    desc: "Hydraulic press cells forging heavy structural chassis elements.",
-    url: "/bento_forging.png",
+    title: "Commercial & Retail Spaces",
+    desc: "High-traffic floor maintenance, showroom glass, and executive boardrooms.",
+    url: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1200&auto=format&fit=crop",
     span: "col-span-2 row-span-2",
   },
   {
     id: 7,
-    type: "video",
-    title: "Automated Assembly Line",
-    desc: "High-speed multi-axis robotic arm welding cell in active production line.",
-    url: "/Industrial_robotic_manufacturing…_1080p_202608051508.mp4",
+    type: "image",
+    title: "Architectural Window Detailing",
+    desc: "Streak-free clarity for floor-to-ceiling glass and panoramic view facades.",
+    url: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200&auto=format&fit=crop",
     span: "col-span-1 row-span-3",
   },
 ];
@@ -67,8 +67,8 @@ export default function ShowcaseBentoGallery() {
     <section id="proof-of-work" className="w-full bg-[#FAF6F0] py-16 md:py-24 border-t border-[#E5E1D3]">
       <InteractiveBentoGallery
         mediaItems={mediaItems}
-        title="Our Production Output"
-        description="Drag, reorder, and explore our high-precision custom engineering & fabrication proof of work."
+        title="The Premium Experience"
+        description="“More than cleaning. We deliver a better way to live and work.” Transforming modern homes, luxury apartments, offices, and commercial spaces."
       />
     </section>
   );

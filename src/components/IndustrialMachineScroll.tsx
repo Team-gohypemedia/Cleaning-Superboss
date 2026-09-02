@@ -5,9 +5,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Cpu, ShieldCheck, Zap, Activity, Loader2 } from "lucide-react";
 
-const TOTAL_FRAMES = 192;
+const TOTAL_FRAMES = 240;
 const FRAME_PATH = (index: number) =>
-  `/industrial-machine-scroll-frames/frames/frame_${String(index).padStart(4, "0")}.webp`;
+  `/fix_morphing_frames_webp/frame_${String(index).padStart(6, "0")}.webp`;
 
 export default function IndustrialMachineScroll() {
   const sectionRef = useRef<HTMLDivElement>(null);

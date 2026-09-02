@@ -4,26 +4,26 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const TOTAL_FRAMES = 192;
+const TOTAL_FRAMES = 240;
 const FRAME_PATH = (index: number) =>
-  `/industrial-machine-scroll-frames-clean/frames/frame_${String(index).padStart(4, "0")}.webp`;
+  `/fix_morphing_frames_webp/frame_${String(index).padStart(6, "0")}.webp`;
 
 const PHRASES = [
   {
     id: 1,
-    text: "Pioneering the future of heavy industrial manufacturing & precision engineering",
+    text: "The Future of Cleaning Has Arrived.",
     startPct: 0.02,
     endPct: 0.3,
   },
   {
     id: 2,
-    text: "High-torque automated systems, robotic machining & power solutions",
+    text: "Premium cleaning services powered by smart technology, seamless booking & trusted professionals",
     startPct: 0.35,
     endPct: 0.63,
   },
   {
     id: 3,
-    text: "Real-time telemetry, zero-tolerance precision & zero-downtime reliability",
+    text: "Transforming luxury homes, offices & commercial spaces into spotless environments",
     startPct: 0.68,
     endPct: 0.95,
   },
@@ -164,9 +164,9 @@ export default function HeroMachineScroll() {
                     el.style.opacity = "1";
                     el.style.textShadow = "none";
                   } else if (cIdx === activeCharIdx) {
-                    el.style.color = "#D9692A"; // Primary Orange (#D9692A)
+                    el.style.color = "#5680e9"; // Primary Vibrant Blue (#5680e9)
                     el.style.opacity = "1";
-                    el.style.textShadow = "0 0 24px rgba(217, 105, 42, 0.9)";
+                    el.style.textShadow = "0 0 24px rgba(86, 128, 233, 0.95)";
                   } else {
                     // Hide upcoming unread characters completely until scroll reaches them
                     el.style.color = "transparent";
@@ -287,7 +287,7 @@ export default function HeroMachineScroll() {
               key={phrase.id}
               className={`phrase-container-${pIdx} absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 pointer-events-none`}
             >
-              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-medium sm:font-semibold tracking-tight leading-[1.15] text-center max-w-6xl mx-auto drop-shadow-md">
+              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold tracking-tight leading-snug text-center max-w-4xl mx-auto drop-shadow-md">
                 {phrase.text.split("").map((char, cIdx) => (
                   <span
                     key={cIdx}
@@ -302,10 +302,21 @@ export default function HeroMachineScroll() {
           ))}
         </div>
 
-        {/* Bottom Bar: SCROLL TO EXPLORE Fallback Indicator for Mobile/Scroll */}
-        <div className="w-full flex items-center justify-end text-xs font-mono font-bold tracking-widest text-white/90 uppercase pointer-events-auto drop-shadow-sm lg:hidden">
-          <div className="flex items-center gap-2 text-white/90">
-            <span>SCROLL TO EXPLORE</span>
+        {/* Bottom Bar: Action Buttons */}
+        <div className="w-full flex items-center justify-start pointer-events-auto">
+          <div className="flex items-center gap-3">
+            <a
+              href="#contact"
+              className="px-5 py-2.5 rounded-full bg-[#5680e9] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#466fd9] transition-all shadow-lg hover:shadow-[#5680e9]/30 active:scale-95"
+            >
+              Get a Free Quote
+            </a>
+            <a
+              href="#contact"
+              className="px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold uppercase tracking-wider hover:bg-white/20 transition-all shadow-lg active:scale-95"
+            >
+              Book a Cleaning
+            </a>
           </div>
         </div>
       </div>

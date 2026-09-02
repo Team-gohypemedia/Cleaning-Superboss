@@ -38,7 +38,7 @@ export default function ContactSection() {
         {/* Section Header */}
         <div className="text-center max-w-[850px] mx-auto">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1C1B1F] tracking-tight leading-[1.15]">
-            Contact us and we will be in touch <br className="hidden sm:inline" /> same day, your way
+            Ready for a Cleaner Future? <br className="hidden sm:inline" /> Get Your Free Quote or Book Today
           </h2>
         </div>
 
@@ -49,22 +49,22 @@ export default function ContactSection() {
           <div className="lg:col-span-5 space-y-12">
             <div className="space-y-6">
               <p className="text-base sm:text-lg font-semibold text-[#1C1B1F]/80 leading-relaxed max-w-[450px]">
-                Fill out the form, and we&apos;ll be happy to discuss how Industrial Edge can help you with your factory of the future:
+                Fill out the form below to get an instant automated quote or connect with our cleaning coordination team:
               </p>
 
-              {/* Bullet List with Orange Indicators */}
-              <div className="relative pl-6 border-l-2 border-[#D9692A]/50 space-y-4">
+              {/* Bullet List with Blue Indicators */}
+              <div className="relative pl-6 border-l-2 border-[#5680e9]/50 space-y-4">
                 <div className="flex items-center gap-3">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#D9692A]" />
-                  <span className="text-base sm:text-lg font-bold text-[#1C1B1F]">30-minute demo</span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#5680e9]" />
+                  <span className="text-base sm:text-lg font-bold text-[#1C1B1F]">Instant automated quotes</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#D9692A]" />
-                  <span className="text-base sm:text-lg font-bold text-[#1C1B1F]">Needs discovery call</span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#5680e9]" />
+                  <span className="text-base sm:text-lg font-bold text-[#1C1B1F]">Easy 60-second online booking</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#D9692A]" />
-                  <span className="text-base sm:text-lg font-bold text-[#1C1B1F]">Factory ROI assessment</span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#5680e9]" />
+                  <span className="text-base sm:text-lg font-bold text-[#1C1B1F]">100% Spotless Satisfaction Guarantee</span>
                 </div>
               </div>
             </div>
@@ -72,39 +72,25 @@ export default function ContactSection() {
             {/* Trusted Logos Section */}
             <div className="space-y-4 pt-4 border-t border-[#E5E1D3]/80">
               <span className="block text-sm font-semibold uppercase tracking-wider text-[#1C1B1F]/60">
-                Trusted by those in the know.
+                Trusted by modern residences & workspaces
               </span>
               
-              {/* Logos Grid (Sleek typographic/monochrome SVG icons) */}
-              <div className="flex flex-wrap items-center gap-x-8 gap-y-6 opacity-80 grayscale">
-                {/* Ryder */}
-                <div className="text-lg font-black tracking-tighter text-[#1C1B1F] italic flex items-center">
-                  Ryder<span className="text-[#D9692A] not-italic">.</span>
+              {/* Logos Grid */}
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-6 opacity-80">
+                <div className="text-lg font-black tracking-tight text-[#1C1B1F] italic flex items-center">
+                  Airbnb<span className="text-[#5680e9] not-italic text-xs font-bold ml-1">HOSTS</span>
                 </div>
                 
-                {/* Honda */}
-                <div className="text-lg font-bold tracking-widest text-[#1C1B1F]">
-                  HONDA
+                <div className="text-base font-bold tracking-widest text-[#1C1B1F]">
+                  LUXURY CONDOS
                 </div>
                 
-                {/* Ocean Spray */}
-                <div className="text-md font-semibold tracking-tight text-[#1C1B1F] underline decoration-2 decoration-[#D9692A]">
-                  OceanSpray
+                <div className="text-base font-semibold tracking-tight text-[#1C1B1F] underline decoration-2 decoration-[#5680e9]">
+                  TECH HUBS
                 </div>
                 
-                {/* DSV */}
-                <div className="text-xl font-extrabold tracking-tight text-[#1C1B1F]">
-                  DSV
-                </div>
-                
-                {/* NFI */}
-                <div className="text-lg font-bold italic text-[#1C1B1F]">
-                  NFI<span className="text-xs font-normal align-super">®</span>
-                </div>
-                
-                {/* Goodyear */}
-                <div className="text-md font-extrabold uppercase tracking-tight text-[#1C1B1F] italic">
-                  GOOD YEAR
+                <div className="text-lg font-extrabold tracking-tight text-[#1C1B1F]">
+                  COMMERCIAL HQ
                 </div>
               </div>
             </div>
@@ -114,16 +100,16 @@ export default function ContactSection() {
           <div className="lg:col-span-7">
             <div className="bg-[#151518] text-[#E2E8F0] p-5 sm:p-10 rounded-[24px] sm:rounded-[32px] shadow-2xl border border-white/5 relative overflow-hidden">
               {/* Subtle background gradient overlay */}
-              <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-to-br from-[#D9692A]/5 to-transparent blur-[80px] pointer-events-none" />
+              <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-to-br from-[#5680e9]/10 via-[#8860d0]/5 to-transparent blur-[80px] pointer-events-none" />
 
               {submitted ? (
                 <div className="py-20 text-center space-y-4">
-                  <div className="w-16 h-16 bg-[#D9692A]/10 rounded-full flex items-center justify-center mx-auto border border-[#D9692A]/30 animate-pulse">
-                    <Check className="w-8 h-8 text-[#D9692A]" />
+                  <div className="w-16 h-16 bg-[#5680e9]/10 rounded-full flex items-center justify-center mx-auto border border-[#5680e9]/30 animate-pulse">
+                    <Check className="w-8 h-8 text-[#5680e9]" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Thank You!</h3>
+                  <h3 className="text-2xl font-bold text-white">Quote Request Received!</h3>
                   <p className="text-slate-400 max-w-sm mx-auto">
-                    We&apos;ve received your request and will contact you within the next hour.
+                    We&apos;ve calculated your initial estimate and sent your confirmation to your email.
                   </p>
                 </div>
               ) : (
@@ -131,7 +117,7 @@ export default function ContactSection() {
                   {/* Two Column Grid Fields */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                     {/* Full Name */}
-                    <div className="space-y-2 border-b border-white/10 focus-within:border-[#D9692A] transition-colors pb-1">
+                    <div className="space-y-2 border-b border-white/10 focus-within:border-[#5680e9] transition-colors pb-1">
                       <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
                         Full Name *
                       </label>
@@ -145,15 +131,15 @@ export default function ContactSection() {
                       />
                     </div>
 
-                    {/* Role or Position */}
-                    <div className="space-y-2 border-b border-white/10 focus-within:border-[#D9692A] transition-colors pb-1">
+                    {/* Property Type / Size */}
+                    <div className="space-y-2 border-b border-white/10 focus-within:border-[#5680e9] transition-colors pb-1">
                       <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
-                        Role or position *
+                        Property Type / Size *
                       </label>
                       <input
                         type="text"
                         required
-                        placeholder="Project manager"
+                        placeholder="e.g. 2-Bed Apt / 2500 sq ft Office"
                         value={formData.role}
                         onChange={(e) => setFormData({ ...formData, role: e.target.value })}
                         className="w-full bg-transparent text-white border-none outline-none focus:ring-0 p-0 placeholder-white/60 text-base font-medium"
@@ -161,13 +147,13 @@ export default function ContactSection() {
                     </div>
 
                     {/* Phone Number */}
-                    <div className="space-y-2 border-b border-white/10 focus-within:border-[#D9692A] transition-colors pb-1">
+                    <div className="space-y-2 border-b border-white/10 focus-within:border-[#5680e9] transition-colors pb-1">
                       <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
                         Phone number
                       </label>
                       <input
                         type="tel"
-                        placeholder="(323) 555-0147"
+                        placeholder="(555) 000-1234"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="w-full bg-transparent text-white border-none outline-none focus:ring-0 p-0 placeholder-white/60 text-base font-medium"
@@ -175,7 +161,7 @@ export default function ContactSection() {
                     </div>
 
                     {/* Email */}
-                    <div className="space-y-2 border-b border-white/10 focus-within:border-[#D9692A] transition-colors pb-1">
+                    <div className="space-y-2 border-b border-white/10 focus-within:border-[#5680e9] transition-colors pb-1">
                       <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
                         Email *
                       </label>
@@ -190,25 +176,25 @@ export default function ContactSection() {
                     </div>
                   </div>
 
-                  {/* Company Name */}
-                  <div className="space-y-2 border-b border-white/10 focus-within:border-[#D9692A] transition-colors pb-1">
+                  {/* Location / City */}
+                  <div className="space-y-2 border-b border-white/10 focus-within:border-[#5680e9] transition-colors pb-1">
                     <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
-                      Company name *
+                      Location / City *
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="Acme"
+                      placeholder="e.g. Los Angeles, CA / Zip Code"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       className="w-full bg-transparent text-white border-none outline-none focus:ring-0 p-0 placeholder-white/60 text-base font-medium"
                     />
                   </div>
 
-                  {/* How Can We Help Dropdown Selector */}
-                  <div className="space-y-2 border-b border-white/10 focus-within:border-[#D9692A] transition-colors pb-1 relative">
+                  {/* Select Service Dropdown */}
+                  <div className="space-y-2 border-b border-white/10 focus-within:border-[#5680e9] transition-colors pb-1 relative">
                     <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
-                      How Can We Help? *
+                      Select Service *
                     </label>
                     <select
                       required
@@ -216,11 +202,13 @@ export default function ContactSection() {
                       onChange={(e) => setFormData({ ...formData, helpOption: e.target.value })}
                       className="w-full bg-transparent text-white border-none outline-none focus:ring-0 p-0 text-base appearance-none cursor-pointer pr-8 font-medium"
                     >
-                      <option value="" className="bg-[#151518] text-white/60">Select options</option>
-                      <option value="demo" className="bg-[#151518] text-white">Request a 30-Minute Demo</option>
-                      <option value="call" className="bg-[#151518] text-white">Schedule a Discovery Call</option>
-                      <option value="roi" className="bg-[#151518] text-white">Get a Factory ROI Assessment</option>
-                      <option value="custom" className="bg-[#151518] text-white">General Inquiry</option>
+                      <option value="" className="bg-[#151518] text-white/60">Choose a cleaning service</option>
+                      <option value="residential" className="bg-[#151518] text-white">Residential Cleaning</option>
+                      <option value="deep" className="bg-[#151518] text-white">Deep Cleaning</option>
+                      <option value="commercial" className="bg-[#151518] text-white">Office & Commercial Cleaning</option>
+                      <option value="airbnb" className="bg-[#151518] text-white">Airbnb Turnover Cleaning</option>
+                      <option value="window" className="bg-[#151518] text-white">Window Cleaning</option>
+                      <option value="carpet" className="bg-[#151518] text-white">Carpet & Upholstery Cleaning</option>
                     </select>
                     {/* Custom Down Arrow icon */}
                     <div className="absolute right-0 bottom-2 pointer-events-none text-slate-400">
@@ -233,9 +221,9 @@ export default function ContactSection() {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full py-4 px-6 rounded-2xl bg-[#D9692A] hover:bg-[#c2581f] active:scale-[0.98] text-white font-extrabold uppercase tracking-widest text-xs shadow-lg transition-all cursor-pointer border border-[#D9692A]/30 text-center"
+                    className="w-full py-4 px-6 rounded-2xl bg-[#5680e9] hover:bg-[#466fd9] active:scale-[0.98] text-white font-extrabold uppercase tracking-widest text-xs shadow-lg shadow-[#5680e9]/25 transition-all cursor-pointer border border-[#5680e9]/30 text-center"
                   >
-                    Submit
+                    Get Your Free Quote
                   </button>
                 </form>
               )}

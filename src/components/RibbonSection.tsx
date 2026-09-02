@@ -29,12 +29,12 @@ export default function RibbonSection() {
         >
           <InfiniteRibbon
             autoPlay={false}
-            className="bg-[#D9692A] text-zinc-950 py-2.5 sm:py-3 font-black tracking-widest text-xs sm:text-sm md:text-base lg:text-lg uppercase border-y border-black/10 shadow-2xl"
+            className="bg-[#5680e9] text-white py-2.5 sm:py-3 font-black tracking-widest text-xs sm:text-sm md:text-base lg:text-lg uppercase border-y border-white/20 shadow-2xl"
             rotation={0}
             repeat={16}
             separator="✦"
           >
-            PRECISION ENGINEERING ✦ INDUSTRIAL AUTOMATION ✦ ZERO DOWNTIME GUARANTEE ✦ HEAVY MANUFACTURING ✦ SMART FACTORY INTEGRATION
+            SMART CLEANING TECHNOLOGY ✦ SEAMLESS ONLINE BOOKING ✦ TRUSTED PROFESSIONALS ✦ INSTANT AUTOMATED QUOTES ✦ SPOTLESS GUARANTEE
           </InfiniteRibbon>
         </motion.div>
 
@@ -45,12 +45,12 @@ export default function RibbonSection() {
         >
           <InfiniteRibbon
             autoPlay={false}
-            className="bg-[#D9692A] text-zinc-950 py-2.5 sm:py-3 font-black tracking-widest text-xs sm:text-sm md:text-base lg:text-lg uppercase border-y border-black/10 shadow-2xl"
+            className="bg-[#8860d0] text-white py-2.5 sm:py-3 font-black tracking-widest text-xs sm:text-sm md:text-base lg:text-lg uppercase border-y border-white/20 shadow-2xl"
             rotation={0}
             repeat={16}
             separator="✦"
           >
-            HIGH-TORQUE PNEUMATIC SYSTEMS ✦ ISO-CERTIFIED QUALITY ✦ AUTONOMOUS ROBOTICS ✦ CUSTOM OEM MACHINING
+            RESIDENTIAL & COMMERCIAL ✦ 5-STAR RATED CLEANERS ✦ ECO-FRIENDLY PRECISION ✦ SERVING LOCALLY & EXPANDING GLOBALLY
           </InfiniteRibbon>
         </motion.div>
       </div>

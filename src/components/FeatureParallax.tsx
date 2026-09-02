@@ -12,8 +12,8 @@ const features = [
     speed: -0.2,
     color: "bg-white",
     border: "border-[#E5E1D3]",
-    accent: "text-[#D9692A]",
-    iconBg: "bg-[#D9692A]/10 border-[#D9692A]/20",
+    accent: "text-[#5680e9]",
+    iconBg: "bg-[#5680e9]/10 border-[#5680e9]/20",
   },
   {
     icon: Move,
@@ -23,8 +23,8 @@ const features = [
     speed: 0.4,
     color: "bg-white",
     border: "border-[#E5E1D3]",
-    accent: "text-[#D9692A]",
-    iconBg: "bg-[#D9692A]/10 border-[#D9692A]/20",
+    accent: "text-[#5680e9]",
+    iconBg: "bg-[#5680e9]/10 border-[#5680e9]/20",
   },
   {
     icon: Compass,
@@ -34,8 +34,8 @@ const features = [
     speed: -0.15,
     color: "bg-white",
     border: "border-[#E5E1D3]",
-    accent: "text-[#D9692A]",
-    iconBg: "bg-[#D9692A]/10 border-[#D9692A]/20",
+    accent: "text-[#5680e9]",
+    iconBg: "bg-[#5680e9]/10 border-[#5680e9]/20",
   },
   {
     icon: Cpu,
@@ -45,8 +45,8 @@ const features = [
     speed: 0.3,
     color: "bg-white",
     border: "border-[#E5E1D3]",
-    accent: "text-[#D9692A]",
-    iconBg: "bg-[#D9692A]/10 border-[#D9692A]/20",
+    accent: "text-[#5680e9]",
+    iconBg: "bg-[#5680e9]/10 border-[#5680e9]/20",
   },
   {
     icon: ShieldCheck,
@@ -56,8 +56,8 @@ const features = [
     speed: -0.3,
     color: "bg-white",
     border: "border-[#E5E1D3]",
-    accent: "text-[#D9692A]",
-    iconBg: "bg-[#D9692A]/10 border-[#D9692A]/20",
+    accent: "text-[#5680e9]",
+    iconBg: "bg-[#5680e9]/10 border-[#5680e9]/20",
   },
   {
     icon: Code2,
@@ -67,8 +67,8 @@ const features = [
     speed: 0.25,
     color: "bg-white",
     border: "border-[#E5E1D3]",
-    accent: "text-[#D9692A]",
-    iconBg: "bg-[#D9692A]/10 border-[#D9692A]/20",
+    accent: "text-[#5680e9]",
+    iconBg: "bg-[#5680e9]/10 border-[#5680e9]/20",
   },
 ];
 
@@ -76,17 +76,17 @@ export default function FeatureParallax() {
   return (
     <section id="features" className="relative py-32 px-6 overflow-hidden bg-[#FAF6F0]">
       {/* Background ambient light */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#D9692A]/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute top-1/3 right-0 w-96 h-96 bg-[#D9692A]/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#5680e9]/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/3 right-0 w-96 h-96 bg-[#5680e9]/5 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Section Header */}
         <div className="text-center space-y-4 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E5E1D3] text-[#D9692A] text-xs font-semibold uppercase tracking-wider shadow-2xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E5E1D3] text-[#5680e9] text-xs font-semibold uppercase tracking-wider shadow-2xs">
             Deep Parallax Architecture
           </div>
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-[#1C1B1F]">
-            Engineered for <span className="text-gradient-orange">Immersion</span>
+            Engineered for <span className="text-gradient-primary">Immersion</span>
           </h2>
           <p className="text-[#1C1B1F]/70 text-base md:text-lg">
             Every layer in this grid moves at an independent scroll rate, giving your users a real sense of 3D spatial depth.
@@ -106,7 +106,7 @@ export default function FeatureParallax() {
                     <Icon className={`w-6 h-6 ${feature.accent}`} />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-xl font-bold text-[#1C1B1F] group-hover:text-[#D9692A] transition-colors">
+                    <h3 className="text-xl font-bold text-[#1C1B1F] group-hover:text-[#5680e9] transition-colors">
                       {feature.title}
                     </h3>
                     <p className="text-xs text-[#1C1B1F]/70 leading-relaxed">

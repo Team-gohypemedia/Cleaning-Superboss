@@ -15,68 +15,68 @@ interface FaqCategories {
 }
 
 const faqData: FaqCategories = {
-  "Core Technology": [
+  "How It Works": [
     {
-      question: "What does Terminal actually do?",
-      answer: "Terminal is an AI-native Yard Operating System™ (YOS™) that uses computer vision to automate yard execution from gate to dock. It replaces manual logs with a system that proactively decides and executes the next best move in real-time.",
+      question: "How does the 5-step cleaning process work?",
+      answer: "Our seamless process is designed for maximum speed and simplicity: 1. Request a Quote → 2. Get Your Price → 3. Book Online → 4. Professional Cleaning → 5. Enjoy a Spotless Space.",
     },
     {
-      question: "How is this different from a traditional Yard Management System (YMS)?",
-      answer: "Traditional YMS are 'digital clipboards' that record what already happened; Terminal is an operating system that sees what is happening now and orchestrates what needs to happen next in the yard.",
+      question: "How fast do I get my price estimate?",
+      answer: "Our automated quoting engine calculates instant, transparent pricing in under 30 seconds based on your property type, square footage, and chosen service—no waiting for manual callbacks.",
     },
     {
-      question: "What is 'Agentic AI' in the context of the yard?",
-      answer: "It acts as a 24/7 autonomous supervisor that handles exceptions and reprioritizes tasks based on real-time conditions, ensuring the most critical moves happen first (e.g. how to prepare and reallocate resources for a late appointment)",
+      question: "Can I schedule recurring cleanings?",
+      answer: "Yes. You can select weekly, bi-weekly, or monthly recurring cleanings through your dashboard and receive exclusive membership discounts with guaranteed cleaner priority.",
     },
     {
-      question: "How accurate is the data captured by your system?",
-      answer: "Our proprietary computer vision stack delivers 50% or more improvement in data accuracy vs. manual operations, virtually eliminating the human error and 'lost assets' common with manual entry.",
-    },
-    {
-      question: "Can we manage multiple sites from a single login?",
-      answer: "Yes; Terminal provides a 'Global Control Tower' view, allowing you to compare KPIs, dwell times, and performance across all facilities in your network in one place.",
+      question: "How do I prepare for my cleaner's arrival?",
+      answer: "Simply provide any entry instructions or gate/lockbox codes in your online dashboard. You can be home or away—our vetted pros handle everything.",
     },
   ],
-  "Value": [
+  "Technology & Platform": [
     {
-      question: "What is the typical return on investment (ROI)?",
-      answer: "Most manufacturing plants realize full cost recovery within 9 to 12 months, driven by a 15% reduction in machinery downtime, 20% faster throughput cycles, and a near-zero defect rate on precision assemblies.",
+      question: "What makes Cleaning Superboss a technology-driven platform?",
+      answer: "We replace outdated phone booking with an integrated platform featuring automated instant quotes, live cleaner tracking, real-time status notifications, and secure digital payments.",
     },
     {
-      question: "How does it improve worker safety on the floor?",
-      answer: "By monitoring real-time feeds from safety cages, our edge vision immediately halts hydraulic presses and robotic arms if an operator breaches safety boundaries, preventing critical floor accidents.",
+      question: "Can I manage multiple properties or offices in one account?",
+      answer: "Yes. Property managers, enterprise teams, and Airbnb hosts can view, schedule, and oversee cleaning operations across multiple locations from one centralized dashboard.",
     },
     {
-      question: "Does it help in reducing energy and utility overhead?",
-      answer: "Yes. The system schedules heavy-load operations (like furnace heating or forging presses) to run during off-peak energy hours and automatically shuts down idle equipment to reduce energy waste.",
-    },
-  ],
-  "Implementation": [
-    {
-      question: "How long does the onboarding and deployment process take?",
-      answer: "A typical facility deployment takes between 4 to 6 weeks. This includes edge hardware setup, camera mounts, model calibration, and integration with your existing ERP or scheduling database.",
-    },
-    {
-      question: "Do we need to replace our existing CNC or robotic systems?",
-      answer: "No. Industrial Edge is designed to overlay on top of legacy PLC controllers and machinery. We support standard protocol integrations including Modbus, OPC UA, EtherNet/IP, and MTConnect.",
-    },
-    {
-      question: "What edge hardware is required on-site?",
-      answer: "We deploy a pre-configured Edge Server node containing local AI accelerators (NVIDIA Tensor Core GPUs) that interfaces directly with your local network, ensuring sub-millisecond response latency.",
+      question: "How do live notifications and before/after verification work?",
+      answer: "You receive real-time SMS and email alerts when your cleaner is en route, checks in at your address, and when the job is completed with verified before/after photos.",
     },
   ],
-  "Site Operations": [
+  "Our Services": [
     {
-      question: "Does the system require active internet access to run?",
-      answer: "No. The core computer vision and machine-coordination engines run entirely offline on local edge nodes. Internet connectivity is only needed for syncing global enterprise analytics and receiving OTA software updates.",
+      question: "What is the difference between Residential and Deep Cleaning?",
+      answer: "Residential cleaning covers routine upkeep, dusting, vacuuming, and surface sanitization. Deep cleaning involves intense scrubbing of grout, baseboards, behind appliances, and inside ovens/refrigerators.",
     },
     {
-      question: "How is hardware maintenance and sensor drift handled?",
-      answer: "Our software monitors telemetry deviations for sensor drift. It alerts engineers when a camera lens requires cleaning, a tool tip needs replacement, or a vibration sensor requires recalibration.",
+      question: "Do you offer commercial and office cleaning?",
+      answer: "Yes. We service corporate headquarters, co-working spaces, retail stores, and commercial facilities with customized after-hours or daytime schedules.",
     },
     {
-      question: "What support is provided for site reliability engineering (SRE)?",
-      answer: "We offer 24/7 dedicated engineering support, automated system heartbeats, and field technician dispatch protocols to maintain 99.99% uptime of our edge nodes.",
+      question: "What is included in Airbnb turnover cleaning?",
+      answer: "Our hotel-grade turnover service includes complete room sanitization, linen changing, towel staging, trash removal, restocking essentials, and guest-ready visual staging.",
+    },
+    {
+      question: "Do you provide window and carpet cleaning?",
+      answer: "Yes. We offer specialized streak-free architectural window washing and deep steam extraction for luxury carpets and upholstery.",
+    },
+  ],
+  "Trust & Quality": [
+    {
+      question: "Are the cleaning professionals vetted and insured?",
+      answer: "Yes. 100% of our cleaners undergo extensive background checks, identity verification, in-person training, and are fully insured and bonded.",
+    },
+    {
+      question: "What is your Spotless Satisfaction Guarantee?",
+      answer: "If you are not 100% satisfied with any aspect of your service, let us know within 24 hours and we will dispatch a team to re-clean the area free of charge.",
+    },
+    {
+      question: "Are your cleaning products eco-friendly and safe?",
+      answer: "Yes. We use premium, non-toxic, eco-certified cleaning solutions that are safe for pets, children, sensitive allergies, and luxury finishes.",
     },
   ],
 };
@@ -102,10 +102,10 @@ export default function FaqSection() {
         <div className="w-full lg:w-2/5 flex flex-col items-start gap-4">
           <div className="space-y-4 max-w-xl">
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1C1B1F] leading-none">
-              FAQs
+              How It Works & FAQs
             </h2>
             <p className="text-base text-[#1C1B1F]/60 font-normal leading-relaxed max-w-[360px]">
-              Here are the most common questions teams have before getting started with Terminal.
+              Everything you need to know about our smart platform, 5-step process, and spotless guarantee.
             </p>
           </div>
         </div>
@@ -146,11 +146,11 @@ export default function FaqSection() {
                     onClick={() => toggleAccordion(index)}
                     className="w-full flex items-center justify-between gap-6 text-left group cursor-pointer"
                   >
-                    <span className="text-lg md:text-xl font-medium text-[#1C1B1F] group-hover:text-[#D9692A] transition-colors duration-200">
+                    <span className="text-lg md:text-xl font-medium text-[#1C1B1F] group-hover:text-[#5680e9] transition-colors duration-200">
                       {item.question}
                     </span>
                     {/* Expand/Collapse svg indicator */}
-                    <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-[#1C1B1F]/30 group-hover:text-[#D9692A] transition-colors duration-200">
+                    <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-[#1C1B1F]/30 group-hover:text-[#5680e9] transition-colors duration-200">
                       <motion.svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -206,12 +206,12 @@ export default function FaqSection() {
                     )}
                   </AnimatePresence>
 
-                  {/* Thin, glowing orange bottom divider fading at left and right corners */}
+                  {/* Thin, glowing blue bottom divider fading at left and right corners */}
                   <div className="absolute bottom-0 left-0 right-0 h-[1px] pointer-events-none z-10">
                     {/* Glowing blur shadow layer */}
                     <div
                       className={cn(
-                        "absolute inset-x-0 h-[3px] -top-[1.5px] bg-gradient-to-r from-transparent via-[#D9692A]/50 to-transparent blur-[2px] transition-all duration-500",
+                        "absolute inset-x-0 h-[3px] -top-[1.5px] bg-gradient-to-r from-transparent via-[#5680e9]/50 to-transparent blur-[2px] transition-all duration-500",
                         isOpen ? "opacity-100 scale-y-100" : "opacity-0 scale-y-50 group-hover:opacity-60 group-hover:scale-y-100"
                       )}
                     />
@@ -220,8 +220,8 @@ export default function FaqSection() {
                       className={cn(
                         "absolute inset-x-0 h-[1px] bg-gradient-to-r from-transparent transition-all duration-500",
                         isOpen
-                          ? "via-[#D9692A] to-transparent"
-                          : "via-[#D9692A]/30 to-transparent group-hover:via-[#D9692A]/70"
+                          ? "via-[#5680e9] to-transparent"
+                          : "via-[#5680e9]/30 to-transparent group-hover:via-[#5680e9]/70"
                       )}
                     />
                   </div>

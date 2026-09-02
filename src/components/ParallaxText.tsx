@@ -78,7 +78,7 @@ export default function ParallaxText() {
               key={index}
               className={
                 text === "•"
-                  ? "text-[#D9692A]"
+                  ? "text-[#5680e9]"
                   : "hover:text-[#1C1B1F] transition-colors"
               }
             >
@@ -99,7 +99,7 @@ export default function ParallaxText() {
               key={index}
               className={
                 text === "•"
-                  ? "text-[#D9692A]"
+                  ? "text-[#5680e9]"
                   : "hover:text-[#1C1B1F] transition-colors"
               }
             >

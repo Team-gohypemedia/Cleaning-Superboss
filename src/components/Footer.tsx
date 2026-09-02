@@ -28,15 +28,15 @@ function YoutubeIcon(props: React.ComponentProps<"svg">) {
 }
 
 const marqueeText =
-  "PRECISION ENGINEERING · INDUSTRIAL AUTOMATION · ISO 9001:2015 CERTIFIED · ZERO-DOWNTIME GUARANTEE · 24/7 TELEMETRY SUPPORT";
+  "SMART CLEANING TECHNOLOGY · INSTANT AUTOMATED QUOTES · 100% SPOTLESS GUARANTEE · 5-STAR RATED CLEANERS · SERVING LOCALLY & EXPANDING GLOBALLY";
 
 const capabilitiesLinks = [
-  { label: "5-AXIS CNC MACHINING", href: "#" },
-  { label: "ROBOTIC AUTOMATION CELLS", href: "#" },
-  { label: "PNEUMATIC POWER SYSTEMS", href: "#" },
-  { label: "STRUCTURAL STEEL WELDING", href: "#" },
-  { label: "CUSTOM OEM SOLUTIONS", href: "#" },
-  { label: "ACCREDITED METROLOGY", href: "#" },
+  { label: "RESIDENTIAL CLEANING", href: "#services" },
+  { label: "DEEP CLEANING", href: "#services" },
+  { label: "OFFICE & COMMERCIAL", href: "#services" },
+  { label: "AIRBNB TURNOVERS", href: "#services" },
+  { label: "WINDOW CLEANING", href: "#services" },
+  { label: "CARPET & UPHOLSTERY", href: "#services" },
 ] as const;
 
 function MarqueeStrip() {
@@ -51,12 +51,12 @@ function MarqueeStrip() {
             <span key={idx}>
               {text}
               {idx < arr.length - 1 && (
-                <span className="text-[#D9692A] mx-4 inline-block font-bold">·</span>
+                <span className="text-[#5680e9] mx-4 inline-block font-bold">·</span>
               )}
             </span>
           ))}
           {/* Add trailing dot to separate repeats */}
-          <span className="text-[#D9692A] mx-4 inline-block font-bold">·</span>
+          <span className="text-[#5680e9] mx-4 inline-block font-bold">·</span>
         </span>
       ))}
     </div>
@@ -76,42 +76,40 @@ export default function Footer() {
       </section>
 
       {/* 2. Main Footer Section */}
-      <div className="relative overflow-hidden bg-[#FAF6F0] text-[#1C1B1F] pt-16 sm:pt-20 pb-8 border-t border-[#E5E1D3]">
+      <div className="relative overflow-hidden bg-[#FAF6F0] text-[#1C1B1F] pt-10 sm:pt-12 pb-8 border-t border-[#E5E1D3]">
         {/* Background Soft Glow */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-t from-[#D9692A]/5 via-transparent to-transparent blur-[160px] pointer-events-none z-0" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-t from-[#5680e9]/8 via-transparent to-transparent blur-[160px] pointer-events-none z-0" />
 
         <div className="w-full px-6 md:px-12 2xl:px-24 mx-auto relative z-10">
           <div className="grid grid-cols-2 gap-8 mb-8 relative z-10 md:grid-cols-12">
             
             {/* Column 1: Brand Logo & Short Desc */}
             <div className="col-span-2 md:col-span-3">
-              <Link href="/" className="block mb-4 hover:opacity-80 transition-opacity">
-                <div className="leading-none tracking-tighter text-left">
-                  <div className="text-lg md:text-xl font-black italic text-[#1C1B1F]">
-                    INDUSTRIAL
-                  </div>
-                  <div className="flex items-center gap-1 text-sm md:text-base font-black italic -mt-1 text-[#1C1B1F]">
-                    <span>EDGE</span>
-                    <span className="w-2 h-1 bg-[#D9692A] rounded-full inline-block" />
-                  </div>
+              <Link href="/" className="inline-block mb-1.5 hover:opacity-90 transition-opacity overflow-visible">
+                <div className="h-9 sm:h-10 w-[180px] sm:w-[210px] flex items-center justify-start overflow-visible">
+                  <img
+                    src="/logo.png"
+                    alt="Cleaning Superboss"
+                    className="h-full w-auto max-w-none object-contain scale-[1.55] sm:scale-[1.7] origin-left drop-shadow-sm"
+                  />
                 </div>
               </Link>
-              <p className="text-xs text-[#1C1B1F]/70 leading-relaxed pr-4 font-light mt-2">
-                Industrial Edge is the global destination for high-precision heavy machinery, custom robotics, and automated manufacturing systems. Elevating industrial efficiency through engineering.
+              <p className="text-xs text-[#1C1B1F]/70 leading-relaxed pr-4 font-light mt-1">
+                Cleaning Superboss is the premier technology-driven cleaning company and platform. Elevating residential living, corporate offices, and hospitality turnovers through smart technology and trusted professionals.
               </p>
             </div>
 
             {/* Column 2: Capabilities Links */}
             <div className="col-span-1 md:col-span-3">
               <h4 className="font-bold text-xs uppercase mb-4 tracking-wider text-[#1C1B1F]">
-                CAPABILITIES
+                SERVICES
               </h4>
               <ul className="space-y-2.5 text-[11px] text-[#1C1B1F]/70 tracking-wider">
                 {capabilitiesLinks.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="hover:text-[#D9692A] transition-colors"
+                      className="hover:text-[#5680e9] transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -123,7 +121,7 @@ export default function Footer() {
             {/* Column 3: Get Support */}
             <div className="col-span-1 md:col-span-3">
               <h4 className="font-bold text-xs uppercase mb-4 tracking-wider text-[#1C1B1F]">
-                GET SUPPORT
+                GET IN TOUCH
               </h4>
 
               <div className="space-y-3.5 text-xs">
@@ -131,28 +129,28 @@ export default function Footer() {
                   <p className="text-[9px] font-semibold uppercase tracking-wider text-[#1C1B1F]/50">
                     CUSTOMER CARE EMAIL
                   </p>
-                  <p className="text-xs font-semibold text-[#1C1B1F] hover:text-[#D9692A] transition-colors mt-0.5">
-                    <a href="mailto:support@industrialedge.com">
-                      support@industrialedge.com
+                  <p className="text-xs font-semibold text-[#1C1B1F] hover:text-[#5680e9] transition-colors mt-0.5">
+                    <a href="mailto:hello@cleaningsuperboss.com">
+                      hello@cleaningsuperboss.com
                     </a>
                   </p>
                 </div>
 
                 <div>
                   <p className="text-[9px] font-semibold uppercase tracking-wider text-[#1C1B1F]/50">
-                    PHONE ASSISTANCE
+                    BOOKING ASSISTANCE
                   </p>
-                  <p className="text-xs font-semibold text-[#1C1B1F] hover:text-[#D9692A] transition-colors mt-0.5">
-                    <a href="tel:+18005550190">+1 (800) 555-0190</a>
+                  <p className="text-xs font-semibold text-[#1C1B1F] hover:text-[#5680e9] transition-colors mt-0.5">
+                    <a href="tel:+18005552677">+1 (800) 555-BOSS</a>
                   </p>
                 </div>
 
                 <div>
                   <p className="text-[9px] font-semibold uppercase tracking-wider text-[#1C1B1F]/50">
-                    HEADQUARTERS
+                    COVERAGE
                   </p>
                   <p className="text-xs font-semibold text-[#1C1B1F] mt-0.5">
-                    Detroit, MI, USA
+                    Serving Locally · Expanding Globally
                   </p>
                 </div>
 
@@ -161,7 +159,7 @@ export default function Footer() {
                     SUPPORT HOURS
                   </p>
                   <p className="text-xs font-semibold text-[#1C1B1F] mt-0.5">
-                    Mon–Fri, 8am–6pm EST
+                    24/7 Digital Support & Live Dispatch
                   </p>
                 </div>
               </div>
@@ -170,14 +168,14 @@ export default function Footer() {
             {/* Column 4: Newsletter & Social */}
             <div className="col-span-2 md:col-span-3">
               <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#1C1B1F] font-semibold leading-relaxed mb-3">
-                SUBSCRIBE FOR CAPACITY INSIGHTS & CAPABILITY DROPS
+                SUBSCRIBE FOR EXCLUSIVE OFFERS & PLATFORM UPDATES
               </p>
 
               <form
                 className="flex flex-col space-y-2"
                 onSubmit={(e) => e.preventDefault()}
               >
-                <div className="relative flex items-center border-b border-[#E5E1D3] pb-2 focus-within:border-[#D9692A] transition-colors">
+                <div className="relative flex items-center border-b border-[#E5E1D3] pb-2 focus-within:border-[#5680e9] transition-colors">
                   <input
                     type="email"
                     required
@@ -186,7 +184,7 @@ export default function Footer() {
                   />
                   <button
                     type="submit"
-                    className="absolute right-0 text-xs font-bold uppercase tracking-wider text-[#1C1B1F] hover:text-[#D9692A] transition-colors cursor-pointer"
+                    className="absolute right-0 text-xs font-bold uppercase tracking-wider text-[#1C1B1F] hover:text-[#5680e9] transition-colors cursor-pointer"
                   >
                     JOIN
                   </button>
@@ -198,7 +196,7 @@ export default function Footer() {
 
               <div className="mt-5">
                 <p className="text-[9px] font-bold uppercase tracking-wider text-[#1C1B1F]/50 mb-2">
-                  FOLLOW INDUSTRIAL EDGE
+                  FOLLOW CLEANING SUPERBOSS
                 </p>
                 <div className="flex items-center gap-3">
                   <a
@@ -206,7 +204,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Facebook"
-                    className="flex size-8 items-center justify-center rounded-full border border-[#E5E1D3] text-[#1C1B1F] hover:border-[#D9692A] hover:text-[#D9692A] transition-all"
+                    className="flex size-8 items-center justify-center rounded-full border border-[#E5E1D3] text-[#1C1B1F] hover:border-[#5680e9] hover:text-[#5680e9] transition-all"
                   >
                     <FacebookIcon className="size-4" />
                   </a>
@@ -215,7 +213,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
-                    className="flex size-8 items-center justify-center rounded-full border border-[#E5E1D3] text-[#1C1B1F] hover:border-[#D9692A] hover:text-[#D9692A] transition-all"
+                    className="flex size-8 items-center justify-center rounded-full border border-[#E5E1D3] text-[#1C1B1F] hover:border-[#5680e9] hover:text-[#5680e9] transition-all"
                   >
                     <LinkedinIcon className="size-4" />
                   </a>
@@ -224,7 +222,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="YouTube"
-                    className="flex size-8 items-center justify-center rounded-full border border-[#E5E1D3] text-[#1C1B1F] hover:border-[#D9692A] hover:text-[#D9692A] transition-all"
+                    className="flex size-8 items-center justify-center rounded-full border border-[#E5E1D3] text-[#1C1B1F] hover:border-[#5680e9] hover:text-[#5680e9] transition-all"
                   >
                     <YoutubeIcon className="size-4" />
                   </a>
@@ -237,10 +235,10 @@ export default function Footer() {
           {/* Bottom copyright row */}
           <div className="mt-8 sm:mt-12 pt-4 sm:pt-6 border-t border-[#E5E1D3] flex flex-row justify-between items-center relative z-10 w-full">
             <p className="text-[8px] sm:text-[9px] text-[#1C1B1F]/50 uppercase tracking-widest font-medium">
-              &copy; {new Date().getFullYear()} INDUSTRIAL EDGE. ALL RIGHTS RESERVED.
+              &copy; {new Date().getFullYear()} CLEANING SUPERBOSS. ALL RIGHTS RESERVED.
             </p>
             <div className="text-[8px] sm:text-[9px] uppercase tracking-widest text-[#1C1B1F]/50 font-bold">
-              PRECISION OVER NOISE
+              THE FUTURE OF CLEANING HAS ARRIVED
             </div>
           </div>
 
@@ -249,7 +247,7 @@ export default function Footer() {
         {/* Faded Background Text Watermark */}
         <div className="absolute bottom-1 left-0 right-0 text-center pointer-events-none z-0 select-none overflow-hidden leading-none">
           <span className="block text-[6vw] md:text-[5vw] lg:text-5xl xl:text-6xl font-bold uppercase tracking-[0.45em] text-transparent bg-clip-text bg-gradient-to-b from-[#1C1B1F]/6 to-transparent translate-x-[3.5vw]">
-            INDUSTRIAL EDGE
+            CLEANING SUPERBOSS
           </span>
         </div>
       </div>
