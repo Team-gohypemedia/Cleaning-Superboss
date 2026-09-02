@@ -11,7 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const TOTAL_CHOREOGRAPHY_FRAMES = 240;
 const CHOREOGRAPHY_FRAME_PATH = (index: number) =>
-  `/cleaner_kitchen_frames_webp/frame_${String(index).padStart(5, "0")}.webp`;
+  `/fix_morphing_frames_webp/frame_${String(index).padStart(6, "0")}.webp`;
 
 const loadedChoreographyImages: HTMLImageElement[] = [];
 let isPreloading = false;

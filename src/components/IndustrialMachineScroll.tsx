@@ -7,7 +7,7 @@ import { Cpu, ShieldCheck, Zap, Activity, Loader2 } from "lucide-react";
 
 const TOTAL_FRAMES = 240;
 const FRAME_PATH = (index: number) =>
-  `/fix_morphing_frames_webp/frame_${String(index).padStart(6, "0")}.webp`;
+  `/cleaner_kitchen_frames_webp/frame_${String(index).padStart(5, "0")}.webp`;
 
 export default function IndustrialMachineScroll() {
   const sectionRef = useRef<HTMLDivElement>(null);
