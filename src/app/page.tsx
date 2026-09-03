@@ -30,6 +30,9 @@ export default function Home() {
       {/* Services with Animated Hover Modal */}
       <ServicesHoverModalSection />
 
+      {/* Australian Credentials, ABN, Insurance & Service Areas */}
+      <AustralianTrustAndAreas />
+
       {/* Production Output Bento Grid Gallery */}
       <ShowcaseBentoGallery />
 
@@ -38,9 +41,6 @@ export default function Home() {
 
       {/* Testimonial Banner Section */}
       <TestimonialBanner />
-
-      {/* Australian Credentials, ABN, Insurance & Service Areas */}
-      <AustralianTrustAndAreas />
 
       {/* Contact Form Section */}
       <ContactSection />
