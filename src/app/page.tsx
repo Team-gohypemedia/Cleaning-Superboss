@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="relative bg-[#FAF6F0] text-[#1C1B1F] min-h-screen overflow-x-clip">
+    <div className="relative bg-[#f8fbfe] text-[#08295b] min-h-screen overflow-x-clip">
       {/* Hero 192-Frame Pinned Machine Scroll Sequence */}
       {/* @ts-ignore */}
       <HeroMachineScroll />

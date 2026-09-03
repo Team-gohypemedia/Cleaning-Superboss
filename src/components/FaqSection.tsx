@@ -96,15 +96,15 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="w-full bg-[#FAF6F0] py-20 md:py-28 border-t border-[#E5E1D3] select-none">
+    <section id="faq" className="w-full bg-[#f8fbfe] py-20 md:py-28 border-t border-[#d0e4f7] select-none">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-14 flex flex-col lg:flex-row gap-12 lg:gap-16">
         {/* Left Column: Heading Block */}
         <div className="w-full lg:w-2/5 flex flex-col items-start gap-4">
           <div className="space-y-4 max-w-xl">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1C1B1F] leading-none">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#08295b] leading-none">
               How It Works & FAQs
             </h2>
-            <p className="text-base text-[#1C1B1F]/60 font-normal leading-relaxed max-w-[360px]">
+            <p className="text-base text-[#08295b]/60 font-normal leading-relaxed max-w-[360px]">
               Everything you need to know about our smart platform, 5-step process, and spotless guarantee.
             </p>
           </div>
@@ -113,7 +113,7 @@ export default function FaqSection() {
         {/* Right Column: Tabbed Accordion */}
         <div className="w-full lg:w-3/5 flex flex-col gap-8 md:gap-10">
           {/* Tab Buttons (Horizontal scrollable track on mobile, matched to mockup style) */}
-          <div className="w-full flex flex-row items-center gap-3 overflow-x-auto pb-2 scrollbar-none border-b border-[#E5E1D3]/30">
+          <div className="w-full flex flex-row items-center gap-3 overflow-x-auto pb-2 scrollbar-none border-b border-[#d0e4f7]/30">
             {categories.map((category) => {
               const isActive = activeTab === category;
               return (
@@ -122,8 +122,8 @@ export default function FaqSection() {
                   onClick={() => handleTabChange(category)}
                   className={`whitespace-nowrap px-4 py-2.5 rounded-lg text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
                     isActive
-                      ? "bg-[#1C1B1F]/5 text-[#1C1B1F] border border-transparent"
-                      : "bg-transparent text-[#1C1B1F]/30 border border-[#E5E1D3]/80 hover:text-[#1C1B1F]/70 hover:border-[#1C1B1F]/40"
+                      ? "bg-[#e3f2fd] text-[#08295b] border border-[#d0e4f7]"
+                      : "bg-transparent text-[#08295b]/40 border border-[#d0e4f7]/80 hover:text-[#08295b]/80 hover:border-[#08295b]/40"
                   }`}
                 >
                   {category}
@@ -146,11 +146,11 @@ export default function FaqSection() {
                     onClick={() => toggleAccordion(index)}
                     className="w-full flex items-center justify-between gap-6 text-left group cursor-pointer"
                   >
-                    <span className="text-lg md:text-xl font-medium text-[#1C1B1F] group-hover:text-[#5680e9] transition-colors duration-200">
+                    <span className="text-lg md:text-xl font-medium text-[#08295b] group-hover:text-[#0d47a1] transition-colors duration-200">
                       {item.question}
                     </span>
                     {/* Expand/Collapse svg indicator */}
-                    <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-[#1C1B1F]/30 group-hover:text-[#5680e9] transition-colors duration-200">
+                    <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-[#08295b]/30 group-hover:text-[#0d47a1] transition-colors duration-200">
                       <motion.svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="20"
@@ -198,7 +198,7 @@ export default function FaqSection() {
                         className="overflow-hidden"
                       >
                         <div className="pt-4 pb-2 pr-6">
-                          <p className="text-sm sm:text-base leading-relaxed text-[#1C1B1F]/70 font-normal">
+                          <p className="text-sm sm:text-base leading-relaxed text-[#08295b]/70 font-normal">
                             {item.answer}
                           </p>
                         </div>
@@ -211,7 +211,7 @@ export default function FaqSection() {
                     {/* Glowing blur shadow layer */}
                     <div
                       className={cn(
-                        "absolute inset-x-0 h-[3px] -top-[1.5px] bg-gradient-to-r from-transparent via-[#5680e9]/50 to-transparent blur-[2px] transition-all duration-500",
+                        "absolute inset-x-0 h-[3px] -top-[1.5px] bg-gradient-to-r from-transparent via-[#2196f3]/50 to-transparent blur-[2px] transition-all duration-500",
                         isOpen ? "opacity-100 scale-y-100" : "opacity-0 scale-y-50 group-hover:opacity-60 group-hover:scale-y-100"
                       )}
                     />
@@ -220,8 +220,8 @@ export default function FaqSection() {
                       className={cn(
                         "absolute inset-x-0 h-[1px] bg-gradient-to-r from-transparent transition-all duration-500",
                         isOpen
-                          ? "via-[#5680e9] to-transparent"
-                          : "via-[#5680e9]/30 to-transparent group-hover:via-[#5680e9]/70"
+                          ? "via-[#0d47a1] to-transparent"
+                          : "via-[#0d47a1]/30 to-transparent group-hover:via-[#0d47a1]/70"
                       )}
                     />
                   </div>

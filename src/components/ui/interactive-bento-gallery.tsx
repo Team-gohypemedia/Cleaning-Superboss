@@ -159,14 +159,14 @@ const GalleryModal = ({ selectedItem, isOpen, onClose, setSelectedItem, mediaIte
                     stiffness: 400,
                     damping: 30
                 }}
-                className="fixed inset-0 w-full h-full flex flex-col items-center justify-center backdrop-blur-xl bg-[#FAF6F0]/85 z-[100] p-4"
+                className="fixed inset-0 w-full h-full flex flex-col items-center justify-center backdrop-blur-xl bg-[#f8fbfe]/85 z-[100] p-4"
             >
                 {/* Main Content */}
                 <div className="w-full flex-1 flex items-center justify-center">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={selectedItem.id}
-                            className="relative w-full aspect-[16/9] max-w-4xl rounded-2xl overflow-hidden shadow-2xl border border-[#E5E1D3] bg-[#111]"
+                            className="relative w-full aspect-[16/9] max-w-4xl rounded-2xl overflow-hidden shadow-2xl border border-[#d0e4f7] bg-[#111]"
                             initial={{ y: 20, scale: 0.97, opacity: 0 }}
                             animate={{
                                 y: 0,
@@ -201,7 +201,7 @@ const GalleryModal = ({ selectedItem, isOpen, onClose, setSelectedItem, mediaIte
 
                 {/* Close Button */}
                 <motion.button
-                    className="absolute top-6 right-6 p-3 rounded-full bg-[#1C1B1F] text-white hover:bg-[#5680e9] transition-colors shadow-lg cursor-pointer animate-none"
+                    className="absolute top-6 right-6 p-3 rounded-full bg-[#08295b] text-white hover:bg-[#0d47a1] transition-colors shadow-lg cursor-pointer animate-none"
                     onClick={onClose}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -226,7 +226,7 @@ const GalleryModal = ({ selectedItem, isOpen, onClose, setSelectedItem, mediaIte
                 className="fixed z-[110] left-1/2 bottom-8 -translate-x-1/2 touch-none"
             >
                 <motion.div
-                    className="relative rounded-2xl bg-[#1C1B1F]/90 backdrop-blur-xl border border-white/10 shadow-2xl cursor-grab active:cursor-grabbing"
+                    className="relative rounded-2xl bg-[#08295b]/90 backdrop-blur-xl border border-white/10 shadow-2xl cursor-grab active:cursor-grabbing"
                 >
                     <div className="flex items-center -space-x-3 px-4 py-3">
                         {mediaItems.map((item, index) => (
@@ -278,26 +278,26 @@ const DragInstructionOverlay = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="absolute inset-0 bg-[#1C1B1F]/30 backdrop-blur-md flex flex-col items-center justify-center pointer-events-none z-40 select-none rounded-[24px]"
+            className="absolute inset-0 bg-[#08295b]/30 backdrop-blur-md flex flex-col items-center justify-center pointer-events-none z-40 select-none rounded-[24px]"
         >
             <motion.div
                 initial={{ scale: 0.9, y: 15 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.9, y: 15 }}
                 transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                className="flex flex-col items-center gap-4 bg-[#FAF6F0] border border-[#E5E1D3] px-8 py-6 rounded-[24px] shadow-[0_10px_45px_rgba(0,0,0,0.2)] pointer-events-none select-none text-[#1C1B1F] max-w-[85%] text-center"
+                className="flex flex-col items-center gap-4 bg-[#f8fbfe] border border-[#d0e4f7] px-8 py-6 rounded-[24px] shadow-[0_10px_45px_rgba(0,0,0,0.2)] pointer-events-none select-none text-[#08295b] max-w-[85%] text-center"
             >
                 {/* Hand Palm Icon Grabbing & Dragging Animation */}
-                <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-[#5680e9]/10 border border-[#5680e9]/20">
+                <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-[#e3f2fd] border border-[#d0e4f7]">
                     <motion.svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="none"
-                        stroke="#5680e9"
+                        stroke="#0d47a1"
                         strokeWidth="2.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="w-8 h-8 text-[#5680e9]"
+                        className="w-8 h-8 text-[#0d47a1]"
                         animate={{
                             x: [-18, 18, -18],
                             rotate: [0, -12, 0]
@@ -316,10 +316,10 @@ const DragInstructionOverlay = () => {
                     </motion.svg>
                 </div>
                 <div className="space-y-1">
-                    <h4 className="text-base font-black tracking-wider uppercase text-[#1C1B1F]">
+                    <h4 className="text-base font-black tracking-wider uppercase text-[#08295b]">
                         Drag to Reorder
                     </h4>
-                    <p className="text-xs text-[#1C1B1F]/60 font-light">
+                    <p className="text-xs text-[#08295b]/60 font-light">
                         Hold and swipe left/right to arrange production items
                     </p>
                 </div>
@@ -363,7 +363,7 @@ const MobileSlider = ({ items, setSelectedItem }: { items: MediaItemType[], setS
     return (
         <div className="w-full flex flex-col gap-6 px-1 md:hidden">
             {/* Media Card Container */}
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-[#E5E1D3]/60 shadow-lg bg-[#111]">
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-[#d0e4f7]/60 shadow-lg bg-[#111]">
                 <AnimatePresence initial={false} custom={direction} mode="wait">
                     <motion.div
                         key={activeIndex}
@@ -401,7 +401,7 @@ const MobileSlider = ({ items, setSelectedItem }: { items: MediaItemType[], setS
                             e.stopPropagation();
                             handlePrev();
                         }}
-                        className="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-[#E5E1D3] text-[#1C1B1F] shadow-md active:scale-95 transition-all cursor-pointer"
+                        className="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-[#d0e4f7] text-[#08295b] shadow-md active:scale-95 transition-all cursor-pointer"
                     >
                         <ChevronLeft className="w-5 h-5" />
                     </button>
@@ -410,7 +410,7 @@ const MobileSlider = ({ items, setSelectedItem }: { items: MediaItemType[], setS
                             e.stopPropagation();
                             handleNext();
                         }}
-                        className="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-[#E5E1D3] text-[#1C1B1F] shadow-md active:scale-95 transition-all cursor-pointer"
+                        className="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-[#d0e4f7] text-[#08295b] shadow-md active:scale-95 transition-all cursor-pointer"
                     >
                         <ChevronRight className="w-5 h-5" />
                     </button>
@@ -427,10 +427,10 @@ const MobileSlider = ({ items, setSelectedItem }: { items: MediaItemType[], setS
                         exit={{ opacity: 0, y: -8 }}
                         transition={{ duration: 0.15 }}
                     >
-                        <h3 className="text-xl font-bold tracking-tight text-[#1C1B1F]">
+                        <h3 className="text-xl font-bold tracking-tight text-[#08295b]">
                             {currentItem.title}
                         </h3>
-                        <p className="text-sm text-[#1C1B1F]/70 mt-1 font-light leading-relaxed">
+                        <p className="text-sm text-[#08295b]/70 mt-1 font-light leading-relaxed">
                             {currentItem.desc}
                         </p>
                     </motion.div>
@@ -438,9 +438,9 @@ const MobileSlider = ({ items, setSelectedItem }: { items: MediaItemType[], setS
             </div>
 
             {/* Progress indicator bar at the bottom */}
-            <div className="w-full h-0.5 bg-[#E5E1D3]/50 rounded-full overflow-hidden">
+            <div className="w-full h-0.5 bg-[#d0e4f7]/50 rounded-full overflow-hidden">
                 <motion.div
-                    className="h-full bg-[#1C1B1F]"
+                    className="h-full bg-[#08295b]"
                     initial={{ width: "0%" }}
                     animate={{ width: `${((activeIndex + 1) / items.length) * 100}%` }}
                     transition={{ type: "spring", stiffness: 200, damping: 25 }}
@@ -500,7 +500,7 @@ export const InteractiveBentoGallery: React.FC<InteractiveBentoGalleryProps> = (
             <div className="mb-12 md:mb-16 flex flex-col items-center text-center gap-3">
                 <div>
                     <motion.h2
-                        className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#1C1B1F] leading-tight"
+                        className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#08295b] leading-tight"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -509,7 +509,7 @@ export const InteractiveBentoGallery: React.FC<InteractiveBentoGalleryProps> = (
                         {title}
                     </motion.h2>
                     <motion.p
-                        className="mt-3 text-sm sm:text-base md:text-lg text-[#1C1B1F]/70 font-light max-w-[650px] mx-auto leading-relaxed"
+                        className="mt-3 text-sm sm:text-base md:text-lg text-[#08295b]/70 font-light max-w-[650px] mx-auto leading-relaxed"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -553,7 +553,7 @@ export const InteractiveBentoGallery: React.FC<InteractiveBentoGalleryProps> = (
                                         key={item.id}
                                         layoutId={`media-${item.id}`}
                                         layout
-                                        className={`relative group overflow-hidden rounded-2xl cursor-grab active:cursor-grabbing border border-[#E5E1D3]/50 shadow-md ${item.span}`}
+                                        className={`relative group overflow-hidden rounded-2xl cursor-grab active:cursor-grabbing border border-[#d0e4f7]/50 shadow-md ${item.span}`}
                                         onTap={() => setSelectedItem(item)}
                                         variants={{
                                             hidden: { y: 30, scale: 0.96, opacity: 0 },
@@ -592,7 +592,7 @@ export const InteractiveBentoGallery: React.FC<InteractiveBentoGalleryProps> = (
                                         }}
                                     >
                                         {/* Subtle drag grip indicator that fades in on hover */}
-                                        <div className="absolute top-4 right-4 p-1.5 rounded-xl bg-[#FAF6F0]/90 backdrop-blur-md border border-[#E5E1D3] text-[#1C1B1F]/60 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none select-none z-10 shadow-sm scale-95 group-hover:scale-100">
+                                        <div className="absolute top-4 right-4 p-1.5 rounded-xl bg-[#f8fbfe]/90 backdrop-blur-md border border-[#d0e4f7] text-[#08295b]/60 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none select-none z-10 shadow-sm scale-95 group-hover:scale-100">
                                             <GripVertical className="w-3.5 h-3.5" />
                                         </div>
 

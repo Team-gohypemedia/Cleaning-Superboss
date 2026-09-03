@@ -2,15 +2,14 @@
 
 @layer base {
   :root {
-    --background: #FAF6F0;
-    --foreground: #1C1B1F;
-    --primary: #5680e9;
-    --primary-cyan: #5ab9ea;
-    --primary-sky: #84ceeb;
-    --primary-purple: #8860d0;
-    --primary-ice: #c1c8e4;
+    --background: #f8fbfe;
+    --foreground: #08295b;
+    --primary: #0d47a1;
+    --primary-accent: #2196f3;
+    --primary-ice: #e3f2fd;
+    --primary-dark: #08295b;
     --card: #FFFFFF;
-    --border: #E5E1D3;
+    --border: #d0e4f7;
   }
 
   html,
@@ -47,41 +46,41 @@ html.lenis body {
 
 /* Theme Utilities for Clean & Energetic Aesthetic */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid #E5E1D3;
+  border: 1px solid #d0e4f7;
 }
 
 .glass-card {
   background: #FFFFFF;
-  border: 1px solid #E5E1D3;
-  box-shadow: 0 10px 30px -10px rgba(28, 27, 31, 0.04),
-              0 4px 12px -2px rgba(28, 27, 31, 0.02);
+  border: 1px solid #d0e4f7;
+  box-shadow: 0 10px 30px -10px rgba(8, 41, 91, 0.05),
+              0 4px 12px -2px rgba(8, 41, 91, 0.03);
 }
 
 .glass-card:hover {
-  box-shadow: 0 20px 40px -15px rgba(86, 128, 233, 0.18);
-  border-color: #5680e9;
+  box-shadow: 0 20px 40px -15px rgba(13, 71, 161, 0.18);
+  border-color: #2196f3;
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #1C1B1F 0%, #5680e9 100%);
+  background: linear-gradient(135deg, #08295b 0%, #0d47a1 50%, #2196f3 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-primary,
 .text-gradient-orange {
-  background: linear-gradient(135deg, #5680e9 0%, #5ab9ea 50%, #8860d0 100%);
+  background: linear-gradient(135deg, #0d47a1 0%, #2196f3 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Custom Scrollbar - Dark background & Vibrant Blue slider thumb */
+/* Custom Scrollbar - Dark Navy background & Vibrant Blue slider thumb */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #5680e9 #1C1B1F;
+  scrollbar-color: #0d47a1 #08295b;
 }
 
 ::-webkit-scrollbar {
@@ -90,17 +89,17 @@ html.lenis body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1C1B1F;
+  background: #08295b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #5680e9;
+  background: #0d47a1;
   border-radius: 9999px;
-  border: 2px solid #1C1B1F;
+  border: 2px solid #08295b;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #5ab9ea;
+  background: #2196f3;
 }
 
 /* Infinite Marquee Animation */

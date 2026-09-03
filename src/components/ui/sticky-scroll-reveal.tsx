@@ -176,7 +176,7 @@ export function StickyScroll({
                   e.stopPropagation();
                   handlePrev();
                 }}
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-[#E5E1D3] text-[#1C1B1F] shadow-md active:scale-95 transition-all cursor-pointer"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-[#d0e4f7] text-[#08295b] shadow-md active:scale-95 transition-all cursor-pointer"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -185,7 +185,7 @@ export function StickyScroll({
                   e.stopPropagation();
                   handleNext();
                 }}
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-[#E5E1D3] text-[#1C1B1F] shadow-md active:scale-95 transition-all cursor-pointer"
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-[#d0e4f7] text-[#08295b] shadow-md active:scale-95 transition-all cursor-pointer"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -205,7 +205,7 @@ export function StickyScroll({
               >
                 <div>
                   {/* Title character-by-character color fill reveal */}
-                  <h3 className="text-xl font-bold tracking-tight text-[#1C1B1F]/20">
+                  <h3 className="text-xl font-bold tracking-tight text-[#08295b]/20">
                     {mobileTitleChars.map((char, charIdx) => {
                       const sequenceIdx = charIdx;
                       const isFilled = isMobileFullyRevealed || sequenceIdx < mobileRevealedCount - cursorTrailSize;
@@ -217,10 +217,10 @@ export function StickyScroll({
                           className={cn(
                             "transition-colors duration-150",
                             isCursor
-                              ? "text-[#5680e9] font-bold"
+                              ? "text-[#2196f3] font-bold"
                               : isFilled
-                              ? "text-[#1C1B1F] font-bold"
-                              : "text-[#1C1B1F]/20"
+                              ? "text-[#08295b] font-bold"
+                              : "text-[#08295b]/20"
                           )}
                         >
                           {char}
@@ -231,7 +231,7 @@ export function StickyScroll({
                 </div>
 
                 {/* Description character-by-character color fill reveal */}
-                <p className="text-sm sm:text-base leading-relaxed font-semibold text-[#1C1B1F]/20">
+                <p className="text-sm sm:text-base leading-relaxed font-semibold text-[#08295b]/20">
                   {mobileDescChars.map((char, charIdx) => {
                     const sequenceIdx = mobileTitleChars.length + charIdx;
                     const isFilled = isMobileFullyRevealed || sequenceIdx < mobileRevealedCount - cursorTrailSize;
@@ -243,10 +243,10 @@ export function StickyScroll({
                         className={cn(
                           "transition-colors duration-150",
                           isCursor
-                            ? "text-[#5680e9] font-semibold"
+                            ? "text-[#2196f3] font-semibold"
                             : isFilled
-                            ? "text-[#1C1B1F] font-semibold"
-                            : "text-[#1C1B1F]/20 font-semibold"
+                            ? "text-[#08295b] font-semibold"
+                            : "text-[#08295b]/20 font-semibold"
                         )}
                       >
                         {char}
@@ -259,9 +259,9 @@ export function StickyScroll({
           </div>
 
           {/* Progress indicator line */}
-          <div className="w-full h-0.5 bg-[#E5E1D3]/50 rounded-full overflow-hidden">
+          <div className="w-full h-0.5 bg-[#d0e4f7]/50 rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-[#1C1B1F]"
+              className="h-full bg-[#08295b]"
               initial={{ width: "0%" }}
               animate={{ width: `${((activeCard + 1) / cardLength) * 100}%` }}
               transition={{ type: "spring", stiffness: 200, damping: 25 }}
@@ -319,7 +319,7 @@ export function StickyScroll({
                 >
                   <div>
                     {/* Title scroll-based continuous typewriter reveal */}
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#1C1B1F]/20">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#08295b]/20">
                       {titleChars.map((char, charIdx) => {
                         const sequenceIdx = charIdx;
                         const isTitleFilled = isFullyRevealed || sequenceIdx < revealedCount - cursorTrailSize;
@@ -331,10 +331,10 @@ export function StickyScroll({
                             className={cn(
                               "transition-colors duration-150",
                               isTitleCursor
-                                ? "text-[#5680e9] font-bold"
+                                ? "text-[#2196f3] font-bold"
                                 : isTitleFilled
-                                ? "text-[#1C1B1F] font-bold"
-                                : "text-[#1C1B1F]/20"
+                                ? "text-[#08295b] font-bold"
+                                : "text-[#08295b]/20"
                             )}
                           >
                             {char}
@@ -345,7 +345,7 @@ export function StickyScroll({
                   </div>
                   
                   {/* Description scroll-based continuous typewriter reveal */}
-                  <p className="text-base sm:text-lg leading-relaxed font-semibold text-[#1C1B1F]/20">
+                  <p className="text-base sm:text-lg leading-relaxed font-semibold text-[#08295b]/20">
                     {descChars.map((char, charIdx) => {
                       const sequenceIdx = titleChars.length + charIdx;
                       const isFilled = isFullyRevealed || sequenceIdx < revealedCount - cursorTrailSize;
@@ -357,10 +357,10 @@ export function StickyScroll({
                           className={cn(
                             "transition-colors duration-150",
                             isCursor
-                              ? "text-[#5680e9] font-semibold"
+                              ? "text-[#2196f3] font-semibold"
                               : isFilled
-                              ? "text-[#1C1B1F] font-semibold"
-                              : "text-[#1C1B1F]/20 font-semibold"
+                              ? "text-[#08295b] font-semibold"
+                              : "text-[#08295b]/20 font-semibold"
                           )}
                         >
                           {char}

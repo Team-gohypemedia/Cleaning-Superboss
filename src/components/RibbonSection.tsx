@@ -29,7 +29,7 @@ export default function RibbonSection() {
         >
           <InfiniteRibbon
             autoPlay={false}
-            className="bg-[#5680e9] text-white py-2.5 sm:py-3 font-black tracking-widest text-xs sm:text-sm md:text-base lg:text-lg uppercase border-y border-white/20 shadow-2xl"
+            className="bg-[#0d47a1] text-white py-2.5 sm:py-3 font-black tracking-widest text-xs sm:text-sm md:text-base lg:text-lg uppercase border-y border-white/20 shadow-2xl"
             rotation={0}
             repeat={16}
             separator="✦"
@@ -45,7 +45,7 @@ export default function RibbonSection() {
         >
           <InfiniteRibbon
             autoPlay={false}
-            className="bg-[#8860d0] text-white py-2.5 sm:py-3 font-black tracking-widest text-xs sm:text-sm md:text-base lg:text-lg uppercase border-y border-white/20 shadow-2xl"
+            className="bg-[#2196f3] text-white py-2.5 sm:py-3 font-black tracking-widest text-xs sm:text-sm md:text-base lg:text-lg uppercase border-y border-white/20 shadow-2xl"
             rotation={0}
             repeat={16}
             separator="✦"

@@ -308,7 +308,7 @@ export default function MasterBrand() {
     <section
       ref={sectionRef}
       id="master-brand"
-      className="relative w-full bg-[#FAF6F0] text-[#1C1B1F] py-20 md:py-32 select-none border-t border-[#E5E1D3]"
+      className="relative w-full bg-[#f8fbfe] text-[#08295b] py-20 md:py-32 select-none border-t border-[#d0e4f7]"
     >
       <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 md:px-10 lg:px-14 xl:px-16 flex flex-col">
         {/* Header Section */}
@@ -322,19 +322,19 @@ export default function MasterBrand() {
           <div className="flex flex-col items-start">
             <Badge
               variant="outline"
-              className="w-fit h-auto mb-4 border-[#1C1B1F]/15 text-[#1C1B1F]/70 text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full bg-transparent"
+              className="w-fit h-auto mb-4 border-[#08295b]/15 text-[#08295b]/70 text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full bg-transparent"
             >
               Technology Platform
             </Badge>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight max-w-[650px] text-[#1C1B1F] leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight max-w-[650px] text-[#08295b] leading-tight">
               One Smart <UnderlineToBackground>Platform</UnderlineToBackground>
             </h2>
-            <p className="text-[#1C1B1F]/80 text-sm sm:text-base md:text-lg italic mt-3 max-w-[600px]">
+            <p className="text-[#08295b]/80 text-sm sm:text-base md:text-lg italic mt-3 max-w-[600px]">
               One smart platform. Every cleaning need. More than cleaning — we deliver a better way to live and work.
             </p>
           </div>
 
-          <p className="text-[#1C1B1F]/70 max-w-[500px] text-sm sm:text-base leading-relaxed text-left lg:text-left lg:pt-2 font-light">
+          <p className="text-[#08295b]/70 max-w-[500px] text-sm sm:text-base leading-relaxed text-left lg:text-left lg:pt-2 font-light">
             Cleaning Superboss is more than a traditional cleaning company. We unify automated instant quotes, online booking, cleaner dispatch telemetry, customer dashboards, notifications, and payments into one seamless ecosystem.
           </p>
         </motion.div>
@@ -359,8 +359,8 @@ export default function MasterBrand() {
         >
           <IconicButton
             href="#contact"
-            className="w-fit sm:w-auto bg-[#5680e9] text-white hover:bg-[#466fd9]"
-            iconWrapperClassName="bg-white text-[#5680e9] group-hover:bg-white"
+            className="w-fit sm:w-auto bg-[#0d47a1] text-white hover:bg-[#2196f3]"
+            iconWrapperClassName="bg-white text-[#0d47a1] group-hover:bg-white"
           >
             GET A FREE QUOTE
           </IconicButton>

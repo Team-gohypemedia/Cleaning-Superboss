@@ -45,18 +45,18 @@ function MarqueeStrip() {
       {Array.from({ length: 4 }).map((_, repeatIndex) => (
         <span
           key={`repeat-${repeatIndex}`}
-          className="whitespace-nowrap font-sans text-[10px] font-semibold uppercase tracking-[0.25em] text-[#FAF6F0]"
+          className="whitespace-nowrap font-sans text-[10px] font-semibold uppercase tracking-[0.25em] text-[#e3f2fd]"
         >
           {marqueeText.split(" · ").map((text, idx, arr) => (
             <span key={idx}>
               {text}
               {idx < arr.length - 1 && (
-                <span className="text-[#5680e9] mx-4 inline-block font-bold">·</span>
+                <span className="text-[#2196f3] mx-4 inline-block font-bold">·</span>
               )}
             </span>
           ))}
           {/* Add trailing dot to separate repeats */}
-          <span className="text-[#5680e9] mx-4 inline-block font-bold">·</span>
+          <span className="text-[#2196f3] mx-4 inline-block font-bold">·</span>
         </span>
       ))}
     </div>
@@ -67,7 +67,7 @@ export default function Footer() {
   return (
     <footer className="w-full">
       {/* 1. Sustainability / Capability Marquee Strip */}
-      <section className="w-full overflow-hidden bg-[#1C1B1F] py-3.5 text-white border-y border-[#E5E1D3]/10">
+      <section className="w-full overflow-hidden bg-[#08295b] py-3.5 text-white border-y border-white/10">
         <h2 className="sr-only">Capabilities marquee</h2>
         <div className="flex w-max items-center animate-marquee motion-reduce:animate-none [will-change:transform]">
           <MarqueeStrip />
@@ -76,40 +76,40 @@ export default function Footer() {
       </section>
 
       {/* 2. Main Footer Section */}
-      <div className="relative overflow-hidden bg-[#FAF6F0] text-[#1C1B1F] pt-10 sm:pt-12 pb-8 border-t border-[#E5E1D3]">
+      <div className="relative overflow-hidden bg-[#f8fbfe] text-[#08295b] pt-10 sm:pt-12 pb-8 border-t border-[#d0e4f7]">
         {/* Background Soft Glow */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-t from-[#5680e9]/8 via-transparent to-transparent blur-[160px] pointer-events-none z-0" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-t from-[#0d47a1]/10 via-transparent to-transparent blur-[160px] pointer-events-none z-0" />
 
         <div className="w-full px-6 md:px-12 2xl:px-24 mx-auto relative z-10">
           <div className="grid grid-cols-2 gap-8 mb-8 relative z-10 md:grid-cols-12">
             
             {/* Column 1: Brand Logo & Short Desc */}
             <div className="col-span-2 md:col-span-3">
-              <Link href="/" className="inline-block mb-1.5 hover:opacity-90 transition-opacity overflow-visible">
-                <div className="h-9 sm:h-10 w-[180px] sm:w-[210px] flex items-center justify-start overflow-visible">
+              <Link href="/" className="inline-block mb-3 hover:opacity-90 transition-opacity">
+                <div className="h-12 sm:h-14 md:h-16 flex items-center justify-start">
                   <img
                     src="/logo.png"
                     alt="Cleaning Superboss"
-                    className="h-full w-auto max-w-none object-contain scale-[1.55] sm:scale-[1.7] origin-left drop-shadow-sm"
+                    className="h-full w-auto max-h-[50px] sm:max-h-[58px] md:max-h-[66px] object-contain drop-shadow-sm"
                   />
                 </div>
               </Link>
-              <p className="text-xs text-[#1C1B1F]/70 leading-relaxed pr-4 font-light mt-1">
+              <p className="text-xs text-[#08295b]/70 leading-relaxed pr-4 font-light mt-1">
                 Cleaning Superboss is the premier technology-driven cleaning company and platform. Elevating residential living, corporate offices, and hospitality turnovers through smart technology and trusted professionals.
               </p>
             </div>
 
             {/* Column 2: Capabilities Links */}
             <div className="col-span-1 md:col-span-3">
-              <h4 className="font-bold text-xs uppercase mb-4 tracking-wider text-[#1C1B1F]">
+              <h4 className="font-bold text-xs uppercase mb-4 tracking-wider text-[#08295b]">
                 SERVICES
               </h4>
-              <ul className="space-y-2.5 text-[11px] text-[#1C1B1F]/70 tracking-wider">
+              <ul className="space-y-2.5 text-[11px] text-[#08295b]/70 tracking-wider">
                 {capabilitiesLinks.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="hover:text-[#5680e9] transition-colors"
+                      className="hover:text-[#0d47a1] transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -120,16 +120,16 @@ export default function Footer() {
 
             {/* Column 3: Get Support */}
             <div className="col-span-1 md:col-span-3">
-              <h4 className="font-bold text-xs uppercase mb-4 tracking-wider text-[#1C1B1F]">
+              <h4 className="font-bold text-xs uppercase mb-4 tracking-wider text-[#08295b]">
                 GET IN TOUCH
               </h4>
 
               <div className="space-y-3.5 text-xs">
                 <div>
-                  <p className="text-[9px] font-semibold uppercase tracking-wider text-[#1C1B1F]/50">
+                  <p className="text-[9px] font-semibold uppercase tracking-wider text-[#08295b]/50">
                     CUSTOMER CARE EMAIL
                   </p>
-                  <p className="text-xs font-semibold text-[#1C1B1F] hover:text-[#5680e9] transition-colors mt-0.5">
+                  <p className="text-xs font-semibold text-[#08295b] hover:text-[#0d47a1] transition-colors mt-0.5">
                     <a href="mailto:hello@cleaningsuperboss.com">
                       hello@cleaningsuperboss.com
                     </a>
@@ -137,28 +137,28 @@ export default function Footer() {
                 </div>
 
                 <div>
-                  <p className="text-[9px] font-semibold uppercase tracking-wider text-[#1C1B1F]/50">
+                  <p className="text-[9px] font-semibold uppercase tracking-wider text-[#08295b]/50">
                     BOOKING ASSISTANCE
                   </p>
-                  <p className="text-xs font-semibold text-[#1C1B1F] hover:text-[#5680e9] transition-colors mt-0.5">
+                  <p className="text-xs font-semibold text-[#08295b] hover:text-[#0d47a1] transition-colors mt-0.5">
                     <a href="tel:+18005552677">+1 (800) 555-BOSS</a>
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-[9px] font-semibold uppercase tracking-wider text-[#1C1B1F]/50">
+                  <p className="text-[9px] font-semibold uppercase tracking-wider text-[#08295b]/50">
                     COVERAGE
                   </p>
-                  <p className="text-xs font-semibold text-[#1C1B1F] mt-0.5">
+                  <p className="text-xs font-semibold text-[#08295b] mt-0.5">
                     Serving Locally · Expanding Globally
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-[9px] font-semibold uppercase tracking-wider text-[#1C1B1F]/50">
+                  <p className="text-[9px] font-semibold uppercase tracking-wider text-[#08295b]/50">
                     SUPPORT HOURS
                   </p>
-                  <p className="text-xs font-semibold text-[#1C1B1F] mt-0.5">
+                  <p className="text-xs font-semibold text-[#08295b] mt-0.5">
                     24/7 Digital Support & Live Dispatch
                   </p>
                 </div>
@@ -167,7 +167,7 @@ export default function Footer() {
 
             {/* Column 4: Newsletter & Social */}
             <div className="col-span-2 md:col-span-3">
-              <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#1C1B1F] font-semibold leading-relaxed mb-3">
+              <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#08295b] font-semibold leading-relaxed mb-3">
                 SUBSCRIBE FOR EXCLUSIVE OFFERS & PLATFORM UPDATES
               </p>
 
@@ -175,27 +175,27 @@ export default function Footer() {
                 className="flex flex-col space-y-2"
                 onSubmit={(e) => e.preventDefault()}
               >
-                <div className="relative flex items-center border-b border-[#E5E1D3] pb-2 focus-within:border-[#5680e9] transition-colors">
+                <div className="relative flex items-center border-b border-[#d0e4f7] pb-2 focus-within:border-[#2196f3] transition-colors">
                   <input
                     type="email"
                     required
                     placeholder="ENTER YOUR EMAIL"
-                    className="w-full bg-transparent text-xs text-[#1C1B1F] placeholder:text-[#1C1B1F]/40 uppercase tracking-wider outline-none pr-12 py-1"
+                    className="w-full bg-transparent text-xs text-[#08295b] placeholder:text-[#08295b]/40 uppercase tracking-wider outline-none pr-12 py-1"
                   />
                   <button
                     type="submit"
-                    className="absolute right-0 text-xs font-bold uppercase tracking-wider text-[#1C1B1F] hover:text-[#5680e9] transition-colors cursor-pointer"
+                    className="absolute right-0 text-xs font-bold uppercase tracking-wider text-[#08295b] hover:text-[#0d47a1] transition-colors cursor-pointer"
                   >
                     JOIN
                   </button>
                 </div>
-                <p className="text-[9px] uppercase tracking-wider text-[#1C1B1F]/50 pt-1">
+                <p className="text-[9px] uppercase tracking-wider text-[#08295b]/50 pt-1">
                   BY SUBSCRIBING, YOU AGREE TO OUR TERMS & PRIVACY POLICY.
                 </p>
               </form>
 
               <div className="mt-5">
-                <p className="text-[9px] font-bold uppercase tracking-wider text-[#1C1B1F]/50 mb-2">
+                <p className="text-[9px] font-bold uppercase tracking-wider text-[#08295b]/50 mb-2">
                   FOLLOW CLEANING SUPERBOSS
                 </p>
                 <div className="flex items-center gap-3">
@@ -204,7 +204,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Facebook"
-                    className="flex size-8 items-center justify-center rounded-full border border-[#E5E1D3] text-[#1C1B1F] hover:border-[#5680e9] hover:text-[#5680e9] transition-all"
+                    className="flex size-8 items-center justify-center rounded-full border border-[#d0e4f7] text-[#08295b] hover:border-[#0d47a1] hover:text-[#0d47a1] transition-all"
                   >
                     <FacebookIcon className="size-4" />
                   </a>
@@ -213,7 +213,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
-                    className="flex size-8 items-center justify-center rounded-full border border-[#E5E1D3] text-[#1C1B1F] hover:border-[#5680e9] hover:text-[#5680e9] transition-all"
+                    className="flex size-8 items-center justify-center rounded-full border border-[#d0e4f7] text-[#08295b] hover:border-[#0d47a1] hover:text-[#0d47a1] transition-all"
                   >
                     <LinkedinIcon className="size-4" />
                   </a>
@@ -222,7 +222,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="YouTube"
-                    className="flex size-8 items-center justify-center rounded-full border border-[#E5E1D3] text-[#1C1B1F] hover:border-[#5680e9] hover:text-[#5680e9] transition-all"
+                    className="flex size-8 items-center justify-center rounded-full border border-[#d0e4f7] text-[#08295b] hover:border-[#0d47a1] hover:text-[#0d47a1] transition-all"
                   >
                     <YoutubeIcon className="size-4" />
                   </a>
@@ -233,11 +233,11 @@ export default function Footer() {
           </div>
 
           {/* Bottom copyright row */}
-          <div className="mt-8 sm:mt-12 pt-4 sm:pt-6 border-t border-[#E5E1D3] flex flex-row justify-between items-center relative z-10 w-full">
-            <p className="text-[8px] sm:text-[9px] text-[#1C1B1F]/50 uppercase tracking-widest font-medium">
+          <div className="mt-8 sm:mt-12 pt-4 sm:pt-6 border-t border-[#d0e4f7] flex flex-row justify-between items-center relative z-10 w-full">
+            <p className="text-[8px] sm:text-[9px] text-[#08295b]/50 uppercase tracking-widest font-medium">
               &copy; {new Date().getFullYear()} CLEANING SUPERBOSS. ALL RIGHTS RESERVED.
             </p>
-            <div className="text-[8px] sm:text-[9px] uppercase tracking-widest text-[#1C1B1F]/50 font-bold">
+            <div className="text-[8px] sm:text-[9px] uppercase tracking-widest text-[#08295b]/50 font-bold">
               THE FUTURE OF CLEANING HAS ARRIVED
             </div>
           </div>
@@ -246,7 +246,7 @@ export default function Footer() {
 
         {/* Faded Background Text Watermark */}
         <div className="absolute bottom-1 left-0 right-0 text-center pointer-events-none z-0 select-none overflow-hidden leading-none">
-          <span className="block text-[6vw] md:text-[5vw] lg:text-5xl xl:text-6xl font-bold uppercase tracking-[0.45em] text-transparent bg-clip-text bg-gradient-to-b from-[#1C1B1F]/6 to-transparent translate-x-[3.5vw]">
+          <span className="block text-[6vw] md:text-[5vw] lg:text-5xl xl:text-6xl font-bold uppercase tracking-[0.45em] text-transparent bg-clip-text bg-gradient-to-b from-[#08295b]/6 to-transparent translate-x-[3.5vw]">
             CLEANING SUPERBOSS
           </span>
         </div>

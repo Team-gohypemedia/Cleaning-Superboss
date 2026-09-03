@@ -64,7 +64,7 @@ const mediaItems = [
 
 export default function ShowcaseBentoGallery() {
   return (
-    <section id="proof-of-work" className="w-full bg-[#FAF6F0] py-16 md:py-24 border-t border-[#E5E1D3]">
+    <section id="proof-of-work" className="w-full bg-[#f8fbfe] py-16 md:py-24 border-t border-[#d0e4f7]">
       <InteractiveBentoGallery
         mediaItems={mediaItems}
         title="The Premium Experience"

@@ -66,11 +66,11 @@ export default function ParallaxText() {
   ];
 
   return (
-    <section className="py-20 bg-[#FAF6F0] overflow-hidden border-y border-[#E5E1D3] select-none">
+    <section className="py-20 bg-[#f8fbfe] overflow-hidden border-y border-[#d0e4f7] select-none">
       {/* Row 1: Leftward Marquee */}
       <div
         ref={firstRowRef}
-        className="flex whitespace-nowrap gap-8 text-5xl md:text-7xl font-extrabold tracking-tighter text-[#1C1B1F]/15 will-change-transform"
+        className="flex whitespace-nowrap gap-8 text-5xl md:text-7xl font-extrabold tracking-tighter text-[#08295b]/15 will-change-transform"
       >
         {[...textItemsRow1, ...textItemsRow1, ...textItemsRow1].map(
           (text, index) => (
@@ -78,8 +78,8 @@ export default function ParallaxText() {
               key={index}
               className={
                 text === "•"
-                  ? "text-[#5680e9]"
-                  : "hover:text-[#1C1B1F] transition-colors"
+                  ? "text-[#0d47a1]"
+                  : "hover:text-[#08295b] transition-colors"
               }
             >
               {text}
@@ -91,7 +91,7 @@ export default function ParallaxText() {
       {/* Row 2: Rightward Marquee */}
       <div
         ref={secondRowRef}
-        className="flex whitespace-nowrap gap-8 text-5xl md:text-7xl font-extrabold tracking-tighter text-[#1C1B1F]/10 mt-6 -ml-96 will-change-transform"
+        className="flex whitespace-nowrap gap-8 text-5xl md:text-7xl font-extrabold tracking-tighter text-[#08295b]/10 mt-6 -ml-96 will-change-transform"
       >
         {[...textItemsRow2, ...textItemsRow2, ...textItemsRow2].map(
           (text, index) => (
@@ -99,8 +99,8 @@ export default function ParallaxText() {
               key={index}
               className={
                 text === "•"
-                  ? "text-[#5680e9]"
-                  : "hover:text-[#1C1B1F] transition-colors"
+                  ? "text-[#2196f3]"
+                  : "hover:text-[#08295b] transition-colors"
               }
             >
               {text}

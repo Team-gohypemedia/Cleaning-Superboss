@@ -29,25 +29,25 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 md:px-8 lg:px-10 transition-all duration-300 ${
         isPastHero
-          ? "bg-[#FAF6F0]/90 backdrop-blur-xl border-b border-[#E5E1D3]/80 shadow-md py-2 sm:py-2.5"
+          ? "bg-[#f8fbfe]/90 backdrop-blur-xl border-b border-[#d0e4f7]/80 shadow-md py-2 sm:py-2.5"
           : "bg-transparent py-2.5 sm:py-3.5"
       }`}
     >
       <div className="w-full max-w-[1440px] mx-auto flex items-center justify-between">
         {/* Left: Brand Logo */}
-        <a href="#" className="flex items-center group select-none relative overflow-visible">
-          <div className="h-8 sm:h-9 md:h-10 w-[150px] sm:w-[185px] md:w-[215px] flex items-center justify-start overflow-visible">
+        <a href="#" className="flex items-center group select-none relative py-1">
+          <div className="h-10 sm:h-12 md:h-14 lg:h-16 flex items-center justify-start">
             <img
               src="/logo.png"
               alt="Cleaning Superboss"
-              className="h-full w-auto max-w-none object-contain scale-[1.45] sm:scale-[1.65] origin-left transition-transform duration-300 group-hover:scale-[1.75] drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)]"
+              className="h-full w-auto max-h-[42px] sm:max-h-[50px] md:max-h-[58px] lg:max-h-[66px] object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_12px_rgba(0,0,0,0.2)]"
             />
           </div>
         </a>
 
         {/* Center: Floating Dark Nav Pill */}
         <nav className="hidden lg:flex items-center bg-zinc-900/90 backdrop-blur-2xl border border-white/10 rounded-full px-5 xl:px-6 py-2 shadow-xl text-xs font-semibold text-zinc-300 gap-4 xl:gap-5">
-          <a href="#" className="text-white hover:text-[#5680e9] transition-colors">
+          <a href="#" className="text-white hover:text-[#2196f3] transition-colors">
             Home
           </a>
           <a href="#services" className="hover:text-white transition-colors">
@@ -79,7 +79,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className={`w-8 h-8 md:w-9 md:h-9 rounded-full border backdrop-blur-md flex items-center justify-center transition-all duration-300 shadow-sm ${
               isPastHero
-                ? "bg-[#1C1B1F]/10 border-[#1C1B1F]/15 text-[#1C1B1F] hover:bg-[#1C1B1F]/20"
+                ? "bg-[#08295b]/10 border-[#08295b]/15 text-[#08295b] hover:bg-[#08295b]/20"
                 : "bg-white/10 border-white/15 text-zinc-200 hover:text-white hover:bg-white/20"
             }`}
             aria-label="LinkedIn"
@@ -96,7 +96,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className={`w-8 h-8 md:w-9 md:h-9 rounded-full border backdrop-blur-md flex items-center justify-center transition-all duration-300 shadow-sm ${
               isPastHero
-                ? "bg-[#1C1B1F]/10 border-[#1C1B1F]/15 text-[#1C1B1F] hover:bg-[#1C1B1F]/20"
+                ? "bg-[#08295b]/10 border-[#08295b]/15 text-[#08295b] hover:bg-[#08295b]/20"
                 : "bg-white/10 border-white/15 text-zinc-200 hover:text-white hover:bg-white/20"
             }`}
             aria-label="Instagram"
@@ -113,7 +113,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className={`w-8 h-8 md:w-9 md:h-9 rounded-full border backdrop-blur-md flex items-center justify-center transition-all duration-300 shadow-sm ${
               isPastHero
-                ? "bg-[#1C1B1F]/10 border-[#1C1B1F]/15 text-[#1C1B1F] hover:bg-[#1C1B1F]/20"
+                ? "bg-[#08295b]/10 border-[#08295b]/15 text-[#08295b] hover:bg-[#08295b]/20"
                 : "bg-white/10 border-white/15 text-zinc-200 hover:text-white hover:bg-white/20"
             }`}
             aria-label="YouTube"
@@ -128,7 +128,7 @@ export default function Navbar() {
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className={`lg:hidden p-2 transition-colors ${
-            isPastHero ? "text-[#1C1B1F]" : "text-zinc-300 hover:text-white drop-shadow-md"
+            isPastHero ? "text-[#08295b]" : "text-zinc-300 hover:text-white drop-shadow-md"
           }`}
           aria-label="Toggle Menu"
         >
@@ -139,25 +139,25 @@ export default function Navbar() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden mt-3 bg-zinc-900/95 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 space-y-4 text-white shadow-2xl">
-          <a href="#" className="block text-sm font-semibold hover:text-[#5680e9]">
+          <a href="#" className="block text-sm font-semibold hover:text-[#2196f3]">
             Home
           </a>
-          <a href="#services" className="block text-sm font-semibold hover:text-[#5680e9]">
+          <a href="#services" className="block text-sm font-semibold hover:text-[#2196f3]">
             Services
           </a>
-          <a href="#master-brand" className="block text-sm font-semibold hover:text-[#5680e9]">
+          <a href="#master-brand" className="block text-sm font-semibold hover:text-[#2196f3]">
             Platform
           </a>
-          <a href="#partners" className="block text-sm font-semibold hover:text-[#5680e9]">
+          <a href="#partners" className="block text-sm font-semibold hover:text-[#2196f3]">
             Why Us
           </a>
-          <a href="#proof-of-work" className="block text-sm font-semibold hover:text-[#5680e9]">
+          <a href="#proof-of-work" className="block text-sm font-semibold hover:text-[#2196f3]">
             Experience
           </a>
-          <a href="#faq" className="block text-sm font-semibold hover:text-[#5680e9]">
+          <a href="#faq" className="block text-sm font-semibold hover:text-[#2196f3]">
             How It Works
           </a>
-          <a href="#contact" className="block text-sm font-semibold hover:text-[#5680e9]">
+          <a href="#contact" className="block text-sm font-semibold hover:text-[#2196f3]">
             Contact
           </a>
 

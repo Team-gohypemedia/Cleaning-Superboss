@@ -163,7 +163,7 @@ export default function TestimonialBanner() {
   const activeReview = reviews[currentIndex];
 
   return (
-    <section id="proof-of-work" className="relative w-full overflow-visible py-4 bg-[#FAF6F0]">
+    <section id="proof-of-work" className="relative w-full overflow-visible py-4 bg-[#f8fbfe]">
       {/* Absolute SVG ClipPath definition stretching responsively */}
       <svg className="absolute w-0 h-0" aria-hidden="true">
         <defs>
@@ -180,7 +180,7 @@ export default function TestimonialBanner() {
       {/* Main Clipped Container */}
       <div
         ref={containerRef}
-        className="w-full h-[460px] xs:h-[500px] sm:h-[560px] md:h-[640px] lg:h-[700px] relative overflow-hidden bg-zinc-950 select-none"
+        className="w-full h-[460px] xs:h-[500px] sm:h-[560px] md:h-[640px] lg:h-[700px] relative overflow-hidden bg-[#08295b] select-none"
         style={{ clipPath: "url(#banner-clip)" }}
       >
         {/* Parallax Background Image */}
@@ -216,7 +216,7 @@ export default function TestimonialBanner() {
                 className="space-y-4 sm:space-y-6 w-full"
               >
                 {/* Rating Stars Badge */}
-                <div className="flex items-center justify-center gap-1.5 text-[#5ab9ea] text-sm sm:text-base font-bold tracking-widest uppercase">
+                <div className="flex items-center justify-center gap-1.5 text-[#2196f3] text-sm sm:text-base font-bold tracking-widest uppercase">
                   <span>★</span>
                   <span>★</span>
                   <span>★</span>
@@ -264,7 +264,7 @@ export default function TestimonialBanner() {
                   aria-label={`Go to review ${idx + 1}`}
                   className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                     currentIndex === idx
-                      ? "w-8 bg-[#5680e9]"
+                      ? "w-8 bg-[#2196f3]"
                       : "w-2 bg-white/30 hover:bg-white/50"
                   }`}
                 />

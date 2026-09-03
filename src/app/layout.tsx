@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light">
-      <body className={`${inter.className} bg-[#FAF6F0] text-[#1C1B1F] antialiased`}>
+      <body className={`${inter.className} bg-[#f8fbfe] text-[#08295b] antialiased`}>
         <SmoothScroll>
           <Navbar />
           <main>{children}</main>

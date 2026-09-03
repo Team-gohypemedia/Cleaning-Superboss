@@ -51,14 +51,14 @@ const services = [
 
 export default function ServicesHoverModalSection() {
   return (
-    <section id="services" className="w-full bg-[#1C1B1F] text-[#FAF6F0] py-20 md:py-32 border-t border-white/10 select-none">
+    <section id="services" className="w-full bg-[#08295b] text-[#f8fbfe] py-20 md:py-32 border-t border-white/10 select-none">
       <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 md:px-10 lg:px-14 xl:px-16">
         {/* Header */}
         <div className="flex flex-col lg:flex-row items-center text-center lg:items-end justify-between gap-6 mb-14 lg:mb-16">
           <div className="flex flex-col items-center lg:items-start">
             <Badge
               variant="outline"
-              className="w-fit h-auto mb-6 border-[#5680e9] text-[#5680e9] text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full bg-transparent mx-auto lg:mx-0"
+              className="w-fit h-auto mb-6 border-[#2196f3] text-[#2196f3] text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full bg-transparent mx-auto lg:mx-0"
             >
               Our Services
             </Badge>
@@ -67,7 +67,7 @@ export default function ServicesHoverModalSection() {
               <UnderlineToBackground>Precision.</UnderlineToBackground>
             </h2>
           </div>
-          <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-[480px] leading-relaxed text-center lg:text-right">
+          <p className="text-sm sm:text-base md:text-lg text-[#e3f2fd]/80 max-w-[480px] leading-relaxed text-center lg:text-right">
             Interactive service tiers powered by smart technology. Every service includes instant online booking and transparent pricing.
           </p>
         </div>
@@ -81,8 +81,8 @@ export default function ServicesHoverModalSection() {
         <div className="flex justify-center">
           <IconicButton
             href="#contact"
-            className="w-fit sm:w-auto bg-[#5680e9] text-white hover:bg-[#466fd9]"
-            iconWrapperClassName="bg-white text-[#5680e9] group-hover:bg-white"
+            className="w-fit sm:w-auto bg-[#0d47a1] text-white hover:bg-[#2196f3]"
+            iconWrapperClassName="bg-white text-[#0d47a1] group-hover:bg-white"
           >
             BOOK YOUR CLEANING TODAY
           </IconicButton>

@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const TOTAL_FRAMES = 240;
 const FRAME_PATH = (index: number) =>
-  `/cleaner_kitchen_frames_webp/frame_${String(index).padStart(5, "0")}.webp`;
+  `/cleaner_home_frames_webp/frame_${String(index).padStart(5, "0")}.webp`;
 
 const PHRASES = [
   {
@@ -92,6 +92,9 @@ export default function HeroMachineScroll() {
       img.src = FRAME_PATH(i);
       if (i === 1) {
         img.onload = () => drawFrame(0);
+        if (img.complete) {
+          drawFrame(0);
+        }
       }
       loadedImages.push(img);
     }
@@ -164,9 +167,9 @@ export default function HeroMachineScroll() {
                     el.style.opacity = "1";
                     el.style.textShadow = "none";
                   } else if (cIdx === activeCharIdx) {
-                    el.style.color = "#5680e9"; // Primary Vibrant Blue (#5680e9)
+                    el.style.color = "#2196f3"; // Vibrant Sky Blue (#2196f3)
                     el.style.opacity = "1";
-                    el.style.textShadow = "0 0 24px rgba(86, 128, 233, 0.95)";
+                    el.style.textShadow = "0 0 24px rgba(33, 150, 243, 0.95)";
                   } else {
                     // Hide upcoming unread characters completely until scroll reaches them
                     el.style.color = "transparent";
@@ -307,7 +310,7 @@ export default function HeroMachineScroll() {
           <div className="flex items-center gap-3">
             <a
               href="#contact"
-              className="px-5 py-2.5 rounded-full bg-[#5680e9] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#466fd9] transition-all shadow-lg hover:shadow-[#5680e9]/30 active:scale-95"
+              className="px-5 py-2.5 rounded-full bg-[#0d47a1] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#2196f3] transition-all shadow-lg hover:shadow-[#2196f3]/30 active:scale-95"
             >
               Get a Free Quote
             </a>
