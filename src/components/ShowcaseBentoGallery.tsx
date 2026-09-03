@@ -14,10 +14,10 @@ const mediaItems = [
   },
   {
     id: 2,
-    type: "image",
-    title: "Corporate Offices & HQs",
-    desc: "High-productivity commercial environments maintained to pristine hygiene standards.",
-    url: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop",
+    type: "video",
+    title: "Your Space. Our Standard.",
+    desc: "Premium professional cleaning for homes and businesses across Australia, California & London.",
+    url: "/cleaning_superboss_showcase.mp4",
     span: "col-span-2 row-span-2",
   },
   {
@@ -67,8 +67,8 @@ export default function ShowcaseBentoGallery() {
     <section id="proof-of-work" className="w-full bg-[#f8fbfe] py-16 md:py-24 border-t border-[#d0e4f7]">
       <InteractiveBentoGallery
         mediaItems={mediaItems}
-        title="The Premium Experience"
-        description="“More than cleaning. We deliver a better way to live and work.” Transforming modern homes, luxury apartments, offices, and commercial spaces."
+        title="Our Work Speaks for Itself"
+        description="Transforming Australian homes, apartments, Airbnb rentals, and commercial spaces with hotel-grade cleaning standards."
       />
     </section>
   );

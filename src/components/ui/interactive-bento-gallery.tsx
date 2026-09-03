@@ -97,6 +97,7 @@ const MediaItem = ({ item, className, onClick }: { item: MediaItemType, classNam
                     ref={videoRef}
                     className="w-full h-full object-cover"
                     onClick={onClick}
+                    autoPlay
                     playsInline
                     muted
                     loop

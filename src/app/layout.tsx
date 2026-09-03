@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Cleaning Superboss | Premium Technology-Driven Cleaning Platform",
+  title: "Cleaning Superboss | Professional Home & Commercial Cleaning Australia",
   description:
-    "Premium cleaning services powered by smart technology, seamless booking and trusted cleaning professionals.",
+    "Professional cleaning services across Australia. Home cleaning, deep cleaning, bond cleaning, Airbnb turnovers & commercial cleaning. Police checked, insured cleaners. Book online in 60 seconds.",
 };
 
 export default function RootLayout({

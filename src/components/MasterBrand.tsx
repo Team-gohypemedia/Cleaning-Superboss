@@ -276,24 +276,24 @@ function SingleChoreographyCanvas({ progress, activeIndex }: { progress: number;
 
 const content = [
   {
-    title: "Online Booking & Automated Quotes",
+    title: "1. Instant Upfront Pricing",
     description:
-      "Instant quoting engine calculates transparent, real-time pricing based on your property type and square footage. Book one-time or recurring cleanings in under 60 seconds.",
+      "Select your property size or hours and get crystal-clear pricing upfront. No hidden charges, no surprise fees, and no waiting for manual callbacks.",
   },
   {
-    title: "Customer Dashboard & Multi-Site Control",
+    title: "2. 60-Second Online Booking",
     description:
-      "One intuitive dashboard for modern homes, luxury apartments, Airbnb turnovers, and enterprise offices. Manage schedules, custom cleaning instructions, and past service logs.",
+      "Choose your preferred day and time slot with instant confirmation. Customise specific cleaning tasks, entry instructions, or special requests in seconds.",
   },
   {
-    title: "Cleaner Management & Trusted Pros",
+    title: "3. Police-Checked & Insured Cleaners",
     description:
-      "100% vetted, background-checked, and insured professionals equipped with standardized hotel-grade checklists and digital job workflows.",
+      "Every cleaner is fully insured, rigorously background-checked, and equipped with professional-grade supplies and standardized hotel-grade checklists.",
   },
   {
-    title: "Live Notifications, Payments & Reviews",
+    title: "4. Spotless Guarantee & Live Updates",
     description:
-      "Real-time SMS/email status updates from dispatch to completion, automated secure contactless payments, digital inspection reports, and verified customer feedback.",
+      "Get real-time SMS arrival alerts, contactless secure payment upon completion, and our 100% Spotless Satisfaction Guarantee — free reclean if not perfect.",
   },
 ];
 
@@ -324,18 +324,18 @@ export default function MasterBrand() {
               variant="outline"
               className="w-fit h-auto mb-4 border-[#08295b]/15 text-[#08295b]/70 text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full bg-transparent"
             >
-              Technology Platform
+              How It Works
             </Badge>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight max-w-[650px] text-[#08295b] leading-tight">
-              One Smart <UnderlineToBackground>Platform</UnderlineToBackground>
+              Effortless <UnderlineToBackground>Booking.</UnderlineToBackground>
             </h2>
             <p className="text-[#08295b]/80 text-sm sm:text-base md:text-lg italic mt-3 max-w-[600px]">
-              One smart platform. Every cleaning need. More than cleaning — we deliver a better way to live and work.
+              Simple 4-step process. Reliable professional cleaners. Exceptional results guaranteed every time.
             </p>
           </div>
 
           <p className="text-[#08295b]/70 max-w-[500px] text-sm sm:text-base leading-relaxed text-left lg:text-left lg:pt-2 font-light">
-            Cleaning Superboss is more than a traditional cleaning company. We unify automated instant quotes, online booking, cleaner dispatch telemetry, customer dashboards, notifications, and payments into one seamless ecosystem.
+            Cleaning Superboss delivers hotel-grade cleanliness across Australian homes, apartments, Airbnb rentals, and commercial spaces with upfront prices and vetted local cleaning pros.
           </p>
         </motion.div>
 
@@ -362,7 +362,7 @@ export default function MasterBrand() {
             className="w-fit sm:w-auto bg-[#0d47a1] text-white hover:bg-[#2196f3]"
             iconWrapperClassName="bg-white text-[#0d47a1] group-hover:bg-white"
           >
-            GET A FREE QUOTE
+            BOOK YOUR CLEAN NOW
           </IconicButton>
         </motion.div>
       </div>

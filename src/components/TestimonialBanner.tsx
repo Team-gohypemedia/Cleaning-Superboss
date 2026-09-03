@@ -1,285 +1,152 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import React from "react";
+import Link from "next/link";
+import { motion } from "motion/react";
+import { TestimonialsColumn, TestimonialItem } from "@/components/ui/testimonials-columns-1";
+import { Star, ShieldCheck, ArrowRight } from "lucide-react";
 
-const reviews = [
+const testimonials: TestimonialItem[] = [
   {
-    id: 1,
-    rating: "5.0 RATED · BEFORE & AFTER VERIFIED",
-    quote:
-      "“Cleaning Superboss completely transformed our space. The seamless online booking, automated quote accuracy, and spotless attention to detail set a whole new standard for modern cleaning.”",
-    author: "Sarah Jenkins",
-    role: "Luxury Homeowner & Airbnb Superhost · Verified Client",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop",
+    text: "Cleaning Superboss has been a game-changer for our busy household. Our cleaner arrives on the dot every alternate Tuesday, meticulously details the bathrooms and kitchen, and leaves the whole place smelling fresh.",
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop",
+    name: "Sarah Jenkins",
+    role: "Fortnightly Home Clean",
+    location: "Bondi, Sydney NSW",
+    rating: 5,
   },
   {
-    id: 2,
-    rating: "5.0 RATED · COMMERCIAL CONTRACT",
-    quote:
-      "“Managing 4 floors of corporate office space used to be a logistics headache. Cleaning Superboss automated our recurring commercial cleaning with flawless consistency and real-time reports.”",
-    author: "Marcus Vance",
-    role: "Director of Facilities, Nexus Tech Hub · Corporate Client",
-    image:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop",
+    text: "Booked an end-of-lease vacate clean for our 2-bed apartment. The property manager was blown away by the oven and shower glass. Full bond returned in 48 hours without a single question.",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
+    name: "Marcus Vance",
+    role: "100% Bond Back Clean",
+    location: "South Yarra, Melbourne VIC",
+    rating: 5,
   },
   {
-    id: 3,
-    rating: "5.0 RATED · ARCHITECTURAL DEEP CLEAN",
-    quote:
-      "“The precision and care their team brings to designer fixtures, luxury hardwood, and architectural windows is unmatched. Truly a white-glove, 5-star experience every single time.”",
-    author: "Elena Rostova",
-    role: "Penthouse Resident & Interior Designer · Verified Client",
-    image:
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1600&auto=format&fit=crop",
+    text: "Managing 4 luxury short-stay apartments requires razor-sharp turnaround times. Cleaning Superboss handles linen changes, restocks guest toiletries, and consistently earns us 5-star cleanliness ratings.",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop",
+    name: "Elena Rostova",
+    role: "Airbnb Superhost Portfolio",
+    location: "Surfers Paradise, Gold Coast",
+    rating: 5,
   },
   {
-    id: 4,
-    rating: "5.0 RATED · HOSPITALITY TURNOVER",
-    quote:
-      "“Turnaround speed between VIP guest check-ins is critical for our properties. Cleaning Superboss never misses a beat—our guest satisfaction ratings have climbed to an all-time high.”",
-    author: "David Chen",
-    role: "Boutique Hotel Operator & Superhost Portfolio · Verified Client",
-    image:
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1600&auto=format&fit=crop",
+    text: "Their California dispatch team is top notch. Clear upfront pricing, police-checked cleaners, and immaculate attention to detail. We now recommend them to all our incoming and outgoing tenants.",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop",
+    name: "David Sterling",
+    role: "Residential Property Manager",
+    location: "Los Angeles, California",
+    rating: 5,
   },
   {
-    id: 5,
-    rating: "5.0 RATED · RESIDENTIAL ECO-CLEAN",
-    quote:
-      "“From their instant 60-second online booking to the vetted cleaning professionals who arrived on time with eco-friendly products, everything about this platform is top tier.”",
-    author: "Amanda Miller",
-    role: "Residential Homeowner · Regular Bi-Weekly Client",
-    image:
-      "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=1600&auto=format&fit=crop",
+    text: "Outstanding standard of clean. They scrubbed baseboards, exhaust fans, and detailed behind appliances that hadn't been touched in years. Truly living up to the Superboss name!",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop",
+    name: "Charlotte Higgins",
+    role: "Deep Spring Cleaning",
+    location: "Kensington, London UK",
+    rating: 5,
+  },
+  {
+    text: "We contracted Cleaning Superboss for our 40-desk office space. Coming into a sanitised, fresh office every Wednesday and Friday morning has elevated our team morale. Very reliable team.",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop",
+    name: "Liam O'Donnell",
+    role: "Commercial Office Client",
+    location: "Brisbane CBD, QLD",
+    rating: 5,
+  },
+  {
+    text: "With long hospital shifts, I needed cleaners I could trust blindly. All staff are police-checked and insured, and the online booking took less than a minute. Cannot recommend them enough.",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop",
+    name: "Dr. Priya Sharma",
+    role: "Weekly Domestic Clean",
+    location: "Subiaco, Perth WA",
+    rating: 5,
+  },
+  {
+    text: "After a major kitchen renovation, the fine drywall dust was everywhere. Their team brought industrial HEPA vacuums and detailed every drawer, track, and fixture. Outstanding service.",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop",
+    name: "Thomas Wright",
+    role: "Post-Renovation Clean",
+    location: "San Francisco, California",
+    rating: 5,
+  },
+  {
+    text: "From booking on their slick site to the flawless finish in my townhouse, everything was effortless. The cleaners are respectful, thorough, and use premium eco-safe products.",
+    image: "https://images.unsplash.com/photo-1548142813-c348350df52b?q=80&w=200&auto=format&fit=crop",
+    name: "Sophie Montgomery",
+    role: "Fortnightly Home Clean",
+    location: "Westminster, London UK",
+    rating: 5,
   },
 ];
 
+const firstColumn = testimonials.slice(0, 3);
+const secondColumn = testimonials.slice(3, 6);
+const thirdColumn = testimonials.slice(6, 9);
+
 export default function TestimonialBanner() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const bgRef = useRef<HTMLImageElement>(null);
-  const pathRef = useRef<SVGPathElement>(null);
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [scale, setScale] = useState({ x: 1, y: 1 });
-
-  // Curved Path Shape
-  const dCurved =
-    "M -0.5,-0.5 L 221.69,0.03 A 27.71,27.71 0 0 1 242.23,9.21 L 261.77,30.91 A 27.64,27.64 0 0 0 282.31,40.06 L 1157.69,40.06 A 27.64,27.64 0 0 0 1178.23,30.91 L 1197.77,9.21 A 27.71,27.71 0 0 1 1218.31,0.03 L 1440.5,-0.5 L 1440.5,1285.5 L 1218.31,1285.03 A 27.71,27.71 0 0 1 1197.77,1275.85 L 1178.23,1254.15 A 27.64,27.64 0 0 0 1157.69,1245 L 282.31,1245 A 27.64,27.64 0 0 0 261.77,1254.15 L 242.23,1275.85 A 27.71,27.71 0 0 1 221.69,1285.03 L -0.5,1285.5 L -0.5,-0.5";
-
-  // Flat Straight Path Shape
-  const dStraight =
-    "M -0.5,-0.5 L 221.69,-0.5 A 27.71,27.71 0 0 1 221.69,-0.5 L 221.69,-0.5 A 27.64,27.64 0 0 0 221.69,-0.5 L 1218.31,-0.5 A 27.64,27.64 0 0 0 1218.31,-0.5 L 1218.31,-0.5 A 27.71,27.71 0 0 1 1218.31,-0.5 L 1440.5,-0.5 L 1440.5,1285.5 L 1218.31,1285.5 A 27.71,27.71 0 0 1 1218.31,1285.5 L 1218.31,1285.5 A 27.64,27.64 0 0 0 1218.31,1285.5 L 221.69,1285.5 A 27.64,27.64 0 0 0 221.69,1285.5 L 221.69,1285.5 A 27.71,27.71 0 0 1 221.69,1285.5 L -0.5,1285.5 L -0.5,-0.5";
-
-  // Auto-rotate / shuffle reviews every 5 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % reviews.length);
-    }, 5500);
-    return () => clearInterval(timer);
-  }, []);
-
-  // Handle responsive clip-path scaling
-  useEffect(() => {
-    const handleResize = () => {
-      const container = containerRef.current;
-      if (!container) return;
-      setScale({
-        x: container.offsetWidth / 1440,
-        y: container.offsetHeight / 1285,
-      });
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // GSAP ScrollTrigger for Parallax and Path Morphing (Without hiding text)
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const container = containerRef.current;
-    const bg = bgRef.current;
-    const path = pathRef.current;
-
-    if (!container) return;
-
-    const ctx = gsap.context(() => {
-      // 1. Parallax background image scroll
-      if (bg) {
-        gsap.fromTo(
-          bg,
-          { yPercent: -15, scale: 1.1 },
-          {
-            yPercent: 15,
-            ease: "none",
-            scrollTrigger: {
-              trigger: container,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-            },
-          }
-        );
-      }
-
-      // 2. SVG Path Morphing (curved -> flat -> curved)
-      if (path) {
-        const morphTimeline = gsap.timeline({
-          scrollTrigger: {
-            trigger: container,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-
-        morphTimeline
-          .fromTo(
-            path,
-            { attr: { d: dCurved } },
-            { attr: { d: dStraight }, duration: 0.5, ease: "power1.inOut" }
-          )
-          .to(path, { attr: { d: dCurved }, duration: 0.5, ease: "power1.inOut" });
-      }
-    }, container);
-
-    return () => ctx.revert();
-  }, []);
-
-  const nextReview = () => {
-    setCurrentIndex((prev) => (prev + 1) % reviews.length);
-  };
-
-  const prevReview = () => {
-    setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
-  };
-
-  const activeReview = reviews[currentIndex];
-
   return (
-    <section id="proof-of-work" className="relative w-full overflow-visible py-4 bg-[#f8fbfe]">
-      {/* Absolute SVG ClipPath definition stretching responsively */}
-      <svg className="absolute w-0 h-0" aria-hidden="true">
-        <defs>
-          <clipPath id="banner-clip" clipPathUnits="userSpaceOnUse">
-            <path
-              ref={pathRef}
-              transform={`scale(${scale.x}, ${scale.y})`}
-              d={dCurved}
-            />
-          </clipPath>
-        </defs>
-      </svg>
+    <section id="proof-of-work" className="bg-[#f8fbfe] py-20 sm:py-28 relative overflow-hidden border-t border-[#d0e4f7]">
+      
+      {/* Background ambient lighting accents */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-br from-[#2196f3]/10 via-[#0d47a1]/5 to-transparent blur-[160px] pointer-events-none -z-0" />
 
-      {/* Main Clipped Container */}
-      <div
-        ref={containerRef}
-        className="w-full h-[460px] xs:h-[500px] sm:h-[560px] md:h-[640px] lg:h-[700px] relative overflow-hidden bg-[#08295b] select-none"
-        style={{ clipPath: "url(#banner-clip)" }}
-      >
-        {/* Parallax Background Image */}
-        <img
-          ref={bgRef}
-          src={activeReview.image}
-          alt="Cleaning Superboss client space"
-          className="absolute inset-0 w-full h-[130%] object-cover opacity-35 transition-opacity duration-700"
-        />
-
-        {/* Ambient Dark Overlay for contrast */}
-        <div className="absolute inset-0 bg-black/65 z-10" />
-
-        {/* Floating gridlines container inside the banner */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none z-15">
-          <div className="w-full h-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border-l border-white/30">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} className="border-r border-white/30 h-full relative" />
-            ))}
-          </div>
-        </div>
-
-        {/* Testimonial Content: Always fully visible, smoothly transitions on shuffle */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 xs:px-6 sm:px-12 md:px-24 z-20">
-          <div className="max-w-[950px] w-full min-h-[260px] sm:min-h-[280px] flex flex-col items-center justify-center relative">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeReview.id}
-                initial={{ opacity: 0, y: 15, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -15, scale: 0.98 }}
-                transition={{ duration: 0.45, ease: "easeOut" }}
-                className="space-y-4 sm:space-y-6 w-full"
-              >
-                {/* Rating Stars Badge */}
-                <div className="flex items-center justify-center gap-1.5 text-[#2196f3] text-sm sm:text-base font-bold tracking-widest uppercase">
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span className="text-white/80 text-xs sm:text-sm font-semibold ml-2">
-                    {activeReview.rating}
-                  </span>
-                </div>
-
-                {/* Quote Text */}
-                <p className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white leading-relaxed sm:leading-snug tracking-tight">
-                  {activeReview.quote}
-                </p>
-
-                {/* Author Attribution */}
-                <div className="space-y-0.5 sm:space-y-1 pt-2">
-                  <span className="block text-xs sm:text-sm font-bold text-white tracking-widest uppercase">
-                    {activeReview.author}
-                  </span>
-                  <span className="block text-[10px] sm:text-xs font-semibold text-white/60 tracking-wider">
-                    {activeReview.role}
-                  </span>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+      <div className="max-w-[1360px] z-10 mx-auto px-4 sm:px-6 md:px-10 lg:px-12 relative">
+        
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center justify-center max-w-2xl mx-auto text-center space-y-4"
+        >
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#e3f2fd] border border-[#d0e4f7] text-[#0d47a1] text-xs font-mono font-bold uppercase tracking-widest">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#2196f3]" />
+            Verified Customer Reviews
           </div>
 
-          {/* Interactive Navigation Dots & Arrows */}
-          <div className="flex items-center justify-center gap-4 mt-6 sm:mt-8 z-30">
-            <button
-              onClick={prevReview}
-              aria-label="Previous review"
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white transition-all duration-200 active:scale-95 cursor-pointer backdrop-blur-md"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#08295b]">
+            Loved by Thousands Across Australia, California &amp; London
+          </h2>
 
-            {/* Pagination Dots */}
-            <div className="flex items-center gap-2">
-              {reviews.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentIndex(idx)}
-                  aria-label={`Go to review ${idx + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                    currentIndex === idx
-                      ? "w-8 bg-[#2196f3]"
-                      : "w-2 bg-white/30 hover:bg-white/50"
-                  }`}
-                />
+          <div className="flex items-center gap-2 text-xs sm:text-sm text-[#08295b]/70 font-medium">
+            <div className="flex text-amber-400">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-current" />
               ))}
             </div>
-
-            <button
-              onClick={nextReview}
-              aria-label="Next review"
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white transition-all duration-200 active:scale-95 cursor-pointer backdrop-blur-md"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
+            <span className="font-bold text-[#08295b]">4.9 / 5.0 Google Rating</span>
+            <span className="text-[#08295b]/40">·</span>
+            <span>Based on 1,200+ verified customer cleans</span>
           </div>
+        </motion.div>
+
+        {/* 3-Column Infinite Vertical Scrolling Carousel */}
+        <div className="flex justify-center gap-6 mt-12 [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)] max-h-[680px] overflow-hidden">
+          <TestimonialsColumn testimonials={firstColumn} duration={16} />
+          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={21} />
+          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={18} />
         </div>
+
+        {/* Bottom CTA Row */}
+        <div className="mt-12 text-center flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link
+            href="/book"
+            className="px-8 py-3.5 rounded-lg bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md transition-all flex items-center gap-2"
+          >
+            <span>Book Your Clean in 60 Seconds</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+          <a
+            href="tel:+61460849843"
+            className="px-6 py-3.5 rounded-lg bg-white border border-[#d0e4f7] hover:bg-[#f0f7fe] text-[#08295b] text-xs sm:text-sm font-bold uppercase tracking-wider transition-all"
+          >
+            Call +61 460 849 843
+          </a>
+        </div>
+
       </div>
     </section>
   );

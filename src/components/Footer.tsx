@@ -28,15 +28,14 @@ function YoutubeIcon(props: React.ComponentProps<"svg">) {
 }
 
 const marqueeText =
-  "SMART CLEANING TECHNOLOGY · INSTANT AUTOMATED QUOTES · 100% SPOTLESS GUARANTEE · 5-STAR RATED CLEANERS · SERVING LOCALLY & EXPANDING GLOBALLY";
+  "PROFESSIONAL HOME CLEANING · DEEP CLEANING · BOND CLEANING · AIRBNB TURNOVERS · COMMERCIAL CLEANING · 100% SPOTLESS GUARANTEE · POLICE CHECKED & INSURED";
 
 const capabilitiesLinks = [
-  { label: "RESIDENTIAL CLEANING", href: "#services" },
-  { label: "DEEP CLEANING", href: "#services" },
-  { label: "OFFICE & COMMERCIAL", href: "#services" },
-  { label: "AIRBNB TURNOVERS", href: "#services" },
-  { label: "WINDOW CLEANING", href: "#services" },
-  { label: "CARPET & UPHOLSTERY", href: "#services" },
+  { label: "HOME CLEANING", href: "/services/home" },
+  { label: "DEEP CLEANING", href: "/services/deep" },
+  { label: "BOND CLEANING (VACATE)", href: "/services/bond" },
+  { label: "AIRBNB CLEANING", href: "/services/airbnb" },
+  { label: "COMMERCIAL CLEANING", href: "/services/commercial" },
 ] as const;
 
 function MarqueeStrip() {
@@ -80,11 +79,11 @@ export default function Footer() {
         {/* Background Soft Glow */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-t from-[#0d47a1]/10 via-transparent to-transparent blur-[160px] pointer-events-none z-0" />
 
-        <div className="w-full px-6 md:px-12 2xl:px-24 mx-auto relative z-10">
-          <div className="grid grid-cols-2 gap-8 mb-8 relative z-10 md:grid-cols-12">
+        <div className="w-full px-4 sm:px-6 md:px-12 2xl:px-24 mx-auto relative z-10 max-w-full overflow-hidden">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 mb-8 relative z-10">
             
             {/* Column 1: Brand Logo & Short Desc */}
-            <div className="col-span-2 md:col-span-3">
+            <div className="col-span-1 sm:col-span-2 md:col-span-3">
               <Link href="/" className="inline-block mb-3 hover:opacity-90 transition-opacity">
                 <div className="h-12 sm:h-14 md:h-16 flex items-center justify-start">
                   <img
@@ -95,14 +94,19 @@ export default function Footer() {
                 </div>
               </Link>
               <p className="text-xs text-[#08295b]/70 leading-relaxed pr-4 font-light mt-1">
-                Cleaning Superboss is the premier technology-driven cleaning company and platform. Elevating residential living, corporate offices, and hospitality turnovers through smart technology and trusted professionals.
+                Cleaning Superboss Ltd — registered in Australia, California &amp; London. Providing hotel-grade residential, bond, and commercial cleaning with upfront pricing and police-checked cleaners nationwide.
               </p>
+              <div className="mt-3 pt-3 border-t border-[#d0e4f7]/80 space-y-1 text-[11px] text-[#08295b]/80 font-medium">
+                <div><strong>ABN:</strong> 48 642 918 203</div>
+                <div><strong>Insurance:</strong> $10M Public Liability Cover</div>
+                <div><strong>Coverage:</strong> Australia, California &amp; London</div>
+              </div>
             </div>
 
             {/* Column 2: Capabilities Links */}
             <div className="col-span-1 md:col-span-3">
               <h4 className="font-bold text-xs uppercase mb-4 tracking-wider text-[#08295b]">
-                SERVICES
+                OUR SERVICES
               </h4>
               <ul className="space-y-2.5 text-[11px] text-[#08295b]/70 tracking-wider">
                 {capabilitiesLinks.map((link) => (
@@ -121,16 +125,25 @@ export default function Footer() {
             {/* Column 3: Get Support */}
             <div className="col-span-1 md:col-span-3">
               <h4 className="font-bold text-xs uppercase mb-4 tracking-wider text-[#08295b]">
-                GET IN TOUCH
+                CONTACT US
               </h4>
 
               <div className="space-y-3.5 text-xs">
                 <div>
                   <p className="text-[9px] font-semibold uppercase tracking-wider text-[#08295b]/50">
-                    CUSTOMER CARE EMAIL
+                    DIRECT PHONE / SMS
                   </p>
                   <p className="text-xs font-semibold text-[#08295b] hover:text-[#0d47a1] transition-colors mt-0.5">
-                    <a href="mailto:hello@cleaningsuperboss.com">
+                    <a href="tel:+61460849843">+61 460 849 843</a>
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-[9px] font-semibold uppercase tracking-wider text-[#08295b]/50">
+                    CUSTOMER SUPPORT EMAIL
+                  </p>
+                  <p className="text-xs font-semibold text-[#08295b] hover:text-[#0d47a1] transition-colors mt-0.5">
+                    <a href="mailto:hello@cleaningsuperboss.com" className="break-all sm:break-normal">
                       hello@cleaningsuperboss.com
                     </a>
                   </p>
@@ -138,35 +151,26 @@ export default function Footer() {
 
                 <div>
                   <p className="text-[9px] font-semibold uppercase tracking-wider text-[#08295b]/50">
-                    BOOKING ASSISTANCE
+                    SERVICE COVERAGE
                   </p>
-                  <p className="text-xs font-semibold text-[#08295b] hover:text-[#0d47a1] transition-colors mt-0.5">
-                    <a href="tel:+18005552677">+1 (800) 555-BOSS</a>
+                  <p className="text-xs font-semibold text-[#08295b] mt-0.5">
+                    Serving Australia, California &amp; London
                   </p>
                 </div>
 
                 <div>
                   <p className="text-[9px] font-semibold uppercase tracking-wider text-[#08295b]/50">
-                    COVERAGE
+                    HOURS OF OPERATION
                   </p>
                   <p className="text-xs font-semibold text-[#08295b] mt-0.5">
-                    Serving Locally · Expanding Globally
-                  </p>
-                </div>
-
-                <div>
-                  <p className="text-[9px] font-semibold uppercase tracking-wider text-[#08295b]/50">
-                    SUPPORT HOURS
-                  </p>
-                  <p className="text-xs font-semibold text-[#08295b] mt-0.5">
-                    24/7 Digital Support & Live Dispatch
+                    Mon–Sun: 7:00 AM – 8:00 PM AEST
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Column 4: Newsletter & Social */}
-            <div className="col-span-2 md:col-span-3">
+            <div className="col-span-1 sm:col-span-2 md:col-span-3">
               <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#08295b] font-semibold leading-relaxed mb-3">
                 SUBSCRIBE FOR EXCLUSIVE OFFERS & PLATFORM UPDATES
               </p>
@@ -233,12 +237,12 @@ export default function Footer() {
           </div>
 
           {/* Bottom copyright row */}
-          <div className="mt-8 sm:mt-12 pt-4 sm:pt-6 border-t border-[#d0e4f7] flex flex-row justify-between items-center relative z-10 w-full">
-            <p className="text-[8px] sm:text-[9px] text-[#08295b]/50 uppercase tracking-widest font-medium">
-              &copy; {new Date().getFullYear()} CLEANING SUPERBOSS. ALL RIGHTS RESERVED.
+          <div className="mt-8 sm:mt-12 pt-4 sm:pt-6 border-t border-[#d0e4f7] flex flex-col sm:flex-row justify-between items-center gap-2 relative z-10 w-full">
+            <p className="text-[8px] sm:text-[9px] text-[#08295b]/60 uppercase tracking-widest font-medium">
+              &copy; {new Date().getFullYear()} CLEANING SUPERBOSS LTD · ABN 48 642 918 203. ALL RIGHTS RESERVED.
             </p>
-            <div className="text-[8px] sm:text-[9px] uppercase tracking-widest text-[#08295b]/50 font-bold">
-              THE FUTURE OF CLEANING HAS ARRIVED
+            <div className="text-[8px] sm:text-[9px] uppercase tracking-widest text-[#08295b]/60 font-bold">
+              REGISTERED IN AUSTRALIA, CALIFORNIA & LONDON
             </div>
           </div>
 

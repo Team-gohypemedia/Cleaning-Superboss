@@ -8,8 +8,8 @@ import { cn } from "@/lib/utils";
 const pillars = [
   {
     title: "Easy Online Booking",
-    subtitle: "Book in 60 seconds 24/7",
-    tag: "SMART UI",
+    subtitle: "Book in 60 seconds, anytime",
+    tag: "24/7",
     icon: (
       <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#0d47a1]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
@@ -20,9 +20,9 @@ const pillars = [
     ),
   },
   {
-    title: "Fast Automated Quotes",
-    subtitle: "Instant transparent pricing",
-    tag: "INSTANT AI",
+    title: "Upfront Pricing",
+    subtitle: "Know your price before you book",
+    tag: "TRANSPARENT",
     icon: (
       <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#0d47a1]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
@@ -31,8 +31,8 @@ const pillars = [
   },
   {
     title: "Trusted Professionals",
-    subtitle: "100% vetted & insured cleaners",
-    tag: "VERIFIED",
+    subtitle: "Police checked & fully insured",
+    tag: "POLICE CHECKED",
     icon: (
       <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#0d47a1]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -40,9 +40,9 @@ const pillars = [
     ),
   },
   {
-    title: "Quality-Focused Service",
-    subtitle: "Spotless satisfaction guarantee",
-    tag: "HOTEL-GRADE",
+    title: "Satisfaction Guarantee",
+    subtitle: "Not happy? We'll reclean for free",
+    tag: "GUARANTEED",
     icon: (
       <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#0d47a1]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
@@ -50,9 +50,9 @@ const pillars = [
     ),
   },
   {
-    title: "Local & Global Reach",
-    subtitle: "Serving locally, expanding globally",
-    tag: "EXPANDING",
+    title: "Serving All of Australia",
+    subtitle: "Available in all major cities & suburbs",
+    tag: "NATIONWIDE",
     icon: (
       <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#0d47a1]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <circle cx="12" cy="12" r="10" />
@@ -174,7 +174,7 @@ export default function LogoGrid() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Technology-powered cleaning experience engineered for modern living & enterprise workspaces
+            Trusted home & commercial cleaning across Australia — backed by international standards
           </motion.h2>
         </div>
 

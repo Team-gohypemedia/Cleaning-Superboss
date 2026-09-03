@@ -34,7 +34,7 @@ export default function RibbonSection() {
             repeat={16}
             separator="✦"
           >
-            SMART CLEANING TECHNOLOGY ✦ SEAMLESS ONLINE BOOKING ✦ TRUSTED PROFESSIONALS ✦ INSTANT AUTOMATED QUOTES ✦ SPOTLESS GUARANTEE
+            PROFESSIONAL HOME CLEANING ✦ DEEP CLEANING ✦ BOND CLEANING ✦ AIRBNB TURNOVERS ✦ COMMERCIAL CLEANING
           </InfiniteRibbon>
         </motion.div>
 
@@ -50,7 +50,7 @@ export default function RibbonSection() {
             repeat={16}
             separator="✦"
           >
-            RESIDENTIAL & COMMERCIAL ✦ 5-STAR RATED CLEANERS ✦ ECO-FRIENDLY PRECISION ✦ SERVING LOCALLY & EXPANDING GLOBALLY
+            POLICE CHECKED ✦ FULLY INSURED ✦ 100% SATISFACTION GUARANTEE ✦ SERVING ALL OF AUSTRALIA ✦ BOOK ONLINE 24/7
           </InfiniteRibbon>
         </motion.div>
       </div>

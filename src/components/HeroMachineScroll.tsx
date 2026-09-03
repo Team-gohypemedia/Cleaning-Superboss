@@ -11,19 +11,19 @@ const FRAME_PATH = (index: number) =>
 const PHRASES = [
   {
     id: 1,
-    text: "The Future of Cleaning Has Arrived.",
+    text: "Professional Cleaning. Exceptional Results.",
     startPct: 0.02,
     endPct: 0.3,
   },
   {
     id: 2,
-    text: "Premium cleaning services powered by smart technology, seamless booking & trusted professionals",
+    text: "Reliable cleaners for home, deep, bond & commercial cleaning across Australia",
     startPct: 0.35,
     endPct: 0.63,
   },
   {
     id: 3,
-    text: "Transforming luxury homes, offices & commercial spaces into spotless environments",
+    text: "Book online in 60 seconds. Upfront pricing. 100% satisfaction guaranteed",
     startPct: 0.68,
     endPct: 0.95,
   },
@@ -305,21 +305,32 @@ export default function HeroMachineScroll() {
           ))}
         </div>
 
-        {/* Bottom Bar: Action Buttons */}
-        <div className="w-full flex items-center justify-end pointer-events-auto">
-          <div className="flex items-center gap-3">
+        {/* Bottom Bar: Action Buttons + Trust Strip */}
+        <div className="w-full flex flex-col items-center gap-3 pointer-events-auto">
+          {/* Action CTAs */}
+          <div className="flex flex-wrap items-center justify-center gap-3 w-full px-4">
             <a
-              href="#contact"
-              className="px-5 py-2.5 rounded-full bg-[#0d47a1] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#2196f3] transition-all shadow-lg hover:shadow-[#2196f3]/30 active:scale-95"
+              href="/book"
+              className="px-6 py-2.5 rounded-full bg-[#0d47a1] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#2196f3] transition-all shadow-lg active:scale-95 text-center shrink-0"
             >
-              Get a Free Quote
+              Book Now
             </a>
             <a
-              href="#contact"
-              className="px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold uppercase tracking-wider hover:bg-white/20 transition-all shadow-lg active:scale-95"
+              href="tel:+61460849843"
+              className="px-6 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold uppercase tracking-wider hover:bg-white/20 transition-all shadow-lg active:scale-95 text-center shrink-0"
             >
-              Book a Cleaning
+              Call Us
             </a>
+          </div>
+          {/* Trust Strip */}
+          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[10px] sm:text-xs text-white/80 font-semibold tracking-wide text-center px-4 max-w-full">
+            <span className="inline-flex items-center gap-1">
+              <span className="text-[#2196f3]">★</span> 5.0 Rated
+            </span>
+            <span className="text-white/30 hidden xs:inline">·</span>
+            <span>Insured &amp; Police Checked</span>
+            <span className="text-white/30 hidden xs:inline">·</span>
+            <span>Serving Australia, California &amp; London</span>
           </div>
         </div>
       </div>

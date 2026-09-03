@@ -107,15 +107,17 @@ export function StickyScroll({
     };
 
     mm.add("(min-width: 1024px)", () => {
-      ScrollTrigger.create({
+      const st = ScrollTrigger.create({
         trigger: container,
-        pin: rightCard,
         start: "top top+=140px",
-        end: () => `+=${Math.max(100, container.offsetHeight - rightCard.offsetHeight)}`,
-        pinSpacing: false,
+        end: "bottom bottom-=140px",
         scrub: true,
         onUpdate: updateState,
       });
+
+      return () => {
+        st.kill();
+      };
     });
 
     return () => {
@@ -373,11 +375,11 @@ export function StickyScroll({
             })}
           </div>
 
-          {/* Right Column: GSAP Pinned Image Card Container */}
-          <div className="w-full lg:w-1/2 min-h-[260px] sm:min-h-[320px] md:min-h-[380px] lg:min-h-[420px] xl:min-h-[460px] relative">
+          {/* Right Column: Sticky Image Card Container */}
+          <div className="w-full lg:w-1/2 relative self-stretch">
             <div
               ref={rightCardRef}
-              className="w-full h-[260px] sm:h-[320px] md:h-[380px] lg:h-[420px] xl:h-[460px] overflow-visible z-20 relative"
+              className="w-full h-[260px] sm:h-[320px] md:h-[380px] lg:h-[420px] xl:h-[460px] overflow-visible z-20 sticky top-[140px]"
             >
               {renderCard ? renderCard(scrollProgress, activeCard) : null}
             </div>

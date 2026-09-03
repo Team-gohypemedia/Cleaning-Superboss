@@ -17,66 +17,62 @@ interface FaqCategories {
 const faqData: FaqCategories = {
   "How It Works": [
     {
-      question: "How does the 5-step cleaning process work?",
-      answer: "Our seamless process is designed for maximum speed and simplicity: 1. Request a Quote → 2. Get Your Price → 3. Book Online → 4. Professional Cleaning → 5. Enjoy a Spotless Space.",
+      question: "How do I book a cleaning service?",
+      answer: "Booking takes under 60 seconds! Select your service (home, deep, bond, Airbnb or commercial), pick your property size or hours, select your preferred date/time slot, and enter your details. You will receive an instant confirmation without waiting for manual quotes.",
     },
     {
-      question: "How fast do I get my price estimate?",
-      answer: "Our automated quoting engine calculates instant, transparent pricing in under 30 seconds based on your property type, square footage, and chosen service—no waiting for manual callbacks.",
+      question: "Do I need to be home during the clean?",
+      answer: "No, you don't need to be home. Simply provide lockbox or key entry instructions during booking. Our vetted, police-checked cleaners will access your property securely and lock up when finished.",
     },
     {
-      question: "Can I schedule recurring cleanings?",
-      answer: "Yes. You can select weekly, bi-weekly, or monthly recurring cleanings through your dashboard and receive exclusive membership discounts with guaranteed cleaner priority.",
+      question: "Do your cleaners bring their own equipment and supplies?",
+      answer: "Yes! All Cleaning Superboss cleaners arrive fully equipped with professional-grade vacuums, mops, microfibre cloths, and eco-friendly cleaning supplies.",
     },
     {
-      question: "How do I prepare for my cleaner's arrival?",
-      answer: "Simply provide any entry instructions or gate/lockbox codes in your online dashboard. You can be home or away—our vetted pros handle everything.",
+      question: "How long does a typical clean take?",
+      answer: "Standard home cleans usually take between 2 to 4 hours depending on the property size. Deep cleans and bond cleans can take 4 to 8 hours depending on condition and room count.",
     },
   ],
-  "Technology & Platform": [
+  "Booking & Pricing": [
     {
-      question: "What makes Cleaning Superboss a technology-driven platform?",
-      answer: "We replace outdated phone booking with an integrated platform featuring automated instant quotes, live cleaner tracking, real-time status notifications, and secure digital payments.",
+      question: "How is pricing calculated?",
+      answer: "Pricing is transparent and upfront based on your property size (bedrooms/bathrooms) or by hourly duration. No hidden fees, no quote wait times, and recurring cleans save up to $30 per visit.",
     },
     {
-      question: "Can I manage multiple properties or offices in one account?",
-      answer: "Yes. Property managers, enterprise teams, and Airbnb hosts can view, schedule, and oversee cleaning operations across multiple locations from one centralized dashboard.",
+      question: "When and how do I pay?",
+      answer: "No upfront payment is charged at booking. Payments are processed securely online once your cleaning service is completed to your satisfaction.",
     },
     {
-      question: "How do live notifications and before/after verification work?",
-      answer: "You receive real-time SMS and email alerts when your cleaner is en route, checks in at your address, and when the job is completed with verified before/after photos.",
+      question: "Can I reschedule or cancel my booking?",
+      answer: "Yes, you can cancel or reschedule for free up to 24 hours prior to your scheduled clean. Simply call or text +61 460 849 843.",
     },
   ],
   "Our Services": [
     {
-      question: "What is the difference between Residential and Deep Cleaning?",
-      answer: "Residential cleaning covers routine upkeep, dusting, vacuuming, and surface sanitization. Deep cleaning involves intense scrubbing of grout, baseboards, behind appliances, and inside ovens/refrigerators.",
+      question: "What is included in a Bond Clean (End of Lease)?",
+      answer: "Our bond clean follows a comprehensive real estate checklist designed to secure your 100% bond return. It includes inside oven, rangehood, stovetop, skirting boards, door frames, window tracks, cupboards inside/out, bathroom descaling, and deep floor sanitisation.",
     },
     {
-      question: "Do you offer commercial and office cleaning?",
-      answer: "Yes. We service corporate headquarters, co-working spaces, retail stores, and commercial facilities with customized after-hours or daytime schedules.",
+      question: "What is the difference between Home Cleaning and Deep Cleaning?",
+      answer: "Home cleaning is regular upkeep covering dusting, vacuuming, mopping, bathroom sanitisation, and kitchen wipe-down. Deep cleaning includes intensive scrub of grout, oven interior, behind appliances, and detailed surface rejuvenation.",
     },
     {
-      question: "What is included in Airbnb turnover cleaning?",
-      answer: "Our hotel-grade turnover service includes complete room sanitization, linen changing, towel staging, trash removal, restocking essentials, and guest-ready visual staging.",
-    },
-    {
-      question: "Do you provide window and carpet cleaning?",
-      answer: "Yes. We offer specialized streak-free architectural window washing and deep steam extraction for luxury carpets and upholstery.",
+      question: "Do you offer Airbnb turnovers and commercial cleaning?",
+      answer: "Yes! We specialize in fast hotel-grade Airbnb turnovers (with linen changes and guest staging) as well as regular office and commercial facility cleaning across Australia.",
     },
   ],
-  "Trust & Quality": [
+  "Trust & Guarantee": [
     {
-      question: "Are the cleaning professionals vetted and insured?",
-      answer: "Yes. 100% of our cleaners undergo extensive background checks, identity verification, in-person training, and are fully insured and bonded.",
+      question: "Are your cleaners police-checked and insured?",
+      answer: "Yes, 100%. Every single cleaner on our platform has passed a strict national police check, identity verification, and is covered by our comprehensive public liability insurance.",
     },
     {
-      question: "What is your Spotless Satisfaction Guarantee?",
-      answer: "If you are not 100% satisfied with any aspect of your service, let us know within 24 hours and we will dispatch a team to re-clean the area free of charge.",
+      question: "What is your 100% Spotless Satisfaction Guarantee?",
+      answer: "If you're ever unhappy with any area of your clean, let us know within 24 hours and we will send a team back to reclean that area completely free of charge. For bond cleans, we guarantee your bond return on our cleaning.",
     },
     {
-      question: "Are your cleaning products eco-friendly and safe?",
-      answer: "Yes. We use premium, non-toxic, eco-certified cleaning solutions that are safe for pets, children, sensitive allergies, and luxury finishes.",
+      question: "What company operates Cleaning Superboss?",
+      answer: "Cleaning Superboss Ltd is registered in Australia, California, and London, providing internationally benchmarked cleaning excellence and hotel-grade standards nationwide.",
     },
   ],
 };

@@ -4,7 +4,9 @@ import LogoGrid from "@/components/LogoGrid";
 import MasterBrand from "@/components/MasterBrand";
 import ServicesHoverModalSection from "@/components/ServicesHoverModalSection";
 import ShowcaseBentoGallery from "@/components/ShowcaseBentoGallery";
+import BeforeAfterShowcase from "@/components/BeforeAfterShowcase";
 import TestimonialBanner from "@/components/TestimonialBanner";
+import AustralianTrustAndAreas from "@/components/AustralianTrustAndAreas";
 import ContactSection from "@/components/ContactSection";
 import FaqSection from "@/components/FaqSection";
 import Footer from "@/components/Footer";
@@ -31,8 +33,14 @@ export default function Home() {
       {/* Production Output Bento Grid Gallery */}
       <ShowcaseBentoGallery />
 
+      {/* Before & After Photo Transformations */}
+      <BeforeAfterShowcase />
+
       {/* Testimonial Banner Section */}
       <TestimonialBanner />
+
+      {/* Australian Credentials, ABN, Insurance & Service Areas */}
+      <AustralianTrustAndAreas />
 
       {/* Contact Form Section */}
       <ContactSection />

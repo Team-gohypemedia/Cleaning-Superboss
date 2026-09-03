@@ -8,6 +8,7 @@ export interface ServiceItem {
   title: string;
   description: string;
   image: string;
+  href?: string;
 }
 
 interface ServicesWithAnimatedHoverModalProps {
@@ -66,11 +67,12 @@ export function ServicesWithAnimatedHoverModal({
 
       {/* Services List Rows */}
       {services.map((service, index) => (
-        <div
+        <a
           key={index}
+          href={service.href || "#contact"}
           onMouseEnter={() => setActiveItem(service)}
           onMouseLeave={() => setActiveItem(null)}
-          className="group relative flex flex-col lg:flex-row lg:items-center justify-between py-8 md:py-10 border-b border-white/10 transition-all duration-300 hover:bg-white/[0.02] px-4 md:px-8 cursor-pointer"
+          className="group relative flex flex-col lg:flex-row lg:items-center justify-between py-8 md:py-10 border-b border-white/10 transition-all duration-300 hover:bg-white/[0.02] px-4 md:px-8 cursor-pointer no-underline block"
         >
           <div className="flex items-start md:items-center gap-4 sm:gap-6 mb-3 lg:mb-0">
             <span className="text-xs font-mono font-bold text-[#2196f3] pt-1 md:pt-0 shrink-0">
@@ -85,17 +87,16 @@ export function ServicesWithAnimatedHoverModal({
             <p className="text-xs sm:text-sm text-[#e3f2fd]/70 leading-relaxed font-sans max-w-md">
               {service.description}
             </p>
-            <a
-              href="#contact"
-              className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white group-hover:text-[#2196f3] transition-colors py-2 px-3 rounded-full hover:bg-white/10 shrink-0"
+            <div
+              className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white group-hover:text-[#2196f3] transition-colors py-2 px-3 rounded-full group-hover:bg-white/10 shrink-0"
             >
-              <span>Book / Quote</span>
+              <span>View Service</span>
               <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white group-hover:bg-[#2196f3] group-hover:border-[#2196f3] group-hover:text-white transition-all duration-300 shrink-0">
                 <ArrowUpRight className="w-3.5 h-3.5 group-hover:rotate-45 transition-transform duration-300" />
               </div>
-            </a>
+            </div>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   );
