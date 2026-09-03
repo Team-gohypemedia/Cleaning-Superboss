@@ -306,7 +306,7 @@ export default function HeroMachineScroll() {
         </div>
 
         {/* Bottom Bar: Action Buttons */}
-        <div className="w-full flex items-center justify-start pointer-events-auto">
+        <div className="w-full flex items-center justify-end pointer-events-auto">
           <div className="flex items-center gap-3">
             <a
               href="#contact"
