@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 import {
   Check,
   Phone,
@@ -22,6 +21,8 @@ import {
   X,
   Mail,
   MapPin,
+  Calendar,
+  Send,
 } from "lucide-react";
 import Footer from "@/components/Footer";
 
@@ -180,6 +181,14 @@ const PERTH_FAQS = [
   },
 ];
 
+const POPULAR_PERTH_SUBURBS = [
+  "Perth CBD",
+  "Subiaco",
+  "Scarborough",
+  "Joondalup",
+  "Fremantle",
+];
+
 const MONTH_NAMES = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
@@ -190,20 +199,26 @@ const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 export default function BondPageContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  // Multi-Step Quote Form State: 1 = Form Inputs, 2 = Date Picker, 3 = Thank You
+  // Multi-Step Quote Form State: 1 = Property & Contact, 2 = Date & Add-ons, 3 = Confirmation
   const [formStep, setFormStep] = useState<1 | 2 | 3>(1);
 
   // Step 1 Fields
   const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [propertyAddress, setPropertyAddress] = useState("");
-  const [additionalInfo, setAdditionalInfo] = useState("");
+  const [email, setEmail] = useState("");
+  const [suburb, setSuburb] = useState("");
+  const [propertyType, setPropertyType] = useState("House");
+  const [bedrooms, setBedrooms] = useState("3 Bedrooms");
+  const [bathrooms, setBathrooms] = useState("2 Bathrooms");
   const [formError, setFormError] = useState("");
 
-  // Step 2 Calendar State
-  const [currentCalendarDate, setCurrentCalendarDate] = useState(() => new Date(2026, 8, 4)); // Sept 2026
-  const [selectedDates, setSelectedDates] = useState<string[]>(["2026-09-24"]);
+  // Step 2 Fields & Calendar State
+  const [addCarpetSteam, setAddCarpetSteam] = useState(true);
+  const [hasPets, setHasPets] = useState(false);
+  const [addWindowCleaning, setAddWindowCleaning] = useState(false);
+  const [additionalNotes, setAdditionalNotes] = useState("");
+  const [currentCalendarDate, setCurrentCalendarDate] = useState(() => new Date(2026, 8, 4));
+  const [selectedDate, setSelectedDate] = useState<string>("2026-09-15");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Calendar calculations
@@ -221,34 +236,27 @@ export default function BondPageContent() {
     setCurrentCalendarDate(new Date(year, month + 1, 1));
   };
 
-  const toggleDate = (dayNum: number) => {
-    const formattedDate = `${year}-${String(month + 1).padStart(2, "0")}-${String(dayNum).padStart(2, "0")}`;
-    setSelectedDates((prev) => {
-      if (prev.includes(formattedDate)) {
-        return prev.filter((d) => d !== formattedDate);
-      } else {
-        return [...prev, formattedDate];
-      }
-    });
-  };
-
-  const removeSelectedDate = (dateStr: string) => {
-    setSelectedDates((prev) => prev.filter((d) => d !== dateStr));
+  const handleSelectDate = (dayNum: number) => {
+    const formatted = `${year}-${String(month + 1).padStart(2, "0")}-${String(
+      dayNum
+    ).padStart(2, "0")}`;
+    setSelectedDate(formatted);
   };
 
   const formatPillDate = (dateStr: string) => {
+    if (!dateStr) return "Not selected";
     const [y, m, d] = dateStr.split("-").map(Number);
     const dateObj = new Date(y, m - 1, d);
     const dayName = DAY_NAMES[dateObj.getDay()];
-    const monthShort = MONTH_NAMES[m - 1].slice(0, 4);
-    return `${dayName}, ${d} ${monthShort}`;
+    const monthShort = MONTH_NAMES[m - 1].slice(0, 3);
+    return `${dayName}, ${d} ${monthShort} ${y}`;
   };
 
   // Step 1 Validation & Proceed to Step 2
-  const handleProceedToDates = (e: React.FormEvent) => {
+  const handleProceedToStepTwo = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!fullName.trim() || !email.trim() || !phone.trim() || !propertyAddress.trim()) {
-      setFormError("Please fill in all required fields marked with *");
+    if (!fullName.trim() || !phone.trim() || !suburb.trim()) {
+      setFormError("Please fill in your name, phone number, and Perth suburb.");
       return;
     }
     setFormError("");
@@ -256,7 +264,8 @@ export default function BondPageContent() {
   };
 
   // Step 2 Submission to Thank You Screen
-  const handleFinalSubmit = () => {
+  const handleFinalSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
@@ -267,11 +276,17 @@ export default function BondPageContent() {
   const handleResetForm = () => {
     setFormStep(1);
     setFullName("");
-    setEmail("");
     setPhone("");
-    setPropertyAddress("");
-    setAdditionalInfo("");
-    setSelectedDates(["2026-09-24"]);
+    setEmail("");
+    setSuburb("");
+    setPropertyType("House");
+    setBedrooms("3 Bedrooms");
+    setBathrooms("2 Bathrooms");
+    setAddCarpetSteam(true);
+    setHasPets(false);
+    setAddWindowCleaning(false);
+    setAdditionalNotes("");
+    setSelectedDate("2026-09-15");
   };
 
   const scrollToForm = () => {
@@ -297,7 +312,7 @@ export default function BondPageContent() {
         </a>
       </div>
 
-      {/* Hero Section with Reverted 2-Step Quote Form */}
+      {/* Hero Section with Dedicated Quote Enquiry Form */}
       <section className="relative w-full py-10 sm:py-16 px-4 sm:px-6 md:px-10 lg:px-14 border-b border-[#d0e4f7]">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
@@ -385,59 +400,90 @@ export default function BondPageContent() {
           <div id="quote-form" className="lg:col-span-5 scroll-mt-24">
             <div className="relative rounded-3xl bg-white border border-[#d0e4f7] shadow-xl p-6 sm:p-7 overflow-hidden transition-all">
               
-              {/* ================= STEP 1: REQUEST A QUOTE ================= */}
+              {/* Form Step Indicator */}
+              {formStep < 3 && (
+                <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#d0e4f7]/70 text-xs">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs ${
+                        formStep === 1
+                          ? "bg-[#0d47a1] text-white"
+                          : "bg-[#e3f2fd] text-[#0d47a1]"
+                      }`}
+                    >
+                      1
+                    </span>
+                    <span
+                      className={`font-bold ${
+                        formStep === 1 ? "text-[#08295b]" : "text-[#08295b]/60"
+                      }`}
+                    >
+                      Property &amp; Contact
+                    </span>
+                  </div>
+                  <div className="h-0.5 w-8 bg-[#d0e4f7]" />
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs ${
+                        formStep === 2
+                          ? "bg-[#0d47a1] text-white"
+                          : "bg-[#e3f2fd] text-[#0d47a1]/60"
+                      }`}
+                    >
+                      2
+                    </span>
+                    <span
+                      className={`font-bold ${
+                        formStep === 2 ? "text-[#08295b]" : "text-[#08295b]/60"
+                      }`}
+                    >
+                      Date &amp; Add-ons
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              {/* ================= STEP 1: PROPERTY & CONTACT (REQUEST A QUOTE) ================= */}
               {formStep === 1 && (
-                <form onSubmit={handleProceedToDates} className="space-y-4">
-                  <div className="text-center pb-2 space-y-1">
-                    <h3 className="text-2xl sm:text-3xl font-black text-[#08295b] tracking-tight">
+                <form onSubmit={handleProceedToStepTwo} className="space-y-4">
+                  <div className="text-center pb-1 space-y-0.5">
+                    <h3 className="text-xl sm:text-2xl font-black text-[#08295b] tracking-tight">
                       Request a Quote
                     </h3>
+                    <p className="text-xs text-[#08295b]/70">
+                      Perth Bond Cleaning · Fast 15-Min Response
+                    </p>
                   </div>
 
                   {formError && (
-                    <div className="p-2.5 rounded-xl bg-[#e3f2fd] border border-[#d0e4f7] text-[#0d47a1] text-xs font-semibold text-center">
+                    <div className="p-2.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold text-center">
                       {formError}
                     </div>
                   )}
 
-                  {/* Full Name */}
-                  <div className="space-y-1.5 text-left">
-                    <label className="text-xs font-bold text-[#08295b]">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Liam O'Connor"
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#d0e4f7] bg-white text-xs sm:text-sm font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/20 transition-all placeholder:text-[#08295b]/35 shadow-xs"
-                    />
-                  </div>
-
-                  {/* Email & Phone side by side */}
+                  {/* Full Name & Phone Number */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-[#08295b]">
-                        Email *
+                        Full Name *
                       </label>
                       <input
-                        type="email"
+                        type="text"
                         required
-                        placeholder="liam@example.com.au"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="e.g. Liam Smith"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
                         className="w-full px-3.5 py-2.5 rounded-xl border border-[#d0e4f7] bg-white text-xs sm:text-sm font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/20 transition-all placeholder:text-[#08295b]/35 shadow-xs"
                       />
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-[#08295b]">
-                        Phone *
+                        Phone Number *
                       </label>
                       <input
                         type="tel"
                         required
-                        placeholder="+61 460 849 843"
+                        placeholder="0400 000 000"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         className="w-full px-3.5 py-2.5 rounded-xl border border-[#d0e4f7] bg-white text-xs sm:text-sm font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/20 transition-all placeholder:text-[#08295b]/35 shadow-xs"
@@ -445,118 +491,190 @@ export default function BondPageContent() {
                     </div>
                   </div>
 
-                  {/* Property Address */}
+                  {/* Email Address */}
                   <div className="space-y-1.5 text-left">
                     <label className="text-xs font-bold text-[#08295b]">
-                      Property Address *
+                      Email Address
                     </label>
                     <input
-                      type="text"
-                      required
-                      placeholder="e.g. 142 St Georges Terrace, Perth WA 6000"
-                      value={propertyAddress}
-                      onChange={(e) => setPropertyAddress(e.target.value)}
+                      type="email"
+                      placeholder="liam@example.com.au (for tax quote & invoice)"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-[#d0e4f7] bg-white text-xs sm:text-sm font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/20 transition-all placeholder:text-[#08295b]/35 shadow-xs"
                     />
                   </div>
 
-                  {/* Additional Information */}
+                  {/* Perth Suburb / Postcode */}
                   <div className="space-y-1.5 text-left">
-                    <label className="text-xs font-bold text-[#08295b]">
-                      Additional Information
-                    </label>
-                    <textarea
-                      rows={3}
-                      placeholder="Please include any specific requirements, property manager instructions, or areas of focus"
-                      value={additionalInfo}
-                      onChange={(e) => setAdditionalInfo(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#d0e4f7] bg-white text-xs font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/20 transition-all placeholder:text-[#08295b]/40 resize-none shadow-xs"
+                    <div className="flex items-center justify-between">
+                      <label className="text-xs font-bold text-[#08295b]">
+                        Perth Suburb / Postcode *
+                      </label>
+                      <span className="text-[10px] text-[#0d47a1] font-semibold">
+                        WA Metro Area
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Subiaco 6008, Joondalup 6027, Fremantle..."
+                      value={suburb}
+                      onChange={(e) => setSuburb(e.target.value)}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#d0e4f7] bg-white text-xs sm:text-sm font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/20 transition-all placeholder:text-[#08295b]/35 shadow-xs"
                     />
+                    {/* Quick Suburb Suggestions */}
+                    <div className="flex flex-wrap gap-1 pt-1">
+                      {POPULAR_PERTH_SUBURBS.map((s) => (
+                        <button
+                          key={s}
+                          type="button"
+                          onClick={() => setSuburb(s)}
+                          className="text-[10px] px-2 py-0.5 rounded-md bg-[#e3f2fd] text-[#0d47a1] hover:bg-[#2196f3] hover:text-white transition-colors cursor-pointer"
+                        >
+                          +{s}
+                        </button>
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Submit / Next Step Button */}
+                  {/* Property Type */}
+                  <div className="space-y-1.5 text-left">
+                    <label className="text-xs font-bold text-[#08295b]">
+                      Property Type
+                    </label>
+                    <div className="grid grid-cols-4 gap-1.5">
+                      {["House", "Unit / Apt", "Townhouse", "Villa"].map((type) => (
+                        <button
+                          key={type}
+                          type="button"
+                          onClick={() => setPropertyType(type)}
+                          className={`py-1.5 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer text-center ${
+                            propertyType === type
+                              ? "bg-[#0d47a1] text-white shadow-xs"
+                              : "bg-[#f8fbfe] border border-[#d0e4f7] text-[#08295b] hover:bg-[#e3f2fd]"
+                          }`}
+                        >
+                          {type}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Bedrooms & Bathrooms */}
+                  <div className="grid grid-cols-2 gap-3 text-left">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-[#08295b]">
+                        Bedrooms
+                      </label>
+                      <select
+                        value={bedrooms}
+                        onChange={(e) => setBedrooms(e.target.value)}
+                        className="w-full px-3 py-2.5 rounded-xl border border-[#d0e4f7] bg-white text-xs sm:text-sm font-medium text-[#08295b] outline-none focus:border-[#2196f3] cursor-pointer shadow-xs"
+                      >
+                        <option value="Studio">Studio</option>
+                        <option value="1 Bedroom">1 Bedroom</option>
+                        <option value="2 Bedrooms">2 Bedrooms</option>
+                        <option value="3 Bedrooms">3 Bedrooms</option>
+                        <option value="4 Bedrooms">4 Bedrooms</option>
+                        <option value="5+ Bedrooms">5+ Bedrooms</option>
+                      </select>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-[#08295b]">
+                        Bathrooms
+                      </label>
+                      <select
+                        value={bathrooms}
+                        onChange={(e) => setBathrooms(e.target.value)}
+                        className="w-full px-3 py-2.5 rounded-xl border border-[#d0e4f7] bg-white text-xs sm:text-sm font-medium text-[#08295b] outline-none focus:border-[#2196f3] cursor-pointer shadow-xs"
+                      >
+                        <option value="1 Bathroom">1 Bathroom</option>
+                        <option value="2 Bathrooms">2 Bathrooms</option>
+                        <option value="3 Bathrooms">3 Bathrooms</option>
+                        <option value="4+ Bathrooms">4+ Bathrooms</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Next Step CTA */}
                   <div className="pt-2">
                     <button
                       type="submit"
                       className="w-full py-3.5 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#0d47a1]/25 transition-all cursor-pointer active:scale-98 flex items-center justify-center gap-2"
                     >
-                      <span>SELECT DATE (NEXT STEP)</span>
+                      <span>NEXT: DATE &amp; QUOTE OPTIONS</span>
+                      <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>
                 </form>
               )}
 
-              {/* ================= STEP 2: SELECT PREFERRED DATES ================= */}
+              {/* ================= STEP 2: DATE & ADD-ONS ================= */}
               {formStep === 2 && (
-                <div className="space-y-4">
-                  <div className="text-center space-y-0.5">
-                    <h3 className="text-2xl sm:text-3xl font-black text-[#08295b] tracking-tight">
-                      Select Preferred Dates
+                <form onSubmit={handleFinalSubmit} className="space-y-4">
+                  <div className="text-center pb-1 space-y-0.5">
+                    <h3 className="text-xl sm:text-2xl font-black text-[#08295b] tracking-tight">
+                      Preferred Cleaning Date
                     </h3>
-                    <p className="text-xs italic text-[#08295b]/60">
-                      You can choose multiple dates
+                    <p className="text-xs text-[#08295b]/70">
+                      When do you hand keys back to your Perth agent?
                     </p>
                   </div>
 
-                  {/* Custom Clean Calendar Card */}
-                  <div className="rounded-2xl border border-[#d0e4f7] bg-[#e3f2fd]/50 p-4 space-y-3">
-                    
-                    {/* Calendar Month & Navigation */}
+                  {/* Calendar Widget */}
+                  <div className="rounded-2xl border border-[#d0e4f7] bg-[#e3f2fd]/40 p-3.5 space-y-2.5">
                     <div className="flex items-center justify-between px-1">
-                      <span className="font-bold text-sm text-[#08295b]">
+                      <span className="font-bold text-xs sm:text-sm text-[#08295b]">
                         {MONTH_NAMES[month]} {year}
                       </span>
-                      <div className="flex items-center gap-1.5">
+                      <div className="flex items-center gap-1">
                         <button
                           type="button"
                           onClick={handlePrevMonth}
-                          className="w-7 h-7 rounded-full bg-white border border-[#d0e4f7] flex items-center justify-center text-[#08295b] hover:bg-[#e3f2fd] transition-all cursor-pointer shadow-xs"
+                          className="w-6 h-6 rounded-full bg-white border border-[#d0e4f7] flex items-center justify-center text-[#08295b] hover:bg-[#e3f2fd] transition-all cursor-pointer shadow-xs"
                         >
-                          <ChevronLeft className="w-4 h-4" />
+                          <ChevronLeft className="w-3.5 h-3.5" />
                         </button>
                         <button
                           type="button"
                           onClick={handleNextMonth}
-                          className="w-7 h-7 rounded-full bg-white border border-[#d0e4f7] flex items-center justify-center text-[#08295b] hover:bg-[#e3f2fd] transition-all cursor-pointer shadow-xs"
+                          className="w-6 h-6 rounded-full bg-white border border-[#d0e4f7] flex items-center justify-center text-[#08295b] hover:bg-[#e3f2fd] transition-all cursor-pointer shadow-xs"
                         >
-                          <ChevronRight className="w-4 h-4" />
+                          <ChevronRight className="w-3.5 h-3.5" />
                         </button>
                       </div>
                     </div>
 
-                    {/* Weekday Header (Mon - Sun) */}
-                    <div className="grid grid-cols-7 gap-1 text-center text-[11px] font-semibold text-[#08295b]/60">
-                      {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((d, i) => (
-                        <div key={i} className="py-1">
+                    <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-semibold text-[#08295b]/60">
+                      {["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"].map((d, i) => (
+                        <div key={i} className="py-0.5">
                           {d}
                         </div>
                       ))}
                     </div>
 
-                    {/* Day Grid */}
                     <div className="grid grid-cols-7 gap-1 text-center">
-                      {/* Blank offset days */}
                       {Array.from({ length: startOffset }).map((_, i) => (
-                        <div key={`blank-${i}`} className="h-9 w-full" />
+                        <div key={`blank-${i}`} className="h-7 w-full" />
                       ))}
 
-                      {/* Month Days */}
                       {Array.from({ length: daysInMonth }).map((_, i) => {
                         const dayNum = i + 1;
-                        const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(dayNum).padStart(2, "0")}`;
-                        const isSelected = selectedDates.includes(dateStr);
-                        const isToday = dayNum === 4 && month === 8 && year === 2026;
+                        const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(
+                          dayNum
+                        ).padStart(2, "0")}`;
+                        const isSelected = selectedDate === dateStr;
 
                         return (
                           <button
                             key={dayNum}
                             type="button"
-                            onClick={() => toggleDate(dayNum)}
-                            className={`h-9 w-full rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center ${
+                            onClick={() => handleSelectDate(dayNum)}
+                            className={`h-7 w-full rounded-md text-[11px] font-bold transition-all cursor-pointer flex items-center justify-center ${
                               isSelected
-                                ? "bg-[#0d47a1] text-white shadow-sm ring-2 ring-[#2196f3]/40"
-                                : isToday
-                                ? "bg-white text-[#0d47a1] border-2 border-[#2196f3] shadow-xs"
+                                ? "bg-[#0d47a1] text-white shadow-xs"
                                 : "bg-white text-[#08295b] hover:bg-[#e3f2fd] border border-transparent shadow-xs"
                             }`}
                           >
@@ -567,101 +685,157 @@ export default function BondPageContent() {
                     </div>
                   </div>
 
-                  {/* Selected Dates Display Box */}
-                  <div className="rounded-xl border border-[#d0e4f7] bg-white p-3 space-y-2 text-left">
-                    <span className="text-xs font-bold text-[#08295b] block">
-                      Selected Dates:
-                    </span>
-                    <div className="flex flex-wrap gap-1.5 min-h-[30px] items-center">
-                      {selectedDates.length === 0 ? (
-                        <span className="text-xs text-[#08295b]/40 italic">
-                          Click any date in the calendar above to select
-                        </span>
-                      ) : (
-                        selectedDates.map((dStr) => (
-                          <span
-                            key={dStr}
-                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#0d47a1] text-white font-bold text-xs shadow-xs"
-                          >
-                            <span>{formatPillDate(dStr)}</span>
-                            <button
-                              type="button"
-                              onClick={() => removeSelectedDate(dStr)}
-                              className="hover:text-white/70 transition-colors cursor-pointer"
-                            >
-                              <X className="w-3.5 h-3.5 stroke-[2.5]" />
-                            </button>
+                  {/* Selected Date Summary */}
+                  <div className="p-2.5 rounded-xl bg-[#f8fbfe] border border-[#d0e4f7] flex items-center justify-between text-xs">
+                    <span className="font-semibold text-[#08295b]/80">Selected Date:</span>
+                    <span className="font-bold text-[#0d47a1]">{formatPillDate(selectedDate)}</span>
+                  </div>
+
+                  {/* Add-on Options Checkboxes */}
+                  <div className="space-y-2 text-left">
+                    <label className="text-xs font-bold text-[#08295b] block">
+                      Optional Add-Ons (Recommended for Bond Return)
+                    </label>
+                    <div className="space-y-1.5">
+                      <label className="flex items-center gap-2.5 p-2 rounded-xl border border-[#d0e4f7] bg-white cursor-pointer hover:bg-[#f8fbfe]">
+                        <input
+                          type="checkbox"
+                          checked={addCarpetSteam}
+                          onChange={(e) => setAddCarpetSteam(e.target.checked)}
+                          className="w-4 h-4 rounded text-[#0d47a1] focus:ring-[#2196f3]"
+                        />
+                        <div className="text-xs">
+                          <span className="font-bold text-[#08295b]">
+                            Carpet Steam Cleaning
                           </span>
-                        ))
-                      )}
+                          <span className="text-[#08295b]/60 block text-[11px]">
+                            Hot-water extraction + official receipt for agent
+                          </span>
+                        </div>
+                      </label>
+
+                      <label className="flex items-center gap-2.5 p-2 rounded-xl border border-[#d0e4f7] bg-white cursor-pointer hover:bg-[#f8fbfe]">
+                        <input
+                          type="checkbox"
+                          checked={hasPets}
+                          onChange={(e) => setHasPets(e.target.checked)}
+                          className="w-4 h-4 rounded text-[#0d47a1] focus:ring-[#2196f3]"
+                        />
+                        <div className="text-xs">
+                          <span className="font-bold text-[#08295b]">
+                            Pet Bond / Flea Treatment Compliance
+                          </span>
+                          <span className="text-[#08295b]/60 block text-[11px]">
+                            Required for WA tenancy pet agreements
+                          </span>
+                        </div>
+                      </label>
+
+                      <label className="flex items-center gap-2.5 p-2 rounded-xl border border-[#d0e4f7] bg-white cursor-pointer hover:bg-[#f8fbfe]">
+                        <input
+                          type="checkbox"
+                          checked={addWindowCleaning}
+                          onChange={(e) => setAddWindowCleaning(e.target.checked)}
+                          className="w-4 h-4 rounded text-[#0d47a1] focus:ring-[#2196f3]"
+                        />
+                        <div className="text-xs">
+                          <span className="font-bold text-[#08295b]">
+                            External Windows &amp; Screens
+                          </span>
+                        </div>
+                      </label>
                     </div>
                   </div>
 
-                  {/* Action Buttons */}
+                  {/* Additional Notes */}
+                  <div className="space-y-1.5 text-left">
+                    <label className="text-xs font-bold text-[#08295b]">
+                      Special Requirements / Property Notes
+                    </label>
+                    <textarea
+                      rows={2}
+                      placeholder="e.g. key collection from Ray White Subiaco, furnished unit, carpeted bedrooms only..."
+                      value={additionalNotes}
+                      onChange={(e) => setAdditionalNotes(e.target.value)}
+                      className="w-full px-3 py-2 rounded-xl border border-[#d0e4f7] bg-white text-xs font-medium text-[#08295b] outline-none focus:border-[#2196f3] resize-none shadow-xs"
+                    />
+                  </div>
+
+                  {/* Buttons */}
                   <div className="space-y-2 pt-1">
                     <button
-                      type="button"
+                      type="submit"
                       disabled={isSubmitting}
-                      onClick={handleFinalSubmit}
                       className="w-full py-3.5 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#0d47a1]/25 transition-all cursor-pointer active:scale-98 flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                       {isSubmitting ? (
-                        <span className="animate-pulse">SUBMITTING QUOTE REQUEST...</span>
+                        <span className="animate-pulse">SENDING QUOTE REQUEST...</span>
                       ) : (
-                        <span>SUBMIT QUOTE REQUEST</span>
+                        <>
+                          <Send className="w-4 h-4" />
+                          <span>SUBMIT QUOTE REQUEST</span>
+                        </>
                       )}
                     </button>
 
                     <button
                       type="button"
                       onClick={() => setFormStep(1)}
-                      className="w-full py-1.5 text-xs text-[#08295b]/60 hover:text-[#0d47a1] font-semibold flex items-center justify-center gap-1 transition-colors cursor-pointer"
+                      className="w-full py-1 text-xs text-[#08295b]/60 hover:text-[#0d47a1] font-semibold flex items-center justify-center gap-1 transition-colors cursor-pointer"
                     >
                       <ArrowLeft className="w-3.5 h-3.5" />
-                      <span>Back to details</span>
+                      <span>Back to property details</span>
                     </button>
                   </div>
-                </div>
+                </form>
               )}
 
-              {/* ================= STEP 3: THANK YOU SCREEN ================= */}
+              {/* ================= STEP 3: SUCCESS / CONFIRMATION SCREEN ================= */}
               {formStep === 3 && (
                 <div className="py-6 text-center space-y-4">
-                  {/* Brand Blue Check Circle */}
                   <div className="w-16 h-16 rounded-full bg-[#0d47a1] text-white flex items-center justify-center mx-auto shadow-lg shadow-[#0d47a1]/25">
                     <Check className="w-9 h-9 stroke-[3]" />
                   </div>
 
                   <div className="space-y-1">
-                    <h3 className="text-2xl sm:text-3xl font-black text-[#08295b] tracking-tight">
-                      Thank You!
+                    <h3 className="text-2xl font-black text-[#08295b] tracking-tight">
+                      Quote Request Received!
                     </h3>
-                    <h4 className="text-base sm:text-lg font-bold text-[#0d47a1]">
-                      Your Quote Request Has Been Received
-                    </h4>
+                    <p className="text-xs sm:text-sm font-bold text-[#0d47a1]">
+                      Our Perth team is preparing your custom quote.
+                    </p>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-[#08295b]/75 max-w-sm mx-auto leading-relaxed">
-                    Our local Perth bond cleaning team is reviewing your property details. We will prepare your customized quote and get back to you within 15–30 minutes!
+                  <p className="text-xs text-[#08295b]/75 max-w-sm mx-auto leading-relaxed">
+                    Thank you, <strong>{fullName || "there"}</strong>! We have received your bond cleaning enquiry for your <strong>{propertyType} in {suburb || "Perth"}</strong> for <strong>{formatPillDate(selectedDate)}</strong>. We will contact you within 15–30 minutes with a fixed, transparent quote.
                   </p>
 
-                  <div className="p-3 bg-[#f8fbfe] rounded-2xl border border-[#d0e4f7] text-left text-xs space-y-1">
-                    <div className="font-bold text-[#08295b]">Property: {propertyAddress}</div>
-                    <div className="text-[#08295b]/70">
-                      Preferred Date(s):{" "}
-                      <span className="font-semibold text-[#0d47a1]">
-                        {selectedDates.map((d) => formatPillDate(d)).join(", ") || "Flexible"}
-                      </span>
+                  <div className="p-3.5 bg-[#f8fbfe] rounded-2xl border border-[#d0e4f7] text-left text-xs space-y-1.5">
+                    <div className="flex items-center gap-2 font-bold text-[#08295b]">
+                      <MapPin className="w-3.5 h-3.5 text-[#2196f3]" />
+                      <span>Location: {suburb}, Perth WA</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-[#08295b]/80">
+                      <Home className="w-3.5 h-3.5 text-[#2196f3]" />
+                      <span>{bedrooms} · {bathrooms} · {propertyType}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-[#08295b]/80">
+                      <Calendar className="w-3.5 h-3.5 text-[#2196f3]" />
+                      <span>Preferred Date: {formatPillDate(selectedDate)}</span>
                     </div>
                   </div>
 
-                  <div className="pt-2 flex flex-col gap-2.5">
+                  {/* Immediate Direct Contact Option */}
+                  <div className="pt-2 space-y-2">
+                    <div className="text-xs font-bold text-[#08295b]">
+                      Need an Urgent Response or Same-Day Clean?
+                    </div>
                     <a
                       href="tel:+61460849843"
                       className="w-full py-3.5 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#0d47a1]/25 transition-all text-center flex items-center justify-center gap-2"
                     >
                       <Phone className="w-4 h-4" />
-                      <span>Call +61 460 849 843 (Urgent Quote)</span>
+                      <span>Call +61 460 849 843 Now</span>
                     </a>
                   </div>
 
@@ -671,7 +845,7 @@ export default function BondPageContent() {
                       onClick={handleResetForm}
                       className="text-[11px] text-[#08295b]/50 hover:text-[#0d47a1] underline cursor-pointer"
                     >
-                      Submit another request
+                      Submit another Perth quote enquiry
                     </button>
                   </div>
                 </div>
