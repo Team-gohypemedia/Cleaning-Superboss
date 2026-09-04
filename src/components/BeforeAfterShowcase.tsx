@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useCallback } from "react";
-import Link from "next/link";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import {
   ShieldCheck,
   CheckCircle2,
@@ -36,13 +35,13 @@ const TRANSFORMATIONS: Transformation[] = [
   {
     id: "kitchen",
     categoryName: "Kitchen",
-    title: "Oven & Cooktop Degreasing",
-    focus: "Burnt carbon removal, stainless steel polish & rack restoration",
+    title: "Oven & Rangehood Degreasing",
+    focus: "Burnt carbon removal, glass door descaling & wire rack restoration",
     location: "Bond Clean · Subiaco, Perth WA",
     duration: "1.5 hours",
     icon: UtensilsCrossed,
-    beforeDesc: "Heavy burnt-on carbon grease, clouded door glass, and blackened gas cooktop burners.",
-    afterDesc: "Mirror-clean glass, degreased stainless steel casing, and sparkling showroom-ready racks.",
+    beforeDesc: "Heavy burnt-on carbon grease, clouded oven glass door, and blackened grease build-up on wire racks.",
+    afterDesc: "100% transparent streak-free glass, showroom-restored stainless steel interior, and gleaming polished racks.",
     beforeImg: "/transformations/oven_before.jpg",
     afterImg: "/transformations/oven_after.jpg",
   },
@@ -51,11 +50,11 @@ const TRANSFORMATIONS: Transformation[] = [
     categoryName: "Bathroom",
     title: "Shower Screen Limescale & Tile Grout",
     focus: "Calcium buildup dissolve, soap scum reset & bright grout revival",
-    location: "Deep Clean · South Yarra, Melbourne VIC",
+    location: "Bond Clean · Scarborough, Perth WA",
     duration: "2.0 hours",
     icon: Bath,
-    beforeDesc: "Hard-water calcium deposits etched into glass, discoloured shower floor grout and mildew lines.",
-    afterDesc: "Streak-free transparent glass treated with water-repellent coating and bright white grout lines.",
+    beforeDesc: "Hard-water calcium deposits etched into glass, discoloured shower floor grout, and grime on chrome fittings.",
+    afterDesc: "Crystal-clear transparent glass door, mould-treated bright white tile grout, and mirror-polished chrome tapware.",
     beforeImg: "/transformations/shower_before.jpg",
     afterImg: "/transformations/shower_after.jpg",
   },
@@ -64,24 +63,24 @@ const TRANSFORMATIONS: Transformation[] = [
     categoryName: "Living Room",
     title: "Floor Polish & Woodwork Scuffs",
     focus: "Hardwood buffing, skirting board scuff removal & track detailing",
-    location: "Bond Clean · Subiaco, Perth WA",
+    location: "Bond Clean · Fremantle, Perth WA",
     duration: "2.5 hours",
     icon: Armchair,
-    beforeDesc: "Deep scuff marks along skirting boards, heavy dust along sliding door tracks, and dull wooden floors.",
-    afterDesc: "Restored woodwork, vacuumed tracks, and hospital-grade neutral-scented polished floors.",
+    beforeDesc: "Foot-traffic grime along floorboards, dusty skirting board ledges, and dull room appearance.",
+    afterDesc: "Buffed and gleaming hardwood floors, spotlessly wiped ledges, and fresh showroom-ready finish.",
     beforeImg: "/transformations/living_before.jpg",
     afterImg: "/transformations/living_after.jpg",
   },
   {
     id: "bedroom",
     categoryName: "Bedroom",
-    title: "Dust Removal & Carpet Restoration",
-    focus: "HEPA allergen vacuuming, pile steam lifting & wardrobe detailing",
-    location: "Vacate Clean · New Farm, Brisbane QLD",
+    title: "Dust Removal & Carpet Steam Cleaning",
+    focus: "Steam extraction, allergen sanitisation & wardrobe detailing",
+    location: "Vacate Clean · Joondalup, Perth WA",
     duration: "1.5 hours",
     icon: BedDouble,
-    beforeDesc: "Dust mite buildup, flattened high-traffic carpet fibres, and tracked wardrobe shelving grit.",
-    afterDesc: "Steam-lifted plush carpet pile, allergen-sanitised air, and pristine dust-free cabinetry.",
+    beforeDesc: "High-traffic grey carpet lanes, spill stains, flattened pile, and dust settled along wall edges.",
+    afterDesc: "Hot-water extracted plush carpet pile, deep stain removal, and sanitised allergen-free room.",
     beforeImg: "/transformations/bedroom_before.jpg",
     afterImg: "/transformations/bedroom_after.jpg",
   },
@@ -89,14 +88,14 @@ const TRANSFORMATIONS: Transformation[] = [
     id: "office",
     categoryName: "Office",
     title: "Workstations & Sanitised Common Areas",
-    focus: "Commercial desk disinfection, monitor polishing & breakroom hygiene",
-    location: "Commercial Clean · North Adelaide, SA",
+    focus: "Commercial floor buffing, desk disinfection & glass partitions",
+    location: "Commercial Clean · Perth CBD, WA",
     duration: "3.0 hours",
     icon: Building2,
-    beforeDesc: "Cluttered keyboards, coffee ring stains on desks, high-touch germ zones, and dull entryway floors.",
-    afterDesc: "Hospital-grade disinfected workstations, streak-free glass partitions, and gleaming common areas.",
-    beforeImg: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop",
-    afterImg: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1000&auto=format&fit=crop",
+    beforeDesc: "Traffic tracks across flooring, keyboard dust, smudge marks on desks, and dulled walkways.",
+    afterDesc: "Deeply sanitised surfaces, sparkling streak-free glass partitions, and polished gleaming walkways.",
+    beforeImg: "/transformations/office_before.jpg",
+    afterImg: "/transformations/office_after.jpg",
   },
 ];
 
@@ -104,23 +103,10 @@ export default function BeforeAfterShowcase() {
   const [activeId, setActiveId] = useState<string>("kitchen");
   const [sliderPosition, setSliderPosition] = useState<number>(50);
   const [isDragging, setIsDragging] = useState<boolean>(false);
-  const [containerWidth, setContainerWidth] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const activeItem = TRANSFORMATIONS.find((t) => t.id === activeId) || TRANSFORMATIONS[0];
   const currentIndex = TRANSFORMATIONS.findIndex((t) => t.id === activeId);
-
-  // Keep container width updated for proper clipped image alignment
-  React.useEffect(() => {
-    const updateWidth = () => {
-      if (containerRef.current) {
-        setContainerWidth(containerRef.current.clientWidth);
-      }
-    };
-    updateWidth();
-    window.addEventListener("resize", updateWidth);
-    return () => window.removeEventListener("resize", updateWidth);
-  }, []);
 
   const handlePrev = () => {
     const prevIdx = (currentIndex - 1 + TRANSFORMATIONS.length) % TRANSFORMATIONS.length;
@@ -142,16 +128,45 @@ export default function BeforeAfterShowcase() {
     setSliderPosition(pos);
   }, []);
 
-  const handleMouseDown = () => setIsDragging(true);
-  const handleMouseUp = () => setIsDragging(false);
+  // Global mouse & touch listeners during active drag for ultra-smooth responsiveness
+  useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      if (!isDragging) return;
+      updateSliderPos(e.clientX);
+    };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
+    const handleGlobalMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    const handleGlobalTouchMove = (e: TouchEvent) => {
+      if (!isDragging || e.touches.length === 0) return;
+      updateSliderPos(e.touches[0].clientX);
+    };
+
+    if (isDragging) {
+      window.addEventListener("mousemove", handleGlobalMouseMove);
+      window.addEventListener("mouseup", handleGlobalMouseUp);
+      window.addEventListener("touchmove", handleGlobalTouchMove);
+      window.addEventListener("touchend", handleGlobalMouseUp);
+    }
+
+    return () => {
+      window.removeEventListener("mousemove", handleGlobalMouseMove);
+      window.removeEventListener("mouseup", handleGlobalMouseUp);
+      window.removeEventListener("touchmove", handleGlobalTouchMove);
+      window.removeEventListener("touchend", handleGlobalMouseUp);
+    };
+  }, [isDragging, updateSliderPos]);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
     updateSliderPos(e.clientX);
   };
 
-  const handleTouchMove = (e: React.TouchEvent) => {
+  const handleTouchStart = (e: React.TouchEvent) => {
     if (e.touches.length > 0) {
+      setIsDragging(true);
       updateSliderPos(e.touches[0].clientX);
     }
   };
@@ -176,17 +191,19 @@ export default function BeforeAfterShowcase() {
           </p>
         </div>
 
-        {/* 5 Key Spaces Navigation Tabs */}
-        <div className="flex items-center justify-between sm:justify-center gap-2 max-w-full">
-          <button
-            onClick={handlePrev}
-            aria-label="Previous transformation"
-            className="flex sm:hidden p-2.5 rounded-xl border border-[#d0e4f7] bg-[#f8fbfe] text-[#08295b] shrink-0 cursor-pointer active:scale-95 transition-transform"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
+        {/* Space Navigation Tabs */}
+        <div className="flex items-center justify-center gap-2 max-w-full">
+          {TRANSFORMATIONS.length > 1 && (
+            <button
+              onClick={handlePrev}
+              aria-label="Previous transformation"
+              className="flex sm:hidden p-2.5 rounded-xl border border-[#d0e4f7] bg-[#f8fbfe] text-[#08295b] shrink-0 cursor-pointer active:scale-95 transition-transform"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+          )}
 
-          <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-3 px-2">
+          <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar py-2 px-2">
             {TRANSFORMATIONS.map((t) => {
               const Icon = t.icon;
               const isActive = activeId === t.id;
@@ -197,7 +214,7 @@ export default function BeforeAfterShowcase() {
                     setActiveId(t.id);
                     setSliderPosition(50);
                   }}
-                  className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                     isActive
                       ? "bg-[#0d47a1] text-white shadow-md shadow-[#0d47a1]/25 ring-1 ring-[#0d47a1]"
                       : "bg-[#f8fbfe] text-[#08295b]/70 border border-[#d0e4f7] hover:border-[#2196f3] hover:text-[#08295b] hover:bg-white"
@@ -210,13 +227,15 @@ export default function BeforeAfterShowcase() {
             })}
           </div>
 
-          <button
-            onClick={handleNext}
-            aria-label="Next transformation"
-            className="flex sm:hidden p-2.5 rounded-xl border border-[#d0e4f7] bg-[#f8fbfe] text-[#08295b] shrink-0 cursor-pointer active:scale-95 transition-transform"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
+          {TRANSFORMATIONS.length > 1 && (
+            <button
+              onClick={handleNext}
+              aria-label="Next transformation"
+              className="flex sm:hidden p-2.5 rounded-xl border border-[#d0e4f7] bg-[#f8fbfe] text-[#08295b] shrink-0 cursor-pointer active:scale-95 transition-transform"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          )}
         </div>
 
         {/* Active Transformation Showcase Card */}
@@ -248,16 +267,7 @@ export default function BeforeAfterShowcase() {
             <div
               ref={containerRef}
               onMouseDown={handleMouseDown}
-              onMouseUp={handleMouseUp}
-              onMouseLeave={handleMouseUp}
-              onMouseMove={handleMouseMove}
-              onTouchStart={(e) => {
-                setIsDragging(true);
-                updateSliderPos(e.touches[0].clientX);
-              }}
-              onTouchEnd={handleMouseUp}
-              onTouchMove={handleTouchMove}
-              onClick={(e) => updateSliderPos(e.clientX)}
+              onTouchStart={handleTouchStart}
               className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9] rounded-2xl overflow-hidden select-none cursor-ew-resize bg-zinc-900 border border-[#d0e4f7] shadow-inner touch-none"
             >
               {/* After Image (Background Layer) */}
@@ -271,19 +281,18 @@ export default function BeforeAfterShowcase() {
                 <span className="hidden xs:inline">AFTER</span> SUPERBOSS CLEAN
               </div>
 
-              {/* Before Image (Clipped Overlay Layer) */}
+              {/* Before Image (Clipped Overlay Layer with clipPath) */}
               <div
-                className="absolute inset-0 overflow-hidden pointer-events-none"
-                style={{ width: `${sliderPosition}%` }}
+                className="absolute inset-0 pointer-events-none overflow-hidden"
+                style={{
+                  clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`,
+                  WebkitClipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`,
+                }}
               >
                 <img
                   src={activeItem.beforeImg}
                   alt={`Before clean: ${activeItem.title}`}
-                  className="absolute inset-0 w-full h-full object-cover pointer-events-none max-w-none"
-                  style={{
-                    width: containerWidth > 0 ? `${containerWidth}px` : (containerRef.current ? `${containerRef.current.clientWidth}px` : "100%"),
-                    height: "100%",
-                  }}
+                  className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                 />
                 <div className="absolute top-2 sm:top-4 left-2 sm:left-4 bg-rose-600/95 backdrop-blur-md text-white text-[8.5px] sm:text-xs font-black uppercase px-2 sm:px-3.5 py-1 sm:py-1.5 rounded-full shadow-lg z-10 pointer-events-none">
                   <span>BEFORE CLEAN</span>
