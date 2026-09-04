@@ -443,19 +443,8 @@ export default function BondPageContent() {
               </div>
             </div>
 
-            {/* CTAs & Quick Action */}
-            <div className="pt-1">
-              <button
-                type="button"
-                onClick={scrollToForm}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-md shadow-[#0d47a1]/25 transition-all active:scale-95 flex items-center justify-center cursor-pointer"
-              >
-                <span>Request a Quote</span>
-              </button>
-            </div>
-
             {/* Reassurance Feature Line */}
-            <div className="pt-1 sm:pt-2 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-bold text-[#08295b]">
+            <div className="pt-2 sm:pt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-bold text-[#08295b]">
               <span className="flex items-center gap-1 text-[#0d47a1]">
                 <Check className="w-3.5 h-3.5 text-[#2196f3] stroke-[3]" />
                 Perth-Wide Service
