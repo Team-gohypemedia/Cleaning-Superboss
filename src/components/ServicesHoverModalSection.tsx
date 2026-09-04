@@ -44,7 +44,7 @@ const CATEGORIES: CategoryData[] = [
       },
       {
         title: "Bond / End of Lease",
-        description: "100% Bond Back Guarantee clean strictly meeting REIWA and WA real estate inspection checklists.",
+        description: "100% Bond Back Guarantee clean strictly meeting WA real estate inspection checklists.",
         image: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=1200&auto=format&fit=crop",
         href: "/services/bond",
       },

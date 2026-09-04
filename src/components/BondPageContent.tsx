@@ -167,7 +167,7 @@ const CHECKLIST_SECTIONS = [
 const PERTH_FAQS = [
   {
     q: "Do you provide a 100% Bond Back Guarantee?",
-    a: "Yes. Getting your bond back requires meeting strict REIWA exit standards. If your Perth property manager or landlord flags any cleaning item on the exit condition report within our guarantee period, we return to the property and rectify it completely free of charge. We prioritize inspection re-cleans urgently to protect your deposit.",
+    a: "Yes. Getting your bond back requires meeting strict Real Estate exit inspection standards. If your Perth property manager or landlord flags any cleaning item on the exit condition report within our guarantee period, we return to the property and rectify it completely free of charge. We prioritize inspection re-cleans urgently to protect your deposit.",
   },
   {
     q: "Do you provide an itemised tax invoice for my Perth real estate agent?",
@@ -195,7 +195,7 @@ const PERTH_FAQS = [
   },
   {
     q: "Is vacate cleaning the same as end of lease cleaning or bond cleaning in Perth?",
-    a: "Yes. In Western Australia, 'vacate cleaning', 'end of lease cleaning', and 'bond cleaning' all refer to the comprehensive deep clean required to return a rental property to its original condition under REIWA tenancy agreements.",
+    a: "Yes. In Western Australia, 'vacate cleaning', 'end of lease cleaning', and 'bond cleaning' all refer to the comprehensive deep clean required to return a rental property to its original condition under WA real estate tenancy agreements.",
   },
   {
     q: "Can I add Carpet Steam Cleaning with a certificate for pet bond requirements?",
@@ -203,7 +203,7 @@ const PERTH_FAQS = [
   },
   {
     q: "Does the rental property need electricity and hot water connected?",
-    a: "Yes. To achieve a spotless finish that passes REIWA exit standards, active power and hot water are required to operate commercial vacuum systems and hot water degreasers.",
+    a: "Yes. To achieve a spotless finish that passes Real Estate exit standards, active power and hot water are required to operate commercial vacuum systems and hot water degreasers.",
   },
 ];
 
@@ -335,7 +335,7 @@ export default function BondPageContent() {
             {/* Pill Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#e3f2fd] border border-[#d0e4f7] text-[#0d47a1] text-xs font-bold tracking-wide">
               <ShieldCheck className="w-4 h-4 text-[#2196f3]" />
-              <span>REIWA Standard Approved · 100% Bond Back Guarantee</span>
+              <span>100% Bond Back Guarantee · Real Estate Approved</span>
             </div>
 
             {/* Main Headline */}
@@ -922,7 +922,7 @@ export default function BondPageContent() {
                   <span className="text-[10px] font-bold uppercase tracking-wider bg-[#2196f3] px-2.5 py-0.5 rounded-full">
                     Perth Vacate Specialists
                   </span>
-                  <h3 className="text-lg font-bold">REIWA Inspection-Ready Standards</h3>
+                  <h3 className="text-lg font-bold">Real Estate Inspection-Ready Standards</h3>
                   <p className="text-xs text-white/80">Every nook, cranny, and appliance cleaned to perfection.</p>
                 </div>
               </div>
@@ -972,7 +972,7 @@ export default function BondPageContent() {
                 {
                   num: "1",
                   title: "100% Bond Return Guarantee",
-                  desc: "If your Perth property fails inspection on any cleaning item, we return to fix it completely free of charge. Your deposit return is guaranteed with an official REIWA-compliant invoice.",
+                  desc: "If your Perth property fails inspection on any cleaning item, we return to fix it completely free of charge. Your deposit return is guaranteed with an official Real Estate-compliant tax invoice.",
                 },
                 {
                   num: "2",
@@ -1032,7 +1032,7 @@ export default function BondPageContent() {
           <div className="text-center max-w-2xl mx-auto space-y-3 sm:space-y-4">
             <div className="flex justify-center">
               <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-widest text-[#0d47a1] uppercase bg-[#e3f2fd] px-4 py-1.5 rounded-full border border-[#d0e4f7]">
-                REIWA Vacate Standard
+                Real Estate Vacate Standard
               </span>
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#08295b] tracking-tight">
@@ -1100,7 +1100,7 @@ export default function BondPageContent() {
               </div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e3f2fd] border border-[#d0e4f7] text-[11px] font-bold text-[#0d47a1] shrink-0 self-start sm:self-auto">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#2196f3]" />
-                <span>100% REIWA Inspection Pass Standard</span>
+                <span>100% Real Estate Inspection Pass Standard</span>
               </div>
             </div>
 
@@ -1339,7 +1339,7 @@ export default function BondPageContent() {
               Frequently Asked Questions (Perth Bond Cleaning)
             </h2>
             <p className="text-xs sm:text-sm text-[#08295b]/70 leading-relaxed">
-              Everything you need to know about your bond clean, REIWA checklists, and guarantee.
+              Everything you need to know about your bond clean, real estate inspection checklists, and guarantee.
             </p>
           </div>
 

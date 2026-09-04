@@ -203,7 +203,7 @@ export default function PerthLiveBookingMap() {
                   Moving out in Perth? 100% Bond Back Guarantee on all cleans
                 </span>
                 <span className="text-[11px] text-[#08295b]/70">
-                  REIWA approved checklists with 72-hour free reclean guarantee
+                  Real estate approved checklists with 72-hour free reclean guarantee
                 </span>
               </div>
             </div>
