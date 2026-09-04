@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 // Local SVG components to guarantee robust resolution under Next.js 16/Turbopack
 function FacebookIcon(props: React.ComponentProps<"svg">) {
@@ -33,7 +34,7 @@ const marqueeText =
 const capabilitiesLinks = [
   { label: "HOME CLEANING", href: "/services/home" },
   { label: "DEEP CLEANING", href: "/services/deep" },
-  { label: "BOND CLEANING (VACATE)", href: "/services/bond" },
+  { label: "BOND CLEANING (VACATE)", href: "/end-of-lease-cleaning-services" },
   { label: "AIRBNB CLEANING", href: "/services/airbnb" },
   { label: "COMMERCIAL CLEANING", href: "/services/commercial" },
 ] as const;
@@ -62,7 +63,27 @@ function MarqueeStrip() {
   );
 }
 
-export default function Footer() {
+interface FooterProps {
+  hideServices?: boolean;
+}
+
+export default function Footer({ hideServices }: FooterProps = {}) {
+  const pathname = usePathname();
+  const isBondPage =
+    pathname === "/end-of-lease-cleaning-services" ||
+    pathname === "/services/bond" ||
+    pathname?.startsWith("/end-of-lease") ||
+    pathname === "/landing/bond-cleaning";
+
+  const shouldHideServices = hideServices || isBondPage;
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (isBondPage) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="w-full">
       {/* 1. Sustainability / Capability Marquee Strip */}
@@ -83,8 +104,8 @@ export default function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 mb-8 relative z-10">
             
             {/* Column 1: Brand Logo & Short Desc */}
-            <div className="col-span-1 sm:col-span-2 md:col-span-3">
-              <Link href="/" className="inline-block mb-3 hover:opacity-90 transition-opacity">
+            <div className={shouldHideServices ? "col-span-1 sm:col-span-2 md:col-span-4" : "col-span-1 sm:col-span-2 md:col-span-3"}>
+              <Link href="/" onClick={handleLogoClick} className="inline-block mb-3 hover:opacity-90 transition-opacity cursor-pointer">
                 <div className="h-12 sm:h-14 md:h-16 flex items-center justify-start">
                   <img
                     src="/logo.png"
@@ -103,27 +124,29 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Column 2: Capabilities Links */}
-            <div className="col-span-1 md:col-span-3">
-              <h4 className="font-bold text-xs uppercase mb-4 tracking-wider text-[#08295b]">
-                OUR SERVICES
-              </h4>
-              <ul className="space-y-2.5 text-[11px] text-[#08295b]/70 tracking-wider">
-                {capabilitiesLinks.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="hover:text-[#0d47a1] transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Column 2: Capabilities Links (Hidden on Bond Page) */}
+            {!shouldHideServices && (
+              <div className="col-span-1 md:col-span-3">
+                <h4 className="font-bold text-xs uppercase mb-4 tracking-wider text-[#08295b]">
+                  OUR SERVICES
+                </h4>
+                <ul className="space-y-2.5 text-[11px] text-[#08295b]/70 tracking-wider">
+                  {capabilitiesLinks.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className="hover:text-[#0d47a1] transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* Column 3: Get Support */}
-            <div className="col-span-1 md:col-span-3">
+            <div className={shouldHideServices ? "col-span-1 sm:col-span-2 md:col-span-4" : "col-span-1 md:col-span-3"}>
               <h4 className="font-bold text-xs uppercase mb-4 tracking-wider text-[#08295b]">
                 CONTACT US
               </h4>
@@ -131,10 +154,10 @@ export default function Footer() {
               <div className="space-y-3.5 text-xs">
                 <div>
                   <p className="text-[9px] font-semibold uppercase tracking-wider text-[#08295b]/50">
-                    DIRECT PHONE / SMS
+                    PERTH OFFICE / HEADQUARTERS
                   </p>
-                  <p className="text-xs font-semibold text-[#08295b] hover:text-[#0d47a1] transition-colors mt-0.5">
-                    <a href="tel:+61460849843">+61 460 849 843</a>
+                  <p className="text-xs font-semibold text-[#08295b] mt-0.5 leading-snug">
+                    Unit 3, 25 Morrison Street, Como WA 6152
                   </p>
                 </div>
 
@@ -154,7 +177,7 @@ export default function Footer() {
                     SERVICE COVERAGE
                   </p>
                   <p className="text-xs font-semibold text-[#08295b] mt-0.5">
-                    Serving Australia, California &amp; London
+                    Greater Perth &amp; Western Australia
                   </p>
                 </div>
 
@@ -170,7 +193,7 @@ export default function Footer() {
             </div>
 
             {/* Column 4: Newsletter & Social */}
-            <div className="col-span-1 sm:col-span-2 md:col-span-3">
+            <div className={shouldHideServices ? "col-span-1 sm:col-span-2 md:col-span-4" : "col-span-1 sm:col-span-2 md:col-span-3"}>
               <p className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#08295b] font-semibold leading-relaxed mb-3">
                 SUBSCRIBE FOR EXCLUSIVE OFFERS & PLATFORM UPDATES
               </p>

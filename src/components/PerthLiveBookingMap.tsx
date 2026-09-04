@@ -114,7 +114,7 @@ export default function PerthLiveBookingMap() {
           
           {/* Suburb Filter Pills */}
           <div className="flex items-center justify-between gap-3 flex-wrap">
-            <div className="flex items-center gap-1.5 overflow-x-auto py-1 max-w-full">
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
               {SUBURB_QUICK_TABS.map((tab) => {
                 const isSelected = selectedTab.label === tab.label;
                 return (
@@ -141,7 +141,7 @@ export default function PerthLiveBookingMap() {
           </div>
 
           {/* Google Map Frame */}
-          <div className="relative w-full h-[380px] sm:h-[460px] rounded-2xl overflow-hidden border border-[#d0e4f7] bg-slate-100 shadow-inner">
+          <div className="relative w-full h-[280px] sm:h-[420px] md:h-[460px] rounded-2xl overflow-hidden border border-[#d0e4f7] bg-slate-100 shadow-inner">
             <iframe
               title="Perth Live Map"
               src={`https://maps.google.com/maps?q=${encodeURIComponent(

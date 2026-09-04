@@ -38,7 +38,7 @@ const SERVICE_CARDS = [
     unit: "from",
     desc: "Complete real estate end-of-lease specification. Includes cupboards inside & out, window tracks, spot wall cleans, and 72h re-clean guarantee.",
     highlights: ["Real estate approved checklist", "Inside cabinets & wardrobes", "Window sills, tracks & frames", "Free re-clean within 72 hours"],
-    href: "/services/bond",
+    href: "/end-of-lease-cleaning-services",
   },
   {
     title: "Airbnb Turnover",

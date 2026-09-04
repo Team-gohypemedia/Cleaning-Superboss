@@ -94,9 +94,9 @@ export default function ContactSection() {
                     <MapPin className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#0d47a1]" />
                   </div>
                   <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-[#08295b]">Service Coverage</h4>
-                    <p className="text-xs text-[#08295b]/70 mt-0.5 leading-relaxed">
-                      Perth &amp; Greater Western Australia Metropolitan Areas
+                    <h4 className="text-xs sm:text-sm font-bold text-[#08295b]">Perth Headquarters</h4>
+                    <p className="text-xs text-[#08295b]/80 font-medium mt-0.5 leading-relaxed">
+                      Unit 3, 25 Morrison Street, Como WA 6152
                     </p>
                   </div>
                 </div>

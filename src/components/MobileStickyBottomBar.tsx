@@ -62,7 +62,12 @@ export default function MobileStickyBottomBar() {
     >
       <div className="flex items-center gap-3 max-w-md mx-auto">
         <a
-          href={pathname === "/services/bond" ? "#quote-form" : "/book"}
+          href={
+            pathname === "/end-of-lease-cleaning-services" ||
+            pathname === "/services/bond"
+              ? "#quote-form"
+              : "/book"
+          }
           onClick={handleGetQuoteClick}
           className="flex-1 py-3.5 px-4 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white font-extrabold text-xs uppercase tracking-wider shadow-md shadow-[#0d47a1]/25 flex items-center justify-center gap-2 active:scale-95 transition-all text-center cursor-pointer"
         >

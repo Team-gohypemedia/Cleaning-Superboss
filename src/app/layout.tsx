@@ -27,7 +27,7 @@ export default function RootLayout({
         <SmoothScroll>
           <Navbar />
           <main>{children}</main>
-          <MobileStickyBottomBar />
+          {/* <MobileStickyBottomBar /> */}
         </SmoothScroll>
       </body>
     </html>
