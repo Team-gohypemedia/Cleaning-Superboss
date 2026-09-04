@@ -224,18 +224,126 @@ export default function InstantQuoteHero() {
     }, 700);
   };
 
+  // Testimonial snippets mapped by city
+  const CITY_TESTIMONIALS: Record<CityId, { name: string; location: string; role: string; quote: string; image: string }> = {
+    sydney: {
+      name: "Sarah Jenkins",
+      location: "Bondi, Sydney NSW",
+      role: "Fortnightly Home Clean",
+      quote: "Cleaning Superboss has been a game-changer. Our cleaner arrives on the dot, leaves the place smelling fresh and spotless.",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=120&auto=format&fit=crop",
+    },
+    melbourne: {
+      name: "Marcus Vance",
+      location: "South Yarra, Melbourne VIC",
+      role: "100% Bond Back Clean",
+      quote: "Booked an end-of-lease clean for our 2-bed flat. Property manager was thrilled, full bond returned in 48 hours.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=120&auto=format&fit=crop",
+    },
+    perth: {
+      name: "Dr. Priya Sharma",
+      location: "Subiaco, Perth WA",
+      role: "Weekly Domestic Clean",
+      quote: "Police-checked and fully insured cleaners I can trust blindly. The online quote took less than 60 seconds.",
+      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=120&auto=format&fit=crop",
+    },
+    brisbane: {
+      name: "Liam O'Donnell",
+      location: "Brisbane CBD, QLD",
+      role: "Commercial Office Client",
+      quote: "Coming into a sanitised, fresh workplace every week has elevated our team morale. Very reliable and punctual.",
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=120&auto=format&fit=crop",
+    },
+    "gold-coast": {
+      name: "Elena Rostova",
+      location: "Surfers Paradise, Gold Coast QLD",
+      role: "Airbnb Superhost Portfolio",
+      quote: "Handles fast guest turnovers, linen changeovers, and consistently earns us 5-star cleanliness reviews.",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=120&auto=format&fit=crop",
+    },
+    adelaide: {
+      name: "Harrison Blake",
+      location: "North Adelaide, SA",
+      role: "Deep Spring Clean",
+      quote: "Detailed every corner, skirting boards, window tracks, and oven. Exceptional quality and professionalism.",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=120&auto=format&fit=crop",
+    },
+  };
+
   const currentCityObj = CITIES.find((c) => c.id === selectedCity) || CITIES[0];
+  const currentTestimonial = CITY_TESTIMONIALS[selectedCity] || CITY_TESTIMONIALS.sydney;
 
   return (
-    <section className="relative w-full bg-[#f8fbfe] text-[#08295b] pt-4 sm:pt-6 pb-10 sm:pb-16 border-t border-[#d0e4f7] select-none">
+    <section className="relative w-full bg-[#f8fbfe] text-[#08295b] pt-8 sm:pt-12 md:pt-14 pb-12 sm:pb-16 border-t border-[#d0e4f7] select-none">
       
       {/* Background Architectural Blueprint Grid Crosshairs */}
       <div className="absolute inset-0 pointer-events-none opacity-25 bg-[radial-gradient(#0d47a1_1px,transparent_1px)] [background-size:28px_28px] -z-0" />
 
-      <div className="max-w-[1360px] mx-auto px-3 sm:px-6 md:px-10 lg:px-14 relative z-10 space-y-3.5 sm:space-y-5">
+      <div className="max-w-[1360px] mx-auto px-3 sm:px-6 md:px-10 lg:px-14 relative z-10 space-y-5 sm:space-y-6">
         
+        {/* Editorial Trust & Header Showcase Banner */}
+        <div className="text-center max-w-3xl mx-auto space-y-2 sm:space-y-3 px-1 sm:px-2">
+          
+          {/* Star Rating & Verified Testimonial Proof Badge */}
+          <div className="inline-flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1 rounded-full bg-white border border-[#d0e4f7] text-[10px] sm:text-xs text-[#08295b] shadow-xs">
+            {/* Customer Avatars Stack */}
+            <div className="flex items-center -space-x-1.5">
+              <img
+                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=80&auto=format&fit=crop"
+                alt="Sarah"
+                className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover ring-1 ring-white"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=80&auto=format&fit=crop"
+                alt="Marcus"
+                className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover ring-1 ring-white"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=80&auto=format&fit=crop"
+                alt="Priya"
+                className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover ring-1 ring-white"
+              />
+            </div>
+
+            {/* Stars */}
+            <div className="flex items-center text-amber-400 gap-0.5">
+              {[1, 2, 3, 4, 5].map((s) => (
+                <span key={s} className="text-xs sm:text-sm leading-none">★</span>
+              ))}
+            </div>
+            
+            <span className="font-extrabold text-[#08295b]">4.9/5</span>
+            <span className="text-[#08295b]/40">·</span>
+            <span className="text-[#08295b]/80">
+              Trusted by <strong className="font-extrabold text-[#08295b]">30,000+ {currentCityObj.name} Homes</strong>
+            </span>
+          </div>
+
+          {/* Consistent Brand Heading (Matching LogoGrid font-bold) */}
+          <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#08295b] leading-tight max-w-[850px] mx-auto px-1">
+            Trusted Home &amp; Commercial Cleaning Across Australia
+          </h2>
+
+          {/* Subtitle */}
+          <p className="text-[11px] sm:text-sm md:text-base text-[#08295b]/70 font-normal max-w-2xl mx-auto leading-relaxed px-1">
+            Get an instant upfront price in under 60 seconds with verified Australian police-checked cleaners and 100% spotless guarantee.
+          </p>
+
+          {/* Active Verified Review Highlight */}
+          <div className="max-w-2xl mx-auto px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-white border border-[#d0e4f7] text-[10.5px] sm:text-[11px] text-[#08295b]/85 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 shadow-xs text-center sm:text-left">
+            <span className="line-clamp-2 sm:line-clamp-1">"{currentTestimonial.quote}"</span>
+            <span className="font-bold text-[#0d47a1] shrink-0">— {currentTestimonial.name} ({currentTestimonial.location.split(",")[0]})</span>
+          </div>
+
+          {/* Subtle Horizontal Divider */}
+          <div className="w-full max-w-3xl mx-auto pt-1">
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-[#d0e4f7] to-transparent" />
+          </div>
+
+        </div>
+
         {/* Compact Quoting Mode Toggle Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between max-w-5xl mx-auto gap-2.5 w-full">
+        <div className="flex flex-col sm:flex-row items-center justify-between max-w-5xl mx-auto gap-2.5 w-full pt-1">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#d0e4f7] text-[#0d47a1] text-[10.5px] sm:text-[11px] font-mono font-bold uppercase tracking-wider shadow-xs">
             <span className="w-2 h-2 rounded-full bg-[#2196f3] animate-pulse" />
             <span>Instant Australian Quoting Engine</span>
