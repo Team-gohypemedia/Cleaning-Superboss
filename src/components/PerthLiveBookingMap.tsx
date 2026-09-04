@@ -211,10 +211,9 @@ export default function PerthLiveBookingMap() {
             <button
               type="button"
               onClick={scrollToQuoteForm}
-              className="px-5 py-2.5 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs font-extrabold uppercase tracking-wider shadow-md transition-all cursor-pointer shrink-0 flex items-center justify-center gap-2"
+              className="px-5 py-2.5 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs font-extrabold uppercase tracking-wider shadow-md transition-all cursor-pointer shrink-0 flex items-center justify-center"
             >
               <span>Request a Quote</span>
-              <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
 

@@ -846,10 +846,9 @@ export default function BondPageContent() {
               <button
                 type="button"
                 onClick={scrollToForm}
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-lg shadow-[#0d47a1]/25 transition-all cursor-pointer"
+                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-lg shadow-[#0d47a1]/25 transition-all cursor-pointer"
               >
                 <span>Request a Quote</span>
-                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
@@ -927,10 +926,9 @@ export default function BondPageContent() {
             <button
               type="button"
               onClick={scrollToForm}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-md"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-md"
             >
               <span>Get a Quote for Your Suburb</span>
-              <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
 

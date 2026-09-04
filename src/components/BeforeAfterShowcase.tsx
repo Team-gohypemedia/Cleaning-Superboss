@@ -361,10 +361,9 @@ export default function BeforeAfterShowcase() {
                   window.location.href = "/#quote-form";
                 }
               }}
-              className="w-full sm:w-auto px-6 sm:px-7 py-3 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-[#2196f3]/25 active:scale-95 cursor-pointer"
+              className="w-full sm:w-auto px-6 sm:px-7 py-3 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center shadow-md hover:shadow-[#2196f3]/25 active:scale-95 cursor-pointer"
             >
               <span>Request a Quote</span>
-              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
