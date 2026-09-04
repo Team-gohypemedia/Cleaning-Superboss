@@ -34,6 +34,7 @@ import {
 } from "lucide-react";
 import Footer from "@/components/Footer";
 import PerthLiveBookingMap from "@/components/PerthLiveBookingMap";
+import BeforeAfterShowcase from "@/components/BeforeAfterShowcase";
 
 const BOND_SLIDER_IMAGES = [
   {
@@ -77,81 +78,6 @@ const BOND_SLIDER_IMAGES = [
     tag: "100% Bond Guarantee",
     title: "Pristine Exit Clean Guaranteed",
     desc: "Complete 72-hour re-clean support with every booking.",
-  },
-];
-
-const PERTH_REAL_ESTATE_AGENCIES = [
-  {
-    name: "Ray White Perth",
-    logoText: "Ray White.",
-    fontClass: "font-serif font-black tracking-tight text-sm sm:text-base",
-    badge: "Perth Metro",
-    accentColor: "border-amber-200 hover:border-amber-400 bg-gradient-to-b from-white to-amber-50/40",
-    dotColor: "bg-amber-500",
-    suburb: "CBD & Coastal",
-  },
-  {
-    name: "LJ Hooker WA",
-    logoText: "LJ Hooker",
-    fontClass: "font-extrabold tracking-tight text-sm sm:text-base text-red-700",
-    badge: "WA Network",
-    accentColor: "border-red-200 hover:border-red-400 bg-gradient-to-b from-white to-red-50/40",
-    dotColor: "bg-red-600",
-    suburb: "Greater Perth",
-  },
-  {
-    name: "ACTON | Belle Property",
-    logoText: "ACTON | belle",
-    fontClass: "font-serif italic font-black tracking-wide text-sm sm:text-base text-emerald-800",
-    badge: "Western Suburbs",
-    accentColor: "border-emerald-200 hover:border-emerald-400 bg-gradient-to-b from-white to-emerald-50/40",
-    dotColor: "bg-emerald-600",
-    suburb: "Subiaco & Cottesloe",
-  },
-  {
-    name: "Realmark WA",
-    logoText: "REALMARK",
-    fontClass: "font-black tracking-widest text-xs sm:text-sm text-[#08295b]",
-    badge: "Coastal & Inner",
-    accentColor: "border-blue-200 hover:border-blue-400 bg-gradient-to-b from-white to-blue-50/40",
-    dotColor: "bg-[#0d47a1]",
-    suburb: "Scarborough & City",
-  },
-  {
-    name: "Harcourts WA",
-    logoText: "Harcourts",
-    fontClass: "font-sans font-extrabold tracking-tight text-sm sm:text-base text-sky-700",
-    badge: "North & South",
-    accentColor: "border-sky-200 hover:border-sky-400 bg-gradient-to-b from-white to-sky-50/40",
-    dotColor: "bg-sky-500",
-    suburb: "Joondalup to Mandurah",
-  },
-  {
-    name: "Peard Real Estate",
-    logoText: "PEARD",
-    fontClass: "font-sans font-black tracking-wider text-xs sm:text-sm text-indigo-900",
-    badge: "Northern Corridors",
-    accentColor: "border-indigo-200 hover:border-indigo-400 bg-gradient-to-b from-white to-indigo-50/40",
-    dotColor: "bg-indigo-600",
-    suburb: "Hillarys & Northern WA",
-  },
-  {
-    name: "Abel Property",
-    logoText: "abel PROPERTY",
-    fontClass: "font-serif font-black tracking-tight text-xs sm:text-sm text-teal-800",
-    badge: "Coastal WA",
-    accentColor: "border-teal-200 hover:border-teal-400 bg-gradient-to-b from-white to-teal-50/40",
-    dotColor: "bg-teal-600",
-    suburb: "Leederville & Coast",
-  },
-  {
-    name: "First National WA",
-    logoText: "first national",
-    fontClass: "font-sans font-black uppercase text-[11px] sm:text-xs tracking-wider text-purple-900",
-    badge: "Regional & Metro",
-    accentColor: "border-purple-200 hover:border-purple-400 bg-gradient-to-b from-white to-purple-50/40",
-    dotColor: "bg-purple-600",
-    suburb: "Perth Hills & East",
   },
 ];
 
@@ -214,69 +140,6 @@ const PERTH_SUBURB_REGIONS = [
       "Forrestfield",
       "Armadale",
       "Maddington",
-    ],
-  },
-];
-
-const CHECKLIST_SECTIONS = [
-  {
-    title: "Interior Living",
-    tag: "Windows, Skirtings & Ledges",
-    summary: "Full wipe-down of all internal glass, mirrored wardrobes, tracks, blinds, fly screens, skirting boards and edge-to-edge vacuuming.",
-    icon: Sofa,
-    items: [
-      "Windows & Mirrors: Clean inside and outside window panes, sliding door tracks, and mirrored wardrobe doors",
-      "Cupboards & Drawers: Wipe clean inside and out, including shelving and top ledges",
-      "Ledges & Skirtings: Wipe clean all window sills, door frames, architraves & skirting boards",
-      "Fly Screens: Remove, wash free of coastal grit, and reinstall securely",
-      "Lights & Switches: Clean light switches, power points, accessible light fittings & ceiling fan blades",
-      "Floors: Deep edge-to-edge vacuuming along baseboards followed by sanitised hard floor mopping",
-      "Walls: Detailed spot cleaning of fingerprints, scuff marks and light stains on interior walls",
-      "Cobwebs: Thorough removal of cobwebs from ceiling cornices, corners, and light fixtures",
-    ],
-  },
-  {
-    title: "Kitchen Deep Degreasing",
-    tag: "Oven, Rangehood & Benches",
-    summary: "Commercial degreasing of cooking appliances, exhaust canopy, grease filters, splashbacks, sink descaling and cabinetry.",
-    icon: Utensils,
-    items: [
-      "Oven & Grill: Commercial degreasing of oven interior, wire racks, baking trays, glass door & grill",
-      "Rangehood / Extractor Fan: Remove built-up oil marks, wipe canopy, and degrease filter mesh",
-      "Cooking Stovetop: Burners, control knobs, trivets & splashbacks scrubbed and mirror-polished",
-      "Sinks & Tapware: Clear food residue from drains, polish tapware, and remove hard water limescale",
-      "Benches & Splashbacks: Sanitize bench surfaces, clear edge residues, and polish splashback tiles",
-      "Dishwasher: Rinse filter, wipe and polish exterior casing, and sanitize rubber door seals",
-      "Cupboards & Pantry: Empty, vacuum, and wipe clean all cupboard shelves, drawers, and pantry units",
-      "Refrigerator (if requested): Clean internal fridge shelves, crisper bins, racks & wipe exterior",
-    ],
-  },
-  {
-    title: "Bathrooms & Laundry",
-    tag: "Mould, Grout & Descaling",
-    summary: "Complete sanitary disinfection, shower glass descaling, toilet sanitation, mould removal and laundry trough clearing.",
-    icon: Bath,
-    items: [
-      "Shower Glass & Tiles: Descale heavy soap scum & water stains, polish glass, and treat grout mould",
-      "Toilet Bowl & Cistern: Deep scrub, disinfect, and sanitize bowl, seat, hinges & behind-toilet floor",
-      "Vanity, Basins & Mirrors: Clean basins, drains, bench-tops, drawers inside/out, and polish mirrors",
-      "Bathtub & Tapware: Scrub bathtub surfaces, descale tapware, and polish chrome fittings",
-      "Laundry Trough & Recess: Scrub laundry tub, wipe washing machine recesses, taps, and splashback",
-      "Exhaust Fans & Fixtures: Wash ceiling exhaust fan covers, wipe towel rails, toilet paper & soap holders",
-    ],
-  },
-  {
-    title: "External & Patio Areas",
-    tag: "Patio, Garage & Cobwebs",
-    summary: "Outdoor sweep, patio cobweb clearing, garage entrance wiping and sliding door track grit extraction.",
-    icon: Trees,
-    items: [
-      "Patios & Decks: Sweep, mop, and clear verandas, alfresco tiled areas or outdoor decks",
-      "Sliding Patio Tracks: Clear and vacuum Perth sand, dirt, and grit from sliding patio door tracks",
-      "Garage: Sweep or vacuum garage floor, clear spiderwebs, and wipe garage entrance threshold",
-      "Outdoor Windows: Clear exterior spiderwebs, wipe window sills, and wash accessible external panes",
-      "Rubbish Bins (if requested): Wash and dry interior/exterior of bins as requested by property manager",
-      "Air Conditioning Units: Dust exterior AC units, accessible return grilles, and filter screens",
     ],
   },
 ];
@@ -379,7 +242,6 @@ const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export default function BondPageContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [activeChecklistTab, setActiveChecklistTab] = useState(0);
 
   // Multi-Step Quote Form State: 1 = Property & Contact, 2 = Date & Add-ons, 3 = Confirmation
   const [formStep, setFormStep] = useState<1 | 2 | 3>(1);
@@ -474,24 +336,18 @@ export default function BondPageContent() {
     return `${dayName}, ${d} ${monthShort} ${y}`;
   };
 
-  // Step 1 Validation & Proceed to Step 2
-  const handleProceedToStepTwo = (e: React.FormEvent) => {
+  // Single-Step Form Submission
+  const handleDirectSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName.trim() || !phone.trim() || !suburb.trim()) {
       setFormError("Please fill in your name, phone number, and Perth suburb.");
       return;
     }
     setFormError("");
-    setFormStep(2);
-  };
-
-  // Step 2 Submission to Thank You Screen
-  const handleFinalSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
-      setFormStep(3);
+      setFormStep(2);
     }, 600);
   };
 
@@ -561,30 +417,27 @@ export default function BondPageContent() {
               </p>
             </div>
 
-            {/* 3 Modern Feature Cards (Ultra-clean 3-column micro grid on both mobile and desktop) */}
+            {/* 3 Modern Feature Cards (Clean Icon + Title without subheadings) */}
             <div className="grid grid-cols-3 gap-2 sm:gap-3 pt-1">
-              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-colors space-y-1 text-center sm:text-left">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold mx-auto sm:mx-0">
+              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-colors space-y-1.5 text-center sm:text-left flex flex-col items-center sm:items-start justify-center">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold">
                   <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2196f3]" />
                 </div>
-                <h4 className="text-[11px] sm:text-xs font-extrabold text-[#08295b] leading-tight">72-Hr Re-Clean</h4>
-                <p className="text-[10px] sm:text-[11px] text-[#08295b]/70 leading-snug hidden sm:block">Zero cost if your agent flags any cleaning item.</p>
+                <h4 className="text-xs sm:text-sm font-extrabold text-[#08295b] leading-tight">72-Hr Re-Clean</h4>
               </div>
 
-              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-colors space-y-1 text-center sm:text-left">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold mx-auto sm:mx-0">
+              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-colors space-y-1.5 text-center sm:text-left flex flex-col items-center sm:items-start justify-center">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold">
                   <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2196f3]" />
                 </div>
-                <h4 className="text-[11px] sm:text-xs font-extrabold text-[#08295b] leading-tight">Oven &amp; Tracks</h4>
-                <p className="text-[10px] sm:text-[11px] text-[#08295b]/70 leading-snug hidden sm:block">Full degreasing, rangehood &amp; glass descaling standard.</p>
+                <h4 className="text-xs sm:text-sm font-extrabold text-[#08295b] leading-tight">Oven &amp; Tracks</h4>
               </div>
 
-              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-colors space-y-1 text-center sm:text-left">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold mx-auto sm:mx-0">
+              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-colors space-y-1.5 text-center sm:text-left flex flex-col items-center sm:items-start justify-center">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold">
                   <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2196f3]" />
                 </div>
-                <h4 className="text-[11px] sm:text-xs font-extrabold text-[#08295b] leading-tight">Agent Receipt</h4>
-                <p className="text-[10px] sm:text-[11px] text-[#08295b]/70 leading-snug hidden sm:block">Itemised compliance invoice for speedy bond return.</p>
+                <h4 className="text-xs sm:text-sm font-extrabold text-[#08295b] leading-tight">Agent Receipt</h4>
               </div>
             </div>
 
@@ -619,56 +472,13 @@ export default function BondPageContent() {
             </div>
           </div>
 
-          {/* Right Column: 2-Step Quote Form Card */}
+          {/* Right Column: Direct 1-Step Quote Form Card */}
           <div id="quote-form" className="lg:col-span-5 scroll-mt-24 mt-4 sm:mt-6 lg:mt-0">
             <div className="relative rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-xl shadow-[#0d47a1]/10 px-5 sm:px-7 pt-6 sm:pt-7 pb-5 sm:pb-7 overflow-hidden transition-all">
               
-              {/* Form Step Indicator */}
-              {formStep < 3 && (
-                <div className="flex items-center justify-between mb-5 pb-3.5 border-b border-[#d0e4f7]/70 text-xs">
-                  <div className="flex items-center gap-2">
-                    <span
-                      className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs ${
-                        formStep === 1
-                          ? "bg-[#0d47a1] text-white"
-                          : "bg-[#e3f2fd] text-[#0d47a1]"
-                      }`}
-                    >
-                      1
-                    </span>
-                    <span
-                      className={`font-bold ${
-                        formStep === 1 ? "text-[#08295b]" : "text-[#08295b]/60"
-                      }`}
-                    >
-                      Property &amp; Contact
-                    </span>
-                  </div>
-                  <div className="h-0.5 w-8 bg-[#d0e4f7]" />
-                  <div className="flex items-center gap-2">
-                    <span
-                      className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs ${
-                        formStep === 2
-                          ? "bg-[#0d47a1] text-white"
-                          : "bg-[#e3f2fd] text-[#0d47a1]/60"
-                      }`}
-                    >
-                      2
-                    </span>
-                    <span
-                      className={`font-bold ${
-                        formStep === 2 ? "text-[#08295b]" : "text-[#08295b]/60"
-                      }`}
-                    >
-                      Date &amp; Add-ons
-                    </span>
-                  </div>
-                </div>
-              )}
-
-              {/* ================= STEP 1: PROPERTY & CONTACT (REQUEST A QUOTE) ================= */}
+              {/* ================= STEP 1: SINGLE-STEP DIRECT QUOTE FORM ================= */}
               {formStep === 1 && (
-                <form onSubmit={handleProceedToStepTwo} className="space-y-3.5">
+                <form onSubmit={handleDirectSubmit} className="space-y-3.5">
                   <div className="text-center pb-0.5 space-y-0.5">
                     <h3 className="text-xl sm:text-2xl font-black text-[#08295b] tracking-tight">
                       Request a Quote
@@ -821,14 +631,21 @@ export default function BondPageContent() {
                     </div>
                   </div>
 
-                  {/* Next Step CTA */}
-                  <div className="pt-1.5 space-y-1.5">
+                  {/* Submit Button */}
+                  <div className="pt-2 space-y-2">
                     <button
                       type="submit"
-                      className="w-full py-3 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#0d47a1]/20 transition-all cursor-pointer active:scale-98 flex items-center justify-center gap-2"
+                      disabled={isSubmitting}
+                      className="w-full py-3.5 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#0d47a1]/25 transition-all cursor-pointer active:scale-98 flex items-center justify-center gap-2 disabled:opacity-50"
                     >
-                      <span>Continue to Date &amp; Options</span>
-                      <ArrowRight className="w-4 h-4" />
+                      {isSubmitting ? (
+                        <span className="animate-pulse">SUBMITTING QUOTE REQUEST...</span>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4" />
+                          <span>GET INSTANT QUOTE</span>
+                        </>
+                      )}
                     </button>
                     <p className="text-[10px] text-[#08295b]/60 text-center">
                       🔒 Free quote · Fast 15-min response · No obligation
@@ -837,187 +654,8 @@ export default function BondPageContent() {
                 </form>
               )}
 
-              {/* ================= STEP 2: DATE & ADD-ONS ================= */}
+              {/* ================= SUCCESS / CONFIRMATION SCREEN ================= */}
               {formStep === 2 && (
-                <form onSubmit={handleFinalSubmit} className="space-y-4">
-                  <div className="text-center pb-1 space-y-0.5">
-                    <h3 className="text-xl sm:text-2xl font-black text-[#08295b] tracking-tight">
-                      Preferred Cleaning Date
-                    </h3>
-                    <p className="text-xs text-[#08295b]/70">
-                      When do you hand keys back to your Perth agent?
-                    </p>
-                  </div>
-
-                  {/* Calendar Widget */}
-                  <div className="rounded-2xl border border-[#d0e4f7] bg-[#e3f2fd]/40 p-3.5 space-y-2.5">
-                    <div className="flex items-center justify-between px-1">
-                      <span className="font-bold text-xs sm:text-sm text-[#08295b]">
-                        {MONTH_NAMES[month]} {year}
-                      </span>
-                      <div className="flex items-center gap-1">
-                        <button
-                          type="button"
-                          onClick={handlePrevMonth}
-                          className="w-6 h-6 rounded-full bg-white border border-[#d0e4f7] flex items-center justify-center text-[#08295b] hover:bg-[#e3f2fd] transition-all cursor-pointer shadow-xs"
-                        >
-                          <ChevronLeft className="w-3.5 h-3.5" />
-                        </button>
-                        <button
-                          type="button"
-                          onClick={handleNextMonth}
-                          className="w-6 h-6 rounded-full bg-white border border-[#d0e4f7] flex items-center justify-center text-[#08295b] hover:bg-[#e3f2fd] transition-all cursor-pointer shadow-xs"
-                        >
-                          <ChevronRight className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-semibold text-[#08295b]/60">
-                      {["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"].map((d, i) => (
-                        <div key={i} className="py-0.5">
-                          {d}
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="grid grid-cols-7 gap-1 text-center">
-                      {Array.from({ length: startOffset }).map((_, i) => (
-                        <div key={`blank-${i}`} className="h-7 w-full" />
-                      ))}
-
-                      {Array.from({ length: daysInMonth }).map((_, i) => {
-                        const dayNum = i + 1;
-                        const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(
-                          dayNum
-                        ).padStart(2, "0")}`;
-                        const isSelected = selectedDate === dateStr;
-
-                        return (
-                          <button
-                            key={dayNum}
-                            type="button"
-                            onClick={() => handleSelectDate(dayNum)}
-                            className={`h-7 w-full rounded-md text-[11px] font-bold transition-all cursor-pointer flex items-center justify-center ${
-                              isSelected
-                                ? "bg-[#0d47a1] text-white shadow-xs"
-                                : "bg-white text-[#08295b] hover:bg-[#e3f2fd] border border-transparent shadow-xs"
-                            }`}
-                          >
-                            {dayNum}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* Selected Date Summary */}
-                  <div className="p-2.5 rounded-xl bg-[#f8fbfe] border border-[#d0e4f7] flex items-center justify-between text-xs">
-                    <span className="font-semibold text-[#08295b]/80">Selected Date:</span>
-                    <span className="font-bold text-[#0d47a1]">{formatPillDate(selectedDate)}</span>
-                  </div>
-
-                  {/* Add-on Options Checkboxes */}
-                  <div className="space-y-2 text-left">
-                    <label className="text-xs font-bold text-[#08295b] block">
-                      Optional Add-Ons (Recommended for Bond Return)
-                    </label>
-                    <div className="space-y-1.5">
-                      <label className="flex items-center gap-2.5 p-2 rounded-xl border border-[#d0e4f7] bg-white cursor-pointer hover:bg-[#f8fbfe]">
-                        <input
-                          type="checkbox"
-                          checked={addCarpetSteam}
-                          onChange={(e) => setAddCarpetSteam(e.target.checked)}
-                          className="w-4 h-4 rounded text-[#0d47a1] focus:ring-[#2196f3]"
-                        />
-                        <div className="text-xs">
-                          <span className="font-bold text-[#08295b]">
-                            Carpet Steam Cleaning
-                          </span>
-                          <span className="text-[#08295b]/60 block text-[11px]">
-                            Hot-water extraction + official receipt for agent
-                          </span>
-                        </div>
-                      </label>
-
-                      <label className="flex items-center gap-2.5 p-2 rounded-xl border border-[#d0e4f7] bg-white cursor-pointer hover:bg-[#f8fbfe]">
-                        <input
-                          type="checkbox"
-                          checked={hasPets}
-                          onChange={(e) => setHasPets(e.target.checked)}
-                          className="w-4 h-4 rounded text-[#0d47a1] focus:ring-[#2196f3]"
-                        />
-                        <div className="text-xs">
-                          <span className="font-bold text-[#08295b]">
-                            Pet Bond / Flea Treatment Compliance
-                          </span>
-                          <span className="text-[#08295b]/60 block text-[11px]">
-                            Required for WA tenancy pet agreements
-                          </span>
-                        </div>
-                      </label>
-
-                      <label className="flex items-center gap-2.5 p-2 rounded-xl border border-[#d0e4f7] bg-white cursor-pointer hover:bg-[#f8fbfe]">
-                        <input
-                          type="checkbox"
-                          checked={addWindowCleaning}
-                          onChange={(e) => setAddWindowCleaning(e.target.checked)}
-                          className="w-4 h-4 rounded text-[#0d47a1] focus:ring-[#2196f3]"
-                        />
-                        <div className="text-xs">
-                          <span className="font-bold text-[#08295b]">
-                            External Windows &amp; Screens
-                          </span>
-                        </div>
-                      </label>
-                    </div>
-                  </div>
-
-                  {/* Additional Notes */}
-                  <div className="space-y-1.5 text-left">
-                    <label className="text-xs font-bold text-[#08295b]">
-                      Special Requirements / Property Notes
-                    </label>
-                    <textarea
-                      rows={2}
-                      placeholder="e.g. key collection from Ray White Subiaco, furnished unit, carpeted bedrooms only..."
-                      value={additionalNotes}
-                      onChange={(e) => setAdditionalNotes(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl border border-[#d0e4f7] bg-white text-xs font-medium text-[#08295b] outline-none focus:border-[#2196f3] resize-none shadow-xs"
-                    />
-                  </div>
-
-                  {/* Buttons */}
-                  <div className="space-y-2 pt-1">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full py-3.5 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#0d47a1]/25 transition-all cursor-pointer active:scale-98 flex items-center justify-center gap-2 disabled:opacity-50"
-                    >
-                      {isSubmitting ? (
-                        <span className="animate-pulse">SENDING QUOTE REQUEST...</span>
-                      ) : (
-                        <>
-                          <Send className="w-4 h-4" />
-                          <span>SUBMIT QUOTE REQUEST</span>
-                        </>
-                      )}
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => setFormStep(1)}
-                      className="w-full py-1 text-xs text-[#08295b]/60 hover:text-[#0d47a1] font-semibold flex items-center justify-center gap-1 transition-colors cursor-pointer"
-                    >
-                      <ArrowLeft className="w-3.5 h-3.5" />
-                      <span>Back to property details</span>
-                    </button>
-                  </div>
-                </form>
-              )}
-
-              {/* ================= STEP 3: SUCCESS / CONFIRMATION SCREEN ================= */}
-              {formStep === 3 && (
                 <div className="py-6 text-center space-y-4">
                   <div className="w-16 h-16 rounded-full bg-[#0d47a1] text-white flex items-center justify-center mx-auto shadow-lg shadow-[#0d47a1]/25">
                     <Check className="w-9 h-9 stroke-[3]" />
@@ -1033,7 +671,7 @@ export default function BondPageContent() {
                   </div>
 
                   <p className="text-xs text-[#08295b]/75 max-w-sm mx-auto leading-relaxed">
-                    Thank you, <strong>{fullName || "there"}</strong>! We have received your bond cleaning enquiry for your <strong>{propertyType} in {suburb || "Perth"}</strong> for <strong>{formatPillDate(selectedDate)}</strong>. We will contact you within 15–30 minutes with a fixed, transparent quote.
+                    Thank you, <strong>{fullName || "there"}</strong>! We have received your bond cleaning enquiry for your <strong>{propertyType} in {suburb || "Perth"}</strong>. We will contact you within 15–30 minutes with a fixed, transparent quote.
                   </p>
 
                   <div className="p-3.5 bg-[#f8fbfe] rounded-2xl border border-[#d0e4f7] text-left text-xs space-y-1.5">
@@ -1044,10 +682,6 @@ export default function BondPageContent() {
                     <div className="flex items-center gap-2 text-[#08295b]/80">
                       <Home className="w-3.5 h-3.5 text-[#2196f3]" />
                       <span>{bedrooms} · {bathrooms} · {propertyType}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-[#08295b]/80">
-                      <Calendar className="w-3.5 h-3.5 text-[#2196f3]" />
-                      <span>Preferred Date: {formatPillDate(selectedDate)}</span>
                     </div>
                   </div>
 
@@ -1072,37 +706,6 @@ export default function BondPageContent() {
               )}
 
             </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* Real Estate Agencies Partner Strip - Clean & Minimalist */}
-      <section className="py-8 sm:py-12 bg-white border-b border-[#d0e4f7]">
-        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 md:px-10 space-y-6">
-          
-          {/* Section Heading */}
-          <div className="text-center space-y-1.5 max-w-xl mx-auto">
-            <h3 className="text-base sm:text-lg md:text-xl font-black text-[#08295b] tracking-tight">
-              Trusted by 50+ Real Estate Agencies Across Perth
-            </h3>
-            <p className="text-xs text-[#08295b]/60">
-              Approved by property managers from Western Australia&apos;s leading agencies.
-            </p>
-          </div>
-
-          {/* Clean Minimalist Agency Logo Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5 sm:gap-3">
-            {PERTH_REAL_ESTATE_AGENCIES.map((agency, i) => (
-              <div
-                key={i}
-                className="h-16 rounded-2xl border border-[#d0e4f7]/80 bg-[#f8fbfe] hover:bg-white hover:border-[#2196f3] shadow-xs flex items-center justify-center p-3 text-center transition-all duration-200 hover:-translate-y-0.5 cursor-default group"
-              >
-                <span className={`${agency.fontClass} select-none transition-colors group-hover:text-[#0d47a1]`}>
-                  {agency.logoText}
-                </span>
-              </div>
-            ))}
           </div>
 
         </div>
@@ -1270,192 +873,8 @@ export default function BondPageContent() {
         </div>
       </section>
 
-      {/* Room-By-Room End of Lease Checklist Section */}
-      <section id="checklist" className="py-14 sm:py-20 px-4 sm:px-6 md:px-10 lg:px-14 bg-white border-b border-[#d0e4f7]">
-        <div className="max-w-[1240px] mx-auto space-y-8 sm:space-y-10">
-          
-          {/* Section Heading */}
-          <div className="text-center max-w-2xl mx-auto space-y-3 sm:space-y-4">
-            <div className="flex justify-center">
-              <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-widest text-[#0d47a1] uppercase bg-[#e3f2fd] px-4 py-1.5 rounded-full border border-[#d0e4f7]">
-                Real Estate Vacate Standard
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#08295b] tracking-tight">
-              What Does Our Perth Vacate Clean Include?
-            </h2>
-            <p className="text-xs sm:text-sm text-[#08295b]/70 leading-relaxed">
-              Our comprehensive move-out cleaning standard is designed to cover every area required for rental bond release, pre-sale property detailing, and move-in cleans.
-            </p>
-          </div>
-
-          {/* Interactive Room Tabs */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 p-1.5 sm:p-2 bg-[#f0f7ff] border border-[#d0e4f7] rounded-2xl sm:rounded-3xl">
-            {CHECKLIST_SECTIONS.map((section, idx) => {
-              const isActive = activeChecklistTab === idx;
-              const IconComp = section.icon;
-              return (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => setActiveChecklistTab(idx)}
-                  className={`flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl text-left transition-all cursor-pointer ${
-                    isActive
-                      ? "bg-[#0d47a1] text-white shadow-md shadow-[#0d47a1]/25 scale-[1.01]"
-                      : "bg-white/80 hover:bg-white text-[#08295b] hover:text-[#0d47a1] border border-[#d0e4f7]/60"
-                  }`}
-                >
-                  <div
-                    className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                      isActive ? "bg-white/15 text-white" : "bg-[#e3f2fd] text-[#0d47a1]"
-                    }`}
-                  >
-                    <IconComp className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="block text-xs sm:text-sm font-bold truncate">
-                      {section.title}
-                    </span>
-                    <span
-                      className={`block text-[10px] font-medium truncate ${
-                        isActive ? "text-white/80" : "text-[#08295b]/60"
-                      }`}
-                    >
-                      {section.tag}
-                    </span>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Active Tab Checklist Card */}
-          <div className="bg-[#f8fbfe] border border-[#d0e4f7] rounded-3xl p-5 sm:p-8 space-y-6 shadow-sm">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#d0e4f7]">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-[#0d47a1] text-white flex items-center justify-center shadow-sm shrink-0">
-                  {React.createElement(CHECKLIST_SECTIONS[activeChecklistTab].icon, {
-                    className: "w-5 h-5",
-                  })}
-                </div>
-                <div>
-                  <h3 className="text-base sm:text-xl font-extrabold text-[#08295b]">
-                    {CHECKLIST_SECTIONS[activeChecklistTab].title} Standard
-                  </h3>
-                  <p className="text-xs text-[#08295b]/70">
-                    {CHECKLIST_SECTIONS[activeChecklistTab].summary}
-                  </p>
-                </div>
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e3f2fd] border border-[#d0e4f7] text-[11px] font-bold text-[#0d47a1] shrink-0 self-start sm:self-auto">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#2196f3]" />
-                <span>100% Real Estate Inspection Pass Standard</span>
-              </div>
-            </div>
-
-            {/* Clean 2-Column Deliverables Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-              {CHECKLIST_SECTIONS[activeChecklistTab].items.map((item, iIdx) => (
-                <div
-                  key={iIdx}
-                  className="flex items-start gap-3 p-3.5 sm:p-4 rounded-2xl bg-white border border-[#d0e4f7]/80 hover:border-[#2196f3] transition-colors"
-                >
-                  <div className="w-5 h-5 rounded-full bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center shrink-0 mt-0.5">
-                    <Check className="w-3 h-3 text-[#2196f3] stroke-[3]" />
-                  </div>
-                  <span className="text-xs sm:text-[13px] font-medium text-[#08295b] leading-relaxed">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Bottom Reassurance Strip */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-[#e3f2fd]/60 border border-[#d0e4f7]">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-xl bg-white text-[#0d47a1] flex items-center justify-center border border-[#d0e4f7] shrink-0">
-                  <ShieldCheck className="w-4 h-4 text-[#2196f3]" />
-                </div>
-                <p className="text-xs font-semibold text-[#08295b] leading-snug">
-                  <span className="font-extrabold text-[#0d47a1]">72-Hour Free Re-Clean Guarantee:</span> If your Perth property manager marks anything on this checklist, we return within 72 hours for free.
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={scrollToForm}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs font-bold transition-all shrink-0 cursor-pointer shadow-sm text-center"
-              >
-                Request a Quote
-              </button>
-            </div>
-          </div>
-
-          {/* Add-Ons & Transparent Exclusions Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            
-            {/* Add-Ons Available */}
-            <div className="bg-white border border-[#d0e4f7] rounded-3xl p-5 sm:p-6 space-y-3 shadow-sm">
-              <div className="flex items-center gap-2.5 pb-2 border-b border-[#d0e4f7]">
-                <div className="w-8 h-8 rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold">
-                  <Plus className="w-4 h-4 text-[#2196f3] stroke-[2.5]" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-[#08295b]">
-                    Move-Out Cleaning Add-Ons (Selectable in Quote)
-                  </h4>
-                  <p className="text-[11px] text-[#08295b]/70">Customise your vacate package with specialised extras</p>
-                </div>
-              </div>
-
-              <div className="space-y-2 text-xs font-semibold text-[#08295b]/85">
-                {[
-                  "Carpet Steam Cleaning (Hot water extraction with real estate pet flea certificate)",
-                  "External Window Cleaning & Fly Screens (Deep wash of all external glass)",
-                  "Blinds Wiping & Dusting (Detailed slat washing & heavy dust removal)",
-                  "Full Wall Washing (Removal of heavy nicotine, marker or scuff marks)",
-                  "High-Pressure Washing for Balconies, Decks & Outdoor Pavers",
-                ].map((addon, aIdx) => (
-                  <div key={aIdx} className="flex items-start gap-2">
-                    <Plus className="w-3.5 h-3.5 text-[#2196f3] shrink-0 mt-0.5 stroke-[2.5]" />
-                    <span>{addon}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Transparent Exclusions (Builds Trust) */}
-            <div className="bg-[#f8fbfe] border border-[#d0e4f7] rounded-3xl p-5 sm:p-6 space-y-3 shadow-sm">
-              <div className="flex items-center gap-2.5 pb-2 border-b border-[#d0e4f7]">
-                <div className="w-8 h-8 rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold">
-                  <ShieldCheck className="w-4 h-4 text-[#0d47a1]" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-[#08295b]">
-                    Standard Service Exclusions & Custom Work
-                  </h4>
-                  <p className="text-[11px] text-[#08295b]/70">Clear transparency on what requires separate specialized booking</p>
-                </div>
-              </div>
-
-              <div className="space-y-2 text-xs text-[#08295b]/75">
-                {[
-                  "Full-house tile & grout restoration (shower tiles included; other areas on custom quote)",
-                  "Ceiling washing and curtain dry cleaning (requires specialised restoration)",
-                  "Heavy garden weeding, mowing or landscaping maintenance",
-                  "Mould remediation caused by internal structural plumbing leaks",
-                ].map((exclusion, eIdx) => (
-                  <div key={eIdx} className="flex items-start gap-2">
-                    <span className="text-[#0d47a1] font-bold shrink-0">•</span>
-                    <span>{exclusion}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
+      {/* Interactive Before & After Transformation Showcase */}
+      <BeforeAfterShowcase />
 
       {/* Perth Suburbs & Greater WA Metro Coverage Section */}
       <section className="py-14 sm:py-20 px-4 sm:px-6 md:px-10 lg:px-14 border-b border-[#d0e4f7] bg-[#f8fbfe]">
