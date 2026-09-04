@@ -38,7 +38,7 @@ const TRANSFORMATIONS: Transformation[] = [
     categoryName: "Kitchen",
     title: "Oven & Cooktop Degreasing",
     focus: "Burnt carbon removal, stainless steel polish & rack restoration",
-    location: "Bond Clean · Surry Hills, Sydney NSW",
+    location: "Bond Clean · Subiaco, Perth WA",
     duration: "1.5 hours",
     icon: UtensilsCrossed,
     beforeDesc: "Heavy burnt-on carbon grease, clouded door glass, and blackened gas cooktop burners.",
@@ -172,7 +172,7 @@ export default function BeforeAfterShowcase() {
           </h2>
 
           <p className="text-xs sm:text-sm md:text-base text-[#08295b]/75 font-normal max-w-2xl mx-auto leading-relaxed">
-            Drag the interactive slider to inspect real before-and-after results delivered across Sydney, Melbourne, Brisbane, Perth, Gold Coast, and Adelaide.
+            Drag the interactive slider to inspect real before-and-after results delivered across Perth and Western Australia.
           </p>
         </div>
 

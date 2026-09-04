@@ -12,7 +12,7 @@ const testimonials: TestimonialItem[] = [
     image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop",
     name: "Sarah Jenkins",
     role: "Fortnightly Home Clean",
-    location: "Bondi, Sydney NSW",
+    location: "Cottesloe, Perth WA",
     rating: 5,
   },
   {
@@ -56,11 +56,11 @@ const testimonials: TestimonialItem[] = [
     rating: 5,
   },
   {
-    text: "Exceptional bond cleaning in Manly. Our real estate agent is notoriously strict with inspections, but Superboss left zero room for fault. Received our complete $3,200 bond back promptly.",
+    text: "Exceptional bond cleaning in Scarborough. Our real estate agent is notoriously strict with inspections, but Superboss left zero room for fault. Received our complete bond back promptly.",
     image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop",
     name: "Jessica Miller",
     role: "End of Lease Vacate",
-    location: "Manly, Sydney NSW",
+    location: "Scarborough, Perth WA",
     rating: 5,
   },
   {
@@ -161,7 +161,7 @@ export default function TestimonialBanner() {
           </h2>
 
           <p className="text-xs sm:text-sm md:text-base text-[#08295b]/75 max-w-2xl font-normal leading-relaxed">
-            Real feedback from verified Australian homeowners, tenants, real estate agents, and commercial partners in Sydney, Melbourne, Brisbane, Perth, Gold Coast, and Adelaide.
+            Real feedback from verified homeowners, tenants, real estate agents, and property managers across Perth and Western Australia.
           </p>
         </motion.div>
 

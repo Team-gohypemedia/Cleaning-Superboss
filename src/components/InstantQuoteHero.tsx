@@ -85,7 +85,7 @@ export default function InstantQuoteHero() {
   const [activeTab, setActiveTab] = useState<"quick" | "detailed">("quick");
   const [sizeMethod, setSizeMethod] = useState<"size" | "hourly">("size");
   const [hourlyHours, setHourlyHours] = useState<number>(3);
-  const [selectedCity, setSelectedCity] = useState<CityId>("sydney");
+  const [selectedCity, setSelectedCity] = useState<CityId>("perth");
   const [suburb, setSuburb] = useState<string>("");
   const [category, setCategory] = useState<CategoryType>("home");
   const [serviceId, setServiceId] = useState<string>("regular");
@@ -271,7 +271,7 @@ export default function InstantQuoteHero() {
   };
 
   const currentCityObj = CITIES.find((c) => c.id === selectedCity) || CITIES[0];
-  const currentTestimonial = CITY_TESTIMONIALS[selectedCity] || CITY_TESTIMONIALS.sydney;
+  const currentTestimonial = CITY_TESTIMONIALS[selectedCity] || CITY_TESTIMONIALS.perth;
 
   return (
     <section className="relative w-full bg-[#f8fbfe] text-[#08295b] pt-8 sm:pt-12 md:pt-14 pb-12 sm:pb-16 border-t border-[#d0e4f7] select-none">

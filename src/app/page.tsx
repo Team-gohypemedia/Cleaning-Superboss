@@ -23,7 +23,7 @@ export default function Home() {
       <RibbonSection />
 
       {/* Hero Quoting Engine: Get Your Price in Minutes */}
-      <InstantQuoteHero />
+      {/* <InstantQuoteHero /> */}
 
       {/* Built by the Industry Logo Grid */}
       <LogoGrid />
@@ -31,14 +31,14 @@ export default function Home() {
       {/* The Authority Engine Sticky Scroll Section */}
       <MasterBrand />
 
-      {/* Services with Animated Hover Modal */}
-      <ServicesHoverModalSection />
+      {/* Services with Animated Hover Modal (Multiple Services) */}
+      {/* <ServicesHoverModalSection /> */}
 
       {/* Before & After Photo Transformations */}
       <BeforeAfterShowcase />
 
-      {/* Australian Credentials, ABN, Insurance & Service Areas */}
-      <AustralianTrustAndAreas />
+      {/* Australian Credentials, ABN, Insurance & Multiple Service Locations */}
+      {/* <AustralianTrustAndAreas /> */}
 
       {/* Production Output Bento Grid Gallery */}
       <ShowcaseBentoGallery />

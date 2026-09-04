@@ -60,7 +60,7 @@ export default function HomeCleaningPage() {
       testimonial={{
         quote: "Our fortnightly home clean has been a game changer. The cleaner is always on time, incredibly polite, and pays attention to every little detail. Worth every dollar.",
         author: "Sarah Jenkins",
-        location: "Homeowner · Sydney NSW",
+        location: "Homeowner · Perth WA",
         rating: 5,
       }}
       faqs={[

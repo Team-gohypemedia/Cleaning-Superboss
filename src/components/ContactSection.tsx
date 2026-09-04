@@ -12,6 +12,7 @@ import {
   CheckCircle2,
   Sparkles,
   ShieldCheck,
+  Lock,
 } from "lucide-react";
 
 export default function ContactSection() {
@@ -93,9 +94,9 @@ export default function ContactSection() {
                     <MapPin className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#0d47a1]" />
                   </div>
                   <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-[#08295b]">National Service Hub</h4>
+                    <h4 className="text-xs sm:text-sm font-bold text-[#08295b]">Service Coverage</h4>
                     <p className="text-xs text-[#08295b]/70 mt-0.5 leading-relaxed">
-                      Perth, Sydney, Melbourne, Brisbane, Gold Coast &amp; Adelaide
+                      Perth &amp; Greater Western Australia Metropolitan Areas
                     </p>
                   </div>
                 </div>
@@ -255,7 +256,7 @@ export default function ContactSection() {
                     <input
                       type="text"
                       required
-                      placeholder="e.g. 14 Bondi Road, Bondi, Sydney NSW 2026"
+                      placeholder="e.g. 142 St Georges Terrace, Perth WA 6000"
                       value={formData.propertyAddress}
                       onChange={(e) => setFormData({ ...formData, propertyAddress: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/15 focus:border-[#2196f3] focus:bg-white/15 focus:ring-2 focus:ring-[#2196f3]/25 outline-none text-xs sm:text-sm text-white placeholder-white/40 transition-all font-medium"
@@ -280,20 +281,23 @@ export default function ContactSection() {
                   {/* Divider */}
                   <div className="pt-2 border-t border-white/10" />
 
-                  {/* Submit Button */}
-                  <div className="space-y-3">
+                  {/* Submit Button & Privacy Note */}
+                  <div className="space-y-3 pt-2">
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full py-4 px-6 rounded-2xl bg-[#0d47a1] hover:bg-[#2196f3] active:scale-[0.99] text-white font-extrabold text-sm uppercase tracking-wider shadow-xl shadow-[#0d47a1]/40 border border-[#2196f3]/40 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                      className="w-full py-4 px-6 rounded-2xl bg-[#0d47a1] hover:bg-[#2196f3] active:scale-[0.99] text-white font-black text-xs sm:text-sm uppercase tracking-wider shadow-xl shadow-[#0d47a1]/40 border border-[#2196f3]/40 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                     >
                       <span>{loading ? "Calculating..." : "Next: Select Date & Time"}</span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
 
-                    <p className="text-[11px] text-center text-[#e3f2fd]/60">
-                      🔒 No spam guaranteed. Your information is protected under Australian Privacy Principles.
-                    </p>
+                    <div className="flex items-center justify-center gap-1.5 px-2 text-center">
+                      <Lock className="w-3.5 h-3.5 text-[#2196f3] shrink-0" />
+                      <p className="text-[11px] sm:text-xs text-[#e3f2fd]/75 leading-relaxed">
+                        No spam guaranteed. Your information is protected under Australian Privacy Principles.
+                      </p>
+                    </div>
                   </div>
 
                 </form>
