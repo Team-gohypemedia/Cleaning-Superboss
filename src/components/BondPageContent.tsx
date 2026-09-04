@@ -242,6 +242,8 @@ const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export default function BondPageContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [showAllSuburbs, setShowAllSuburbs] = useState(false);
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
 
   // Multi-Step Quote Form State: 1 = Property & Contact, 2 = Date & Add-ons, 3 = Confirmation
   const [formStep, setFormStep] = useState<1 | 2 | 3>(1);
@@ -403,7 +405,7 @@ export default function BondPageContent() {
             {/* Pill Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#e3f2fd]/90 backdrop-blur-xs border border-[#d0e4f7] text-[#0d47a1] text-[11px] sm:text-xs font-bold tracking-wide">
               <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2196f3]" />
-              <span>100% Bond Back Guarantee · Real Estate Approved</span>
+              <span>PERTH BOND CLEANING • FAST QUOTE RESPONSE</span>
             </div>
 
             {/* Main Headline */}
@@ -417,27 +419,27 @@ export default function BondPageContent() {
               </p>
             </div>
 
-            {/* 3 Modern Feature Cards (Clean Icon + Title without subheadings) */}
+            {/* 3 Modern Feature Cards (Icon + Title in one line) */}
             <div className="grid grid-cols-3 gap-2 sm:gap-3 pt-1">
-              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-colors space-y-1.5 text-center sm:text-left flex flex-col items-center sm:items-start justify-center">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold">
+              <div className="px-2.5 sm:px-3.5 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-colors flex items-center gap-2 sm:gap-2.5">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold shrink-0">
                   <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2196f3]" />
                 </div>
-                <h4 className="text-xs sm:text-sm font-extrabold text-[#08295b] leading-tight">72-Hr Re-Clean</h4>
+                <h4 className="text-[11px] sm:text-sm font-extrabold text-[#08295b] leading-tight truncate">Detailed Cleaning</h4>
               </div>
 
-              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-colors space-y-1.5 text-center sm:text-left flex flex-col items-center sm:items-start justify-center">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold">
+              <div className="px-2.5 sm:px-3.5 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-colors flex items-center gap-2 sm:gap-2.5">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold shrink-0">
                   <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2196f3]" />
                 </div>
-                <h4 className="text-xs sm:text-sm font-extrabold text-[#08295b] leading-tight">Oven &amp; Tracks</h4>
+                <h4 className="text-[11px] sm:text-sm font-extrabold text-[#08295b] leading-tight truncate">Oven &amp; Tracks</h4>
               </div>
 
-              <div className="p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-colors space-y-1.5 text-center sm:text-left flex flex-col items-center sm:items-start justify-center">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold">
+              <div className="px-2.5 sm:px-3.5 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-colors flex items-center gap-2 sm:gap-2.5">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold shrink-0">
                   <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2196f3]" />
                 </div>
-                <h4 className="text-xs sm:text-sm font-extrabold text-[#08295b] leading-tight">Agent Receipt</h4>
+                <h4 className="text-[11px] sm:text-sm font-extrabold text-[#08295b] leading-tight truncate">Agent Receipt</h4>
               </div>
             </div>
 
@@ -446,29 +448,26 @@ export default function BondPageContent() {
               <button
                 type="button"
                 onClick={scrollToForm}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-md shadow-[#0d47a1]/25 transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-md shadow-[#0d47a1]/25 transition-all active:scale-95 flex items-center justify-center cursor-pointer"
               >
                 <span>Request a Quote</span>
-                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
 
-            {/* Clean Rating & Trust Proof */}
-            <div className="pt-1 sm:pt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[#08295b]/75">
-              <div className="flex items-center gap-1.5 font-semibold">
-                <div className="flex text-amber-500">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                  ))}
-                </div>
-                <span className="font-bold text-[#08295b]">4.9/5.0</span>
-                <span>(850+ Perth Moves)</span>
-              </div>
-              <span className="text-[#d0e4f7] font-bold select-none">•</span>
-              <div className="flex items-center gap-1 font-bold text-[#0d47a1]">
+            {/* Reassurance Feature Line */}
+            <div className="pt-1 sm:pt-2 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-bold text-[#08295b]">
+              <span className="flex items-center gap-1 text-[#0d47a1]">
                 <Check className="w-3.5 h-3.5 text-[#2196f3] stroke-[3]" />
-                <span>100% Bond Pass Rate</span>
-              </div>
+                Perth-Wide Service
+              </span>
+              <span className="flex items-center gap-1 text-[#0d47a1]">
+                <Check className="w-3.5 h-3.5 text-[#2196f3] stroke-[3]" />
+                Detailed Cleaning Checklist
+              </span>
+              <span className="flex items-center gap-1 text-[#0d47a1]">
+                <Check className="w-3.5 h-3.5 text-[#2196f3] stroke-[3]" />
+                Free Quote
+              </span>
             </div>
           </div>
 
@@ -636,19 +635,16 @@ export default function BondPageContent() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3.5 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#0d47a1]/25 transition-all cursor-pointer active:scale-98 flex items-center justify-center gap-2 disabled:opacity-50"
+                      className="w-full py-3.5 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#0d47a1]/25 transition-all cursor-pointer active:scale-98 flex items-center justify-center disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <span className="animate-pulse">SUBMITTING QUOTE REQUEST...</span>
                       ) : (
-                        <>
-                          <Send className="w-4 h-4" />
-                          <span>GET INSTANT QUOTE</span>
-                        </>
+                        <span>REQUEST A QUOTE</span>
                       )}
                     </button>
                     <p className="text-[10px] text-[#08295b]/60 text-center">
-                      🔒 Free quote · Fast 15-min response · No obligation
+                      Free quote • No obligation • Our team will get back to you
                     </p>
                   </div>
                 </form>
@@ -894,28 +890,45 @@ export default function BondPageContent() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {PERTH_SUBURB_REGIONS.map((regionData, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-3xl p-6 border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-all space-y-4"
-              >
-                <div className="flex items-center gap-2 pb-2 border-b border-[#d0e4f7]">
-                  <MapPin className="w-4 h-4 text-[#0d47a1]" />
-                  <h3 className="font-bold text-sm text-[#08295b]">{regionData.region}</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {PERTH_SUBURB_REGIONS.map((regionData, idx) => {
+              const isHiddenOnMobile = !showAllSuburbs && idx >= 1;
+              return (
+                <div
+                  key={idx}
+                  className={`bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-all space-y-3.5 ${
+                    isHiddenOnMobile ? "hidden md:block" : "block"
+                  }`}
+                >
+                  <div className="flex items-center gap-2 pb-2 border-b border-[#d0e4f7]">
+                    <MapPin className="w-4 h-4 text-[#0d47a1]" />
+                    <h3 className="font-bold text-sm text-[#08295b]">{regionData.region}</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {regionData.suburbs.map((sub, sIdx) => (
+                      <span
+                        key={sIdx}
+                        className="text-xs px-2.5 py-1 rounded-lg bg-[#f8fbfe] border border-[#d0e4f7] text-[#08295b]/80 font-medium"
+                      >
+                        {sub}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {regionData.suburbs.map((sub, sIdx) => (
-                    <span
-                      key={sIdx}
-                      className="text-xs px-2.5 py-1 rounded-lg bg-[#f8fbfe] border border-[#d0e4f7] text-[#08295b]/80 font-medium"
-                    >
-                      {sub}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
+              );
+            })}
+          </div>
+
+          {/* Mobile "See More / Show Less" Suburb Toggle Button */}
+          <div className="md:hidden flex justify-center pt-1">
+            <button
+              type="button"
+              onClick={() => setShowAllSuburbs((prev) => !prev)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#d0e4f7] hover:border-[#2196f3] text-[#0d47a1] text-xs font-bold shadow-xs active:scale-95 transition-all cursor-pointer"
+            >
+              <span>{showAllSuburbs ? "Show Fewer Areas" : "See More Perth Suburbs & Areas (+3)"}</span>
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${showAllSuburbs ? "rotate-180" : ""}`} />
+            </button>
           </div>
 
           <div className="text-center pt-2">
@@ -1139,27 +1152,42 @@ export default function BondPageContent() {
             </p>
           </div>
 
-          <div className="divide-y divide-[#d0e4f7] border-y border-[#d0e4f7] bg-white rounded-3xl p-6 sm:p-8 shadow-sm">
-            {PERTH_FAQS.map((faq, idx) => (
-              <div key={idx} className="py-4 first:pt-0 last:pb-0">
-                <button
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full flex items-center justify-between gap-4 text-left font-bold text-sm sm:text-base text-[#08295b] hover:text-[#0d47a1] cursor-pointer"
-                >
-                  <span>{faq.q}</span>
-                  <ChevronDown
-                    className={`w-4 h-4 shrink-0 text-[#2196f3] transition-transform duration-200 ${
-                      openFaq === idx ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {openFaq === idx && (
-                  <p className="mt-3 text-xs sm:text-sm text-[#08295b]/70 leading-relaxed">
-                    {faq.a}
-                  </p>
-                )}
-              </div>
-            ))}
+          <div className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-[#d0e4f7] shadow-sm space-y-3">
+            <div className="divide-y divide-[#d0e4f7]">
+              {(showAllFaqs ? PERTH_FAQS : PERTH_FAQS.slice(0, 5)).map((faq, idx) => (
+                <div key={idx} className="py-3.5 sm:py-4 first:pt-0 last:pb-0">
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                    className="w-full flex items-center justify-between gap-3 text-left font-bold text-xs sm:text-sm md:text-base text-[#08295b] hover:text-[#0d47a1] cursor-pointer transition-colors"
+                  >
+                    <span>{faq.q}</span>
+                    <ChevronDown
+                      className={`w-4 h-4 shrink-0 text-[#2196f3] transition-transform duration-200 ${
+                        openFaq === idx ? "rotate-180 text-[#0d47a1]" : ""
+                      }`}
+                    />
+                  </button>
+                  {openFaq === idx && (
+                    <p className="mt-2.5 text-xs sm:text-sm text-[#08295b]/75 leading-relaxed bg-[#f8fbfe] p-3 rounded-xl border border-[#d0e4f7]/60">
+                      {faq.a}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Toggle View More / Fewer FAQs */}
+            <div className="pt-3 border-t border-[#d0e4f7] flex justify-center">
+              <button
+                type="button"
+                onClick={() => setShowAllFaqs((prev) => !prev)}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#f8fbfe] border border-[#d0e4f7] hover:border-[#2196f3] text-[#0d47a1] text-xs font-bold shadow-2xs active:scale-95 transition-all cursor-pointer"
+              >
+                <span>{showAllFaqs ? "Show Fewer Questions" : `View More FAQs (+${PERTH_FAQS.length - 5})`}</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${showAllFaqs ? "rotate-180" : ""}`} />
+              </button>
+            </div>
           </div>
         </div>
       </section>
