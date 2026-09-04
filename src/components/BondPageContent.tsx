@@ -419,30 +419,6 @@ export default function BondPageContent() {
               </p>
             </div>
 
-            {/* 3 Modern Feature Cards (Icon + Title in one line) */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-3 pt-1">
-              <div className="px-2.5 sm:px-3.5 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-colors flex items-center gap-2 sm:gap-2.5">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold shrink-0">
-                  <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2196f3]" />
-                </div>
-                <h4 className="text-[11px] sm:text-sm font-extrabold text-[#08295b] leading-tight truncate">Detailed Cleaning</h4>
-              </div>
-
-              <div className="px-2.5 sm:px-3.5 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-colors flex items-center gap-2 sm:gap-2.5">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold shrink-0">
-                  <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2196f3]" />
-                </div>
-                <h4 className="text-[11px] sm:text-sm font-extrabold text-[#08295b] leading-tight truncate">Oven &amp; Tracks</h4>
-              </div>
-
-              <div className="px-2.5 sm:px-3.5 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-sm hover:border-[#2196f3] transition-colors flex items-center gap-2 sm:gap-2.5">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold shrink-0">
-                  <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2196f3]" />
-                </div>
-                <h4 className="text-[11px] sm:text-sm font-extrabold text-[#08295b] leading-tight truncate">Agent Receipt</h4>
-              </div>
-            </div>
-
             {/* Reassurance Feature Line */}
             <div className="pt-2 sm:pt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-bold text-[#08295b]">
               <span className="flex items-center gap-1 text-[#0d47a1]">
