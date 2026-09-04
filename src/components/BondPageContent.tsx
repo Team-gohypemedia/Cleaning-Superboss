@@ -25,6 +25,7 @@ import {
   Send,
 } from "lucide-react";
 import Footer from "@/components/Footer";
+import PerthLiveBookingMap from "@/components/PerthLiveBookingMap";
 
 const PERTH_REAL_ESTATE_AGENCIES = [
   { name: "Ray White Perth", logoText: "Ray White." },
@@ -102,82 +103,107 @@ const PERTH_SUBURB_REGIONS = [
 
 const CHECKLIST_SECTIONS = [
   {
+    title: "Interior Living",
+    tag: "Windows, Skirtings & Ledges",
+    summary: "Full wipe-down of all internal glass, mirrored wardrobes, tracks, blinds, fly screens, skirting boards and edge-to-edge vacuuming.",
+    icon: <Home className="w-4 h-4 sm:w-5 sm:h-5 text-[#2196f3]" />,
+    items: [
+      "Windows & Mirrors: Clean inside and outside window panes, sliding door tracks, and mirrored wardrobe doors",
+      "Cupboards & Drawers: Wipe clean inside and out, including shelving and top ledges",
+      "Ledges & Skirtings: Wipe clean all window sills, door frames, architraves & skirting boards",
+      "Fly Screens: Remove, wash free of coastal grit, and reinstall securely",
+      "Lights & Switches: Clean light switches, power points, accessible light fittings & ceiling fan blades",
+      "Floors: Deep edge-to-edge vacuuming along baseboards followed by sanitised hard floor mopping",
+      "Walls: Detailed spot cleaning of fingerprints, scuff marks and light stains on interior walls",
+      "Cobwebs: Thorough removal of cobwebs from ceiling cornices, corners, and light fixtures",
+    ],
+  },
+  {
     title: "Kitchen Deep Degreasing",
-    icon: <Flame className="w-5 h-5 text-[#2196f3]" />,
+    tag: "Oven, Rangehood & Benches",
+    summary: "Commercial degreasing of cooking appliances, exhaust canopy, grease filters, splashbacks, sink descaling and cabinetry.",
+    icon: <Flame className="w-4 h-4 sm:w-5 sm:h-5 text-[#2196f3]" />,
     items: [
-      "Oven interior, wire racks, trays, glass door & grill completely degreased",
-      "Rangehood filters soaked, degreased & exhaust canopy wiped",
-      "Stovetop burners, control knobs & splashbacks mirror-polished",
-      "Inside, outside & top of all kitchen cupboards, drawers & pantry shelves",
-      "Sink, tapware & drain descaled with limescale removal",
-      "Dishwasher rubber seals, filter & front panel cleaned",
-      "Benchtops sanitised and edge residue cleared",
+      "Oven & Grill: Commercial degreasing of oven interior, wire racks, baking trays, glass door & grill",
+      "Rangehood / Extractor Fan: Remove built-up oil marks, wipe canopy, and degrease filter mesh",
+      "Cooking Stovetop: Burners, control knobs, trivets & splashbacks scrubbed and mirror-polished",
+      "Sinks & Tapware: Clear food residue from drains, polish tapware, and remove hard water limescale",
+      "Benches & Splashbacks: Sanitize bench surfaces, clear edge residues, and polish splashback tiles",
+      "Dishwasher: Rinse filter, wipe and polish exterior casing, and sanitize rubber door seals",
+      "Cupboards & Pantry: Empty, vacuum, and wipe clean all cupboard shelves, drawers, and pantry units",
+      "Refrigerator (if requested): Clean internal fridge shelves, crisper bins, racks & wipe exterior",
     ],
   },
   {
-    title: "Bathrooms, Ensuites & Laundry",
-    icon: <Bath className="w-5 h-5 text-[#2196f3]" />,
+    title: "Bathrooms & Laundry",
+    tag: "Mould, Grout & Descaling",
+    summary: "Complete sanitary disinfection, shower glass descaling, toilet sanitation, mould removal and laundry trough clearing.",
+    icon: <Bath className="w-4 h-4 sm:w-5 sm:h-5 text-[#2196f3]" />,
     items: [
-      "Shower glass screens descaled of heavy soap scum & water stains",
-      "Wall tiles, floor tiles & grouting scrubbed and disinfected",
-      "Toilet bowl, cistern, seat & behind-toilet floor sanitized",
-      "Basins, vanity units, mirrors & drawers cleaned inside/out",
-      "Bathtub scrubbed, polished & tapware descaled",
-      "Laundry trough, washing machine recess & taps cleared",
-      "Exhaust fan covers removed, washed & reinstalled",
+      "Shower Glass & Tiles: Descale heavy soap scum & water stains, polish glass, and treat grout mould",
+      "Toilet Bowl & Cistern: Deep scrub, disinfect, and sanitize bowl, seat, hinges & behind-toilet floor",
+      "Vanity, Basins & Mirrors: Clean basins, drains, bench-tops, drawers inside/out, and polish mirrors",
+      "Bathtub & Tapware: Scrub bathtub surfaces, descale tapware, and polish chrome fittings",
+      "Laundry Trough & Recess: Scrub laundry tub, wipe washing machine recesses, taps, and splashback",
+      "Exhaust Fans & Fixtures: Wash ceiling exhaust fan covers, wipe towel rails, toilet paper & soap holders",
     ],
   },
   {
-    title: "Bedrooms & Living Areas",
-    icon: <Home className="w-5 h-5 text-[#2196f3]" />,
+    title: "External & Patio Areas",
+    tag: "Patio, Garage & Cobwebs",
+    summary: "Outdoor sweep, patio cobweb clearing, garage entrance wiping and sliding door track grit extraction.",
+    icon: <Layers className="w-4 h-4 sm:w-5 sm:h-5 text-[#2196f3]" />,
     items: [
-      "Built-in wardrobe tracks, mirrored sliding doors & internal shelving",
-      "Window tracks, sills, frames & interior window panes cleaned",
-      "Skirting boards, architraves & interior doors wiped free of dust",
-      "Ceiling fans dusted & accessible light fixtures wiped",
-      "Light switches, power points & door handles disinfected",
-      "Full edge-to-edge vacuuming along baseboards & hard floor mopping",
-      "Cobwebs removed from all room cornices and ceiling corners",
-    ],
-  },
-  {
-    title: "Walls, Fixtures & Details",
-    icon: <Layers className="w-5 h-5 text-[#2196f3]" />,
-    items: [
-      "Spot cleaning fingerprints and scuff marks on interior walls",
-      "Sliding patio door tracks cleared of Perth sand and grit",
-      "Air conditioning exterior units & accessible filter screens dusted",
-      "Balcony / alfresco tiled floors swept and mopped",
-      "Internal doors, handles, latches & garage entrance threshold wiped",
-      "Exhaust vents and air return grilles wiped clean",
+      "Patios & Decks: Sweep, mop, and clear verandas, alfresco tiled areas or outdoor decks",
+      "Sliding Patio Tracks: Clear and vacuum Perth sand, dirt, and grit from sliding patio door tracks",
+      "Garage: Sweep or vacuum garage floor, clear spiderwebs, and wipe garage entrance threshold",
+      "Outdoor Windows: Clear exterior spiderwebs, wipe window sills, and wash accessible external panes",
+      "Rubbish Bins (if requested): Wash and dry interior/exterior of bins as requested by property manager",
+      "Air Conditioning Units: Dust exterior AC units, accessible return grilles, and filter screens",
     ],
   },
 ];
 
 const PERTH_FAQS = [
   {
-    q: "How does the 100% Bond Back Guarantee work in Western Australia?",
-    a: "Our Perth vacate cleans strictly adhere to the standard REIWA and WA Department of Mines, Industry Regulation and Safety (Consumer Protection) exit condition checklists. If your Perth property manager or landlord flags any cleaning-related items within 72 hours of inspection, our team will return to the property and reclean those specific items completely free of charge.",
+    q: "Do you provide a 100% Bond Back Guarantee?",
+    a: "Yes. Getting your bond back requires meeting strict REIWA exit standards. If your Perth property manager or landlord flags any cleaning item on the exit condition report within our guarantee period, we return to the property and rectify it completely free of charge. We prioritize inspection re-cleans urgently to protect your deposit.",
   },
   {
     q: "Do you provide an itemised tax invoice for my Perth real estate agent?",
-    a: "Yes, 100%. Immediately upon completion of your clean, we issue a formal digital tax invoice and a signed end-of-lease vacate checklist certificate. You can send this receipt directly to your property manager to prove professional vacate cleaning compliance.",
+    a: "Yes, 100%. Immediately upon completion of your clean, we issue a formal digital tax invoice and a signed end-of-lease vacate checklist certificate. You can forward this receipt directly to your property manager to prove professional vacate cleaning compliance.",
   },
   {
-    q: "Do you cover all suburbs in Greater Perth (North and South of the River)?",
-    a: "Yes! We service the entire Perth metropolitan area, including Perth CBD, Joondalup, Scarborough, Fremantle, Victoria Park, Cannington, Midland, Armadale, Rockingham, and surrounding Western Australian suburbs.",
+    q: "I don't have time to be at the property, can you organise key pick-up and drop-off with my Perth real estate agent?",
+    a: "Absolutely! We frequently coordinate key collection and return directly with Perth real estate agencies or lockboxes. You don't need to take time off work or wait around on cleaning day.",
+  },
+  {
+    q: "Do you do pre-sale cleaning and move-in cleaning?",
+    a: "Yes. In addition to tenant vacate cleaning, we specialize in pre-sale property detailing for homeowners preparing to sell, as well as fresh move-in sanitisation cleans across all Perth suburbs.",
+  },
+  {
+    q: "The previous tenant left the property in bad condition, will you still clean?",
+    a: "Yes! Our commercial Perth cleaning teams have heavy-duty equipment and professional chemicals to tackle heavy oven grime, neglected shower glass limescale, and full-property deep restorations.",
+  },
+  {
+    q: "Can I customize the quote or exclude items to save cost?",
+    a: "Yes. If certain rooms or areas have already been cleaned or are not required by your landlord, let us know in your quote enquiry and we will adjust your custom quote accordingly.",
+  },
+  {
+    q: "My house is a 2-storey townhouse, can you clean 2nd-floor windows?",
+    a: "Yes. We clean all interior windows and accessible external glass. For 2-storey homes, we use specialized extension water-fed poles for external upper-level windows as an add-on.",
+  },
+  {
+    q: "Is vacate cleaning the same as end of lease cleaning or bond cleaning in Perth?",
+    a: "Yes. In Western Australia, 'vacate cleaning', 'end of lease cleaning', and 'bond cleaning' all refer to the comprehensive deep clean required to return a rental property to its original condition under REIWA tenancy agreements.",
   },
   {
     q: "Can I add Carpet Steam Cleaning with a certificate for pet bond requirements?",
-    a: "Absolutely. We offer professional hot-water extraction carpet steam cleaning that meets all Western Australian pet bond and end-of-lease tenancy requirements, complete with a certified steam cleaning receipt for your real estate agent.",
+    a: "Yes! We offer hot-water extraction carpet steam cleaning and provide a certified receipt that satisfies WA real estate pet bond and flea treatment clauses.",
   },
   {
     q: "Does the rental property need electricity and hot water connected?",
-    a: "Yes. To achieve a spotless bond clean that meets REIWA standards, our team requires active electricity and hot water at the property to operate commercial vacuum systems and hot water degreasers.",
-  },
-  {
-    q: "How quickly can I get a free quote for my Perth bond clean?",
-    a: "Once you submit our quote form, our local Perth team reviews your property details and provides a transparent quote within 15 to 30 minutes. If you need an urgent quote right away, you can also call us directly on +61 460 849 843.",
+    a: "Yes. To achieve a spotless finish that passes REIWA exit standards, active power and hot water are required to operate commercial vacuum systems and hot water degreasers.",
   },
 ];
 
@@ -198,6 +224,7 @@ const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export default function BondPageContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [activeChecklistTab, setActiveChecklistTab] = useState(0);
 
   // Multi-Step Quote Form State: 1 = Property & Contact, 2 = Date & Add-ons, 3 = Confirmation
   const [formStep, setFormStep] = useState<1 | 2 | 3>(1);
@@ -298,107 +325,98 @@ export default function BondPageContent() {
 
   return (
     <div className="min-h-screen bg-[#f8fbfe] text-[#08295b] pt-20 sm:pt-24">
-      {/* Top Banner - Perth & WA Specific */}
-      <div className="w-full bg-[#0d47a1] text-white text-xs py-2 px-4 text-center font-medium shadow-xs">
-        <span>
-          🇦🇺 Perth & WA #1 Vacate Cleaning Specialists · REIWA Checklist Approved · 72-Hour Free Re-Clean
-        </span>
-        <span className="mx-2 opacity-40">|</span>
-        <a
-          href="tel:+61460849843"
-          className="underline font-bold hover:text-[#2196f3] transition-colors"
-        >
-          Call / SMS: +61 460 849 843
-        </a>
-      </div>
-
       {/* Hero Section with Dedicated Quote Enquiry Form */}
-      <section className="relative w-full py-10 sm:py-16 px-4 sm:px-6 md:px-10 lg:px-14 border-b border-[#d0e4f7]">
-        <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <section className="relative w-full py-8 sm:py-14 px-4 sm:px-6 md:px-10 lg:px-14 border-b border-[#d0e4f7]">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
-          {/* Left Column: Heading, Perth Value Proposition & Guarantee */}
+          {/* Left Column: Streamlined Heading, Value Cards & Reassurance */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-widest text-[#0d47a1] uppercase bg-[#e3f2fd] px-3.5 py-1 rounded-full border border-[#d0e4f7]">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#2196f3]" />
-                100% Bond Back Guarantee
-              </span>
-              <span className="inline-block text-[11px] font-bold text-[#0d47a1] bg-[#e3f2fd] px-3 py-1 rounded-full border border-[#d0e4f7]">
-                Perth & WA Real Estate Approved
-              </span>
+            
+            {/* Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#e3f2fd] border border-[#d0e4f7] text-[#0d47a1] text-xs font-bold tracking-wide">
+              <ShieldCheck className="w-4 h-4 text-[#2196f3]" />
+              <span>REIWA Standard Approved · 100% Bond Back Guarantee</span>
             </div>
 
-            <div className="space-y-2">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#08295b] tracking-tight leading-[1.1]">
-                Perth Bond Cleaning & End Of Lease Cleaning
+            {/* Main Headline */}
+            <div className="space-y-3">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-5xl font-black text-[#08295b] tracking-tight leading-[1.15]">
+                Perth Bond Cleaning &amp; <br className="hidden sm:inline" />
+                <span className="text-[#0d47a1]">End Of Lease Specialists</span>
               </h1>
-              <p className="text-lg sm:text-xl font-bold text-[#0d47a1]">
-                Inspection-Ready & 72-Hour Free Recleaning Guarantee
+              <p className="text-sm sm:text-base text-[#08295b]/75 max-w-xl font-medium leading-relaxed">
+                Pass your Perth property manager&apos;s exit inspection first time. Includes full oven degreasing, window tracks, sanitisation, and a 72-hour free re-clean guarantee.
               </p>
             </div>
 
-            <p className="text-sm sm:text-base text-[#08295b]/75 max-w-xl font-normal leading-relaxed">
-              Moving out? Don&apos;t risk losing your bond money. Cleaning Superboss vacate cleaning specialists adhere strictly to REIWA and Western Australian real estate exit inspection checklists with our unconditional 72-hour free reclean policy.
-            </p>
-
-            {/* Checklist Points with Brand Blue Checks */}
-            <div className="space-y-2.5 pt-1">
-              {[
-                "Real estate & REIWA approved 100% bond back exit checklist",
-                "72-Hour free re-clean guarantee if anything is flagged by your agent",
-                "Oven, rangehood, window tracks & deep limescale removal included",
-                "100% police checked, vetted & $10M public liability insured",
-                "Official digital tax invoice & receipt for your property manager",
-              ].map((point, idx) => (
-                <div key={idx} className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-[#08295b]/90">
-                  <div className="w-5 h-5 rounded-full bg-[#e3f2fd] border border-[#d0e4f7] flex items-center justify-center shrink-0">
-                    <Check className="w-3.5 h-3.5 text-[#0d47a1] stroke-[3]" />
-                  </div>
-                  <span>{point}</span>
+            {/* 3 Modern Feature Cards (Replaces dense bullet list) */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+              <div className="p-3.5 rounded-2xl bg-white border border-[#d0e4f7] shadow-xs hover:border-[#2196f3] transition-colors space-y-1">
+                <div className="w-8 h-8 rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold">
+                  <ShieldCheck className="w-4 h-4 text-[#2196f3]" />
                 </div>
-              ))}
+                <h4 className="text-xs font-extrabold text-[#08295b]">72-Hr Free Re-Clean</h4>
+                <p className="text-[11px] text-[#08295b]/70 leading-snug">Zero cost if your agent flags any cleaning item.</p>
+              </div>
+
+              <div className="p-3.5 rounded-2xl bg-white border border-[#d0e4f7] shadow-xs hover:border-[#2196f3] transition-colors space-y-1">
+                <div className="w-8 h-8 rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold">
+                  <Flame className="w-4 h-4 text-[#2196f3]" />
+                </div>
+                <h4 className="text-xs font-extrabold text-[#08295b]">Oven &amp; Tracks Included</h4>
+                <p className="text-[11px] text-[#08295b]/70 leading-snug">Full degreasing, rangehood &amp; glass descaling standard.</p>
+              </div>
+
+              <div className="p-3.5 rounded-2xl bg-white border border-[#d0e4f7] shadow-xs hover:border-[#2196f3] transition-colors space-y-1">
+                <div className="w-8 h-8 rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold">
+                  <Award className="w-4 h-4 text-[#2196f3]" />
+                </div>
+                <h4 className="text-xs font-extrabold text-[#08295b]">Agent Tax Receipt</h4>
+                <p className="text-[11px] text-[#08295b]/70 leading-snug">Itemised compliance invoice for speedy bond return.</p>
+              </div>
             </div>
 
-            {/* CTAs */}
-            <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-3 pt-2">
+            {/* CTAs & Quick Call Action */}
+            <div className="flex flex-wrap items-center gap-3 pt-1">
               <button
                 type="button"
                 onClick={scrollToForm}
-                className="px-3 sm:px-7 py-2.5 sm:py-3.5 rounded-full bg-[#0d47a1] hover:bg-[#2196f3] text-white text-[11px] sm:text-xs md:text-sm font-extrabold uppercase tracking-wider shadow-md sm:shadow-lg shadow-[#0d47a1]/25 transition-all active:scale-95 flex items-center justify-center gap-1.5 sm:gap-2 text-center cursor-pointer"
+                className="px-6 py-3 rounded-full bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-md shadow-[#0d47a1]/25 transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
               >
                 <span>Request a Quote</span>
-                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+                <ArrowRight className="w-4 h-4" />
               </button>
               <a
                 href="tel:+61460849843"
-                className="px-3 sm:px-6 py-2.5 sm:py-3.5 rounded-full bg-white border border-[#d0e4f7] text-[#08295b] hover:bg-[#e3f2fd] text-[11px] sm:text-xs md:text-sm font-bold tracking-wide transition-all shadow-xs flex items-center justify-center gap-1.5 sm:gap-2 text-center"
+                className="px-5 py-3 rounded-full bg-white border border-[#d0e4f7] text-[#08295b] hover:bg-[#e3f2fd] text-xs sm:text-sm font-bold tracking-wide transition-all shadow-xs flex items-center gap-2"
               >
-                <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0d47a1] shrink-0" />
-                <span className="truncate">Call +61 460 849 843</span>
+                <Phone className="w-4 h-4 text-[#0d47a1]" />
+                <span>+61 460 849 843</span>
               </a>
             </div>
 
-            {/* Micro rating strip */}
-            <div className="pt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[#08295b]/70 border-t border-[#d0e4f7]">
+            {/* Clean Rating & Trust Proof */}
+            <div className="pt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[#08295b]/75">
               <div className="flex items-center gap-1.5 font-semibold">
                 <div className="flex text-amber-500">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-3.5 h-3.5 fill-current" />
                   ))}
                 </div>
-                <span>4.9 / 5.0 (850+ Perth Reviews)</span>
+                <span className="font-bold text-[#08295b]">4.9/5.0</span>
+                <span>(850+ Perth Moves)</span>
               </div>
               <span className="text-[#d0e4f7] font-bold select-none">•</span>
               <div className="flex items-center gap-1 font-bold text-[#0d47a1]">
                 <Check className="w-3.5 h-3.5 text-[#2196f3] stroke-[3]" />
-                <span>100% Bond Return Rate</span>
+                <span>100% Bond Pass Rate</span>
               </div>
             </div>
           </div>
 
           {/* Right Column: 2-Step Quote Form Card */}
           <div id="quote-form" className="lg:col-span-5 scroll-mt-24">
-            <div className="relative rounded-3xl bg-white border border-[#d0e4f7] shadow-xl p-6 sm:p-7 overflow-hidden transition-all">
+            <div className="relative rounded-3xl bg-white border border-[#d0e4f7] shadow-lg shadow-[#0d47a1]/5 p-5 sm:p-7 overflow-hidden transition-all">
               
               {/* Form Step Indicator */}
               {formStep < 3 && (
@@ -445,8 +463,8 @@ export default function BondPageContent() {
 
               {/* ================= STEP 1: PROPERTY & CONTACT (REQUEST A QUOTE) ================= */}
               {formStep === 1 && (
-                <form onSubmit={handleProceedToStepTwo} className="space-y-4">
-                  <div className="text-center pb-1 space-y-0.5">
+                <form onSubmit={handleProceedToStepTwo} className="space-y-3.5">
+                  <div className="text-center pb-0.5 space-y-0.5">
                     <h3 className="text-xl sm:text-2xl font-black text-[#08295b] tracking-tight">
                       Request a Quote
                     </h3>
@@ -462,9 +480,9 @@ export default function BondPageContent() {
                   )}
 
                   {/* Full Name & Phone Number */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-[#08295b]">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-left">
+                    <div className="space-y-1">
+                      <label className="text-[11px] font-bold text-[#08295b]">
                         Full Name *
                       </label>
                       <input
@@ -473,11 +491,11 @@ export default function BondPageContent() {
                         placeholder="e.g. Liam Smith"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#d0e4f7] bg-white text-xs sm:text-sm font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/20 transition-all placeholder:text-[#08295b]/35 shadow-xs"
+                        className="w-full px-3 py-2 rounded-xl border border-[#d0e4f7] bg-[#fcfdff] text-xs font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/15 transition-all placeholder:text-[#08295b]/35 shadow-2xs"
                       />
                     </div>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-[#08295b]">
+                    <div className="space-y-1">
+                      <label className="text-[11px] font-bold text-[#08295b]">
                         Phone Number *
                       </label>
                       <input
@@ -486,14 +504,14 @@ export default function BondPageContent() {
                         placeholder="0400 000 000"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-[#d0e4f7] bg-white text-xs sm:text-sm font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/20 transition-all placeholder:text-[#08295b]/35 shadow-xs"
+                        className="w-full px-3 py-2 rounded-xl border border-[#d0e4f7] bg-[#fcfdff] text-xs font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/15 transition-all placeholder:text-[#08295b]/35 shadow-2xs"
                       />
                     </div>
                   </div>
 
                   {/* Email Address */}
-                  <div className="space-y-1.5 text-left">
-                    <label className="text-xs font-bold text-[#08295b]">
+                  <div className="space-y-1 text-left">
+                    <label className="text-[11px] font-bold text-[#08295b]">
                       Email Address
                     </label>
                     <input
@@ -501,14 +519,14 @@ export default function BondPageContent() {
                       placeholder="liam@example.com.au (for tax quote & invoice)"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#d0e4f7] bg-white text-xs sm:text-sm font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/20 transition-all placeholder:text-[#08295b]/35 shadow-xs"
+                      className="w-full px-3 py-2 rounded-xl border border-[#d0e4f7] bg-[#fcfdff] text-xs font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/15 transition-all placeholder:text-[#08295b]/35 shadow-2xs"
                     />
                   </div>
 
                   {/* Perth Suburb / Postcode */}
-                  <div className="space-y-1.5 text-left">
+                  <div className="space-y-1 text-left">
                     <div className="flex items-center justify-between">
-                      <label className="text-xs font-bold text-[#08295b]">
+                      <label className="text-[11px] font-bold text-[#08295b]">
                         Perth Suburb / Postcode *
                       </label>
                       <span className="text-[10px] text-[#0d47a1] font-semibold">
@@ -521,10 +539,10 @@ export default function BondPageContent() {
                       placeholder="e.g. Subiaco 6008, Joondalup 6027, Fremantle..."
                       value={suburb}
                       onChange={(e) => setSuburb(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#d0e4f7] bg-white text-xs sm:text-sm font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/20 transition-all placeholder:text-[#08295b]/35 shadow-xs"
+                      className="w-full px-3 py-2 rounded-xl border border-[#d0e4f7] bg-[#fcfdff] text-xs font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/15 transition-all placeholder:text-[#08295b]/35 shadow-2xs"
                     />
                     {/* Quick Suburb Suggestions */}
-                    <div className="flex flex-wrap gap-1 pt-1">
+                    <div className="flex flex-wrap gap-1 pt-0.5">
                       {POPULAR_PERTH_SUBURBS.map((s) => (
                         <button
                           key={s}
@@ -539,8 +557,8 @@ export default function BondPageContent() {
                   </div>
 
                   {/* Property Type */}
-                  <div className="space-y-1.5 text-left">
-                    <label className="text-xs font-bold text-[#08295b]">
+                  <div className="space-y-1 text-left">
+                    <label className="text-[11px] font-bold text-[#08295b]">
                       Property Type
                     </label>
                     <div className="grid grid-cols-4 gap-1.5">
@@ -562,15 +580,15 @@ export default function BondPageContent() {
                   </div>
 
                   {/* Bedrooms & Bathrooms */}
-                  <div className="grid grid-cols-2 gap-3 text-left">
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-[#08295b]">
+                  <div className="grid grid-cols-2 gap-2.5 text-left">
+                    <div className="space-y-1">
+                      <label className="text-[11px] font-bold text-[#08295b]">
                         Bedrooms
                       </label>
                       <select
                         value={bedrooms}
                         onChange={(e) => setBedrooms(e.target.value)}
-                        className="w-full px-3 py-2.5 rounded-xl border border-[#d0e4f7] bg-white text-xs sm:text-sm font-medium text-[#08295b] outline-none focus:border-[#2196f3] cursor-pointer shadow-xs"
+                        className="w-full px-3 py-2 rounded-xl border border-[#d0e4f7] bg-white text-xs font-medium text-[#08295b] outline-none focus:border-[#2196f3] cursor-pointer shadow-2xs"
                       >
                         <option value="Studio">Studio</option>
                         <option value="1 Bedroom">1 Bedroom</option>
@@ -581,14 +599,14 @@ export default function BondPageContent() {
                       </select>
                     </div>
 
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-[#08295b]">
+                    <div className="space-y-1">
+                      <label className="text-[11px] font-bold text-[#08295b]">
                         Bathrooms
                       </label>
                       <select
                         value={bathrooms}
                         onChange={(e) => setBathrooms(e.target.value)}
-                        className="w-full px-3 py-2.5 rounded-xl border border-[#d0e4f7] bg-white text-xs sm:text-sm font-medium text-[#08295b] outline-none focus:border-[#2196f3] cursor-pointer shadow-xs"
+                        className="w-full px-3 py-2 rounded-xl border border-[#d0e4f7] bg-white text-xs font-medium text-[#08295b] outline-none focus:border-[#2196f3] cursor-pointer shadow-2xs"
                       >
                         <option value="1 Bathroom">1 Bathroom</option>
                         <option value="2 Bathrooms">2 Bathrooms</option>
@@ -599,14 +617,17 @@ export default function BondPageContent() {
                   </div>
 
                   {/* Next Step CTA */}
-                  <div className="pt-2">
+                  <div className="pt-1.5 space-y-1.5">
                     <button
                       type="submit"
-                      className="w-full py-3.5 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#0d47a1]/25 transition-all cursor-pointer active:scale-98 flex items-center justify-center gap-2"
+                      className="w-full py-3 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#0d47a1]/20 transition-all cursor-pointer active:scale-98 flex items-center justify-center gap-2"
                     >
-                      <span>NEXT: DATE &amp; QUOTE OPTIONS</span>
+                      <span>Continue to Date &amp; Options</span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
+                    <p className="text-[10px] text-[#08295b]/60 text-center">
+                      🔒 Free quote · Fast 15-min response · No obligation
+                    </p>
                   </div>
                 </form>
               )}
@@ -950,23 +971,23 @@ export default function BondPageContent() {
               {[
                 {
                   num: "1",
-                  title: "100% Bond Back Guarantee (REIWA Checklist)",
-                  desc: "We clean strictly to Western Australian real estate standards. If your Perth property manager flags any item on the exit condition report within 72 hours, we return and reclean the flagged areas free of charge.",
+                  title: "100% Bond Return Guarantee",
+                  desc: "If your Perth property fails inspection on any cleaning item, we return to fix it completely free of charge. Your deposit return is guaranteed with an official REIWA-compliant invoice.",
                 },
                 {
                   num: "2",
-                  title: "Exhaustive Room-by-Room Detailing",
-                  desc: "Comprehensive vacate cleaning covering oven interior, rangehood filters, window tracks, deep limescale, door frames, skirting boards, and fly screens.",
+                  title: "Local Perth Expertise & Suburb Knowledge",
+                  desc: "From coastal salt residue and grit in Fremantle to heavy hard water stains in Joondalup, we understand each suburb's unique cleaning challenges.",
                 },
                 {
                   num: "3",
-                  title: "Local Perth Cleaners, Police Checked & Insured",
-                  desc: "Every cleaner on our Perth team is thoroughly vetted, police-cleared, and insured with $10M public liability coverage for complete peace of mind.",
+                  title: "Transparent Quotes & No Hidden Fees",
+                  desc: "Upfront, transparent quote tailored specifically to your property size and tenancy requirements. No surprise surcharges on cleaning day.",
                 },
                 {
                   num: "4",
-                  title: "Fast Free Quotes & 7-Day Flexible Scheduling",
-                  desc: "Operating 7 days a week across all Perth suburbs (North & South of the Swan River). Short-notice and urgent move-outs accommodated seamlessly.",
+                  title: "Trusted by 50+ Real Estate Agencies & Key Drop-off",
+                  desc: "Perth real estate agents recommend us as their preferred cleaning provider. We can even coordinate key pick-up and drop-off directly with your agency.",
                 },
               ].map((item, idx) => (
                 <div
@@ -1005,119 +1026,178 @@ export default function BondPageContent() {
 
       {/* Room-By-Room End of Lease Checklist Section */}
       <section id="checklist" className="py-14 sm:py-20 px-4 sm:px-6 md:px-10 lg:px-14 bg-white border-b border-[#d0e4f7]">
-        <div className="max-w-[1360px] mx-auto space-y-10">
+        <div className="max-w-[1240px] mx-auto space-y-8 sm:space-y-10">
           
+          {/* Section Heading */}
           <div className="text-center max-w-2xl mx-auto space-y-3 sm:space-y-4">
             <div className="flex justify-center">
               <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-widest text-[#0d47a1] uppercase bg-[#e3f2fd] px-4 py-1.5 rounded-full border border-[#d0e4f7]">
-                Room-By-Room Standard
+                REIWA Vacate Standard
               </span>
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#08295b] tracking-tight">
-              What Does Our Perth Bond Clean Include?
+              What Does Our Perth Vacate Clean Include?
             </h2>
             <p className="text-xs sm:text-sm text-[#08295b]/70 leading-relaxed">
-              Our exhaustive vacate cleaning checklist covers every detail required by property managers across Western Australia.
+              Our comprehensive move-out cleaning standard is designed to cover every area required for rental bond release, pre-sale property detailing, and move-in cleans.
             </p>
           </div>
 
-          {/* 4 Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {CHECKLIST_SECTIONS.map((section, idx) => (
-              <div
-                key={idx}
-                className="bg-[#f8fbfe] rounded-3xl p-6 border border-[#d0e4f7] shadow-md flex flex-col justify-between space-y-4 hover:border-[#2196f3] transition-all"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2.5 pb-3 border-b border-[#d0e4f7]">
-                    <div className="w-9 h-9 rounded-xl bg-white border border-[#d0e4f7] flex items-center justify-center shrink-0">
-                      {section.icon}
-                    </div>
-                    <h3 className="text-base font-bold text-[#08295b]">{section.title}</h3>
+          {/* Interactive Room Tabs */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 p-1.5 sm:p-2 bg-[#f0f7ff] border border-[#d0e4f7] rounded-2xl sm:rounded-3xl">
+            {CHECKLIST_SECTIONS.map((section, idx) => {
+              const isActive = activeChecklistTab === idx;
+              return (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setActiveChecklistTab(idx)}
+                  className={`flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl text-left transition-all cursor-pointer ${
+                    isActive
+                      ? "bg-[#0d47a1] text-white shadow-md shadow-[#0d47a1]/25 scale-[1.01]"
+                      : "bg-white/80 hover:bg-white text-[#08295b] hover:text-[#0d47a1] border border-[#d0e4f7]/60"
+                  }`}
+                >
+                  <div
+                    className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                      isActive ? "bg-white/15 text-white" : "bg-[#e3f2fd] text-[#0d47a1]"
+                    }`}
+                  >
+                    {section.icon}
                   </div>
-
-                  <ul className="space-y-2.5">
-                    {section.items.map((item, iIdx) => (
-                      <li key={iIdx} className="flex items-start gap-2.5 text-xs text-[#08295b]/80">
-                        <Check className="w-3.5 h-3.5 text-[#2196f3] shrink-0 mt-0.5 stroke-[2.5]" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="pt-3 border-t border-[#d0e4f7]/70 text-[11px] font-bold text-[#0d47a1] flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#2196f3]" />
-                  <span>100% Inspection-Ready</span>
-                </div>
-              </div>
-            ))}
+                  <div className="min-w-0">
+                    <span className="block text-xs sm:text-sm font-bold truncate">
+                      {section.title}
+                    </span>
+                    <span
+                      className={`block text-[10px] font-medium truncate ${
+                        isActive ? "text-white/80" : "text-[#08295b]/60"
+                      }`}
+                    >
+                      {section.tag}
+                    </span>
+                  </div>
+                </button>
+              );
+            })}
           </div>
 
-          {/* Summary 2 Banners: Standard Inclusions & Move-Out Add-Ons */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-            
-            {/* Box 1: What We Always Include */}
-            <div className="bg-[#e3f2fd]/60 border border-[#d0e4f7] rounded-3xl p-6 sm:p-7 space-y-4 shadow-sm">
+          {/* Active Tab Checklist Card */}
+          <div className="bg-[#f8fbfe] border border-[#d0e4f7] rounded-3xl p-5 sm:p-8 space-y-6 shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#d0e4f7]">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#0d47a1] text-white flex items-center justify-center font-black">
-                  <Check className="w-5 h-5 stroke-[3]" />
+                <div className="w-10 h-10 rounded-2xl bg-[#0d47a1] text-white flex items-center justify-center shadow-sm shrink-0">
+                  {CHECKLIST_SECTIONS[activeChecklistTab].icon}
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-bold text-[#08295b]">
-                    Always Included in Every Perth Bond Clean
+                  <h3 className="text-base sm:text-xl font-extrabold text-[#08295b]">
+                    {CHECKLIST_SECTIONS[activeChecklistTab].title} Standard
                   </h3>
-                  <p className="text-xs text-[#08295b]/70">Standard in all our Western Australian vacate cleans</p>
+                  <p className="text-xs text-[#08295b]/70">
+                    {CHECKLIST_SECTIONS[activeChecklistTab].summary}
+                  </p>
+                </div>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e3f2fd] border border-[#d0e4f7] text-[11px] font-bold text-[#0d47a1] shrink-0 self-start sm:self-auto">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#2196f3]" />
+                <span>100% REIWA Inspection Pass Standard</span>
+              </div>
+            </div>
+
+            {/* Clean 2-Column Deliverables Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+              {CHECKLIST_SECTIONS[activeChecklistTab].items.map((item, iIdx) => (
+                <div
+                  key={iIdx}
+                  className="flex items-start gap-3 p-3.5 sm:p-4 rounded-2xl bg-white border border-[#d0e4f7]/80 hover:border-[#2196f3] transition-colors"
+                >
+                  <div className="w-5 h-5 rounded-full bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center shrink-0 mt-0.5">
+                    <Check className="w-3 h-3 text-[#2196f3] stroke-[3]" />
+                  </div>
+                  <span className="text-xs sm:text-[13px] font-medium text-[#08295b] leading-relaxed">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom Reassurance Strip */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-[#e3f2fd]/60 border border-[#d0e4f7]">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-xl bg-white text-[#0d47a1] flex items-center justify-center border border-[#d0e4f7] shrink-0">
+                  <ShieldCheck className="w-4 h-4 text-[#2196f3]" />
+                </div>
+                <p className="text-xs font-semibold text-[#08295b] leading-snug">
+                  <span className="font-extrabold text-[#0d47a1]">72-Hour Free Re-Clean Guarantee:</span> If your Perth property manager marks anything on this checklist, we return within 72 hours for free.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={scrollToForm}
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs font-bold transition-all shrink-0 cursor-pointer shadow-sm text-center"
+              >
+                Request a Quote
+              </button>
+            </div>
+          </div>
+
+          {/* Add-Ons & Transparent Exclusions Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            {/* Add-Ons Available */}
+            <div className="bg-white border border-[#d0e4f7] rounded-3xl p-5 sm:p-6 space-y-3 shadow-sm">
+              <div className="flex items-center gap-2.5 pb-2 border-b border-[#d0e4f7]">
+                <div className="w-8 h-8 rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold">
+                  <Plus className="w-4 h-4 text-[#2196f3] stroke-[2.5]" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-[#08295b]">
+                    Move-Out Cleaning Add-Ons (Selectable in Quote)
+                  </h4>
+                  <p className="text-[11px] text-[#08295b]/70">Customise your vacate package with specialised extras</p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-[#08295b]/90">
+              <div className="space-y-2 text-xs font-semibold text-[#08295b]/85">
                 {[
-                  "Full oven, grill & racks degreased",
-                  "Rangehood filter & exhaust clean",
-                  "Inside & out of all cupboards & drawers",
-                  "Internal window tracks, sills & glass",
-                  "Deep shower glass soap scum removal",
-                  "Skirting boards, switches & doors wiped",
-                  "Spot cleaning light wall scuffs",
-                  "72-Hour free re-clean guarantee",
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#2196f3] shrink-0" />
-                    <span>{item}</span>
+                  "Carpet Steam Cleaning (Hot water extraction with real estate pet flea certificate)",
+                  "External Window Cleaning & Fly Screens (Deep wash of all external glass)",
+                  "Blinds Wiping & Dusting (Detailed slat washing & heavy dust removal)",
+                  "Full Wall Washing (Removal of heavy nicotine, marker or scuff marks)",
+                  "High-Pressure Washing for Balconies, Decks & Outdoor Pavers",
+                ].map((addon, aIdx) => (
+                  <div key={aIdx} className="flex items-start gap-2">
+                    <Plus className="w-3.5 h-3.5 text-[#2196f3] shrink-0 mt-0.5 stroke-[2.5]" />
+                    <span>{addon}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Box 2: Optional Add-on Services */}
-            <div className="bg-[#e3f2fd]/60 border border-[#d0e4f7] rounded-3xl p-6 sm:p-7 space-y-4 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#0d47a1] text-white flex items-center justify-center font-black">
-                  <Plus className="w-5 h-5 stroke-[2.5]" />
+            {/* Transparent Exclusions (Builds Trust) */}
+            <div className="bg-[#f8fbfe] border border-[#d0e4f7] rounded-3xl p-5 sm:p-6 space-y-3 shadow-sm">
+              <div className="flex items-center gap-2.5 pb-2 border-b border-[#d0e4f7]">
+                <div className="w-8 h-8 rounded-xl bg-[#e3f2fd] text-[#0d47a1] flex items-center justify-center font-bold">
+                  <ShieldCheck className="w-4 h-4 text-[#0d47a1]" />
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-bold text-[#08295b]">
-                    Optional Move-Out Add-Ons Available
-                  </h3>
-                  <p className="text-xs text-[#08295b]/70">Request in your quote for a complete vacate package</p>
+                  <h4 className="text-sm font-bold text-[#08295b]">
+                    Standard Service Exclusions & Custom Work
+                  </h4>
+                  <p className="text-[11px] text-[#08295b]/70">Clear transparency on what requires separate specialized booking</p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-[#08295b]/90">
+              <div className="space-y-2 text-xs text-[#08295b]/75">
                 {[
-                  "Carpet steam cleaning (Hot water extraction)",
-                  "Pet bond & flea treatment certificate",
-                  "External window washing & fly screens",
-                  "Full wall washing (heavy marks/nicotine)",
-                  "Balcony & patio pressure wash",
-                  "Blinds & shutter deep dust treatment",
-                  "Garage sweep & oil stain spot clearing",
-                  "Urgent next-day vacate service",
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <Plus className="w-3.5 h-3.5 text-[#2196f3] shrink-0 stroke-[2.5]" />
-                    <span>{item}</span>
+                  "Full-house tile & grout restoration (shower tiles included; other areas on custom quote)",
+                  "Ceiling washing and curtain dry cleaning (requires specialised restoration)",
+                  "Heavy garden weeding, mowing or landscaping maintenance",
+                  "Mould remediation caused by internal structural plumbing leaks",
+                ].map((exclusion, eIdx) => (
+                  <div key={eIdx} className="flex items-start gap-2">
+                    <span className="text-[#0d47a1] font-bold shrink-0">•</span>
+                    <span>{exclusion}</span>
                   </div>
                 ))}
               </div>
@@ -1363,6 +1443,9 @@ export default function BondPageContent() {
 
         </div>
       </section>
+
+      {/* Recent Cleaning Bookings Across Perth (Live Activity Map) */}
+      <PerthLiveBookingMap />
 
       {/* Bottom Conversion CTA Banner */}
       <section className="py-14 sm:py-20 px-4 sm:px-6 bg-[#0d47a1] text-white">
