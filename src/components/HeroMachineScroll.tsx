@@ -11,19 +11,19 @@ const FRAME_PATH = (index: number) =>
 const PHRASES = [
   {
     id: 1,
-    text: "Professional Cleaning. Exceptional Results.",
+    text: "YOUR SPACE. OUR STANDARD.",
     startPct: 0.02,
     endPct: 0.3,
   },
   {
     id: 2,
-    text: "Reliable cleaners for home, deep, bond & commercial cleaning across Australia",
+    text: "Premium cleaning services for Australian homes and businesses.",
     startPct: 0.35,
     endPct: 0.63,
   },
   {
     id: 3,
-    text: "Book online in 60 seconds. Upfront pricing. 100% satisfaction guaranteed",
+    text: "Professional • Insured • Reliable • Easy to Book",
     startPct: 0.68,
     endPct: 0.95,
   },
@@ -279,7 +279,7 @@ export default function HeroMachineScroll() {
       </div>
 
       {/* Content Overlay */}
-      <div className="relative z-10 max-w-[1920px] mx-auto px-4 sm:px-6 md:px-10 lg:px-14 xl:px-16 w-full h-full flex flex-col justify-between pt-28 pb-10 pointer-events-none">
+      <div className="relative z-10 max-w-[1920px] mx-auto px-3 sm:px-6 md:px-10 lg:px-14 xl:px-16 w-full h-full flex flex-col justify-between pt-20 sm:pt-28 pb-6 sm:pb-10 pointer-events-none">
         {/* Spacer */}
         <div />
 
@@ -306,31 +306,32 @@ export default function HeroMachineScroll() {
         </div>
 
         {/* Bottom Bar: Action Buttons + Trust Strip */}
-        <div className="w-full flex flex-col items-center gap-3 pointer-events-auto">
-          {/* Action CTAs */}
-          <div className="flex flex-wrap items-center justify-center gap-3 w-full px-4">
+        <div className="w-full flex flex-col items-center gap-2.5 sm:gap-3.5 pointer-events-auto pb-2">
+          {/* Action CTAs (Side by side on mobile and desktop) */}
+          <div className="flex flex-row items-center justify-center gap-2 sm:gap-3.5 w-full max-w-md mx-auto px-2">
+            <a
+              href="#contact"
+              className="flex-1 sm:flex-initial px-3.5 sm:px-7 py-2.5 sm:py-3 rounded-full bg-[#0d47a1] text-white text-[11px] sm:text-xs md:text-sm font-extrabold uppercase tracking-wider hover:bg-[#2196f3] transition-all shadow-xl shadow-[#0d47a1]/40 active:scale-95 text-center whitespace-nowrap border border-[#2196f3]/40"
+            >
+              GET INSTANT QUOTE
+            </a>
             <a
               href="/book"
-              className="px-6 py-2.5 rounded-full bg-[#0d47a1] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#2196f3] transition-all shadow-lg active:scale-95 text-center shrink-0"
+              className="flex-1 sm:flex-initial px-3.5 sm:px-7 py-2.5 sm:py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/25 text-white text-[11px] sm:text-xs md:text-sm font-extrabold uppercase tracking-wider hover:bg-white/20 transition-all shadow-xl active:scale-95 text-center whitespace-nowrap"
             >
-              Book Now
-            </a>
-            <a
-              href="tel:+61460849843"
-              className="px-6 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold uppercase tracking-wider hover:bg-white/20 transition-all shadow-lg active:scale-95 text-center shrink-0"
-            >
-              Call Us
+              BOOK A CLEAN
             </a>
           </div>
-          {/* Trust Strip */}
-          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[10px] sm:text-xs text-white/80 font-semibold tracking-wide text-center px-4 max-w-full">
-            <span className="inline-flex items-center gap-1">
-              <span className="text-[#2196f3]">★</span> 5.0 Rated
-            </span>
-            <span className="text-white/30 hidden xs:inline">·</span>
-            <span>Insured &amp; Police Checked</span>
-            <span className="text-white/30 hidden xs:inline">·</span>
-            <span>Serving Australia, California &amp; London</span>
+
+          {/* Trust Strip (Strictly 1 line on mobile) */}
+          <div className="flex flex-row items-center justify-center gap-x-1.5 sm:gap-x-2.5 text-[9px] xs:text-[10.5px] sm:text-xs text-white/90 font-semibold tracking-tight sm:tracking-wide text-center px-2 whitespace-nowrap">
+            <span>Professional</span>
+            <span className="text-white/40">•</span>
+            <span>Insured</span>
+            <span className="text-white/40">•</span>
+            <span>Reliable</span>
+            <span className="text-white/40">•</span>
+            <span>Easy to Book</span>
           </div>
         </div>
       </div>

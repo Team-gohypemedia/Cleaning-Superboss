@@ -1,402 +1,226 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
-import { Check, Phone, ShieldCheck, Clock, Award, Calendar } from "lucide-react";
-
-interface ServicePriceConfig {
-  [service: string]: {
-    [size: string]: number;
-  };
-}
-
-const PRICING_TABLE: ServicePriceConfig = {
-  home: {
-    "1-bed": 149,
-    "2-bed": 189,
-    "3-bed": 249,
-    "4-bed": 309,
-    "5-bed": 379,
-    "hourly-2": 110,
-    "hourly-3": 165,
-    "hourly-4": 220,
-  },
-  deep: {
-    "1-bed": 229,
-    "2-bed": 289,
-    "3-bed": 359,
-    "4-bed": 439,
-    "5-bed": 519,
-    "hourly-2": 140,
-    "hourly-3": 210,
-    "hourly-4": 280,
-  },
-  bond: {
-    "1-bed": 329,
-    "2-bed": 419,
-    "3-bed": 519,
-    "4-bed": 639,
-    "5-bed": 759,
-    "hourly-2": 180,
-    "hourly-3": 270,
-    "hourly-4": 360,
-  },
-  airbnb: {
-    "1-bed": 129,
-    "2-bed": 169,
-    "3-bed": 219,
-    "4-bed": 279,
-    "5-bed": 339,
-    "hourly-2": 110,
-    "hourly-3": 165,
-    "hourly-4": 220,
-  },
-  commercial: {
-    "1-bed": 199,
-    "2-bed": 279,
-    "3-bed": 369,
-    "4-bed": 469,
-    "5-bed": 589,
-    "hourly-2": 130,
-    "hourly-3": 195,
-    "hourly-4": 260,
-  },
-};
+import React, { useState } from "react";
+import Link from "next/link";
+import {
+  MapPin,
+  Mail,
+  Phone,
+  Calendar,
+  Clock,
+  ArrowRight,
+  CheckCircle2,
+  Sparkles,
+  ShieldCheck,
+} from "lucide-react";
 
 export default function ContactSection() {
-  const [serviceType, setServiceType] = useState("home");
-  const [propertySize, setPropertySize] = useState("2-bed");
-  const [frequency, setFrequency] = useState("recurring"); // "onceoff" or "recurring"
-  const [date, setDate] = useState("");
-  const [timeSlot, setTimeSlot] = useState("morning");
-
   const [formData, setFormData] = useState({
     fullName: "",
-    phone: "",
     email: "",
-    suburb: "",
-    notes: "",
+    phone: "",
+    propertyAddress: "",
+    serviceRequirements: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
-
-  // Calculate live dynamic price upfront
-  const livePrice = useMemo(() => {
-    const base = PRICING_TABLE[serviceType]?.[propertySize] || 189;
-    const discount = frequency === "recurring" ? 30 : 0;
-    return Math.max(89, base - discount);
-  }, [serviceType, propertySize, frequency]);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+
+    // Simulate instant capture & submission
     setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        fullName: "",
-        phone: "",
-        email: "",
-        suburb: "",
-        notes: "",
-      });
-    }, 4000);
+      setLoading(false);
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          propertyAddress: "",
+          serviceRequirements: "",
+        });
+      }, 5000);
+    }, 600);
   };
 
   return (
-    <section id="contact" className="w-full bg-[#f8fbfe] py-10 sm:py-20 px-3 sm:px-6 md:px-10 lg:px-14 xl:px-16 border-t border-[#d0e4f7] overflow-hidden">
-      <div className="w-full max-w-[1320px] mx-auto space-y-10 sm:space-y-14">
+    <section id="contact" className="w-full bg-[#f8fbfe] py-12 sm:py-20 md:py-24 px-3.5 sm:px-6 md:px-10 lg:px-14 border-t border-[#d0e4f7]">
+      <div className="w-full max-w-[1240px] mx-auto space-y-8 sm:space-y-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-[850px] mx-auto space-y-3.5 sm:space-y-4 pb-2 sm:pb-4">
-          <div>
-            <span className="text-xs font-mono font-bold tracking-widest text-[#0d47a1] uppercase bg-[#e3f2fd] px-3.5 py-1.5 rounded-full border border-[#d0e4f7] inline-block shadow-2xs">
-              Online Booking System
-            </span>
+        <div className="text-center max-w-2xl mx-auto space-y-2.5 sm:space-y-3 px-1">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1 rounded-full bg-[#e3f2fd] border border-[#d0e4f7] text-[#0d47a1] text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest">
+            <Sparkles className="w-3.5 h-3.5 text-[#2196f3]" />
+            <span>Fast Australian Response</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-[#08295b] tracking-tight leading-[1.2] pt-1">
-            Book Your Clean in 60 Seconds
+
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-[#08295b] tracking-tight">
+            Connect With Our Team
           </h2>
-          <p className="text-xs sm:text-base md:text-lg text-[#08295b]/70 font-normal max-w-xl mx-auto leading-relaxed pt-0.5">
-            Transparent upfront pricing. Police-checked &amp; fully insured Australian cleaners. No hidden fees.
+
+          <p className="text-xs sm:text-sm md:text-base text-[#08295b]/70 font-normal">
+            Get an upfront quote within minutes or speak directly with our friendly Australian customer care team.
           </p>
         </div>
 
-        {/* Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+        {/* 2-Column Responsive Card Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           
-          {/* Left Column: Trust Signals, Price Summary & Phone */}
-          <div className="lg:col-span-5 space-y-6">
-            {/* Live Pricing Highlight Card */}
-            <div className="bg-white rounded-2xl p-4 sm:p-6 border border-[#d0e4f7] shadow-xl space-y-4">
-              <div className="flex items-center justify-between pb-3.5 border-b border-[#d0e4f7]">
-                <div>
-                  <span className="text-xs font-bold text-[#08295b]/60 uppercase tracking-wider block">
-                    Estimated Price
-                  </span>
-                  <div className="flex items-baseline gap-1 mt-0.5">
-                    <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#08295b]">
-                      ${livePrice}
-                    </span>
-                    <span className="text-xs font-bold text-[#08295b]/60 uppercase">
-                      AUD {frequency === "recurring" ? "/ clean" : "once-off"}
-                    </span>
+          {/* Left Column: Get In Touch (Clean White Card) */}
+          <div className="lg:col-span-5 bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-9 border border-[#d0e4f7] shadow-xl shadow-[#08295b]/5 flex flex-col justify-between space-y-6">
+            <div className="space-y-5 sm:space-y-6">
+              
+              {/* Header */}
+              <div className="space-y-1">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-[#08295b] tracking-tight">
+                  Get In Touch
+                </h3>
+                <p className="text-xs sm:text-sm text-[#08295b]/65 font-medium">
+                  Multiple ways to reach our friendly Australian team
+                </p>
+              </div>
+
+              {/* Contact List */}
+              <div className="space-y-3.5 sm:space-y-4 pt-1">
+                
+                {/* Address Item */}
+                <div className="flex items-start gap-3 sm:gap-3.5">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#e3f2fd] border border-[#d0e4f7] flex items-center justify-center shrink-0 text-[#0d47a1] shadow-xs">
+                    <MapPin className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#0d47a1]" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold text-[#08295b]">National Service Hub</h4>
+                    <p className="text-xs text-[#08295b]/70 mt-0.5 leading-relaxed">
+                      Perth, Sydney, Melbourne, Brisbane, Gold Coast &amp; Adelaide
+                    </p>
                   </div>
                 </div>
-                {frequency === "recurring" && (
-                  <span className="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2.5 py-1 rounded-full border border-emerald-300">
-                    $30 OFF RECURRING
-                  </span>
-                )}
+
+                {/* Email Item */}
+                <div className="flex items-start gap-3 sm:gap-3.5">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#e3f2fd] border border-[#d0e4f7] flex items-center justify-center shrink-0 text-[#0d47a1] shadow-xs">
+                    <Mail className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#0d47a1]" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold text-[#08295b]">Email</h4>
+                    <a
+                      href="mailto:support@cleaningsuperboss.com.au"
+                      className="text-xs text-[#0d47a1] hover:text-[#2196f3] font-semibold mt-0.5 block transition-colors break-all sm:break-normal"
+                    >
+                      support@cleaningsuperboss.com.au
+                    </a>
+                  </div>
+                </div>
+
+                {/* Call Us Item */}
+                <div className="flex items-start gap-3 sm:gap-3.5">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#e3f2fd] border border-[#d0e4f7] flex items-center justify-center shrink-0 text-[#0d47a1] shadow-xs">
+                    <Phone className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#0d47a1]" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold text-[#08295b]">Call Us</h4>
+                    <a
+                      href="tel:+61460849843"
+                      className="text-xs text-[#0d47a1] hover:text-[#2196f3] font-bold mt-0.5 block transition-colors"
+                    >
+                      +61 460 849 843
+                    </a>
+                  </div>
+                </div>
+
+                {/* Bookings Item */}
+                <div className="flex items-start gap-3 sm:gap-3.5">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#e3f2fd] border border-[#d0e4f7] flex items-center justify-center shrink-0 text-[#0d47a1] shadow-xs">
+                    <Calendar className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#0d47a1]" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold text-[#08295b]">Online Bookings</h4>
+                    <Link
+                      href="/book"
+                      className="text-xs text-[#0d47a1] hover:text-[#2196f3] font-bold mt-0.5 inline-flex items-center gap-1 transition-colors"
+                    >
+                      <span>Instant Online Quote / Booking</span>
+                      <ArrowRight className="w-3 h-3 text-[#2196f3]" />
+                    </Link>
+                  </div>
+                </div>
+
               </div>
 
-              <div className="space-y-2.5 text-xs sm:text-sm text-[#08295b]/80">
-                <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-[#2196f3] shrink-0" />
-                  <span>All cleaning supplies &amp; equipment included</span>
+              {/* Service Assurance Highlight Box */}
+              <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#f8fbfe] border border-[#d0e4f7] space-y-1.5 sm:space-y-2">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#08295b]">
+                  <Sparkles className="w-4 h-4 text-[#2196f3]" />
+                  <span>The Superboss Standard</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-[#2196f3] shrink-0" />
-                  <span>100% Police Checked &amp; Insured Cleaners</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-[#2196f3] shrink-0" />
-                  <span>100% Spotless Satisfaction Guarantee</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-[#2196f3] shrink-0" />
-                  <span>Free 24hr cancellation &amp; reschedule</span>
-                </div>
-              </div>
-
-              {/* Direct Call Button */}
-              <div className="pt-2.5 border-t border-[#d0e4f7]">
-                <a
-                  href="tel:+61460849843"
-                  className="w-full flex items-center justify-center gap-2 py-2.5 px-3.5 rounded-xl bg-[#e3f2fd] text-[#08295b] hover:bg-[#0d47a1] hover:text-white transition-all text-xs sm:text-sm font-bold tracking-wide"
-                >
-                  <Phone className="w-3.5 h-3.5" />
-                  Need Help? Call +61 460 849 843
-                </a>
+                <p className="text-[11px] text-[#08295b]/75 leading-relaxed">
+                  Every clean includes commercial equipment, eco-safe supplies, and our 100% Spotless Bond Back Guarantee.
+                </p>
               </div>
             </div>
 
-            {/* Corporate Registration & Trust Badges */}
-            <div className="space-y-3 pt-1">
-              <div className="grid grid-cols-2 gap-2.5">
-                <div className="bg-white/80 p-3 rounded-xl border border-[#d0e4f7] flex items-center gap-2.5">
-                  <ShieldCheck className="w-5 h-5 text-[#0d47a1] shrink-0" />
-                  <div>
-                    <span className="block text-xs font-bold text-[#08295b]">Fully Insured</span>
-                    <span className="text-[10px] text-[#08295b]/60">Comprehensive cover</span>
-                  </div>
-                </div>
-                <div className="bg-white/80 p-3 rounded-xl border border-[#d0e4f7] flex items-center gap-2.5">
-                  <Award className="w-5 h-5 text-[#0d47a1] shrink-0" />
-                  <div>
-                    <span className="block text-xs font-bold text-[#08295b]">Bond Back</span>
-                    <span className="text-[10px] text-[#08295b]/60">100% Guarantee</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-[#08295b]/5 border border-[#d0e4f7] text-xs text-[#08295b]/70 space-y-1">
-                <p className="font-bold text-[#08295b]">
-                  Cleaning Superboss Ltd
-                </p>
-                <p className="text-[11px]">
-                  Registered company in Australia, California and London. Delivering trusted hotel-grade cleaning services nationwide across Australia.
-                </p>
-              </div>
+            {/* Bottom Trust Tag */}
+            <div className="pt-4 border-t border-[#d0e4f7] flex items-center gap-2 text-xs text-[#08295b]/80 font-medium">
+              <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>100% Police Checked &amp; $10M Insured Cleaners</span>
             </div>
           </div>
 
-          {/* Right Column: Interactive Booking Form */}
-          <div className="lg:col-span-7 w-full">
-            <div className="bg-[#08295b] text-[#e3f2fd] p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-2xl border border-white/10 relative overflow-hidden w-full">
-              <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-to-br from-[#0d47a1]/40 via-[#2196f3]/20 to-transparent blur-[80px] pointer-events-none" />
+          {/* Right Column: Get Your Free Quote Form (Old Dark Navy Background) */}
+          <div className="lg:col-span-7 bg-[#08295b] text-[#e3f2fd] rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 border border-white/10 shadow-2xl relative overflow-hidden flex flex-col justify-between">
+            
+            {/* Ambient Lighting Gradient */}
+            <div className="absolute top-0 right-0 w-[320px] h-[320px] bg-gradient-to-br from-[#0d47a1]/50 via-[#2196f3]/25 to-transparent blur-[90px] pointer-events-none" />
+
+            <div className="space-y-5 sm:space-y-6 relative z-10">
+              
+              {/* Header */}
+              <div className="space-y-1">
+                <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                  Get Your Free Quote
+                </h3>
+                <p className="text-xs sm:text-sm text-[#e3f2fd]/70 font-medium">
+                  Fill in your details to receive an instant transparent quote
+                </p>
+              </div>
 
               {submitted ? (
-                <div className="py-20 text-center space-y-4">
-                  <div className="w-16 h-16 bg-[#2196f3]/20 rounded-full flex items-center justify-center mx-auto border border-[#2196f3]/40 animate-pulse">
-                    <Check className="w-8 h-8 text-[#2196f3]" />
+                <div className="py-16 text-center space-y-4">
+                  <div className="w-16 h-16 bg-[#2196f3]/20 text-[#2196f3] rounded-full flex items-center justify-center mx-auto border border-[#2196f3]/40 shadow-sm animate-bounce">
+                    <CheckCircle2 className="w-8 h-8 text-[#2196f3]" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Booking Confirmed!</h3>
-                  <p className="text-slate-300 max-w-sm mx-auto text-sm">
-                    Thank you! We have received your booking request for ${livePrice} AUD. Our dispatch team will send an SMS confirmation shortly to your number.
+                  <h4 className="text-2xl font-bold text-white">Quote Request Received!</h4>
+                  <p className="text-xs sm:text-sm text-[#e3f2fd]/80 max-w-md mx-auto leading-relaxed">
+                    Thank you, <strong>{formData.fullName || "Customer"}</strong>. Our dispatch team has received your request and will contact you promptly with your fixed-price quote.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 relative z-10 w-full">
+                <form onSubmit={handleSubmit} className="space-y-5 pt-1">
                   
-                  {/* Service Type Selector */}
+                  {/* Full Name */}
                   <div className="space-y-1.5">
-                    <label className="block text-[11px] font-bold uppercase tracking-wider text-[#e3f2fd]/80">
-                      1. Choose Cleaning Service *
+                    <label className="block text-xs font-bold text-[#e3f2fd]/90 uppercase tracking-wider">
+                      Full Name *
                     </label>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
-                      {[
-                        { id: "home", label: "Home Cleaning", full: false },
-                        { id: "deep", label: "Deep Clean", full: false },
-                        { id: "bond", label: "Bond / Vacate", full: false },
-                        { id: "airbnb", label: "Airbnb Turnover", full: false },
-                        { id: "commercial", label: "Commercial Office", full: true },
-                      ].map((s) => (
-                        <button
-                          key={s.id}
-                          type="button"
-                          onClick={() => setServiceType(s.id)}
-                          className={`px-2.5 py-2 rounded-lg text-xs font-bold transition-all border text-center ${
-                            s.full ? "col-span-2 sm:col-span-1" : ""
-                          } ${
-                            serviceType === s.id
-                              ? "bg-[#2196f3] text-white border-[#2196f3] shadow-sm"
-                              : "bg-white/5 text-white/80 border-white/10 hover:bg-white/10"
-                          }`}
-                        >
-                          {s.label}
-                        </button>
-                      ))}
-                    </div>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Jessica Taylor"
+                      value={formData.fullName}
+                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/15 focus:border-[#2196f3] focus:bg-white/15 focus:ring-2 focus:ring-[#2196f3]/25 outline-none text-xs sm:text-sm text-white placeholder-white/40 transition-all font-medium"
+                    />
                   </div>
 
-                  {/* Property Size Selector */}
-                  <div className="space-y-1.5">
-                    <label className="block text-[11px] font-bold uppercase tracking-wider text-[#e3f2fd]/80">
-                      2. Property Size or Duration *
-                    </label>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
-                      {[
-                        { id: "1-bed", label: "1 Bed / 1 Bath" },
-                        { id: "2-bed", label: "2 Bed / 1-2 Bath" },
-                        { id: "3-bed", label: "3 Bed / 2 Bath" },
-                        { id: "4-bed", label: "4 Bed / 2+ Bath" },
-                        { id: "5-bed", label: "5+ Bed / Large" },
-                        { id: "hourly-2", label: "By Time: 2 Hours" },
-                        { id: "hourly-3", label: "By Time: 3 Hours" },
-                        { id: "hourly-4", label: "By Time: 4 Hours" },
-                      ].map((p) => (
-                        <button
-                          key={p.id}
-                          type="button"
-                          onClick={() => setPropertySize(p.id)}
-                          className={`px-2 py-1.5 rounded-lg text-[11px] font-semibold transition-all border text-center ${
-                            propertySize === p.id
-                              ? "bg-white text-[#08295b] border-white font-bold shadow-sm"
-                              : "bg-white/5 text-white/75 border-white/10 hover:bg-white/10"
-                          }`}
-                        >
-                          {p.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Frequency Selector */}
-                  <div className="space-y-1.5">
-                    <label className="block text-[11px] font-bold uppercase tracking-wider text-[#e3f2fd]/80">
-                      3. Frequency *
-                    </label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setFrequency("recurring")}
-                        className={`p-2.5 rounded-lg transition-all border text-left flex flex-col justify-center gap-0.5 cursor-pointer ${
-                          frequency === "recurring"
-                            ? "bg-[#2196f3]/25 border-[#2196f3] text-white ring-1 ring-[#2196f3]"
-                            : "bg-white/5 border-white/10 text-white/70 hover:bg-white/10"
-                        }`}
-                      >
-                        <div className="flex items-center justify-between gap-2 w-full">
-                          <span className="text-xs font-bold text-white">Recurring</span>
-                          <span className="text-[9px] bg-emerald-400 text-emerald-950 font-black px-1.5 py-0.5 rounded-full shrink-0 tracking-wider">
-                            SAVE $30
-                          </span>
-                        </div>
-                        <span className="text-[10px] text-[#e3f2fd]/70 font-normal">
-                          Weekly / Fortnightly
-                        </span>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => setFrequency("onceoff")}
-                        className={`p-2.5 rounded-lg transition-all border text-left flex flex-col justify-center gap-0.5 cursor-pointer ${
-                          frequency === "onceoff"
-                            ? "bg-[#2196f3]/25 border-[#2196f3] text-white ring-1 ring-[#2196f3]"
-                            : "bg-white/5 border-white/10 text-white/70 hover:bg-white/10"
-                        }`}
-                      >
-                        <span className="text-xs font-bold text-white">Once-Off Clean</span>
-                        <span className="text-[10px] text-[#e3f2fd]/70 font-normal">
-                          Single one-time service
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Preferred Date & Time */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="space-y-1 border-b border-white/15 focus-within:border-[#2196f3] pb-1">
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#e3f2fd]/80">
-                        Preferred Date *
-                      </label>
-                      <input
-                        type="date"
-                        required
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
-                        className="w-full bg-transparent text-white border-none outline-none focus:ring-0 p-0 text-xs sm:text-sm font-medium"
-                      />
-                    </div>
-                    <div className="space-y-1 border-b border-white/15 focus-within:border-[#2196f3] pb-1">
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#e3f2fd]/80">
-                        Preferred Time Slot *
-                      </label>
-                      <select
-                        value={timeSlot}
-                        onChange={(e) => setTimeSlot(e.target.value)}
-                        className="w-full bg-transparent text-white border-none outline-none focus:ring-0 p-0 text-xs sm:text-sm font-medium pr-8"
-                      >
-                        <option value="morning" className="bg-[#08295b] text-white">Morning (8:00 AM – 12:00 PM)</option>
-                        <option value="afternoon" className="bg-[#08295b] text-white">Afternoon (12:00 PM – 4:00 PM)</option>
-                        <option value="evening" className="bg-[#08295b] text-white">Late Afternoon / Evening (4:00 PM – 7:00 PM)</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Customer Information */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="space-y-1 border-b border-white/15 focus-within:border-[#2196f3] pb-1">
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#e3f2fd]/80">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. Jessica Taylor"
-                        value={formData.fullName}
-                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full bg-transparent text-white border-none outline-none focus:ring-0 p-0 placeholder-white/50 text-xs sm:text-sm font-medium"
-                      />
-                    </div>
-                    <div className="space-y-1 border-b border-white/15 focus-within:border-[#2196f3] pb-1">
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#e3f2fd]/80">
-                        Phone Number (AU Mobile) *
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        placeholder="+61 460 849 843"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-transparent text-white border-none outline-none focus:ring-0 p-0 placeholder-white/50 text-xs sm:text-sm font-medium"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="space-y-1 border-b border-white/15 focus-within:border-[#2196f3] pb-1">
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#e3f2fd]/80">
-                        Email Address *
+                  {/* Email & Phone */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="block text-xs font-bold text-[#e3f2fd]/90 uppercase tracking-wider">
+                        Email *
                       </label>
                       <input
                         type="email"
@@ -404,56 +228,82 @@ export default function ContactSection() {
                         placeholder="yourname@email.com.au"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-transparent text-white border-none outline-none focus:ring-0 p-0 placeholder-white/50 text-xs sm:text-sm font-medium"
+                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/15 focus:border-[#2196f3] focus:bg-white/15 focus:ring-2 focus:ring-[#2196f3]/25 outline-none text-xs sm:text-sm text-white placeholder-white/40 transition-all font-medium"
                       />
                     </div>
-                    <div className="space-y-1 border-b border-white/15 focus-within:border-[#2196f3] pb-1">
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#e3f2fd]/80">
-                        City / Suburb &amp; Postcode *
+
+                    <div className="space-y-1.5">
+                      <label className="block text-xs font-bold text-[#e3f2fd]/90 uppercase tracking-wider">
+                        Phone *
                       </label>
                       <input
-                        type="text"
+                        type="tel"
                         required
-                        placeholder="e.g. Bondi, Sydney NSW 2026"
-                        value={formData.suburb}
-                        onChange={(e) => setFormData({ ...formData, suburb: e.target.value })}
-                        className="w-full bg-transparent text-white border-none outline-none focus:ring-0 p-0 placeholder-white/50 text-xs sm:text-sm font-medium"
+                        placeholder="+61 460 849 843"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/15 focus:border-[#2196f3] focus:bg-white/15 focus:ring-2 focus:ring-[#2196f3]/25 outline-none text-xs sm:text-sm text-white placeholder-white/40 transition-all font-medium"
                       />
                     </div>
                   </div>
 
-                  {/* Special Notes / Entry */}
-                  <div className="space-y-1 border-b border-white/15 focus-within:border-[#2196f3] pb-1">
-                    <label className="block text-[11px] font-bold uppercase tracking-wider text-[#e3f2fd]/80">
-                      Entry Instructions or Special Requests (Optional)
+                  {/* Property Address */}
+                  <div className="space-y-1.5">
+                    <label className="block text-xs font-bold text-[#e3f2fd]/90 uppercase tracking-wider">
+                      Property Address *
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. Key in lockbox code 1234, focus on kitchen oven"
-                      value={formData.notes}
-                      onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      className="w-full bg-transparent text-white border-none outline-none focus:ring-0 p-0 placeholder-white/50 text-xs sm:text-sm font-medium"
+                      required
+                      placeholder="e.g. 14 Bondi Road, Bondi, Sydney NSW 2026"
+                      value={formData.propertyAddress}
+                      onChange={(e) => setFormData({ ...formData, propertyAddress: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/15 focus:border-[#2196f3] focus:bg-white/15 focus:ring-2 focus:ring-[#2196f3]/25 outline-none text-xs sm:text-sm text-white placeholder-white/40 transition-all font-medium"
                     />
                   </div>
 
-                  {/* Submit Booking Button */}
-                  <button
-                    type="submit"
-                    className="w-full py-3 px-5 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] active:scale-[0.98] text-white font-extrabold uppercase tracking-widest text-xs sm:text-sm shadow-xl shadow-[#0d47a1]/40 transition-all cursor-pointer border border-[#2196f3]/50 text-center flex items-center justify-center gap-2"
-                  >
-                    <span>Confirm &amp; Book Clean (${livePrice} AUD)</span>
-                  </button>
+                  {/* Service Requirements */}
+                  <div className="space-y-1.5">
+                    <label className="block text-xs font-bold text-[#e3f2fd]/90 uppercase tracking-wider">
+                      Service Requirements *
+                    </label>
+                    <textarea
+                      rows={4}
+                      required
+                      placeholder="Please describe your cleaning requirements (e.g. house cleaning, end of lease bond clean, commercial office, carpet steam clean, oven degreasing, etc.)"
+                      value={formData.serviceRequirements}
+                      onChange={(e) => setFormData({ ...formData, serviceRequirements: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/15 focus:border-[#2196f3] focus:bg-white/15 focus:ring-2 focus:ring-[#2196f3]/25 outline-none text-xs sm:text-sm text-white placeholder-white/40 transition-all font-medium resize-none"
+                    />
+                  </div>
 
-                  {/* Security and reassurance note */}
-                  <p className="text-[11px] text-center text-[#e3f2fd]/60">
-                    🔒 No payment charged now. Pay securely upon completion. 100% Satisfaction Guaranteed.
-                  </p>
+                  {/* Divider */}
+                  <div className="pt-2 border-t border-white/10" />
+
+                  {/* Submit Button */}
+                  <div className="space-y-3">
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full py-4 px-6 rounded-2xl bg-[#0d47a1] hover:bg-[#2196f3] active:scale-[0.99] text-white font-extrabold text-sm uppercase tracking-wider shadow-xl shadow-[#0d47a1]/40 border border-[#2196f3]/40 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    >
+                      <span>{loading ? "Calculating..." : "Next: Select Date & Time"}</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+
+                    <p className="text-[11px] text-center text-[#e3f2fd]/60">
+                      🔒 No spam guaranteed. Your information is protected under Australian Privacy Principles.
+                    </p>
+                  </div>
+
                 </form>
               )}
+
             </div>
           </div>
 
         </div>
+
       </div>
     </section>
   );

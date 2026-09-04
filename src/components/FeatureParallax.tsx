@@ -1,11 +1,11 @@
 "use client";
 
 import ParallaxLayer from "@/components/ParallaxLayer";
-import { Sparkles, Move, Compass, ShieldCheck, Cpu, Code2 } from "lucide-react";
+import { Layers, Move, Compass, ShieldCheck, Cpu, Code2 } from "lucide-react";
 
 const features = [
   {
-    icon: Sparkles,
+    icon: Layers,
     title: "GSAP ScrollTrigger",
     description:
       "Ultra-smooth scroll position scrubbing, pinned element scenes, and multi-layer parallax depth animations.",

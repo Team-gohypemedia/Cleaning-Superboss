@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Navbar from "@/components/Navbar";
+import MobileStickyBottomBar from "@/components/MobileStickyBottomBar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
         <SmoothScroll>
           <Navbar />
           <main>{children}</main>
+          <MobileStickyBottomBar />
         </SmoothScroll>
       </body>
     </html>

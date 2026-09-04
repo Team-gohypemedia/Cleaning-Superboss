@@ -1,5 +1,5 @@
 import React from "react";
-import { ShieldCheck, Award, Sparkles, CheckCircle2, Clock } from "lucide-react";
+import { ShieldCheck, Award, BadgeCheck, CheckCircle2, Clock } from "lucide-react";
 
 export default function TrustBadges() {
   const badges = [
@@ -14,7 +14,7 @@ export default function TrustBadges() {
       desc: "$10M public liability cover",
     },
     {
-      icon: <Sparkles className="w-5 h-5 text-[#2196f3]" />,
+      icon: <BadgeCheck className="w-5 h-5 text-[#2196f3]" />,
       title: "100% Satisfaction",
       desc: "Free reclean if not spotless",
     },

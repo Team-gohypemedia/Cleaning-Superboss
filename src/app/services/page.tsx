@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Phone, CheckCircle2, ShieldCheck, Clock, Calendar, Sparkles } from "lucide-react";
+import { ArrowRight, Phone, CheckCircle2, ShieldCheck, Clock, Calendar } from "lucide-react";
 import ServiceComparisonTable from "@/components/ServiceComparisonTable";
 import ServiceCardsSlider from "@/components/ServiceCardsSlider";
 import TrustBadges from "@/components/TrustBadges";

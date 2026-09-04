@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Check, Phone, ArrowRight, Star, ChevronDown, Sparkles } from "lucide-react";
+import { Check, Phone, ArrowRight, Star, ChevronDown, CheckCircle2 } from "lucide-react";
 import TrustBadges from "@/components/TrustBadges";
 import PricingTable, { PricingRow } from "@/components/PricingTable";
 import ServiceComparisonTable from "@/components/ServiceComparisonTable";
@@ -87,26 +87,26 @@ export default function ServicePageTemplate({
                 <span className="text-xs font-semibold text-[#08295b]/60">AUD / clean</span>
               </div>
 
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-3 pt-2">
                 <a
                   href="/book"
-                  className="px-7 py-3.5 rounded-full bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs sm:text-sm font-bold uppercase tracking-wider shadow-xl shadow-[#0d47a1]/25 transition-all active:scale-95 flex items-center gap-2"
+                  className="px-3 sm:px-7 py-2.5 sm:py-3.5 rounded-full bg-[#0d47a1] hover:bg-[#2196f3] text-white text-[11px] sm:text-xs md:text-sm font-bold uppercase tracking-wider shadow-md sm:shadow-xl shadow-[#0d47a1]/25 transition-all active:scale-95 flex items-center justify-center gap-1.5 sm:gap-2 text-center"
                 >
-                  <span>Book This Clean</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span className="truncate">Book Clean</span>
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
                 </a>
                 <a
                   href="tel:+61460849843"
-                  className="px-6 py-3.5 rounded-full bg-white border border-[#d0e4f7] text-[#08295b] hover:bg-[#e3f2fd] text-xs sm:text-sm font-bold tracking-wide transition-all shadow-sm flex items-center gap-2"
+                  className="px-3 sm:px-6 py-2.5 sm:py-3.5 rounded-full bg-white border border-[#d0e4f7] text-[#08295b] hover:bg-[#e3f2fd] text-[11px] sm:text-xs md:text-sm font-bold tracking-wide transition-all shadow-xs flex items-center justify-center gap-1.5 sm:gap-2 text-center"
                 >
-                  <Phone className="w-4 h-4 text-[#0d47a1]" />
-                  <span>Call +61 460 849 843</span>
+                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0d47a1] shrink-0" />
+                  <span className="truncate">Call +61 460 849 843</span>
                 </a>
               </div>
             </div>
 
             {/* Quick trust metrics */}
-            <div className="pt-4 flex items-center gap-6 text-xs text-[#08295b]/70 border-t border-[#d0e4f7]">
+            <div className="pt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[#08295b]/70 border-t border-[#d0e4f7]">
               <div className="flex items-center gap-1.5 font-semibold">
                 <div className="flex text-amber-500">
                   {[...Array(5)].map((_, i) => (
@@ -115,10 +115,10 @@ export default function ServicePageTemplate({
                 </div>
                 <span>5.0 / 5.0 Rating</span>
               </div>
-              <div>•</div>
-              <div className="font-semibold">Police Checked</div>
-              <div>•</div>
-              <div className="font-semibold">Fully Insured</div>
+              <span className="text-[#d0e4f7] font-bold select-none">•</span>
+              <div className="font-semibold text-[#0d47a1]">Police Checked</div>
+              <span className="text-[#d0e4f7] font-bold select-none">•</span>
+              <div className="font-semibold text-[#0d47a1]">Fully Insured</div>
             </div>
           </div>
 
@@ -169,7 +169,7 @@ export default function ServicePageTemplate({
                 className="bg-white rounded-3xl p-6 border border-[#d0e4f7] shadow-lg space-y-4"
               >
                 <div className="flex items-center gap-2.5 pb-3 border-b border-[#d0e4f7]">
-                  <Sparkles className="w-4 h-4 text-[#2196f3]" />
+                  <CheckCircle2 className="w-4 h-4 text-[#2196f3]" />
                   <h3 className="text-base font-bold text-[#08295b]">{col.category}</h3>
                 </div>
                 <ul className="space-y-2.5">
@@ -294,8 +294,10 @@ export default function ServicePageTemplate({
         </div>
       </section>
 
-      {/* Shared Global Footer */}
-      <Footer />
+      {/* Shared Global Footer (with bottom padding for mobile sticky bar) */}
+      <div className="pb-16 md:pb-0">
+        <Footer />
+      </div>
     </div>
   );
 }

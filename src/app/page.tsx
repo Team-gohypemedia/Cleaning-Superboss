@@ -1,5 +1,6 @@
 import HeroMachineScroll from "@/components/HeroMachineScroll";
 import RibbonSection from "@/components/RibbonSection";
+import InstantQuoteHero from "@/components/InstantQuoteHero";
 import LogoGrid from "@/components/LogoGrid";
 import MasterBrand from "@/components/MasterBrand";
 import ServicesHoverModalSection from "@/components/ServicesHoverModalSection";
@@ -21,6 +22,9 @@ export default function Home() {
       {/* Infinite Ribbon Dual Marquee */}
       <RibbonSection />
 
+      {/* Hero Quoting Engine: Get Your Price in Minutes */}
+      <InstantQuoteHero />
+
       {/* Built by the Industry Logo Grid */}
       <LogoGrid />
 
@@ -30,14 +34,14 @@ export default function Home() {
       {/* Services with Animated Hover Modal */}
       <ServicesHoverModalSection />
 
+      {/* Before & After Photo Transformations */}
+      <BeforeAfterShowcase />
+
       {/* Australian Credentials, ABN, Insurance & Service Areas */}
       <AustralianTrustAndAreas />
 
       {/* Production Output Bento Grid Gallery */}
       <ShowcaseBentoGallery />
-
-      {/* Before & After Photo Transformations */}
-      <BeforeAfterShowcase />
 
       {/* Testimonial Banner Section */}
       <TestimonialBanner />

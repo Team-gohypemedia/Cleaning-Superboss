@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ParallaxLayer from "@/components/ParallaxLayer";
-import { ArrowRight, Layers, Box, Zap, Sparkles } from "lucide-react";
+import { ArrowRight, Layers, Box, Zap } from "lucide-react";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -59,39 +59,42 @@ export default function Hero() {
         {/* Left Column: Clean Typography & CTAs */}
         <div className="lg:col-span-7 text-center lg:text-left space-y-4 md:space-y-6">
           {/* Minimal Pill Badge */}
-          <div className="hero-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-zinc-200 shadow-xs text-zinc-700 text-xs font-semibold tracking-wide">
-            <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
-            Next.js 16 • GSAP • Three.js • Lenis Smooth Parallax
+          <div className="hero-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#e3f2fd] border border-[#d0e4f7] text-[#0d47a1] text-xs font-mono font-bold uppercase tracking-widest">
+            <Box className="w-3.5 h-3.5 text-[#2196f3]" />
+            Australian Standard • 100% Bond Guarantee
           </div>
 
           {/* Clean High-Impact Heading */}
-          <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-zinc-950 leading-[1.08]">
-            Craft Stunning <br />
-            <span className="text-gradient">3D Scroll Parallax</span> <br />
-            Websites Faster.
+          <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-[#08295b] leading-[1.08] uppercase">
+            YOUR SPACE. <br />
+            <span className="text-gradient">OUR STANDARD.</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="hero-subtitle text-sm sm:text-base md:text-lg text-zinc-600 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
-            A production-ready Next.js boilerplate engineered with smooth scroll synchronization, GSAP timelines, and 3D WebGL physics.
+          <p className="hero-subtitle text-sm sm:text-base md:text-lg text-[#08295b]/75 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+            Premium cleaning services for Australian homes and businesses.
           </p>
 
           {/* CTA Buttons */}
           <div className="hero-cta flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1">
             <a
-              href="#features"
-              className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-zinc-900 text-white font-semibold text-xs sm:text-sm hover:bg-zinc-800 transition-all duration-300 shadow-lg shadow-zinc-900/10 flex items-center gap-2 group"
+              href="#contact"
+              className="px-7 py-3.5 rounded-full bg-[#0d47a1] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider hover:bg-[#2196f3] transition-all duration-300 shadow-lg shadow-[#0d47a1]/25 flex items-center gap-2"
             >
-              Explore Parallax
-              <ArrowRight className="w-4 h-4 text-zinc-400 group-hover:translate-x-1 transition-transform" />
+              GET AN INSTANT QUOTE
+              <ArrowRight className="w-4 h-4" />
             </a>
             <a
-              href="#showcase"
-              className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-white border border-zinc-200 text-zinc-800 font-semibold text-xs sm:text-sm hover:bg-zinc-100 transition-all duration-300 shadow-xs flex items-center gap-2"
+              href="/book"
+              className="px-7 py-3.5 rounded-full bg-white border border-[#d0e4f7] text-[#08295b] font-extrabold text-xs sm:text-sm uppercase tracking-wider hover:bg-[#e3f2fd] transition-all duration-300 shadow-xs flex items-center gap-2"
             >
-              <Box className="w-4 h-4 text-indigo-600" />
-              View 3D Scene
+              BOOK A CLEAN
             </a>
+          </div>
+
+          {/* Trust strip */}
+          <div className="pt-2 text-xs text-[#08295b]/70 font-semibold tracking-wide">
+            Professional • Insured • Reliable • Easy to Book
           </div>
 
           {/* Clean Metric Badges */}
