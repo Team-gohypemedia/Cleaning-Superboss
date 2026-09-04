@@ -339,13 +339,21 @@ export default function BeforeAfterShowcase() {
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>100% Bond Back &amp; Spotless Guarantee on all vacate and deep cleans</span>
             </div>
-            <Link
-              href="/book"
-              className="w-full sm:w-auto px-6 sm:px-7 py-3 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-[#2196f3]/25 active:scale-95"
+            <button
+              type="button"
+              onClick={() => {
+                const quoteEl = document.getElementById("quote-form");
+                if (quoteEl) {
+                  quoteEl.scrollIntoView({ behavior: "smooth" });
+                } else {
+                  window.location.href = "/#quote-form";
+                }
+              }}
+              className="w-full sm:w-auto px-6 sm:px-7 py-3 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-[#2196f3]/25 active:scale-95 cursor-pointer"
             >
-              <span>Book Your Transformation</span>
+              <span>Request a Quote</span>
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </button>
           </div>
 
         </div>
