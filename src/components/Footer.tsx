@@ -3,31 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// Local SVG components to guarantee robust resolution under Next.js 16/Turbopack
-function FacebookIcon(props: React.ComponentProps<"svg">) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z" />
-    </svg>
-  );
-}
-
-function LinkedinIcon(props: React.ComponentProps<"svg">) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-    </svg>
-  );
-}
-
-function YoutubeIcon(props: React.ComponentProps<"svg">) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-    </svg>
-  );
-}
-
 const marqueeText =
   "PROFESSIONAL HOME CLEANING · DEEP CLEANING · BOND CLEANING · AIRBNB TURNOVERS · COMMERCIAL CLEANING · 100% SPOTLESS GUARANTEE · POLICE CHECKED & INSURED";
 
@@ -220,41 +195,6 @@ export default function Footer({ hideServices }: FooterProps = {}) {
                   BY SUBSCRIBING, YOU AGREE TO OUR TERMS & PRIVACY POLICY.
                 </p>
               </form>
-
-              <div className="mt-5">
-                <p className="text-[9px] font-bold uppercase tracking-wider text-[#08295b]/50 mb-2">
-                  FOLLOW CLEANING SUPERBOSS
-                </p>
-                <div className="flex items-center gap-3">
-                  <a
-                    href="https://facebook.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Facebook"
-                    className="flex size-8 items-center justify-center rounded-full border border-[#d0e4f7] text-[#08295b] hover:border-[#0d47a1] hover:text-[#0d47a1] transition-all"
-                  >
-                    <FacebookIcon className="size-4" />
-                  </a>
-                  <a
-                    href="https://linkedin.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                    className="flex size-8 items-center justify-center rounded-full border border-[#d0e4f7] text-[#08295b] hover:border-[#0d47a1] hover:text-[#0d47a1] transition-all"
-                  >
-                    <LinkedinIcon className="size-4" />
-                  </a>
-                  <a
-                    href="https://youtube.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="YouTube"
-                    className="flex size-8 items-center justify-center rounded-full border border-[#d0e4f7] text-[#08295b] hover:border-[#0d47a1] hover:text-[#0d47a1] transition-all"
-                  >
-                    <YoutubeIcon className="size-4" />
-                  </a>
-                </div>
-              </div>
             </div>
 
           </div>
