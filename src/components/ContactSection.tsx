@@ -27,12 +27,34 @@ export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const GHL_WEBHOOK_URL =
+    "https://services.leadconnectorhq.com/hooks/oOILUumPBLG7ihohI6gJ/webhook-trigger/5949a2ae-165e-478c-a6d0-57f96aa209e6";
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate instant capture & submission
-    setTimeout(() => {
+    try {
+      await fetch(GHL_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.fullName,
+          fullName: formData.fullName,
+          email: formData.email,
+          emailAddress: formData.email,
+          phone: formData.phone,
+          phoneNumber: formData.phone,
+          suburb: formData.propertyAddress,
+          propertyAddress: formData.propertyAddress,
+          serviceRequirements: formData.serviceRequirements,
+          source: "Website Contact Form",
+          submittedAt: new Date().toISOString(),
+        }),
+      });
+    } catch (err) {
+      console.error("GHL Webhook error:", err);
+    } finally {
       setLoading(false);
       setSubmitted(true);
       setTimeout(() => {
@@ -45,7 +67,7 @@ export default function ContactSection() {
           serviceRequirements: "",
         });
       }, 5000);
-    }, 600);
+    }
   };
 
   return (

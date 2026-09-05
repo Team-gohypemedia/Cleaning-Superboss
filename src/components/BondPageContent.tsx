@@ -352,12 +352,11 @@ export default function BondPageContent() {
     setCurrentSlide((prev) => (prev - 1 + BOND_SLIDER_IMAGES.length) % BOND_SLIDER_IMAGES.length);
   };
 
-
-
   // Step 1 Fields
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [streetAddress, setStreetAddress] = useState("");
   const [suburb, setSuburb] = useState("");
   const [propertyType, setPropertyType] = useState("House");
   const [bedrooms, setBedrooms] = useState("3 Bedrooms");
@@ -369,8 +368,12 @@ export default function BondPageContent() {
   const [hasPets, setHasPets] = useState(false);
   const [addWindowCleaning, setAddWindowCleaning] = useState(false);
   const [additionalNotes, setAdditionalNotes] = useState("");
-  const [currentCalendarDate, setCurrentCalendarDate] = useState(() => new Date(2026, 8, 4));
-  const [selectedDate, setSelectedDate] = useState<string>("2026-09-15");
+  const [currentCalendarDate, setCurrentCalendarDate] = useState(() => new Date());
+  const [selectedDate, setSelectedDate] = useState<string>(() => {
+    const d = new Date();
+    d.setDate(d.getDate() + 3);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Calendar calculations
@@ -404,19 +407,89 @@ export default function BondPageContent() {
     return `${dayName}, ${d} ${monthShort} ${y}`;
   };
 
-  // Single-Step Form Submission
-  const handleDirectSubmit = (e: React.FormEvent) => {
+  const GHL_WEBHOOK_URL =
+    "https://services.leadconnectorhq.com/hooks/oOILUumPBLG7ihohI6gJ/webhook-trigger/5949a2ae-165e-478c-a6d0-57f96aa209e6";
+
+  // Step 1: Validate and move to Step 2 (Calendar) + background lead capture
+  const handleStep1Submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName.trim() || !phone.trim() || !suburb.trim()) {
       setFormError("Please fill in your name, phone number, and Perth suburb.");
       return;
     }
     setFormError("");
+
+    // Send initial lead capture to GoHighLevel
+    fetch(GHL_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: fullName.trim(),
+        fullName: fullName.trim(),
+        phone: phone.trim(),
+        phoneNumber: phone.trim(),
+        email: email.trim(),
+        emailAddress: email.trim(),
+        streetAddress: streetAddress.trim(),
+        address: streetAddress.trim(),
+        suburb: suburb.trim(),
+        suburbPostcode: suburb.trim(),
+        propertyType: propertyType,
+        bedrooms: bedrooms,
+        bathrooms: bathrooms,
+        step: "Step 1 Completed",
+        service: "Perth Bond Cleaning",
+        source: "Website Quote Form",
+        submittedAt: new Date().toISOString(),
+      }),
+    }).catch((err) => console.error("GHL Webhook Step 1 error:", err));
+
+    setFormStep(2);
+  };
+
+  // Step 2: Final Submit with Date, Add-ons & Notes
+  const handleFinalSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    const payload = {
+      name: fullName.trim(),
+      fullName: fullName.trim(),
+      phone: phone.trim(),
+      phoneNumber: phone.trim(),
+      email: email.trim(),
+      emailAddress: email.trim(),
+      streetAddress: streetAddress.trim(),
+      address: streetAddress.trim(),
+      suburb: suburb.trim(),
+      suburbPostcode: suburb.trim(),
+      propertyType: propertyType,
+      bedrooms: bedrooms,
+      bathrooms: bathrooms,
+      moveOutDate: selectedDate,
+      selectedDate: selectedDate,
+      carpetSteamCleaning: addCarpetSteam ? "Yes" : "No",
+      hasPets: hasPets ? "Yes" : "No",
+      windowCleaning: addWindowCleaning ? "Yes" : "No",
+      additionalNotes: additionalNotes.trim(),
+      notes: additionalNotes.trim(),
+      service: "Perth Bond Cleaning",
+      source: "Website Quote Form",
+      submittedAt: new Date().toISOString(),
+    };
+
+    try {
+      await fetch(GHL_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+    } catch (err) {
+      console.error("GoHighLevel Webhook Final Error:", err);
+    } finally {
       setIsSubmitting(false);
-      setFormStep(2);
-    }, 600);
+      setFormStep(3);
+    }
   };
 
   const handleResetForm = () => {
@@ -424,6 +497,7 @@ export default function BondPageContent() {
     setFullName("");
     setPhone("");
     setEmail("");
+    setStreetAddress("");
     setSuburb("");
     setPropertyType("House");
     setBedrooms("3 Bedrooms");
@@ -432,7 +506,9 @@ export default function BondPageContent() {
     setHasPets(false);
     setAddWindowCleaning(false);
     setAdditionalNotes("");
-    setSelectedDate("2026-09-15");
+    const d = new Date();
+    d.setDate(d.getDate() + 3);
+    setSelectedDate(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`);
   };
 
   const scrollToForm = () => {
@@ -502,14 +578,17 @@ export default function BondPageContent() {
             </div>
           </div>
 
-          {/* Right Column: Direct 1-Step Quote Form Card */}
+          {/* Right Column: Multi-Step Quote Form Card */}
           <div id="quote-form" className="lg:col-span-5 scroll-mt-24 mt-4 sm:mt-6 lg:mt-0">
             <div className="relative rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-md border border-[#d0e4f7] shadow-xl shadow-[#0d47a1]/10 px-5 sm:px-7 pt-6 sm:pt-7 pb-5 sm:pb-7 overflow-hidden transition-all">
               
-              {/* ================= STEP 1: SINGLE-STEP DIRECT QUOTE FORM ================= */}
+              {/* ================= STEP 1: PROPERTY & CONTACT DETAILS ================= */}
               {formStep === 1 && (
-                <form onSubmit={handleDirectSubmit} className="space-y-3.5">
+                <form onSubmit={handleStep1Submit} className="space-y-3.5">
                   <div className="text-center pb-0.5 space-y-0.5">
+                    <div className="inline-flex items-center gap-1.5 text-[10px] font-bold text-[#0d47a1] bg-[#e3f2fd] px-2.5 py-0.5 rounded-full border border-[#d0e4f7]">
+                      Step 1 of 2 · Property &amp; Contact
+                    </div>
                     <h3 className="text-xl sm:text-2xl font-black text-[#08295b] tracking-tight">
                       Request a Quote
                     </h3>
@@ -568,36 +647,52 @@ export default function BondPageContent() {
                     />
                   </div>
 
-                  {/* Perth Suburb / Postcode */}
-                  <div className="space-y-1 text-left">
-                    <div className="flex items-center justify-between">
-                      <label className="text-[11px] font-bold text-[#08295b]">
-                        Perth Suburb / Postcode *
-                      </label>
-                      <span className="text-[10px] text-[#0d47a1] font-semibold">
-                        WA Metro Area
-                      </span>
+                  {/* Perth Suburb / Postcode & Street Address */}
+                  <div className="space-y-2 text-left">
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-between">
+                        <label className="text-[11px] font-bold text-[#08295b]">
+                          Perth Suburb / Postcode *
+                        </label>
+                        <span className="text-[10px] text-[#0d47a1] font-semibold">
+                          WA Metro Area
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. Subiaco 6008, Joondalup 6027, Fremantle..."
+                        value={suburb}
+                        onChange={(e) => setSuburb(e.target.value)}
+                        className="w-full px-3 py-2 rounded-xl border border-[#d0e4f7] bg-[#fcfdff] text-xs font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/15 transition-all placeholder:text-[#08295b]/35 shadow-2xs"
+                      />
+                      {/* Quick Suburb Suggestions */}
+                      <div className="flex flex-wrap gap-1 pt-0.5">
+                        {POPULAR_PERTH_SUBURBS.map((s) => (
+                          <button
+                            key={s}
+                            type="button"
+                            onClick={() => setSuburb(s)}
+                            className="text-[10px] px-2 py-0.5 rounded-md bg-[#e3f2fd] text-[#0d47a1] hover:bg-[#2196f3] hover:text-white transition-colors cursor-pointer"
+                          >
+                            +{s}
+                          </button>
+                        ))}
+                      </div>
                     </div>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Subiaco 6008, Joondalup 6027, Fremantle..."
-                      value={suburb}
-                      onChange={(e) => setSuburb(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl border border-[#d0e4f7] bg-[#fcfdff] text-xs font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/15 transition-all placeholder:text-[#08295b]/35 shadow-2xs"
-                    />
-                    {/* Quick Suburb Suggestions */}
-                    <div className="flex flex-wrap gap-1 pt-0.5">
-                      {POPULAR_PERTH_SUBURBS.map((s) => (
-                        <button
-                          key={s}
-                          type="button"
-                          onClick={() => setSuburb(s)}
-                          className="text-[10px] px-2 py-0.5 rounded-md bg-[#e3f2fd] text-[#0d47a1] hover:bg-[#2196f3] hover:text-white transition-colors cursor-pointer"
-                        >
-                          +{s}
-                        </button>
-                      ))}
+
+                    {/* Street Address / Unit (Optional) */}
+                    <div className="space-y-1">
+                      <label className="text-[11px] font-bold text-[#08295b]">
+                        Street Address / Unit # <span className="text-[#08295b]/50 font-normal">(Optional)</span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Unit 4, 128 Hay Street"
+                        value={streetAddress}
+                        onChange={(e) => setStreetAddress(e.target.value)}
+                        className="w-full px-3 py-2 rounded-xl border border-[#d0e4f7] bg-[#fcfdff] text-xs font-medium text-[#08295b] outline-none focus:border-[#2196f3] focus:ring-2 focus:ring-[#2196f3]/15 transition-all placeholder:text-[#08295b]/35 shadow-2xs"
+                      />
                     </div>
                   </div>
 
@@ -661,7 +756,118 @@ export default function BondPageContent() {
                     </div>
                   </div>
 
-                  {/* Submit Button */}
+                  {/* Step 1 Next Button */}
+                  <div className="pt-2 space-y-2">
+                    <button
+                      type="submit"
+                      className="w-full py-3.5 rounded-xl bg-[#0d47a1] hover:bg-[#2196f3] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-md shadow-[#0d47a1]/25 transition-all cursor-pointer active:scale-98 flex items-center justify-center"
+                    >
+                      <span>Continue to Select Date</span>
+                    </button>
+                    <p className="text-[10px] text-[#08295b]/60 text-center">
+                      Free quote • No obligation • Instant dispatch
+                    </p>
+                  </div>
+                </form>
+              )}
+
+              {/* ================= STEP 2: PREFERRED DATE CALENDAR ================= */}
+              {formStep === 2 && (
+                <form onSubmit={handleFinalSubmit} className="space-y-3.5">
+                  <div className="flex items-center justify-between pb-1 border-b border-[#d0e4f7]/70">
+                    <button
+                      type="button"
+                      onClick={() => setFormStep(1)}
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[#0d47a1] hover:text-[#2196f3] cursor-pointer"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                      <span>Back</span>
+                    </button>
+                    <span className="text-[10px] font-bold text-[#0d47a1] bg-[#e3f2fd] px-2.5 py-0.5 rounded-full border border-[#d0e4f7]">
+                      Step 2 of 2 · Select Date
+                    </span>
+                  </div>
+
+                  <div className="text-center space-y-0.5">
+                    <h3 className="text-lg sm:text-xl font-black text-[#08295b] tracking-tight">
+                      Select Preferred Clean Date
+                    </h3>
+                    <p className="text-xs text-[#08295b]/70">
+                      When is your lease handover or exit inspection?
+                    </p>
+                  </div>
+
+                  {/* Interactive Month/Date Calendar */}
+                  <div className="bg-[#f8fbfe] p-3 rounded-2xl border border-[#d0e4f7] space-y-2.5">
+                    {/* Month Navigator Header */}
+                    <div className="flex items-center justify-between px-1">
+                      <button
+                        type="button"
+                        onClick={handlePrevMonth}
+                        className="w-7 h-7 rounded-lg border border-[#d0e4f7] bg-white flex items-center justify-center text-[#08295b] hover:bg-[#e3f2fd] cursor-pointer"
+                        aria-label="Previous Month"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+                      <span className="text-xs font-black text-[#08295b]">
+                        {MONTH_NAMES[month]} {year}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={handleNextMonth}
+                        className="w-7 h-7 rounded-lg border border-[#d0e4f7] bg-white flex items-center justify-center text-[#08295b] hover:bg-[#e3f2fd] cursor-pointer"
+                        aria-label="Next Month"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </div>
+
+                    {/* Weekday Names */}
+                    <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-[#08295b]/60">
+                      {["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"].map((d, i) => (
+                        <span key={i}>{d}</span>
+                      ))}
+                    </div>
+
+                    {/* Days Grid */}
+                    <div className="grid grid-cols-7 gap-1 text-center">
+                      {[...Array(startOffset)].map((_, i) => (
+                        <div key={`blank-${i}`} className="h-7 sm:h-8" />
+                      ))}
+                      {[...Array(daysInMonth)].map((_, i) => {
+                        const dayNum = i + 1;
+                        const dateString = `${year}-${String(month + 1).padStart(2, "0")}-${String(
+                          dayNum
+                        ).padStart(2, "0")}`;
+                        const isSelected = selectedDate === dateString;
+
+                        return (
+                          <button
+                            key={dayNum}
+                            type="button"
+                            onClick={() => handleSelectDate(dayNum)}
+                            className={`h-7 sm:h-8 w-full rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center ${
+                              isSelected
+                                ? "bg-[#0d47a1] text-white shadow-xs"
+                                : "bg-white border border-[#d0e4f7]/70 text-[#08295b] hover:bg-[#e3f2fd]"
+                            }`}
+                          >
+                            {dayNum}
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Selected Date Summary Badge */}
+                    <div className="pt-1 text-center">
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#0d47a1] bg-white border border-[#d0e4f7] px-3 py-1 rounded-full">
+                        <Calendar className="w-3.5 h-3.5 text-[#2196f3]" />
+                        <span>Move-out Clean: {formatPillDate(selectedDate)}</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Final Submit Button */}
                   <div className="pt-2 space-y-2">
                     <button
                       type="submit"
@@ -675,14 +881,14 @@ export default function BondPageContent() {
                       )}
                     </button>
                     <p className="text-[10px] text-[#08295b]/60 text-center">
-                      Free quote • No obligation • Our team will get back to you
+                      Free quote • 72-Hour Inspection Re-clean Guarantee
                     </p>
                   </div>
                 </form>
               )}
 
-              {/* ================= SUCCESS / CONFIRMATION SCREEN ================= */}
-              {formStep === 2 && (
+              {/* ================= STEP 3: SUCCESS / CONFIRMATION SCREEN ================= */}
+              {formStep === 3 && (
                 <div className="py-6 text-center space-y-4">
                   <div className="w-16 h-16 rounded-full bg-[#0d47a1] text-white flex items-center justify-center mx-auto shadow-lg shadow-[#0d47a1]/25">
                     <Check className="w-9 h-9 stroke-[3]" />
@@ -704,11 +910,15 @@ export default function BondPageContent() {
                   <div className="p-3.5 bg-[#f8fbfe] rounded-2xl border border-[#d0e4f7] text-left text-xs space-y-1.5">
                     <div className="flex items-center gap-2 font-bold text-[#08295b]">
                       <MapPin className="w-3.5 h-3.5 text-[#2196f3]" />
-                      <span>Location: {suburb}, Perth WA</span>
+                      <span>Location: {streetAddress ? `${streetAddress}, ${suburb}` : `${suburb}, Perth WA`}</span>
                     </div>
                     <div className="flex items-center gap-2 text-[#08295b]/80">
                       <Home className="w-3.5 h-3.5 text-[#2196f3]" />
                       <span>{bedrooms} · {bathrooms} · {propertyType}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-[#0d47a1] font-semibold">
+                      <Calendar className="w-3.5 h-3.5 text-[#2196f3]" />
+                      <span>Requested Date: {formatPillDate(selectedDate)}</span>
                     </div>
                   </div>
 

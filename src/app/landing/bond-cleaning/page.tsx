@@ -29,9 +29,36 @@ export default function BondCleaningLandingPage() {
 
   const totalPrice = basePrice + (hasCarpetSteam ? 99 : 0);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const GHL_WEBHOOK_URL =
+    "https://services.leadconnectorhq.com/hooks/oOILUumPBLG7ihohI6gJ/webhook-trigger/5949a2ae-165e-478c-a6d0-57f96aa209e6";
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+    try {
+      await fetch(GHL_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          fullName: form.name,
+          phone: form.phone,
+          phoneNumber: form.phone,
+          email: form.email,
+          emailAddress: form.email,
+          suburb: form.suburb,
+          propertyType: propertyType,
+          bedrooms: propertyType,
+          hasCarpetSteam: hasCarpetSteam,
+          totalPrice: `$${totalPrice}`,
+          service: "Perth Bond Cleaning Landing Page",
+          source: "Website Quote Form",
+          submittedAt: new Date().toISOString(),
+        }),
+      });
+    } catch (err) {
+      console.error("GHL Webhook error:", err);
+    }
   };
 
   return (
