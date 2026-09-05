@@ -109,10 +109,10 @@ export default function ContactSection() {
                   <div>
                     <h4 className="text-xs sm:text-sm font-bold text-[#08295b]">Email</h4>
                     <a
-                      href="mailto:support@cleaningsuperboss.com.au"
+                      href="mailto:hello@cleaningsuperboss.com"
                       className="text-xs text-[#0d47a1] hover:text-[#2196f3] font-semibold mt-0.5 block transition-colors break-all sm:break-normal"
                     >
-                      support@cleaningsuperboss.com.au
+                      hello@cleaningsuperboss.com
                     </a>
                   </div>
                 </div>

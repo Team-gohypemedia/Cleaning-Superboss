@@ -45,6 +45,7 @@ interface FooterProps {
 export default function Footer({ hideServices }: FooterProps = {}) {
   const pathname = usePathname();
   const isBondPage =
+    pathname === "/" ||
     pathname === "/end-of-lease-cleaning-services" ||
     pathname === "/services/bond" ||
     pathname?.startsWith("/end-of-lease") ||
@@ -90,13 +91,19 @@ export default function Footer({ hideServices }: FooterProps = {}) {
                 </div>
               </Link>
               <p className="text-xs text-[#08295b]/70 leading-relaxed pr-4 font-light mt-1">
-                Cleaning Superboss Ltd — registered in Australia, California &amp; London. Providing hotel-grade residential, bond, and commercial cleaning with upfront pricing and police-checked cleaners nationwide.
+                {isBondPage
+                  ? "Cleaning Superboss Perth — Providing hotel-grade bond, vacate, and end-of-lease cleaning with upfront pricing and police-checked cleaners across Greater Perth and Western Australia."
+                  : "Cleaning Superboss Ltd — registered in Australia. Providing hotel-grade residential, bond, and commercial cleaning with upfront pricing and police-checked cleaners nationwide."}
               </p>
-              <div className="mt-3 pt-3 border-t border-[#d0e4f7]/80 space-y-1 text-[11px] text-[#08295b]/80 font-medium">
-                <div><strong>ABN:</strong> 48 642 918 203</div>
-                <div><strong>Insurance:</strong> $10M Public Liability Cover</div>
-                <div><strong>Coverage:</strong> Australia, California &amp; London</div>
-              </div>
+              {!isBondPage && (
+                <div className="mt-3 pt-3 border-t border-[#d0e4f7]/80 space-y-1 text-[11px] text-[#08295b]/80 font-medium">
+                  <div><strong>ABN:</strong> 48 642 918 203</div>
+                  <div><strong>Insurance:</strong> $10M Public Liability Cover</div>
+                  <div>
+                    <strong>Coverage:</strong> Australia Wide
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Column 2: Capabilities Links (Hidden on Bond Page) */}
@@ -127,14 +134,16 @@ export default function Footer({ hideServices }: FooterProps = {}) {
               </h4>
 
               <div className="space-y-3.5 text-xs">
-                <div>
-                  <p className="text-[9px] font-semibold uppercase tracking-wider text-[#08295b]/50">
-                    PERTH OFFICE / HEADQUARTERS
-                  </p>
-                  <p className="text-xs font-semibold text-[#08295b] mt-0.5 leading-snug">
-                    Unit 3, 25 Morrison Street, Como WA 6152
-                  </p>
-                </div>
+                {!isBondPage && (
+                  <div>
+                    <p className="text-[9px] font-semibold uppercase tracking-wider text-[#08295b]/50">
+                      PERTH OFFICE / HEADQUARTERS
+                    </p>
+                    <p className="text-xs font-semibold text-[#08295b] mt-0.5 leading-snug">
+                      Unit 3, 25 Morrison Street, Como WA 6152
+                    </p>
+                  </div>
+                )}
 
                 <div>
                   <p className="text-[9px] font-semibold uppercase tracking-wider text-[#08295b]/50">
@@ -161,7 +170,7 @@ export default function Footer({ hideServices }: FooterProps = {}) {
                     HOURS OF OPERATION
                   </p>
                   <p className="text-xs font-semibold text-[#08295b] mt-0.5">
-                    Mon–Sun: 7:00 AM – 8:00 PM AEST
+                    {isBondPage ? "Mon–Sun: 7:00 AM – 8:00 PM AWST" : "Mon–Sun: 7:00 AM – 8:00 PM AEST"}
                   </p>
                 </div>
               </div>
@@ -200,13 +209,15 @@ export default function Footer({ hideServices }: FooterProps = {}) {
           </div>
 
           {/* Bottom copyright row */}
-          <div className="mt-8 sm:mt-12 pt-4 sm:pt-6 border-t border-[#d0e4f7] flex flex-col sm:flex-row justify-between items-center gap-2 relative z-10 w-full">
-            <p className="text-[8px] sm:text-[9px] text-[#08295b]/60 uppercase tracking-widest font-medium">
-              &copy; {new Date().getFullYear()} CLEANING SUPERBOSS LTD · ABN 48 642 918 203. ALL RIGHTS RESERVED.
+          <div className={`mt-8 sm:mt-12 pt-4 sm:pt-6 border-t border-[#d0e4f7] flex flex-col sm:flex-row ${isBondPage ? "justify-end" : "justify-between"} items-center gap-2 relative z-10 w-full`}>
+            <p className="text-[8px] sm:text-[9px] text-[#08295b]/60 uppercase tracking-widest font-medium text-right sm:ml-auto">
+              &copy; {new Date().getFullYear()} CLEANING SUPERBOSS LTD · ALL RIGHTS RESERVED.
             </p>
-            <div className="text-[8px] sm:text-[9px] uppercase tracking-widest text-[#08295b]/60 font-bold">
-              REGISTERED IN AUSTRALIA, CALIFORNIA & LONDON
-            </div>
+            {!isBondPage && (
+              <div className="text-[8px] sm:text-[9px] uppercase tracking-widest text-[#08295b]/60 font-bold">
+                AUSTRALIA WIDE
+              </div>
+            )}
           </div>
 
         </div>

@@ -11,10 +11,12 @@ import {
   ChevronLeft,
   ChevronRight,
   UtensilsCrossed,
+  Flame,
   Bath,
   Armchair,
   BedDouble,
   Building2,
+  Layers,
   LucideIcon,
 } from "lucide-react";
 
@@ -35,7 +37,7 @@ interface Transformation {
 const TRANSFORMATIONS: Transformation[] = [
   {
     id: "kitchen",
-    categoryName: "Kitchen",
+    categoryName: "Kitchen Oven",
     title: "Oven & Rangehood Degreasing",
     focus: "Burnt carbon removal, glass door descaling & wire rack restoration",
     location: "Bond Clean · Subiaco, Perth WA",
@@ -45,6 +47,19 @@ const TRANSFORMATIONS: Transformation[] = [
     afterDesc: "100% transparent streak-free glass, showroom-restored stainless steel interior, and gleaming polished racks.",
     beforeImg: "/transformations/oven_before.jpg",
     afterImg: "/transformations/oven_after.jpg",
+  },
+  {
+    id: "stovetop",
+    categoryName: "Stovetop",
+    title: "Gas Burners & Cooktop Degreasing",
+    focus: "Heavy oil scum removal, burner crown polishing & enamel restoration",
+    location: "Bond Clean · South Perth, WA",
+    duration: "1.0 hour",
+    icon: Flame,
+    beforeDesc: "Baked-on grease rings, blackened burner trivets, and oil accumulation around control dials.",
+    afterDesc: "High-shine polished stainless steel stovetop, degreased burner caps, and immaculate scratch-free finish.",
+    beforeImg: "/transformations/stove_before.jpg",
+    afterImg: "/transformations/stove_after.jpg",
   },
   {
     id: "bathroom",
@@ -58,6 +73,19 @@ const TRANSFORMATIONS: Transformation[] = [
     afterDesc: "Crystal-clear transparent glass door, mould-treated bright white tile grout, and mirror-polished chrome tapware.",
     beforeImg: "/transformations/shower_before.jpg",
     afterImg: "/transformations/shower_after.jpg",
+  },
+  {
+    id: "windows",
+    categoryName: "Window Tracks",
+    title: "Sliding Track & Glass Detailing",
+    focus: "Grit vacuuming, bug removal & streak-free aluminum track polish",
+    location: "Vacate Clean · Cottesloe, Perth WA",
+    duration: "1.5 hours",
+    icon: Layers,
+    beforeDesc: "Tracks packed with built-up coastal grit, dead insects, black dust, and sticky residue in sliding grooves.",
+    afterDesc: "Deep-vacuumed spotless aluminum runner tracks, wiped drain holes, and smooth streak-free sliding action.",
+    beforeImg: "/transformations/windows_before.jpg",
+    afterImg: "/transformations/windows_after.jpg",
   },
   {
     id: "living",
@@ -74,7 +102,7 @@ const TRANSFORMATIONS: Transformation[] = [
   },
   {
     id: "bedroom",
-    categoryName: "Bedroom",
+    categoryName: "Bedroom & Carpet",
     title: "Dust Removal & Carpet Steam Cleaning",
     focus: "Steam extraction, allergen sanitisation & wardrobe detailing",
     location: "Vacate Clean · Joondalup, Perth WA",

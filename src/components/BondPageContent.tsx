@@ -18,6 +18,7 @@ import {
   Layers,
   Bath,
   Plus,
+  Minus,
   X,
   Mail,
   MapPin,
@@ -35,6 +36,7 @@ import {
 import Footer from "@/components/Footer";
 import PerthLiveBookingMap from "@/components/PerthLiveBookingMap";
 import BeforeAfterShowcase from "@/components/BeforeAfterShowcase";
+import { TestimonialsColumn, TestimonialItem } from "@/components/ui/testimonials-columns-1";
 
 const BOND_SLIDER_IMAGES = [
   {
@@ -144,43 +146,111 @@ const PERTH_SUBURB_REGIONS = [
   },
 ];
 
-const PERTH_REVIEWS = [
+const PERTH_TESTIMONIALS: TestimonialItem[] = [
   {
-    quote:
-      "Our property manager in Subiaco was notoriously strict, but Cleaning Superboss passed the exit condition report on the very first inspection. Full $2,400 bond refunded within 48 hours.",
-    author: "Sarah T.",
-    loc: "Subiaco WA",
-    service: "3 Bed House Bond Clean",
+    text: "Our property manager in Subiaco was notoriously strict, but Cleaning Superboss passed the exit condition report on the very first inspection. Full $2,400 bond refunded within 48 hours.",
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop",
+    name: "Sarah T.",
+    role: "3 Bed House Bond Clean",
+    location: "Subiaco, Perth WA",
+    rating: 5,
   },
   {
-    quote:
-      "Moving out of our Scarborough rental was super stressful until we hired this team. The oven and shower screens looked brand new. Got our quote in 15 mins and clean done the next day.",
-    author: "Mark & Dan",
-    loc: "Scarborough WA",
-    service: "2 Bed Unit Vacate Clean",
+    text: "Moving out of our Scarborough rental was super stressful until we hired this team. The oven and shower screens looked brand new. Got our quote in 15 mins and clean done the next day.",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
+    name: "Mark & Dan",
+    role: "2 Bed Unit Vacate Clean",
+    location: "Scarborough, Perth WA",
+    rating: 5,
   },
   {
-    quote:
-      "Booked their end of lease clean with carpet steam cleaning in Joondalup. The tax invoice and carpet certificate were accepted by the real estate agent immediately with zero fuss.",
-    author: "Chloe R.",
-    loc: "Joondalup WA",
-    service: "Townhouse + Carpet Steam",
+    text: "Booked their end of lease clean with carpet steam cleaning in Joondalup. The tax invoice and carpet certificate were accepted by the real estate agent immediately with zero fuss.",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop",
+    name: "Chloe R.",
+    role: "Townhouse + Carpet Steam",
+    location: "Joondalup, Perth WA",
+    rating: 5,
   },
   {
-    quote:
-      "Pass first time guarantee was the main reason we booked. The team arrived on time in Fremantle, deep cleaned every window track and grease filter. Got 100% of our deposit back.",
-    author: "James & Emma",
-    loc: "Fremantle WA",
-    service: "4 Bed House Move-Out",
+    text: "Pass first time guarantee was the main reason we booked. The team arrived on time in Fremantle, deep cleaned every window track and grease filter. Got 100% of our deposit back.",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop",
+    name: "James & Emma",
+    role: "4 Bed House Move-Out",
+    location: "Fremantle, Perth WA",
+    rating: 5,
   },
   {
-    quote:
-      "Ray White property manager did the final walk-through and signed off with zero cleaning issues. Best vacate cleaning service in Perth!",
-    author: "David L.",
-    loc: "South Perth WA",
-    service: "Apartment Bond Clean",
+    text: "Ray White property manager did the final walk-through and signed off with zero cleaning issues. Best vacate cleaning service in Perth!",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop",
+    name: "David L.",
+    role: "Apartment Bond Clean",
+    location: "South Perth, WA",
+    rating: 5,
+  },
+  {
+    text: "Exceptional bond cleaning in East Perth. Our landlord checked the rangehood filters and window tracks with a flashlight and found nothing to complain about. 10/10 service.",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop",
+    name: "Jessica Miller",
+    role: "End of Lease Vacate",
+    location: "East Perth, WA",
+    rating: 5,
+  },
+  {
+    text: "Needed a last-minute bond clean before our lease handover on Friday. Superboss fitted us in next morning and delivered an immaculate exit clean. Full bond released on Monday!",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop",
+    name: "Lachlan Cooper",
+    role: "Urgent Vacate Clean",
+    location: "Victoria Park, WA",
+    rating: 5,
+  },
+  {
+    text: "We had pets so carpet steam cleaning + flea treatment receipt was required by our real estate agency. Superboss provided everything itemised and our bond was returned in full.",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop",
+    name: "Dr. Priya Sharma",
+    role: "House + Pet Bond Clean",
+    location: "Mount Lawley, WA",
+    rating: 5,
+  },
+  {
+    text: "The cleanest oven and grout lines I have ever seen. Passed our inspection without a single rectification required. Worth every dollar for the peace of mind.",
+    image: "https://images.unsplash.com/photo-1548142813-c348350df52b?q=80&w=200&auto=format&fit=crop",
+    name: "Harrison Blake",
+    role: "Full Bond Clean",
+    location: "Hillarys, Perth WA",
+    rating: 5,
   },
 ];
+
+const PERTH_CREDENTIALS = [
+  {
+    icon: Star,
+    title: "4.9 / 5.0 Rating",
+    desc: "Over 850+ verified Perth tenants and landlords with 5-star feedback.",
+    badge: "★★★★★ Google Reviews",
+  },
+  {
+    icon: ShieldCheck,
+    title: "$10M Public Liability",
+    desc: "Comprehensive insurance coverage protecting your rental premises.",
+    badge: "Fully Insured",
+  },
+  {
+    icon: CheckCircle2,
+    title: "72-Hour Re-Clean",
+    desc: "Free return rectification if your property manager flags any item.",
+    badge: "100% Bond Guarantee",
+  },
+  {
+    icon: Clock,
+    title: "Fast 15-Min Quotes",
+    desc: "Instant upfront itemised pricing tailored to your property specs.",
+    badge: "Fast Response",
+  },
+];
+
+const firstReviewCol = PERTH_TESTIMONIALS.slice(0, 3);
+const secondReviewCol = PERTH_TESTIMONIALS.slice(3, 6);
+const thirdReviewCol = PERTH_TESTIMONIALS.slice(6, 9);
 
 const PERTH_FAQS = [
   {
@@ -241,9 +311,23 @@ const MONTH_NAMES = [
 const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export default function BondPageContent() {
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [openFaqs, setOpenFaqs] = useState<number[]>([0]);
   const [showAllSuburbs, setShowAllSuburbs] = useState(false);
-  const [showAllFaqs, setShowAllFaqs] = useState(false);
+  const [showAllMobileFaqs, setShowAllMobileFaqs] = useState(false);
+
+  const toggleFaq = (idx: number) => {
+    setOpenFaqs((prev) =>
+      prev.includes(idx) ? prev.filter((i) => i !== idx) : [...prev, idx]
+    );
+  };
+
+  const handleExpandAllFaqs = () => {
+    if (openFaqs.length === PERTH_FAQS.length) {
+      setOpenFaqs([]);
+    } else {
+      setOpenFaqs(PERTH_FAQS.map((_, i) => i));
+    }
+  };
 
   // Multi-Step Quote Form State: 1 = Property & Contact, 2 = Date & Add-ons, 3 = Confirmation
   const [formStep, setFormStep] = useState<1 | 2 | 3>(1);
@@ -268,25 +352,7 @@ export default function BondPageContent() {
     setCurrentSlide((prev) => (prev - 1 + BOND_SLIDER_IMAGES.length) % BOND_SLIDER_IMAGES.length);
   };
 
-  // Perth Reviews Slider State
-  const [reviewSlide, setReviewSlide] = useState(0);
-  const [isReviewHovered, setIsReviewHovered] = useState(false);
 
-  useEffect(() => {
-    if (isReviewHovered) return;
-    const interval = setInterval(() => {
-      setReviewSlide((prev) => (prev + 1) % PERTH_REVIEWS.length);
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [isReviewHovered]);
-
-  const nextReview = () => {
-    setReviewSlide((prev) => (prev + 1) % PERTH_REVIEWS.length);
-  };
-
-  const prevReview = () => {
-    setReviewSlide((prev) => (prev - 1 + PERTH_REVIEWS.length) % PERTH_REVIEWS.length);
-  };
 
   // Step 1 Fields
   const [fullName, setFullName] = useState("");
@@ -673,7 +739,7 @@ export default function BondPageContent() {
       </section>
 
       {/* Why Choose Cleaning Superboss for Perth Bond Cleaning */}
-      <section className="py-14 sm:py-20 px-4 sm:px-6 md:px-10 lg:px-14 border-b border-[#d0e4f7] bg-[#f8fbfe]">
+      <section id="why-us" className="py-14 sm:py-20 px-4 sm:px-6 md:px-10 lg:px-14 border-b border-[#d0e4f7] bg-[#f8fbfe] scroll-mt-16">
         <div className="max-w-[1360px] mx-auto space-y-8 lg:space-y-0">
           
           {/* Mobile Title (Appears before photo slider on mobile screens) */}
@@ -837,7 +903,7 @@ export default function BondPageContent() {
       <BeforeAfterShowcase />
 
       {/* Perth Suburbs & Greater WA Metro Coverage Section */}
-      <section className="py-14 sm:py-20 px-4 sm:px-6 md:px-10 lg:px-14 border-b border-[#d0e4f7] bg-[#f8fbfe]">
+      <section id="suburbs" className="py-14 sm:py-20 px-4 sm:px-6 md:px-10 lg:px-14 border-b border-[#d0e4f7] bg-[#f8fbfe] scroll-mt-16">
         <div className="max-w-[1360px] mx-auto space-y-10">
           
           <div className="text-center max-w-2xl mx-auto space-y-3 sm:space-y-4">
@@ -911,252 +977,208 @@ export default function BondPageContent() {
         </div>
       </section>
 
-      {/* Perth Customer Testimonials */}
-      <section className="py-14 sm:py-20 bg-[#08295b] text-white px-4 sm:px-6 border-y border-white/10">
-        <div className="max-w-5xl mx-auto text-center space-y-8">
-          <div className="space-y-3 sm:space-y-4">
-            <div className="flex justify-center">
-              <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-widest text-[#2196f3] uppercase bg-white/10 px-4 py-1.5 rounded-full border border-white/15">
-                Verified Perth Reviews
+      {/* Perth Customer Testimonials (Rich Testimonial Cards & Carousel) */}
+      <section id="reviews" className="bg-[#f8fbfe] py-14 sm:py-20 md:py-24 relative overflow-hidden border-y border-[#d0e4f7] scroll-mt-16">
+        
+        {/* Background ambient lighting accents */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-br from-[#2196f3]/10 via-[#0d47a1]/5 to-transparent blur-[160px] pointer-events-none -z-0" />
+
+        <div className="max-w-[1360px] z-10 mx-auto px-3.5 sm:px-6 md:px-10 lg:px-12 relative">
+          
+          {/* Section Header */}
+          <div className="flex flex-col items-center justify-center max-w-3xl mx-auto text-center space-y-3 sm:space-y-4 px-1">
+            {/* Google Reviews Badge */}
+            <div className="inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white border border-[#d0e4f7] shadow-xs">
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24">
+                <path
+                  fill="#4285F4"
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                />
+                <path
+                  fill="#34A853"
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                />
+                <path
+                  fill="#FBBC05"
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+                />
+                <path
+                  fill="#EA4335"
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
+                />
+              </svg>
+              <span className="text-amber-500 font-black text-xs sm:text-sm tracking-wider">★★★★★</span>
+              <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-[#08295b]">
+                Google Reviews
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight">
+
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-[#08295b]">
               Trusted by Hundreds of Perth Tenants &amp; Landlords
             </h2>
-            <div className="flex items-center justify-center gap-2 text-xs text-white/80">
-              <div className="flex text-amber-400 gap-0.5">
-                {[...Array(5)].map((_, idx) => (
-                  <Star key={idx} className="w-4 h-4 fill-current" />
-                ))}
-              </div>
-              <span className="font-bold text-white">4.9 / 5.0</span>
-              <span className="text-white/60">· 850+ Verified Perth Vacates</span>
-            </div>
+
+            <p className="text-xs sm:text-sm md:text-base text-[#08295b]/75 max-w-2xl font-medium leading-relaxed">
+              Real feedback from verified tenants, homeowners, and real estate property managers across Perth and Western Australia.
+            </p>
           </div>
 
-          {/* ================= MOBILE REVIEWS SLIDER (< md) ================= */}
-          <div
-            className="md:hidden relative"
-            onMouseEnter={() => setIsReviewHovered(true)}
-            onMouseLeave={() => setIsReviewHovered(false)}
-          >
-            <div className="relative overflow-hidden rounded-2xl bg-white/5 border border-white/15 p-5 text-left min-h-[200px] flex flex-col justify-between shadow-lg">
-              {PERTH_REVIEWS.map((rev, idx) => (
+          {/* Verified Credentials 4-Card Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5 mt-8 sm:mt-10">
+            {PERTH_CREDENTIALS.map((cred, idx) => {
+              const Icon = cred.icon;
+              return (
                 <div
                   key={idx}
-                  className={`transition-opacity duration-500 ease-in-out flex flex-col justify-between h-full ${
-                    idx === reviewSlide ? "opacity-100 relative z-10" : "opacity-0 absolute inset-0 p-5 pointer-events-none"
-                  }`}
+                  className="bg-white rounded-2xl border border-[#d0e4f7] p-4.5 sm:p-5 shadow-xs hover:shadow-md hover:border-[#2196f3] transition-all flex flex-col justify-between"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <div className="flex text-amber-400 gap-0.5">
-                        {[...Array(5)].map((_, sIdx) => (
-                          <Star key={sIdx} className="w-4 h-4 fill-current" />
-                        ))}
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#e3f2fd] border border-[#d0e4f7] flex items-center justify-center text-[#0d47a1]">
+                        <Icon className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-[#0d47a1]" />
                       </div>
-                      <span className="text-[10px] font-bold text-[#2196f3] bg-white/10 px-2.5 py-0.5 rounded-full">
-                        {rev.service}
+                      <span className="text-[10px] font-mono font-bold text-[#0d47a1] bg-[#e3f2fd] px-2.5 py-0.5 rounded-full border border-[#d0e4f7]">
+                        {cred.badge}
                       </span>
                     </div>
-                    <p className="text-sm text-white/90 leading-relaxed italic">
-                      &ldquo;{rev.quote}&rdquo;
-                    </p>
-                  </div>
-
-                  <div className="pt-3 mt-3 border-t border-white/10 flex items-center justify-between">
                     <div>
-                      <div className="font-bold text-sm text-white">{rev.author}</div>
-                      <div className="text-xs text-[#2196f3] font-semibold">{rev.loc}</div>
-                    </div>
-                    <span className="text-[11px] font-mono text-white/50">
-                      {idx + 1} / {PERTH_REVIEWS.length}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Mobile Controls */}
-            <div className="flex items-center justify-between pt-3 px-1">
-              <div className="flex items-center gap-1.5">
-                {PERTH_REVIEWS.map((_, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => setReviewSlide(idx)}
-                    aria-label={`Go to review ${idx + 1}`}
-                    className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                      idx === reviewSlide
-                        ? "w-6 bg-[#2196f3]"
-                        : "w-1.5 bg-white/40 hover:bg-white"
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={prevReview}
-                  aria-label="Previous review"
-                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white flex items-center justify-center transition-all cursor-pointer active:scale-95"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={nextReview}
-                  aria-label="Next review"
-                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white flex items-center justify-center transition-all cursor-pointer active:scale-95"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* ================= DESKTOP REVIEWS CAROUSEL / GRID (>= md) ================= */}
-          <div
-            className="hidden md:block relative space-y-4"
-            onMouseEnter={() => setIsReviewHovered(true)}
-            onMouseLeave={() => setIsReviewHovered(false)}
-          >
-            <div className="grid grid-cols-3 gap-5 text-left">
-              {[0, 1, 2].map((offset) => {
-                const itemIdx = (reviewSlide + offset) % PERTH_REVIEWS.length;
-                const rev = PERTH_REVIEWS[itemIdx];
-                return (
-                  <div
-                    key={itemIdx}
-                    className="bg-white/5 border border-white/10 hover:border-[#2196f3]/60 transition-all rounded-2xl p-5 space-y-3 flex flex-col justify-between shadow-md group"
-                  >
-                    <div className="space-y-2.5">
-                      <div className="flex items-center justify-between">
-                        <div className="flex text-amber-400 gap-0.5">
-                          {[...Array(5)].map((_, sIdx) => (
-                            <Star key={sIdx} className="w-3.5 h-3.5 fill-current" />
-                          ))}
-                        </div>
-                        <span className="text-[10px] font-bold text-[#2196f3] bg-white/10 px-2 py-0.5 rounded-full">
-                          {rev.service}
-                        </span>
-                      </div>
-                      <p className="text-xs text-white/80 leading-relaxed italic">
-                        &ldquo;{rev.quote}&rdquo;
+                      <h3 className="text-sm sm:text-base font-extrabold text-[#08295b]">
+                        {cred.title}
+                      </h3>
+                      <p className="text-xs text-[#08295b]/70 mt-1 leading-relaxed">
+                        {cred.desc}
                       </p>
                     </div>
-                    <div className="pt-2.5 border-t border-white/10 flex items-center justify-between">
-                      <div>
-                        <div className="font-bold text-xs text-white">{rev.author}</div>
-                        <div className="text-[10px] text-[#2196f3] font-semibold">{rev.loc}</div>
-                      </div>
-                    </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
+          </div>
 
-            {/* Desktop Carousel Indicators & Controls */}
-            <div className="flex items-center justify-center gap-4 pt-2">
-              <button
-                type="button"
-                onClick={prevReview}
-                aria-label="Previous reviews"
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/25 border border-white/15 text-white flex items-center justify-center transition-all cursor-pointer"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
+          {/* 3-Column Infinite Vertical Scrolling Carousel */}
+          <div className="flex justify-center gap-6 mt-10 sm:mt-12 [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)] max-h-[600px] sm:max-h-[660px] overflow-hidden">
+            <TestimonialsColumn testimonials={firstReviewCol} duration={16} />
+            <TestimonialsColumn testimonials={secondReviewCol} className="hidden md:block" duration={21} />
+            <TestimonialsColumn testimonials={thirdReviewCol} className="hidden lg:block" duration={18} />
+          </div>
 
-              <div className="flex items-center gap-1.5">
-                {PERTH_REVIEWS.map((_, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => setReviewSlide(idx)}
-                    aria-label={`Go to slide ${idx + 1}`}
-                    className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                      idx === reviewSlide
-                        ? "w-6 bg-[#2196f3]"
-                        : "w-1.5 bg-white/30 hover:bg-white"
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <button
-                type="button"
-                onClick={nextReview}
-                aria-label="Next reviews"
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/25 border border-white/15 text-white flex items-center justify-center transition-all cursor-pointer"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
+          {/* Bottom CTA Button */}
+          <div className="mt-8 sm:mt-10 text-center flex items-center justify-center">
+            <button
+              type="button"
+              onClick={scrollToForm}
+              className="px-7 sm:px-8 py-3.5 rounded-full bg-[#0d47a1] hover:bg-[#2196f3] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+            >
+              <span>Get a Free Bond Quote</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
 
         </div>
       </section>
 
-      {/* Service-Specific FAQs (Perth & WA Focused) */}
-      <section className="py-14 sm:py-20 px-4 sm:px-6 md:px-10 lg:px-14 border-b border-[#d0e4f7] bg-[#f8fbfe]">
-        <div className="max-w-3xl mx-auto space-y-8">
-          <div className="text-center space-y-3 sm:space-y-4 max-w-2xl mx-auto">
-            <div className="flex justify-center">
-              <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-widest text-[#0d47a1] uppercase bg-[#e3f2fd] px-4 py-1.5 rounded-full border border-[#d0e4f7]">
-                Common Questions
-              </span>
+      {/* Service-Specific FAQs with Background Watermark & Refined Accordion */}
+      <section id="faq" className="relative py-16 sm:py-24 px-4 sm:px-6 md:px-10 lg:px-14 border-b border-[#d0e4f7] bg-[#f8fbfe] overflow-hidden scroll-mt-16">
+        
+        {/* Background Watermark Text "FAQS" matching the reference design */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden leading-none">
+          <span className="text-[28vw] sm:text-[24vw] md:text-[260px] font-black uppercase tracking-widest text-[#08295b]/[0.035] translate-y-6 sm:translate-y-10">
+            FAQS
+          </span>
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto space-y-8 sm:space-y-10">
+          
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#d0e4f7] pb-6">
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-widest text-[#0d47a1] uppercase bg-[#e3f2fd] px-3.5 py-1 rounded-full border border-[#d0e4f7]">
+                Perth Bond Cleaning
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#08295b] tracking-tight">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-xs sm:text-sm text-[#08295b]/70 max-w-xl">
+                Everything you need to know about your bond clean, real estate inspection checklists, and guarantee.
+              </p>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#08295b] tracking-tight">
-              Frequently Asked Questions (Perth Bond Cleaning)
-            </h2>
-            <p className="text-xs sm:text-sm text-[#08295b]/70 leading-relaxed">
-              Everything you need to know about your bond clean, real estate inspection checklists, and guarantee.
-            </p>
+
+            <button
+              type="button"
+              onClick={handleExpandAllFaqs}
+              className="self-start md:self-end text-xs font-bold text-[#0d47a1] hover:text-[#2196f3] underline cursor-pointer"
+            >
+              {openFaqs.length === PERTH_FAQS.length ? "Collapse All" : "Expand All"}
+            </button>
           </div>
 
-          <div className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-[#d0e4f7] shadow-sm space-y-3">
-            <div className="divide-y divide-[#d0e4f7]">
-              {(showAllFaqs ? PERTH_FAQS : PERTH_FAQS.slice(0, 5)).map((faq, idx) => (
-                <div key={idx} className="py-3.5 sm:py-4 first:pt-0 last:pb-0">
+          {/* Minimalist Line-Separated Accordion with Circular +/- Pill Toggle */}
+          <div className="divide-y divide-[#d0e4f7]/80 border-b border-[#d0e4f7]/80">
+            {PERTH_FAQS.map((faq, idx) => {
+              const isOpen = openFaqs.includes(idx);
+              const isHiddenOnMobile = !showAllMobileFaqs && idx >= 5;
+
+              return (
+                <div
+                  key={idx}
+                  className={`py-5 sm:py-6 group transition-colors ${
+                    isHiddenOnMobile ? "hidden md:block" : "block"
+                  }`}
+                >
                   <button
                     type="button"
-                    onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                    className="w-full flex items-center justify-between gap-3 text-left font-bold text-xs sm:text-sm md:text-base text-[#08295b] hover:text-[#0d47a1] cursor-pointer transition-colors"
+                    onClick={() => toggleFaq(idx)}
+                    className="w-full flex items-center justify-between gap-6 text-left cursor-pointer"
                   >
-                    <span>{faq.q}</span>
-                    <ChevronDown
-                      className={`w-4 h-4 shrink-0 text-[#2196f3] transition-transform duration-200 ${
-                        openFaq === idx ? "rotate-180 text-[#0d47a1]" : ""
+                    <span className="text-xs sm:text-sm md:text-[15px] font-bold text-[#08295b] group-hover:text-[#0d47a1] transition-colors leading-snug">
+                      {faq.q}
+                    </span>
+
+                    {/* Circular +/- Action Icon */}
+                    <div
+                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 ${
+                        isOpen
+                          ? "bg-[#08295b] text-white shadow-sm"
+                          : "border border-[#d0e4f7] bg-white text-[#08295b]/70 group-hover:border-[#0d47a1] group-hover:text-[#0d47a1]"
                       }`}
-                    />
+                    >
+                      {isOpen ? (
+                        <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+                      ) : (
+                        <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+                      )}
+                    </div>
                   </button>
-                  {openFaq === idx && (
-                    <p className="mt-2.5 text-xs sm:text-sm text-[#08295b]/75 leading-relaxed bg-[#f8fbfe] p-3 rounded-xl border border-[#d0e4f7]/60">
-                      {faq.a}
-                    </p>
+
+                  {/* Expandable Answer Content */}
+                  {isOpen && (
+                    <div className="mt-3.5 pr-10 sm:pr-14 text-xs sm:text-sm text-[#08295b]/80 leading-relaxed font-medium">
+                      <p className="p-4 rounded-xl bg-white/80 backdrop-blur-xs border border-[#d0e4f7]/60 shadow-2xs">
+                        {faq.a}
+                      </p>
+                    </div>
                   )}
                 </div>
-              ))}
-            </div>
-
-            {/* Toggle View More / Fewer FAQs */}
-            <div className="pt-3 border-t border-[#d0e4f7] flex justify-center">
-              <button
-                type="button"
-                onClick={() => setShowAllFaqs((prev) => !prev)}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#f8fbfe] border border-[#d0e4f7] hover:border-[#2196f3] text-[#0d47a1] text-xs font-bold shadow-2xs active:scale-95 transition-all cursor-pointer"
-              >
-                <span>{showAllFaqs ? "Show Fewer Questions" : `View More FAQs (+${PERTH_FAQS.length - 5})`}</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${showAllFaqs ? "rotate-180" : ""}`} />
-              </button>
-            </div>
+              );
+            })}
           </div>
+
+          {/* Mobile-Only "See More / Show Less FAQs" Toggle */}
+          <div className="md:hidden flex justify-center pt-2">
+            <button
+              type="button"
+              onClick={() => setShowAllMobileFaqs((prev) => !prev)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-[#d0e4f7] hover:border-[#2196f3] text-[#0d47a1] text-xs font-bold uppercase tracking-wider shadow-sm active:scale-95 transition-all cursor-pointer"
+            >
+              <span>{showAllMobileFaqs ? "Show Fewer Questions" : `See More FAQs (+${PERTH_FAQS.length - 5})`}</span>
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${showAllMobileFaqs ? "rotate-180" : ""}`} />
+            </button>
+          </div>
+
         </div>
       </section>
 
       {/* Contact & Operating Hours Section (Perth / WA Timezone) */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-10 lg:px-14 relative overflow-hidden border-b border-[#d0e4f7]">
+      <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 md:px-10 lg:px-14 relative overflow-hidden border-b border-[#d0e4f7] scroll-mt-16">
         
         {/* Background Stock Image with Clean Visible Presentation */}
         <div className="absolute inset-0 z-0 select-none pointer-events-none">
@@ -1202,28 +1224,11 @@ export default function BondPageContent() {
                   </p>
                 </div>
 
-                {/* Address Card */}
-                <div className="group flex items-start gap-4 p-4 rounded-2xl bg-[#f8fbfe] border border-[#d0e4f7]/80 hover:border-[#2196f3]/60 hover:bg-white transition-all duration-200">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-50 to-rose-100 border border-rose-200/80 flex items-center justify-center text-rose-500 shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
-                    <MapPin className="w-5 h-5 text-rose-500" />
-                  </div>
-                  <div className="pt-0.5 space-y-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-bold text-[#08295b]">Perth Office</span>
-                      <span className="text-[10px] font-bold uppercase tracking-wider bg-rose-100/70 text-rose-700 px-2 py-0.5 rounded-full border border-rose-200">WA Hub</span>
-                    </div>
-                    <div className="text-sm font-medium text-[#08295b]/80 leading-snug">
-                      Unit 3, 25 Morrison Street, Como WA 6152
-                    </div>
-                    <div className="text-[11px] text-[#08295b]/60">
-                      Metro coverage across North & South of the Swan River
-                    </div>
-                  </div>
-                </div>
+
 
                 {/* Email Card */}
                 <a
-                  href="mailto:support@cleaningsuperboss.com.au"
+                  href="mailto:hello@cleaningsuperboss.com"
                   className="group flex items-start gap-4 p-4 rounded-2xl bg-[#f8fbfe] border border-[#d0e4f7]/80 hover:border-[#2196f3]/60 hover:bg-white transition-all duration-200"
                 >
                   <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-50 to-indigo-100 border border-indigo-200/80 flex items-center justify-center text-indigo-500 shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
@@ -1235,7 +1240,7 @@ export default function BondPageContent() {
                       <span className="text-[10px] font-bold uppercase tracking-wider bg-indigo-100/70 text-indigo-700 px-2 py-0.5 rounded-full border border-indigo-200">Fast Reply</span>
                     </div>
                     <div className="text-sm font-semibold text-[#0d47a1] group-hover:underline break-all">
-                      support@cleaningsuperboss.com.au
+                      hello@cleaningsuperboss.com
                     </div>
                     <div className="text-[11px] text-[#08295b]/60">
                       Average response time under 15 minutes during operating hours
