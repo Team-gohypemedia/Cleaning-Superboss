@@ -410,7 +410,7 @@ export default function BondPageContent() {
   const GHL_WEBHOOK_URL =
     "https://services.leadconnectorhq.com/hooks/oOILUumPBLG7ihohI6gJ/webhook-trigger/5949a2ae-165e-478c-a6d0-57f96aa209e6";
 
-  // Step 1: Validate and move to Step 2 (Calendar) + background lead capture
+  // Step 1: Validate and move to Step 2 (Calendar)
   const handleStep1Submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName.trim() || !phone.trim() || !suburb.trim()) {
@@ -418,36 +418,10 @@ export default function BondPageContent() {
       return;
     }
     setFormError("");
-
-    // Send initial lead capture to GoHighLevel
-    fetch(GHL_WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: fullName.trim(),
-        fullName: fullName.trim(),
-        phone: phone.trim(),
-        phoneNumber: phone.trim(),
-        email: email.trim(),
-        emailAddress: email.trim(),
-        streetAddress: streetAddress.trim(),
-        address: streetAddress.trim(),
-        suburb: suburb.trim(),
-        suburbPostcode: suburb.trim(),
-        propertyType: propertyType,
-        bedrooms: bedrooms,
-        bathrooms: bathrooms,
-        step: "Step 1 Completed",
-        service: "Perth Bond Cleaning",
-        source: "Website Quote Form",
-        submittedAt: new Date().toISOString(),
-      }),
-    }).catch((err) => console.error("GHL Webhook Step 1 error:", err));
-
     setFormStep(2);
   };
 
-  // Step 2: Final Submit with Date, Add-ons & Notes
+  // Step 2: Final Submit with Date, Address & Property Specs
   const handleFinalSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -459,20 +433,17 @@ export default function BondPageContent() {
       phoneNumber: phone.trim(),
       email: email.trim(),
       emailAddress: email.trim(),
+      address: streetAddress.trim() || suburb.trim(),
       streetAddress: streetAddress.trim(),
-      address: streetAddress.trim(),
       suburb: suburb.trim(),
+      city: suburb.trim(),
       suburbPostcode: suburb.trim(),
       propertyType: propertyType,
       bedrooms: bedrooms,
       bathrooms: bathrooms,
+      date: selectedDate,
       moveOutDate: selectedDate,
       selectedDate: selectedDate,
-      carpetSteamCleaning: addCarpetSteam ? "Yes" : "No",
-      hasPets: hasPets ? "Yes" : "No",
-      windowCleaning: addWindowCleaning ? "Yes" : "No",
-      additionalNotes: additionalNotes.trim(),
-      notes: additionalNotes.trim(),
       service: "Perth Bond Cleaning",
       source: "Website Quote Form",
       submittedAt: new Date().toISOString(),
